@@ -1,0 +1,79 @@
+.App {
+  text-align: center;
+  direction: rtl;
+  /* display: grid;
+  grid-template-areas:
+      'header header header header header '
+      'main main main main sidebar'; */
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+table {
+  border: 1px solid black;
+}
+
+tr {
+  border: 1px solid black;
+}
+
+td {
+  border: 1px solid;
+}
+
+.userDetails li {
+  display: flex;
+}
+li {
+  list-style: none;
+  display: inline-flex;
+  margin: 0 1vw;
+}
+li.sideBarItem {
+  display: block;
+  text-align: right;
+}
+/* 
+.sideBar {
+  grid-area: sidebar;
+  background-color: #719e40a3;
+  color: white;
+}
+
+.navbar {grid: header;grid-area: header;background-color: #719e40;color: white;}
+
+.container {
+  grid-area: main;
+}
+
+.sidebar ul {padding-inline-start: 0px !important;} */
+
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: #ececec;
+}
+
+.day {
+  display: table-cell;
+}
+.loading img {
+  width: 10vh;
+}
