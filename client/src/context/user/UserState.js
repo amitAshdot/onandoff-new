@@ -1,16 +1,16 @@
 import React , {useReducer} from 'react';
-import uuid from 'uuid';
+// import uuid from 'uuid';
 import UserContext from './UserContext';
 import UserReducer from './UserReducer'
-import {
-    ADD_WEBSITE,    
-    DELET_WEBSITE,
-    SET_CURRENT,
-    CLEAR_CURRENT,
-    UPDATE_WEBSITE,
-    FILTER_WEBSITE,
-    CLEAR_FILTER
-} from '../type';
+// import {
+//     ADD_WEBSITE,    
+//     DELET_WEBSITE,
+//     SET_CURRENT,
+//     CLEAR_CURRENT,
+//     UPDATE_WEBSITE,
+//     FILTER_WEBSITE,
+//     CLEAR_FILTER
+// } from '../type';
 
 const UserState = props =>{
     const initialState ={

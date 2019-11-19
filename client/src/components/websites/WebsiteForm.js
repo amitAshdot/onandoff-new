@@ -1,13 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import WebsiteContext from '../../context/website/WebsiteContext';
 import LinkComp from '../layouts/LinkComp';
-import { Link } from 'react-router-dom';
-import AuthContext from '../../context/auth/AuthContext';
+// import { Link } from 'react-router-dom';
+// import AuthContext from '../../context/auth/AuthContext';
 
 const WebsiteForm = () => {
-    const authContext = useContext(AuthContext);
-    const { login, error, clearErr, isAuthenticated, createFile } = authContext;
-
     const websiteContext = useContext(WebsiteContext);
     const { addWebsite, updateWebsite, clearCurrent, current, setCurrent } = websiteContext;
 

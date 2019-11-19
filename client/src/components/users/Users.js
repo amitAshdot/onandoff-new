@@ -8,20 +8,16 @@ const Users = () => {
     const userContext = useContext(UserContext);
     const { users } = userContext;
 
-    const authContext = useContext(AuthContext);
-    const { isAuthenticated, isAdmin, user } = authContext;
 
-    const websiteContext = useContext(WebsiteContext);
-    const { websites, getWebsites, loading } = websiteContext;
 
-    const adminList = (
-        users.map(user => <UserItem key={user.key} user={user} />)
+    // const adminList = (
+    //     users.map(user => <UserItem key={user.key} user={user} />)
         
-        )
-        const userList = (
-            users.map(user => <UserItem key={user.key} user={user} />)
-            
-            )
+    //     )
+        // const userList = (
+        //     users.map(user => <UserItem key={user.key} user={user} />)
+            // 
+            // )
 
     
     return (

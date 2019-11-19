@@ -23,11 +23,11 @@ export default (state, action) => {
                 loading: false,
                 user: action.payload
             }
-        // case IS_ADMIN:
-        //     return{
-        //         ...state,
-        //         isAdmin:true
-        //     }
+        case IS_ADMIN:
+            return{
+                ...state,
+                isAdmin:true
+            }
         case REGISTER_SUCCESS:
         case LOGIN_SUCCESS:
             localStorage.setItem('token', action.payload.token)

@@ -10,13 +10,13 @@ import Home from "./components/pages/Home";
 import AddWebsite from "./components/pages/AddWebsite";
 import About from "./components/pages/About";
 import Admin from "./components/pages/Admin";
-import EditWeb from "./components/pages/EditWeb";
+// import EditWeb from "./components/pages/EditWeb";
 //auth components
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 //Redirect components
 import PrivateRoutes from './components/routing/PrivateRoute';
-import Current from './components/routing/Current';
+// import Current from './components/routing/Current';
 
 //Auth token
 import setAuthToken from './utils/setAuthToken';
@@ -45,7 +45,7 @@ const App = () => {
                     <PrivateRoutes exact path='/admin' component={Admin} />
                     <PrivateRoutes exact path='/' component={Home} />
                     <PrivateRoutes exact path='/addwebsite' component={AddWebsite} />
-                    <PrivateRoutes exact path='/edit-web' component={EditWeb} />
+                    {/* <PrivateRoutes exact path='/edit-web' component={EditWeb} /> */}
                     <Route exact path='/about' component={About} />
                     <Route exact path='/register' component={Register} />
                     <Route exact path='/login' component={Login} />
