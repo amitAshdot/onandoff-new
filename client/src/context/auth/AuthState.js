@@ -96,18 +96,6 @@ const AuthState = props => {
 
     //Get all Users
     const getUsers = async () => {
-
-        try {
-            let users = require('/api/users'); //the connection to users database
-            const userList = await axios.get('/api/users')
-            console.log(users);
-            dispatch({ type: AUTH_ERROR, payload: userList });
-
-        }
-        catch (err) {
-
-        }
-
     }
 
 
