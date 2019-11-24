@@ -8,7 +8,6 @@ const onAndOff = (divId,
     ThursdayOpen, ThursdayClose,
     FridayOpen, FridayClose,
     SaturdayOpen, SaturdayClose,
-
 ) => {
 
     const onAndOffFunciton = (divId, timeSchedule) => {
@@ -38,8 +37,7 @@ const onAndOff = (divId,
         } else {
             var cssid = '#' + testElement;
         }
-        console.log(testElement);
-        console.log(cssid);
+
 
         switch (day) {
             case 0:
@@ -81,6 +79,14 @@ const onAndOff = (divId,
 
     return (
         <div>
+            {onAndOffFunciton(divId,
+    SundayOpen, SundayClose,
+    MondayOpen, MondayClose,
+    TuesdayOpen, TuesdayClose,
+    WednesdayOpen, WednesdayClose,
+    ThursdayOpen, ThursdayClose,
+    FridayOpen, FridayClose,
+    SaturdayOpen, SaturdayClose,)}
         </div>
     )
 }

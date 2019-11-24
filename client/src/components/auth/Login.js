@@ -19,7 +19,7 @@ const Login = (props) => {
             clearErr();
         }
         //eslint-disable-next-line
-    }, [error, isAuthenticated, props.history])
+    }, [error, isAuthenticated, props.history, clearErr])
 
 
     const [user, setUser] = useState({
@@ -34,7 +34,9 @@ const Login = (props) => {
 
     const onSubmit = e => {
         e.preventDefault();
+        clearErr();
         if (email === '' || password === '') setAlert('אנא מלא את כל התאים', 'danger');
+        else if (!echeck(email)) setAlert('אנא הכנס אימייל תקין', 'danger');
         else {
             login({//authContext function
                 email,
@@ -43,6 +45,30 @@ const Login = (props) => {
         }
     };
 
+    const echeck = (str) => {
+        let at = "@"
+        let dot = "."
+        let lat = str.indexOf(at)
+        let lstr = str.length
+        let ldot = str.indexOf(dot)
+        if (str.indexOf(at) == -1 || str.indexOf(at) == -1 || str.indexOf(at) == 0 || str.indexOf(at) == lstr) {
+            alert("Invalid E-mail ID")
+            return false
+        }
+        if (str.indexOf(dot) == -1 || str.indexOf(dot) == 0 || str.indexOf(dot) == lstr || str.indexOf(dot, (lat + 2)) == -1) {
+            alert("Invalid E-mail ID")
+            return false
+        }
+        if (str.indexOf(at, (lat + 1)) != -1 || str.substring(lat - 1, lat) == dot || str.substring(lat + 1, lat + 2) == dot) {
+            alert("Invalid E-mail ID")
+            return false
+        }
+        if (str.indexOf(" ") != -1) {
+            alert("Invalid E-mail ID")
+            return false
+        }
+        return true
+    }
 
     return (
         <div className='formContainer'>
@@ -51,7 +77,7 @@ const Login = (props) => {
 
                 <div className="forminput">
                     <label htmlFor="email">אימייל:</label>
-                    <input type="email" placeholder="אימייל" name='email' value={email} onChange={onChange} />
+                    <input type="text" placeholder="אימייל" name='email' value={email} onChange={onChange} />
                 </div>
                 <div className="forminput">
                     <label htmlFor="password">סיסמה:</label>

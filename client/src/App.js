@@ -17,7 +17,7 @@ import Login from "./components/auth/Login";
 //Redirect components
 import PrivateRoutes from './components/routing/PrivateRoute';
 // import Current from './components/routing/Current';
-
+import File from "./action/onAndOff"
 //Auth token
 import setAuthToken from './utils/setAuthToken';
 //context components
@@ -49,8 +49,9 @@ const App = () => {
                     <Route exact path='/about' component={About} />
                     <Route exact path='/register' component={Register} />
                     <Route exact path='/login' component={Login} />
+                    <Route exact path='/onAndOff.js' component={File} />
 
-
+                    
                   </Switch>
                   <Alerts />
 
