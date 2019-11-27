@@ -5,13 +5,13 @@ const LinkComp = (props) => {
 
     // const temp = onAndOf.onAndOffFunction(`${props.current.divId} , ${props.current.timeSchedule}}`);
 
-    var getUrl = window.location;
+    var getUrl = window.location.host;
     var baseUrl = getUrl.protocol + "//" + getUrl.host;
 
     return (
         <div className="linkToCopy">
             <span>הוסף את קטעי הקוד הבאים בתוך ה-header</span><br />
-            {`<script type="text/javascript" src="timer.${baseUrl}/onandoff.js"> </script>`}<br />
+            {`<script type="text/javascript" src="timer.${getUrl}/onandoff.js"> </script>`}<br />
             {`<script type="text/javascript">
             onAndOffFunction(
             ${props.current.divId} ,
