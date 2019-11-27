@@ -11,7 +11,7 @@ const LinkComp = (props) => {
     return (
         <div className="linkToCopy">
             <span>הוסף את קטעי הקוד הבאים בתוך ה-header</span><br />
-            {`<script type="text/javascript" src="${baseUrl}/client/src/action/onAndOff.js> </script>`}<br />
+            {`<script type="text/javascript" src="${baseUrl}/onandoff.js"> </script>`}<br />
             {`<script type="text/javascript">
             onAndOffFunction(
             ${props.current.divId} ,
