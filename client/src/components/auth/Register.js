@@ -20,7 +20,6 @@ const Register = (props) => {
         password: '',
         password2: '',
     });
-
     const { name, email, password, password2 } = user;
 
     const onChange = e => {
