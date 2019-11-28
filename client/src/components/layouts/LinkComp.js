@@ -5,7 +5,7 @@ const LinkComp = (props) => {
 
     // const temp = onAndOf.onAndOffFunction(`${props.current.divId} , ${props.current.timeSchedule}}`);
 
-    var getUrl = window.location;
+    var getUrl = window.location.host;
     var baseUrl = getUrl.protocol + "//" + getUrl.host;
 
     return (
