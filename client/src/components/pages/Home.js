@@ -1,11 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { Fragment, useState, useContext, useEffect } from 'react'
 // import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/AuthContext'
 import WebsiteContext from '../../context/website/WebsiteContext'
 import WebsiteItem from '../websites/WebsiteItem'
 import Loading from '../layouts/Loading'
-
+import MainImg from "../../images/hp-main-img.jpeg"
 
 const Home = () => {
     const authContext = useContext(AuthContext);
@@ -73,13 +73,23 @@ const Home = () => {
     const onChange = e => { setWebsite({ ...website, [e.target.name]: e.target.value }); }
 
     const notLogin = (
-        <Link to='/login'><button>התחבר</button></Link>
+        <Fragment>
+            <div className="hp-main-img">
+                <img src={MainImg} alt="mainImage" />
+            </div>
+            <h2>מציגים למשתמש רק את מה שרלוונטי!</h2>
+            <p>
+                מציגים לגולש את מספר הטלפון למשלוחים למורת שהמסעדה סגורה?<br/>
+                עם on and off תוכלו לנהל בפשטות ובקלות את השעות שבהם מוצגים כפתורים, מספרי טלפון וכל רכיב אחר שתבחרו
+            </p>
+            <Link to='/login'><button className="hp-button">התחבר</button></Link>
+            <Link to='/register'><button className="hp-button">הירשם</button></Link>
+            <span className="command">התחבר למערכת onandoff</span>
+        </Fragment>
     )
 
     return (
         <div>
-
-            <h1>עמוד הבית</h1>
             {isAuthenticated ? <h1>שלום {user && user.name}</h1> : null}
             {loading ? <Loading /> : null}
 

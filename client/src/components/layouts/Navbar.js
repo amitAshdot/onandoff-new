@@ -10,51 +10,64 @@ const Navbar = (props) => {
     const onLogout = () => {
         logout();
     }
-        let navLinks =  (
-            <Fragment>
-            <li>
-                <Link to='/' >עמוד הבית</Link>
-            </li>
-            <li>
-                <Link to='/about' >אודות</Link>
-            </li>
-            <li>
-                <Link to='/login' >התחבר</Link>
-            </li>
-            <li>
-                <Link to='/register' >הירשם</Link>
-            </li>
-        </Fragment>
-        )
-            
-        if(user){
-            navLinks = (
-                <Fragment>
-                <li>
+    let navLinks = (
+        <Fragment>
+            <div className="right">
+                <li >
                     <Link to='/' >עמוד הבית</Link>
                 </li>
-    
-                {user.isAdmin ? <li><Link to='/admin' >עמוד אדמין</Link></li> : null}
-    
-                <li>
+                <li >
                     <Link to='/about' >אודות</Link>
                 </li>
-                <li>
-                    <a onClick={onLogout} href="/">
-                        <i ></i><span className='hide-sm'>התנתק</span>
-                    </a>
+                <li >
+                    <Link to='/how-it-works' >איך זה עובד</Link>
                 </li>
+            </div>
+            <div className="left">
+                <li >
+                    <Link to='/login' >התחבר</Link>
+                </li>
+                <li >
+                    <Link to='/register' >הירשם</Link>
+                </li>
+            </div>
+
+        </Fragment>
+    )
+
+    if (user) {
+        navLinks = (
+            <Fragment>
+                <div className="right">
+                    <li>
+                        <Link to='/' >עמוד הבית</Link>
+                    </li>
+                    {user.isAdmin ? <li><Link to='/admin' >עמוד אדמין</Link></li> : null}
+                    <li>
+                        <Link to='/about' >אודות</Link>
+                    </li>
+                    <li >
+                        <Link to='/how-it-works' >איך זה עובד</Link>
+                    </li>
+                </div>
+                <div className="left">
+                    <li>
+                        <a onClick={onLogout} href="/">
+                            <i ></i><span className='hide-sm'>התנתק</span>
+                        </a>
+                    </li>
+                </div>
             </Fragment>
-            )
-        }
+        )
+    }
 
     return (
         <div className="navbar">
-            <h1>
+            <Link to="/" id="logo"><h1 className="logotxt">
                 <i className={props.icon} /> {props.title}
-            </h1>
+            </h1></Link>
             <ul>
-                { navLinks }
+                {navLinks}
             </ul>
         </div>
     )

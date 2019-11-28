@@ -1,13 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import AuthContext from '../../context/auth/AuthContext';
-import AlertContext from '../../context/alert/AlertContext';
 import { withRouter } from 'react-router-dom';
 
 const Login = (props) => {
-    const alertContext = useContext(AlertContext);
     const authContext = useContext(AuthContext);
 
-    const { setAlert } = alertContext;
     const { login, error, clearErr, isAuthenticated } = authContext;
 
 
@@ -15,8 +12,7 @@ const Login = (props) => {
         if (isAuthenticated)//check authContext
             props.history.push('/');
         if (error === 'wrong username or password') {
-            setAlert('שם משתמש או סיסמה לא נכונים', 'danger');
-            clearErr();
+
         }
         //eslint-disable-next-line
     }, [error, isAuthenticated, props.history, clearErr])
@@ -34,9 +30,9 @@ const Login = (props) => {
 
     const onSubmit = e => {
         e.preventDefault();
-        clearErr();
-        if (email === '' || password === '') setAlert('אנא מלא את כל התאים', 'danger');
-        else if (!echeck(email)) setAlert('אנא הכנס אימייל תקין', 'danger');
+        debugger
+        if (email === "" || password === "") document.getElementById("error").innerHTML = "אנא הכנס פרטים!"; 
+        else if (!echeck(email)) document.getElementById("error").innerHTML = "אנא הכנס מייל תקין!";
         else {
             login({//authContext function
                 email,
@@ -52,19 +48,15 @@ const Login = (props) => {
         let lstr = str.length
         let ldot = str.indexOf(dot)
         if (str.indexOf(at) == -1 || str.indexOf(at) == -1 || str.indexOf(at) == 0 || str.indexOf(at) == lstr) {
-            alert("Invalid E-mail ID")
             return false
         }
         if (str.indexOf(dot) == -1 || str.indexOf(dot) == 0 || str.indexOf(dot) == lstr || str.indexOf(dot, (lat + 2)) == -1) {
-            alert("Invalid E-mail ID")
             return false
         }
         if (str.indexOf(at, (lat + 1)) != -1 || str.substring(lat - 1, lat) == dot || str.substring(lat + 1, lat + 2) == dot) {
-            alert("Invalid E-mail ID")
             return false
         }
         if (str.indexOf(" ") != -1) {
-            alert("Invalid E-mail ID")
             return false
         }
         return true
@@ -87,6 +79,9 @@ const Login = (props) => {
                 <div className="formBtn">
                     <input type="submit" value="התחבר" />
                 </div>
+                <span id="error">
+
+                </span>
             </form>
         </div>
     )

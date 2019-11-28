@@ -6,7 +6,7 @@ import WebsiteContext from '../../context/website/WebsiteContext'
 const WebsiteItem = ({ website }) => {
     const websiteContext = useContext(WebsiteContext);
     const { deleteWebsite, setCurrent, clearCurrent } = websiteContext
-    const {  name, url, divId, user, timeSchedule} = website;
+    const { name, url, divId, user, timeSchedule } = website;
 
     const onDelete = (website) => {
         deleteWebsite(website, 'false');
@@ -14,11 +14,13 @@ const WebsiteItem = ({ website }) => {
     }
     return (
         <div className="websiteItem">
-
-            {name.charAt(0).toUpperCase() + name.slice(1)} {'|'} <span>{url}</span>
-            <button className="websiteBtn" onClick={() => setCurrent(website)}> <Link to='/addwebsite'> ערוך</Link> </button>
-            <button className="websiteBtn" onClick={() => onDelete(website)}>מחק</button>
-
+            <div className="aw-website-details">
+                {name.charAt(0).toUpperCase() + name.slice(1)} {'|'} <span>{url}</span>
+            </div>
+            <div className="aw-website-btn">
+                <Link to='/addwebsite'> <button className="websiteBtn" onClick={() => setCurrent(website)}>  ערוך </button></Link>
+                <button className="websiteBtn" onClick={() => onDelete(website)}>מחק</button>
+            </div>
         </div>
 
     )

@@ -24,9 +24,9 @@ export default (state, action) => {
                 user: action.payload
             }
         case IS_ADMIN:
-            return{
+            return {
                 ...state,
-                isAdmin:true
+                isAdmin: true
             }
         case REGISTER_SUCCESS:
         case LOGIN_SUCCESS:
@@ -40,9 +40,19 @@ export default (state, action) => {
 
         case REGISTER_FAIL:
         case AUTH_ERROR:
-        case LOGIN_FAIL:
         case LOG_OUT:
             localStorage.removeItem('token');
+            return {
+                ...state,
+                token: null,
+                isAuthenticated: false,
+                loading: false,
+                user: null,
+                error: action.payload
+            }
+        case LOGIN_FAIL:
+            localStorage.removeItem('token');
+            document.getElementById("error").innerHTML = "המייל והסיסמה לא מתאימים";
             return {
                 ...state,
                 token: null,
