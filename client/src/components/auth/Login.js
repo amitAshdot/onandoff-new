@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import AuthContext from '../../context/auth/AuthContext';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Login = (props) => {
     const authContext = useContext(AuthContext);
@@ -26,13 +27,25 @@ const Login = (props) => {
     const { email, password } = user;
 
     //change input state
-    const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
+    const onChange = e => {
+        setUser({ ...user, [e.target.name]: e.target.value });
+        document.getElementById("email").style.borderColor = "#55a658";
+        document.getElementById("password").style.borderColor = "#55a658";
+    }
+    
 
     const onSubmit = e => {
         e.preventDefault();
-        debugger
-        if (email === "" || password === "") document.getElementById("error").innerHTML = "אנא הכנס פרטים!"; 
-        else if (!echeck(email)) document.getElementById("error").innerHTML = "אנא הכנס מייל תקין!";
+        if (email === "" || password === ""){
+            document.getElementById("error").innerHTML = "אנא הכנס פרטים!"; 
+            document.getElementById("email").style.borderColor = "red";
+            document.getElementById("password").style.borderColor = "red";
+        }
+        
+        else if (!echeck(email)){
+            document.getElementById("error").innerHTML = "אנא הכנס מייל תקין!";
+            document.getElementById("email").style.borderColor = "red";
+        } 
         else {
             login({//authContext function
                 email,
@@ -69,12 +82,13 @@ const Login = (props) => {
 
                 <div className="forminput">
                     <label htmlFor="email">אימייל:</label>
-                    <input type="text" placeholder="אימייל" name='email' value={email} onChange={onChange} />
+                    <input type="text" name='email' value={email} onChange={onChange} id="email"/>
                 </div>
                 <div className="forminput">
                     <label htmlFor="password">סיסמה:</label>
-                    <input type="password" placeholder="סיסמה" name='password' value={password} onChange={onChange} />
+                    <input type="password"  name='password' value={password} onChange={onChange}id="password" />
                 </div>
+                <span>עוד אין לך חשבון?</span><Link to='/register'>הירשם</Link> 
 
                 <div className="formBtn">
                     <input type="submit" value="התחבר" />

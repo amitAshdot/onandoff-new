@@ -12,14 +12,16 @@ import {
     CLEAR_FILTER,
     WEBSITE_ERROR,
     GET_WEBSITE,
-    CLEAR_WEBSITES
+    CLEAR_WEBSITES,
+    DELETE_FLAG,
 } from '../type';
 
 const WebsiteState = props => {
     const initialState = {
         websites: [],
         current: null,
-        error: null
+        error: null,
+        deleteFlag:false
     };
     const [state, dispatch] = useReducer(WebsiteReducer, initialState);
 
@@ -92,6 +94,11 @@ const WebsiteState = props => {
             })
         }
     }
+
+    //delete flag
+    const deleteBtn = () =>{
+        dispatch({type : DELETE_FLAG})
+    }
     //clear websites
     const clearWebsites = () => {
         dispatch({ type: CLEAR_WEBSITES })
@@ -118,13 +125,15 @@ const WebsiteState = props => {
             websites: state.websites,
             current: state.current,
             error: state.error,
+            deleteFlag: state.deleteFlag,
             addWebsite,
             deleteWebsite,
             setCurrent,
             clearCurrent,
             getWebsites,
             clearWebsites,
-            updateWebsite
+            updateWebsite,
+            deleteBtn
         }} >
 
             {props.children}

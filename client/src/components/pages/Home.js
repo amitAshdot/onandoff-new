@@ -5,7 +5,6 @@ import AuthContext from '../../context/auth/AuthContext'
 import WebsiteContext from '../../context/website/WebsiteContext'
 import WebsiteItem from '../websites/WebsiteItem'
 import Loading from '../layouts/Loading'
-import MainImg from "../../images/hp-main-img.jpeg"
 
 const Home = () => {
     const authContext = useContext(AuthContext);
@@ -74,17 +73,20 @@ const Home = () => {
 
     const notLogin = (
         <Fragment>
-            <div className="hp-main-img">
-                <img src={MainImg} alt="mainImage" />
+            <div className="hp-main">
+                <div className="hp-info">
+                    <h2>מציגים למשתמש רק את מה שרלוונטי!</h2>
+                    
+                    <p>
+                        עם on and off תוכלו לנהל בפשטות ובקלות את השעות שבהם מוצגים כפתורים, מספרי טלפון וכל רכיב אחר שתבחרו
+                    </p>
+                    <Link to='/login'><button className="hp-button">התחבר</button></Link>
+                    <p className="full-width">עוד אין לך חדשבון?!</p>
+                    <Link to='/register'><button className="hp-button register" >הירשם</button></Link> 
+                </div>
+
             </div>
-            <h2>מציגים למשתמש רק את מה שרלוונטי!</h2>
-            <p>
-                מציגים לגולש את מספר הטלפון למשלוחים למורת שהמסעדה סגורה?<br/>
-                עם on and off תוכלו לנהל בפשטות ובקלות את השעות שבהם מוצגים כפתורים, מספרי טלפון וכל רכיב אחר שתבחרו
-            </p>
-            <Link to='/login'><button className="hp-button">התחבר</button></Link>
-            <Link to='/register'><button className="hp-button">הירשם</button></Link>
-            <span className="command">התחבר למערכת onandoff</span>
+
         </Fragment>
     )
 
@@ -99,6 +101,7 @@ const Home = () => {
                         {/* <input type="text" placeholder="שם" name='name' value={name} onChange={onChange} />
                         <input type="text" placeholder="דומיין העמוד" name='url' value={url} onChange={onChange} />
                         <input type="text" placeholder="שם או id של המקטע" name='divId' value={divId} onChange={onChange} /> */}
+                        <p>כאן תוכל להוסיף ולנהל את כל הטיימרים שלך</p>
                         <Link to="/addwebsite"><input type="submit" value="הוסף" onClick={() => setCurrent(website)} /></Link>
                     </form>
                 </div>

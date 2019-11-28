@@ -104,14 +104,15 @@ const WebsiteForm = () => {
 return (
     <form onSubmit={onSubmit}>
                     {current._id ?<h2>ערוך עמוד נחיתה</h2>: <h2>הוסף עמוד נחיתה</h2>}
-
-        <input type="text" placeholder="שם" name='name' value={name} onChange={onChange} />
-        <input type="text" placeholder="דומיין העמוד" name='url' value={url} onChange={onChange} />
-        <input type="text" placeholder="שם או id של המקטע" name='divId' value={divId} onChange={onChange} />
-        <div className="day">
-            <span>פתיחה</span>
-            <span>סגירה</span>
-
+        <div className="info">
+        <input type="text" className="websit-form-input" placeholder="שם" name='name' value={name} onChange={onChange} />
+        <input type="text" className="websit-form-input" placeholder="דומיין העמוד" name='url' value={url} onChange={onChange} />
+        <input type="text" className="websit-form-input" placeholder="שם או id של המקטע" name='divId' value={divId} onChange={onChange} />
+        </div>
+        <div className="time">
+        <div className="day-lable-d">
+            <p>פתיחה</p>
+            <p>סגירה</p>
         </div>
         <div className="day">
             <span>ראשון</span>
@@ -149,8 +150,11 @@ return (
             <input type="time" placeholder="Close Hour" name='Saturday' value={timeSchedule.Saturday.closeHour} onChange={handleChangeCloseHour} />
         </div>
         <div>
-            {current._id ? <input type="submit" value="ערוך" />:  <input type="submit" value="הוסף" />}
+            {current._id ? <input type="submit" value="שמור" />:  <input type="submit" value="הוסף" />}
         </div>
+        </div>
+
+
 
         {current.name===''  ? null : <LinkComp id={current._id} current={current} />}
 
