@@ -383,8 +383,13 @@ p#emailErr {
 /* ------------------------ Mobile ------------------------ */
 @media (max-width: 600px) {
 
+/* ------------- home ------------- */
 
-
+  .hp-info {
+    width: 100vw;
+    padding-top: 70%;
+    vertical-align: middle;
+}
   /* ------------- homepage ------------- */
   .right {
     max-width: 120px;
