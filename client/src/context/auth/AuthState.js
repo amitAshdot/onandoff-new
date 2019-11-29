@@ -49,7 +49,7 @@ const AuthState = props => {
             },
 
         }
-
+        formData.email = formData.email.toLowerCase();
         try {
             const res = await axios.post('/api/users', formData, config);
             dispatch({
@@ -72,7 +72,7 @@ const AuthState = props => {
                 'Content-Type': 'application/json'
             },
         }
-        
+        formData.email = formData.email.toLowerCase();
         try {
             const res = await axios.post('/api/auth', formData, config);
             dispatch({

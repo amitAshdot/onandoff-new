@@ -9,7 +9,6 @@ import {
     WEBSITE_ERROR,
     GET_WEBSITE,
     CLEAR_WEBSITES,
-    DELETE_FLAG,
 
 } from '../type';
 
@@ -56,11 +55,7 @@ export default (state, action) => {
                 error: null,
                 current: null
             }
-        case DELETE_FLAG:
-            return{
-                ...state,
-                deleteFlag: !state.deleteFlag,
-            }
+
         case SET_CURRENT:
             return {
                 ...state,

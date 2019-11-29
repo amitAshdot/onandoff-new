@@ -13,7 +13,6 @@ import {
     WEBSITE_ERROR,
     GET_WEBSITE,
     CLEAR_WEBSITES,
-    DELETE_FLAG,
 } from '../type';
 
 const WebsiteState = props => {
@@ -94,17 +93,12 @@ const WebsiteState = props => {
             })
         }
     }
-
-    //delete flag
-    const deleteBtn = () =>{
-        dispatch({type : DELETE_FLAG})
-    }
     //clear websites
     const clearWebsites = () => {
         dispatch({ type: CLEAR_WEBSITES })
     }
     // set  current website
-    const setCurrent = website => {
+    const setCurrent = (website) => {
         dispatch({ type: SET_CURRENT, payload: website })
     }
     //clear current website
@@ -133,7 +127,6 @@ const WebsiteState = props => {
             getWebsites,
             clearWebsites,
             updateWebsite,
-            deleteBtn
         }} >
 
             {props.children}

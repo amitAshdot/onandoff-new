@@ -21,7 +21,6 @@ export const GET_WEBSITE='GET_WEBSITE';
 export const ADD_WEBSITE = 'ADD_WEBSITE';
 export const DELETE_WEBSITE = 'DELETE_WEBSITE';
 export const CLEAR_WEBSITES = 'CLEAR_WEBSITE';
-export const DELETE_FLAG = 'CLEAR_WEBSITE';
 
 export const SET_CURRENT = 'SET_CURRENT';
 export const CLEAR_CURRENT = 'CLEAR_CURRENT';

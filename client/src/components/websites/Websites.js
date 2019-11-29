@@ -13,8 +13,6 @@ const Websites = (props) => {
     }, []);
     // let userWebs = websites.filter(website =>{return website.user.$oid === props.user._id.$oid})
 
-
-                
     return (
         <Fragment>
             {websites != null && !loading ? (

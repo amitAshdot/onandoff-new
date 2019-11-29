@@ -40,7 +40,7 @@ const Navbar = (props) => {
             <Fragment>
                 <div className="right">
                     <li>
-                        <Link to='/' >עמוד הבית</Link>
+                        <Link to='/' >הטיימרים שלי</Link>
                     </li>
                     {user.isAdmin ? <li><Link to='/admin' >עמוד אדמין</Link></li> : null}
                     <li>
