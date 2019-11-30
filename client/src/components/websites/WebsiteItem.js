@@ -29,7 +29,6 @@ const WebsiteItem = ({ website }) => {
             </div>
         </Fragment>
     )
-    debugger
     return (
         <div className="websiteItem" id="websiteItem">
             <div className="aw-website-details">

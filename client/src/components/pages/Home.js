@@ -84,9 +84,7 @@ const Home = () => {
                     <p className="full-width">עוד אין לך חדשבון?!</p>
                     <Link to='/register'><button className="hp-button register" >הירשם</button></Link> 
                 </div>
-
             </div>
-
         </Fragment>
     )
 

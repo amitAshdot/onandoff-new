@@ -65,7 +65,6 @@ const Register = (props) => {
         let passwordSpan = document.getElementById("passwordErr");
         let re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
         passwordSpan.innerHTML = "";
-        debugger
         if (password !== "") {
             if (!re.test(password))
                 passwordSpan.innerHTML = "אנא הכנס סיסמא חזקה המורכבת מאות גדולה אות קטנה, מספרים ולפחות 6 תווים!";

@@ -387,7 +387,7 @@ p#emailErr {
 /* ------------------------ Mobile ------------------------ */
 @media (max-width: 600px) {
 /* ------------- layout ------------- */
-
+.container {width: 100vw;}
 /* ----- navbar ----- */
   h1.logotxt {
     color: white;
@@ -426,7 +426,7 @@ input[type="submit"] {
     vertical-align: middle;
 }
   /* ------------- homepage ------------- */
-
+  .websiteItem {width: 100%;}
 .deleteForm {
   color: white;
   background-color: #4f4f4f;
@@ -482,6 +482,9 @@ input[type="time"] {
   cursor: pointer;
   width: 31%;
 }
- }
+.linkToCopy {width: 100vw;}
+.code {width: 90vw;margin: auto;}
+
+}
 
 
