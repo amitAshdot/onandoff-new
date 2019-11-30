@@ -116,37 +116,37 @@ const WebsiteForm = () => {
                     <p>סגירה</p>
                 </div>
                 <div className="day">
-                    <span>ראשון</span>
+                    <p>ראשון</p>
                     <input type="time" placeholder="Open Hour" name='Sunday' value={timeSchedule.Sunday.openHour} onChange={handleChangeOpemHour} />
                     <input type="time" placeholder="Close Hour" name='Sunday' value={timeSchedule.Sunday.closeHour} onChange={handleChangeCloseHour} />
                 </div>
                 <div className="day">
-                    <span>שני</span>
+                    <p>שני</p>
                     <input type="time" placeholder="Open Hour" name='Monday' value={timeSchedule.Monday.openHour} onChange={handleChangeOpemHour} />
                     <input type="time" placeholder="Close Hour" name='Monday' value={timeSchedule.Monday.closeHour} onChange={handleChangeCloseHour} />
                 </div>
                 <div className="day">
-                    <span>שלישי</span>
+                    <p>שלישי</p>
                     <input type="time" placeholder="Open Hour" name='Tuesday' value={timeSchedule.Tuesday.openHour} onChange={handleChangeOpemHour} />
                     <input type="time" placeholder="Close Hour" name='Tuesday' value={timeSchedule.Tuesday.closeHour} onChange={handleChangeCloseHour} />
                 </div>
                 <div className="day">
-                    <span>רביעי</span>
+                    <p>רביעי</p>
                     <input type="time" placeholder="Open Hour" name='Wednesday' value={timeSchedule.Wednesday.openHour} onChange={handleChangeOpemHour} />
                     <input type="time" placeholder="Close Hour" name='Wednesday' value={timeSchedule.Wednesday.closeHour} onChange={handleChangeCloseHour} />
                 </div>
                 <div className="day">
-                    <span>חמישי</span>
+                    <p>חמישי</p>
                     <input type="time" placeholder="Open Hour" name='Thursday' value={timeSchedule.Thursday.openHour} onChange={handleChangeOpemHour} />
                     <input type="time" placeholder="Close Hour" name='Thursday' value={timeSchedule.Thursday.closeHour} onChange={handleChangeCloseHour} />
                 </div>
                 <div className="day">
-                    <span>שישי</span>
+                    <p>שישי</p>
                     <input type="time" placeholder="Open Hour" name='Friday' value={timeSchedule.Friday.openHour} onChange={handleChangeOpemHour} />
                     <input type="time" placeholder="Close Hour" name='Friday' value={timeSchedule.Friday.closeHour} onChange={handleChangeCloseHour} />
                 </div>
                 <div className="day">
-                    <span>שבת</span>
+                    <p>שבת</p>
                     <input type="time" placeholder="Open Hour" name='Saturday' value={timeSchedule.Saturday.openHour} onChange={handleChangeOpemHour} />
                     <input type="time" placeholder="Close Hour" name='Saturday' value={timeSchedule.Saturday.closeHour} onChange={handleChangeCloseHour} />
                 </div>

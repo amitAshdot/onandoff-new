@@ -22,7 +22,7 @@ const WebsiteItem = ({ website }) => {
     const showDelte = (
         <Fragment>
             <div className="deleteForm">
-                <p>האם בטוח?</p>
+                <p>האם את/ה בטוח?</p>
                 <button className="deletebto" onClick={() => takeDowm(website)}>מחק</button> 
                 <button className="rejrect" onClick={() => setflag(false)}>בטל</button>
 
