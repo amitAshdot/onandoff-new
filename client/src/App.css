@@ -444,7 +444,6 @@ input[type="submit"] {
   min-width: 200px;
   cursor: pointer;
 }
-
 /* ------------- addwebsie ------------- */
 .time {
   display: table;
@@ -482,7 +481,6 @@ input[type="time"] {
 }
 .linkToCopy {width: 100vw;}
 .code {width: 90vw;margin: auto;}
-
 }
 
 
