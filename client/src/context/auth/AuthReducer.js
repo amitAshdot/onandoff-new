@@ -10,6 +10,8 @@ import {
     IS_ADMIN,
     GET_USERS,
     CREATE_FILE,
+    VERIFY_USER
+
 
 } from '../type';
 
@@ -60,6 +62,13 @@ export default (state, action) => {
                 loading: false,
                 user: null,
                 error: action.payload
+            }
+
+        case VERIFY_USER:
+            return {
+                ...state,
+                user: action.payload,
+                isVerified: true,
             }
         case CLEAR_ERROR:
             return {

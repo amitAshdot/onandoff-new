@@ -34,7 +34,7 @@ router.post('/', [
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        const { email, password } = req.body;
+        const { email, password , vkey} = req.body;
 
         try {//find email if good compare with password if good create local token and take id
             let user = await User.findOne({ email });
@@ -63,4 +63,6 @@ router.post('/', [
             res.status(500).send('Server error');
         }
     });
+
+
 module.exports = router;

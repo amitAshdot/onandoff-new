@@ -1,34 +1,33 @@
-const mongoose =require('mongoose');
+const mongoose = require('mongoose');
 
 const UserSchema = mongoose.Schema({
-    name:{
-        type:String,
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    vkey: {type:String,
         required:true
     },
-    email:{
-        type:String,
-        required:true,
-        unique:true
-    },    
-    password:{
-        type:String,
-        required:true
-    },    
-
-    vkey:{
-        Type:String
+    date: {
+        type: Date,
+        default: Date.now
     },
-    verified:{
-        Type:Boolean,
-        default:false
+    isAdmin: {
+        type: Boolean,
+        default: false
     },
-    date:{
-        type:Date,
-        default:Date.now
-    },
-    isAdmin:{
-        type:Boolean,
-        default:false        
+    isVerified: {
+        type: Boolean,
+        default: false
     },
 });
 

@@ -9,6 +9,8 @@ import Home from "./components/pages/Home";
 import AddWebsite from "./components/pages/AddWebsite";
 import About from "./components/pages/About";
 import Admin from "./components/pages/Admin";
+import Verify from "./components/pages/Verify";
+
 // import EditWeb from "./components/pages/EditWeb";
 //auth components
 import Register from "./components/auth/Register";
@@ -20,7 +22,6 @@ import PrivateRoutes from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 //context components
 import WebsiteState from './context/website/WebsiteState';
-import UserState from './context/user/UserState';
 import AuthState from './context/auth/AuthState';
 
 if (localStorage.token) {
@@ -31,7 +32,6 @@ const App = () => {
   return (
     <AuthState>
       <WebsiteState>
-        <UserState>
             <Router>
               <div className="App">
                 <Navbar />
@@ -47,14 +47,14 @@ const App = () => {
                     <Route exact path='/about' component={About} />
                     <Route exact path='/register' component={Register} />
                     <Route exact path='/login' component={Login} />
-
+                    <Route exact path='/login' component={Login} />
+                    <Route exact path='/verify/' component={Verify} />
                     
                   </Switch>
 
                 </div>
               </div>
             </Router>
-        </UserState>
       </WebsiteState>
     </AuthState>
   );

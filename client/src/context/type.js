@@ -12,6 +12,8 @@ export const CLEAR_ERROR = 'CLEAR_ERROR';
 export const IS_ADMIN = 'IS_ADMIN';
 
 export const GET_USERS = 'GET_USERS';
+export const VERIFY_USER= 'VERIFY_USER';
+
 
 //File
 export const CREATE_FILE= 'CREATE_FILE';

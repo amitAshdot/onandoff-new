@@ -71,35 +71,9 @@ const WebsiteForm = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        // website.timeSchedule.forEach(day => {
-        //     openH = day.openHour.slice(0,2);
-        //     openM = day.openHour.slice(3);
-        //     closeH = day.closeHour.slice(0,2);
-        //     closeM = day.closeHour.slice(3); 
-        //     day.openHour = openH;
-        //     day.openMin = openM;
-        //     day.closeHour = closeH;
-        //     day.closeM = closeM;
-        //     console.log(day);
-        // });
         current._id ? updateWebsite(website) : addWebsite(website);
         // function from websiteContext
         setCurrent(website);
-
-        // setWebsite({//after adding set back to default
-        //     timeSchedule: {
-        //         Sunday: { openHour: '', closeHour: '' },
-        //         Monday: { openHour: '', closeHour: '' },
-        //         Tuesday: { openHour: '', closeHour: '' },
-        //         Wednesday: { openHour: '', closeHour: '' },
-        //         Thursday: { openHour: '', closeHour: '' },
-        //         Friday: { openHour: '', closeHour: '' },
-        //         Saturday: { openHour: '', closeHour: '' }
-        //     },
-        //     name: '',
-        //     url: '',
-        //     divId: '',
-        // })
     };
 
     return (

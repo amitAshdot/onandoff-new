@@ -12,6 +12,7 @@ import {
     LOGIN_FAIL,
     LOG_OUT,
     CLEAR_ERROR,
+    VERIFY_USER
     // CREATE_FILE
 } from '../type';
 
@@ -87,6 +88,25 @@ const AuthState = props => {
             });
         }
     }
+
+    //verify User
+    const verify = async user => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }
+        try {
+            const res = await axios.put(`/api/auth/${user._id}`, user, config);
+            dispatch({
+                type: VERIFY_USER,
+                payload: res.data
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     //LogOut
     const logout = () => {
         dispatch({ type: LOG_OUT })
@@ -105,6 +125,7 @@ const AuthState = props => {
                 token: state.token,
                 isAuthenticated: state.isAuthenticated,
                 isAdmin: state.isAdmin,
+                isVerified: state.isVerified,
                 user: state.user,
                 loading: state.loading,
                 error: state.error,
@@ -114,7 +135,7 @@ const AuthState = props => {
                 logout,
                 clearErr,
                 getUsers,
-                
+                verify,
             }} >
 
             {props.children}

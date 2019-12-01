@@ -8,7 +8,7 @@ import Loading from '../layouts/Loading'
 
 const Home = () => {
     const authContext = useContext(AuthContext);
-    const { isAuthenticated, user } = authContext;
+    const { isAuthenticated, user, isVerified } = authContext;
 
     const websiteContext = useContext(WebsiteContext);
     const { websites, getWebsites, loading, setCurrent, clearCurrent, current } = websiteContext;
@@ -87,13 +87,23 @@ const Home = () => {
             </div>
         </Fragment>
     )
+    const notVerify = (
+        <Fragment>
+            <div className="hp-main">
+                <div className="hp-info">  
+                <h1>שלום {user && user.name}</h1>     
+                <h2>אשר את המייל כדי להמשיך</h2>
+                </div>
+            </div>    
+        </Fragment>
+    )
 
     return (
         <div>
-            {isAuthenticated ? <h1>שלום {user && user.name}</h1> : null}
+            {isAuthenticated && isVerified? <h1>שלום {user && user.name}</h1> : null}
             {loading ? <Loading /> : null}
 
-            {isAuthenticated ?
+            { isVerified ?
                 <div className="createWeb">
                     <form onSubmit={onSubmit}>
                         {/* <input type="text" placeholder="שם" name='name' value={name} onChange={onChange} />
@@ -103,7 +113,7 @@ const Home = () => {
                         <Link to="/addwebsite"><input type="submit" value="הוסף" onClick={() => setCurrent(website)} /></Link>
                     </form>
                 </div>
-                : notLogin
+                : isAuthenticated ? notVerify  : notLogin
             }
             <div className="websites" id="personal">
                 {isAuthenticated ? websiteList : null}

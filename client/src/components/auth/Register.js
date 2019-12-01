@@ -21,8 +21,9 @@ const Register = (props) => {
         email: '',
         password: '',
         password2: '',
+        vkey:'',
     });
-    const { name, email, password, password2 } = user;
+    const { name, email, password, password2, vkey } = user;
 
     const onChange = e => {
         setUser({ ...user, [e.target.name]: e.target.value });
@@ -34,7 +35,7 @@ const Register = (props) => {
 
     const onSubmit = e => {
         e.preventDefault();
-        
+        setUser({ ...user, vkey: email + password });
         if (name === '' || email === '' || password === '') {
             document.getElementById("error").innerHTML = "אנא הכנס פרטים!";
             document.getElementById("name").style.borderColor = "red";
@@ -56,7 +57,7 @@ const Register = (props) => {
             document.getElementById("password").style.borderColor = "red";
             document.getElementById("password2").style.borderColor = "red";
         } 
-        else register({ name, email, password })
+        else register({ name, email, password , vkey });
     }
 
     const checkPassword = (password) => {
