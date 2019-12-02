@@ -20,6 +20,7 @@ const AuthState = props => {
     const initialState = {
         token: localStorage.getItem('token'),
         isAuthenticated: null,
+        isVerified:null,
         user: null,
         loading: true,
         error: null,
@@ -48,7 +49,6 @@ const AuthState = props => {
             headers: {
                 'Content-Type': 'application/json'
             },
-
         }
         formData.email = formData.email.toLowerCase();
         try {
@@ -102,6 +102,7 @@ const AuthState = props => {
                 type: VERIFY_USER,
                 payload: res.data
             });
+            loadUser();
         } catch (err) {
             console.log(err);
         }

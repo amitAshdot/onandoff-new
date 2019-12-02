@@ -100,10 +100,10 @@ const Home = () => {
 
     return (
         <div>
-            {isAuthenticated && isVerified? <h1>שלום {user && user.name}</h1> : null}
+            {isAuthenticated && user.isVerified ? <h1>שלום {user && user.name}</h1> : null}
             {loading ? <Loading /> : null}
 
-            { isVerified ?
+            { isAuthenticated && user.isVerified ?
                 <div className="createWeb">
                     <form onSubmit={onSubmit}>
                         {/* <input type="text" placeholder="שם" name='name' value={name} onChange={onChange} />
