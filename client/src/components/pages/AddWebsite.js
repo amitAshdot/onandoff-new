@@ -7,7 +7,7 @@ import Home from "./Home"
 
 const AddWebsite = () => {
     const authContext = useContext(AuthContext);
-    const { isAuthenticated, user } = authContext;
+    const { isAuthenticated } = authContext;
 
     const websiteContext = useContext(WebsiteContext);
     const { current } = websiteContext;

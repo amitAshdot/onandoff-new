@@ -13,7 +13,6 @@ import {
     LOG_OUT,
     CLEAR_ERROR,
     VERIFY_USER
-    // CREATE_FILE
 } from '../type';
 
 const AuthState = props => {

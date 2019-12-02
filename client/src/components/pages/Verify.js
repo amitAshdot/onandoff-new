@@ -1,10 +1,10 @@
-import React, { Fragment, useState, useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 // import ReactDOM from 'react-dom';
 import AuthContext from '../../context/auth/AuthContext'
 
 const Verify = () => {
     const authContext = useContext(AuthContext);
-    const { isAuthenticated, user, verify } = authContext;
+    const { user, verify } = authContext;
 
 
     let parts = window.location.href.split('?');

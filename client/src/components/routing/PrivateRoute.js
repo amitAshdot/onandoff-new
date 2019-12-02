@@ -5,7 +5,7 @@ import WebsiteContext from '../../context/website/WebsiteContext';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const authContext = useContext(AuthContext);
-    const { isAuthenticated, loading, user } = authContext;
+    const { isAuthenticated } = authContext;
     const websiteContext = useContext(WebsiteContext);
     const { current } = websiteContext;
     const temp = isAuthenticated && !current ? '/' : '/login'

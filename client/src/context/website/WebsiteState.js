@@ -8,8 +8,6 @@ import {
     SET_CURRENT,
     CLEAR_CURRENT,
     UPDATE_WEBSITE,
-    FILTER_WEBSITE,
-    CLEAR_FILTER,
     WEBSITE_ERROR,
     GET_WEBSITE,
     CLEAR_WEBSITES,
@@ -82,7 +80,7 @@ const WebsiteState = props => {
             }
         }
         try {  
-            let isShow = 'false'
+            // let isShow = 'false'
             console.log( axios.put(`/api/websites/${website._id}`, website , config))
             const res = await axios.put(`/api/websites/${website._id}`, website.isShow='false' , config);
             dispatch({ type: DELETE_WEBSITE, payload: res.data })
@@ -107,13 +105,13 @@ const WebsiteState = props => {
     }
 
     //filter website
-    const filterWebsite = text => {
-        dispatch({ type: FILTER_WEBSITE, payload: text })
-    }
+    // const filterWebsite = text => {
+    //     dispatch({ type: FILTER_WEBSITE, payload: text })
+    // }
     //clear filter
-    const clearFilter = () => {
-        dispatch({ type: CLEAR_FILTER })
-    }
+    // const clearFilter = () => {
+    //     dispatch({ type: CLEAR_FILTER })
+    // }
     return (
         <WebsiteContext.Provider value={{
             websites: state.websites,

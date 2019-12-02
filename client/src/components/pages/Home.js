@@ -35,7 +35,7 @@ const Home = () => {
 
             })
         }
-    }, [websiteContext, current]);
+    }, [websiteContext, current, clearCurrent]);
     const [website, setWebsite] = useState({
         timeSchedule: {
             Sunday: { openHour: '', closeHour: '' },
@@ -61,6 +61,7 @@ const Home = () => {
 
     let websiteList = (websites.map(website => {
         if (website.isShow === 'true') return <WebsiteItem key={website._id} website={website} />
+        return null;
     })
     );
     // ReactDOM.render(websiteList, document.getElementById('root'));
@@ -69,7 +70,7 @@ const Home = () => {
         e.preventDefault();
         setCurrent();
     }
-    const onChange = e => { setWebsite({ ...website, [e.target.name]: e.target.value }); }
+    // const onChange = e => { setWebsite({ ...website, [e.target.name]: e.target.value }); }
 
     const notLogin = (
         <Fragment>

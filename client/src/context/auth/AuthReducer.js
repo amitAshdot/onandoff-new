@@ -9,7 +9,6 @@ import {
     CLEAR_ERROR,
     IS_ADMIN,
     GET_USERS,
-    CREATE_FILE,
     VERIFY_USER
 
 

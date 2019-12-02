@@ -1,9 +1,9 @@
-import React, { Fragment, useContext } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 //Layout component
 import Navbar from "./components/layouts/Navbar";
-import SideBar from "./components/layouts/SideBar";
+// import SideBar from "./components/layouts/SideBar";
 //Pages components
 import Home from "./components/pages/Home";
 import AddWebsite from "./components/pages/AddWebsite";

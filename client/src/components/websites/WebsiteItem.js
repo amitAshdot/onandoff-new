@@ -6,15 +6,14 @@ import WebsiteContext from '../../context/website/WebsiteContext'
 const WebsiteItem = ({ website }) => {
     const websiteContext = useContext(WebsiteContext);
     const { deleteWebsite, setCurrent, clearCurrent } = websiteContext
-    const { name, url, divId, user, timeSchedule } = website;
+    const { name, url,} = website;
 
     const [deleteFlag, setflag] = useState(false);
 
-    const onDelete = (website) => {
-        setCurrent(website);
-        deleteFlag = true
-        
-    }
+    // const onDelete = (website) => {
+    //     setCurrent(website);
+    //     deleteFlag = true
+    // }
     const takeDowm = (website) => {
         deleteWebsite(website, 'false');
         clearCurrent();

@@ -8,8 +8,6 @@ const LinkComp = (props) => {
     // const temp = onAndOf.onAndOffFunction(`${props.current.divId} , ${props.current.timeSchedule}}`);
 
     var getUrl = window.location.host;
-    var baseUrl = getUrl.protocol + "//" + getUrl.host;
-
     let copyText = `<script type='text/javascript' src='http://timer.${getUrl}/onandoff.js'> </script>   
     <script type='text/javascript'>
     onAndOffFunction(

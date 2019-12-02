@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Register = (props) => {
     const authContext = useContext(AuthContext);
-    const { register, error, clearErr, isAuthenticated } = authContext;
+    const { register, error, isAuthenticated } = authContext;
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -67,9 +67,7 @@ const Register = (props) => {
         let re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
         passwordSpan.innerHTML = "";
         if (password !== "") {
-            if (!re.test(password))
-                passwordSpan.innerHTML = "אנא הכנס סיסמא חזקה המורכבת מאות גדולה אות קטנה, מספרים ולפחות 6 תווים!";
-
+            if (!re.test(password)) passwordSpan.innerHTML = "אנא הכנס סיסמא חזקה המורכבת מאות גדולה אות קטנה, מספרים ולפחות 6 תווים!";
         }
         return re.test(password);
     }
@@ -78,21 +76,13 @@ const Register = (props) => {
         let dot = ".";
         let lat = str.indexOf(at);
         let lstr = str.length;
-        let ldot = str.indexOf(dot);
+        // let ldot = str.indexOf(dot);
         let emailElement = document.getElementById("email");
         if (email === '') return false
-        if (str.indexOf(at) == -1 || str.indexOf(at) == -1 || str.indexOf(at) == 0 || str.indexOf(at) == lstr) {
-            return false
-        }
-        if (str.indexOf(dot) == -1 || str.indexOf(dot) == 0 || str.indexOf(dot) == lstr || str.indexOf(dot, (lat + 2)) == -1) {
-            return false
-        }
-        if (str.indexOf(at, (lat + 1)) != -1 || str.substring(lat - 1, lat) == dot || str.substring(lat + 1, lat + 2) == dot) {
-            return false
-        }
-        if (str.indexOf(" ") != -1) {
-            return false
-        }
+        if (str.indexOf(at) === -1 || str.indexOf(at) === -1 || str.indexOf(at) === 0 || str.indexOf(at) === lstr) return false
+        if (str.indexOf(dot) === -1 || str.indexOf(dot) === 0 || str.indexOf(dot) === lstr || str.indexOf(dot, (lat + 2)) === -1) return false
+        if (str.indexOf(at, (lat + 1)) !== -1 || str.substring(lat - 1, lat) === dot || str.substring(lat + 1, lat + 2) === dot) return false
+        if (str.indexOf(" ") !== -1) return false
         emailElement.innerHTML = '';
         return true
     }

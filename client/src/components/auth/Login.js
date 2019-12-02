@@ -59,17 +59,17 @@ const Login = (props) => {
         let dot = "."
         let lat = str.indexOf(at)
         let lstr = str.length
-        let ldot = str.indexOf(dot)
-        if (str.indexOf(at) == -1 || str.indexOf(at) == -1 || str.indexOf(at) == 0 || str.indexOf(at) == lstr) {
+        // let ldot = str.indexOf(dot)
+        if (str.indexOf(at) === -1 || str.indexOf(at) === -1 || str.indexOf(at) === 0 || str.indexOf(at) === lstr) {
             return false
         }
-        if (str.indexOf(dot) == -1 || str.indexOf(dot) == 0 || str.indexOf(dot) == lstr || str.indexOf(dot, (lat + 2)) == -1) {
+        if (str.indexOf(dot) === -1 || str.indexOf(dot) === 0 || str.indexOf(dot) === lstr || str.indexOf(dot, (lat + 2)) === -1) {
             return false
         }
-        if (str.indexOf(at, (lat + 1)) != -1 || str.substring(lat - 1, lat) == dot || str.substring(lat + 1, lat + 2) == dot) {
+        if (str.indexOf(at, (lat + 1)) !== -1 || str.substring(lat - 1, lat) === dot || str.substring(lat + 1, lat + 2) === dot) {
             return false
         }
-        if (str.indexOf(" ") != -1) {
+        if (str.indexOf(" ") !== -1) {
             return false
         }
         return true
