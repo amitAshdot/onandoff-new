@@ -22,6 +22,7 @@ export default (state, action) => {
             return {
                 ...state,
                 isAuthenticated: true,
+                isVerified: action.payload.isVerified,
                 loading: false,
                 user: action.payload
             }
