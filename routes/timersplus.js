@@ -4,7 +4,7 @@ const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../models/User');
-const Timerplus = require('../models/timerplus');
+const Timerplus = require('../models/timerPlus');
 
 
 //@route    GET api/timerplus

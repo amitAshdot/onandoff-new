@@ -130,7 +130,6 @@ const Home = () => {
                     <p>כאן תוכל להוסיף ולנהל את כל הטיימרים שלך</p>
                     <Link to="/addwebsite"><input type="submit" value="הוסף" onClick={() => setCurrent(website)} /></Link>
                     {/* <Link to="/addtimerplus"><input type="submit" id="addTimerPlus" value="הוסף טיימר+" onClick={() => setCurrentTimerPlus(timerPlus)} /></Link> */}
-
                 </form>
             </div>
             <div className="websites" id="personal">
