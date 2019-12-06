@@ -17,8 +17,9 @@ const Home = () => {
     const websiteContext = useContext(WebsiteContext);
     const { websites, getWebsites, setCurrent, clearCurrent, current } = websiteContext;
 
-    const timerPlusContext = useContext(TimerPlusContext);
-    const { timersPlus, getTimersPlus, setCurrentTimerPlus, clearCurrentTimerPlus, currentTimerPlus } = timerPlusContext;
+    // const timerPlusContext = useContext(TimerPlusContext);
+    // const { timersPlus, getTimersPlus, setCurrentTimerPlus, clearCurrentTimerPlus, currentTimerPlus } = timerPlusContext;
+  
     //user effect for edit form , current is the corrent landingPage
     useEffect(() => {
         if (current != null) {
@@ -57,12 +58,12 @@ const Home = () => {
         url: '',
         divId: '',
     });
-    const [timerPlus, setTimersPlus] = useState({
-        context: '',
-        name: '',
-        url: '',
-        divId: '',
-    });
+    // const [timerPlus, setTimersPlus] = useState({
+    //     context: '',
+    //     name: '',
+    //     url: '',
+    //     divId: '',
+    // });
 
     useEffect(() => {
         authContext.loadUser();
@@ -72,21 +73,22 @@ const Home = () => {
         getWebsites();
         //eslint-disable-next-line
     }, []);
-    useEffect(() => {
-        getTimersPlus();
-        //eslint-disable-next-line
-    }, []);
+    // useEffect(() => {
+    //     getTimersPlus();
+    //     //eslint-disable-next-line
+    // }, []);
 
     let websiteList = (websites.map(website => {
         if (website.isShow === 'true') return <WebsiteItem key={website._id} website={website} />
         return null;
     })
     );
-    let timersPlusList = (timersPlus.map(timerPlus => {
-        if (timersPlus.isShow === 'true') return <TimerPlusItem key={timersPlus._id} timersPlus={timersPlus} />
-        return null;
-    })
-    );
+    // let timersPlusList = (timersPlus.map(timerPlus => {
+    //     if (timersPlus.isShow === 'true') return <TimerPlusItem key={timersPlus._id} timersPlus={timersPlus} />
+    //     return null;
+    // })
+    // );
+
     // ReactDOM.render(websiteList, document.getElementById('root'));
 
     const onSubmit = e => {
@@ -134,7 +136,7 @@ const Home = () => {
             </div>
             <div className="websites" id="personal">
                 {websiteList}
-                {timersPlusList}
+                {/* {timersPlusList} */}
             </div>
         </Fragment>
     )

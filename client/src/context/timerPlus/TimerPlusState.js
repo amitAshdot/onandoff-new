@@ -30,7 +30,7 @@ const TimerPlusState = props => {
 
         } catch (err) {
             dispatch({
-                type: TIMER_PLUS_ERROR, payload: err.response.msg
+                type: TIMER_PLUS_ERROR, payload: err.response
             })
         }
     }
