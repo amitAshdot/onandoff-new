@@ -21,7 +21,7 @@ const Register = (props) => {
         email: '',
         password: '',
         password2: '',
-        vkey:'',
+        vkey: '',
     });
     const { name, email, password, password2, vkey } = user;
 
@@ -43,21 +43,21 @@ const Register = (props) => {
             document.getElementById("password").style.borderColor = "red";
             document.getElementById("password2").style.borderColor = "red";
         }
-        else if(!echeck(email) && email !==""){
+        else if (!echeck(email) && email !== "") {
             document.getElementById("email").style.borderColor = "red";
             document.getElementById("error").innerHTML = "אנא הכנס מייל תקין!";
         }
-        else if (!checkPassword(password) && password !==""){
+        else if (!checkPassword(password) && password !== "") {
             document.getElementById("passwordErr").innerHTML = "אנא הכנס סיסמא חזקה המורכבת מאות גדולה אות קטנה, מספרים ולפחות 6 תווים!";
             document.getElementById("password").style.borderColor = "red";
             document.getElementById("password2").style.borderColor = "red";
-        } 
-        else if (password !== password2){
+        }
+        else if (password !== password2) {
             document.getElementById("error").innerHTML = "הסיסמה אינה תואמת";
             document.getElementById("password").style.borderColor = "red";
             document.getElementById("password2").style.borderColor = "red";
-        } 
-        else register({ name, email, password , vkey });
+        }
+        else register({ name, email, password, vkey });
     }
 
     const checkPassword = (password) => {
@@ -86,36 +86,37 @@ const Register = (props) => {
         emailElement.innerHTML = '';
         return true
     }
-    return (
-        <div className='formContainer'>
-            <form onSubmit={onSubmit}>
-                <h2>טופס הרשמה</h2>
-                <div className="forminput">
-                    <label htmlFor="name">שם:</label>
-                    <input type="text" placeholder="שם" name='name' value={name} onChange={onChange} id="name" />
-                </div>
-                <div className="forminput">
-                    <label htmlFor="email">אימייל:</label>
-                    <input type="text" placeholder="אימייל" name='email' value={email} onChange={onChange} id="email" />
-                    <p id="emailErr"></p>
-                </div>
-                <div className="forminput">
-                    <label htmlFor="password">סיסמה:</label>
-                    <input type="password" placeholder="סיסמה" name='password' value={password}  onChange={onChange}  id="password"/>
-                    <p id="passwordErr"></p>
-                </div>
-                <div className="forminput">
-                    <label htmlFor="password2">אימות סיסמה:</label>
-                    <input type="password" placeholder="אימות סיסמה" name='password2' value={password2} onChange={onChange} id="password2" />
-                </div>
-                <span>יש לך חשבון?</span><Link to='/login'>התחבר</Link> 
-                <div className="formBtn">
-                    <input type="submit" value="הירשם" />
-                </div>
-                <span id="error"></span>
-            </form>
-        </div>
-    )
+return (
+    <div className='formContainer'>
+        <form onSubmit={onSubmit}>
+            <h2>טופס הרשמה</h2>
+            <div className="forminput">
+                <label htmlFor="name">שם:</label>
+                <input type="text" placeholder="שם" name='name' value={name} onChange={onChange} id="name" />
+            </div>
+            <div className="forminput">
+                <label htmlFor="email">אימייל:</label>
+                <input type="text" placeholder="אימייל" name='email' value={email} onChange={onChange} id="email" />
+                <p id="emailErr"></p>
+            </div>
+            <div className="forminput">
+                <label htmlFor="password">סיסמה:</label>
+                <input type="password" placeholder="סיסמה" name='password' value={password} onChange={onChange} id="password" />
+                <p id="passwordErr"></p>
+            </div>
+            <div className="forminput">
+                <label htmlFor="password2">אימות סיסמה:</label>
+                <input type="password" placeholder="אימות סיסמה" name='password2' value={password2} onChange={onChange} id="password2" />
+            </div>
+            <span>יש לך חשבון?</span><Link to='/login'>התחבר</Link>
+            <div className="formBtn">
+                <input type="submit" value="הירשם" />
+            </div>
+            <span id="error"></span>
+        </form>
+    </div>
+)
 }
 
 export default withRouter(Register);
+

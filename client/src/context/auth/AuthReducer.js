@@ -9,9 +9,7 @@ import {
     CLEAR_ERROR,
     IS_ADMIN,
     GET_USERS,
-    VERIFY_USER
-
-
+    VERIFY_USER,
 } from '../type';
 
 export default (state, action) => {
@@ -22,8 +20,16 @@ export default (state, action) => {
                 ...state,
                 isAuthenticated: true,
                 isVerified: action.payload.isVerified,
+                userMail: action.payload.email,
                 loading: false,
                 user: action.payload
+            }
+        case VERIFY_USER:
+            debugger
+            return {
+                ...state,
+                ...action.payload,
+                isVerified:true
             }
         case IS_ADMIN:
             return {
@@ -50,7 +56,9 @@ export default (state, action) => {
                 isAuthenticated: false,
                 loading: false,
                 user: null,
-                error: action.payload
+                error: action.payload,
+                isVerified: null,
+                userMail: null,
             }
         case LOGIN_FAIL:
             localStorage.removeItem('token');
@@ -62,13 +70,6 @@ export default (state, action) => {
                 loading: false,
                 user: null,
                 error: action.payload
-            }
-
-        case VERIFY_USER:
-            return {
-                ...state,
-                user: action.payload,
-                isVerified: true,
             }
         case CLEAR_ERROR:
             return {

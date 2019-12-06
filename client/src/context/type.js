@@ -13,6 +13,8 @@ export const IS_ADMIN = 'IS_ADMIN';
 
 export const GET_USERS = 'GET_USERS';
 export const VERIFY_USER= 'VERIFY_USER';
+// export const SEND_EMAIL= 'SEND_EMAIL';
+
 
 //Websites
 export const GET_WEBSITE='GET_WEBSITE';    
@@ -26,3 +28,15 @@ export const UPDATE_WEBSITE = 'UPDATE_WEBSITE';
 export const FILTER_WEBSITE = 'FILTER_WEBSITE';
 export const CLEAR_FILTER = 'CLEAR_FILTER';
 export const WEBSITE_ERROR = 'WEBSITE_ERROR';
+
+//timer plus
+
+export const GET_TIMER_PLUS='GET_TIMER_PLUS';    
+export const ADD_TIMER_PLUS = 'ADD_TIMER_PLUS';
+export const DELETE_TIMER_PLUS = 'DELETE_TIMER_PLUS';
+export const CLEAR_TIMER_PLUS = 'CLEAR_TIMER_PLUS';
+
+// export const SET_CURRENT = 'SET_CURRENT';
+// export const CLEAR_CURRENT = 'CLEAR_CURRENT';
+export const UPDATE_TIMER_PLUS = 'UPDATE_TIMER_PLUS';
+export const TIMER_PLUS_ERROR = 'TIMER_PLUS_ERROR';

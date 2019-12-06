@@ -4,14 +4,21 @@ import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/AuthContext'
 import WebsiteContext from '../../context/website/WebsiteContext'
 import WebsiteItem from '../websites/WebsiteItem'
-import Loading from '../layouts/Loading'
+
+import TimerPlusContext from '../../context/timerPlus/TimerPlusContext'
+import TimerPlusItem from '../timerPlus/TimerPlusItem'
+// import Loading from '../layouts/Loading'
+import SendEmail from '../../action/sendMail'
 
 const Home = () => {
     const authContext = useContext(AuthContext);
     const { isAuthenticated, user, isVerified } = authContext;
 
     const websiteContext = useContext(WebsiteContext);
-    const { websites, getWebsites, loading, setCurrent, clearCurrent, current } = websiteContext;
+    const { websites, getWebsites, setCurrent, clearCurrent, current } = websiteContext;
+
+    const timerPlusContext = useContext(TimerPlusContext);
+    const { timersPlus, getTimersPlus, setCurrentTimerPlus, clearCurrentTimerPlus, currentTimerPlus } = timerPlusContext;
     //user effect for edit form , current is the corrent landingPage
     useEffect(() => {
         if (current != null) {
@@ -50,6 +57,13 @@ const Home = () => {
         url: '',
         divId: '',
     });
+    const [timerPlus, setTimersPlus] = useState({
+        context: '',
+        name: '',
+        url: '',
+        divId: '',
+    });
+
     useEffect(() => {
         authContext.loadUser();
         //eslint-disable-next-line
@@ -58,9 +72,18 @@ const Home = () => {
         getWebsites();
         //eslint-disable-next-line
     }, []);
+    useEffect(() => {
+        getTimersPlus();
+        //eslint-disable-next-line
+    }, []);
 
     let websiteList = (websites.map(website => {
         if (website.isShow === 'true') return <WebsiteItem key={website._id} website={website} />
+        return null;
+    })
+    );
+    let timersPlusList = (timersPlus.map(timerPlus => {
+        if (timersPlus.isShow === 'true') return <TimerPlusItem key={timersPlus._id} timersPlus={timersPlus} />
         return null;
     })
     );
@@ -71,19 +94,18 @@ const Home = () => {
         setCurrent();
     }
     // const onChange = e => { setWebsite({ ...website, [e.target.name]: e.target.value }); }
-
     const notLogin = (
         <Fragment>
             <div className="hp-main">
                 <div className="hp-info">
                     <h2>מציגים למשתמש רק את מה שרלוונטי!</h2>
-                    
+
                     <p>
                         עם on and off תוכלו לנהל בפשטות ובקלות את השעות שבהם מוצגים כפתורים, מספרי טלפון וכל רכיב אחר שתבחרו
                     </p>
                     <Link to='/login'><button className="hp-button">התחבר</button></Link>
                     <p className="full-width">עוד אין לך חדשבון?!</p>
-                    <Link to='/register'><button className="hp-button register" >הירשם</button></Link> 
+                    <Link to='/register'><button className="hp-button register" >הירשם</button></Link>
                 </div>
             </div>
         </Fragment>
@@ -91,37 +113,36 @@ const Home = () => {
     const notVerify = (
         <Fragment>
             <div className="hp-main">
-                <div className="hp-info">  
-                <h1>שלום {user && user.name}</h1>     
-                <h2>אשר את המייל כדי להמשיך</h2>
+                <div className="hp-info">
+                    <h1>שלום {user && user.name}</h1>
+                    <h2>אשר את המייל כדי להמשיך</h2>
                 </div>
-            </div>    
+            </div>
+            <SendEmail user={user} />
         </Fragment>
     )
+    debugger
+    const verifyAndAuth = (
+        <Fragment>
+            <h1>שלום {user && user.name}</h1>
+            <div className="createWeb">
+                <form onSubmit={onSubmit}>
+                    <p>כאן תוכל להוסיף ולנהל את כל הטיימרים שלך</p>
+                    <Link to="/addwebsite"><input type="submit" value="הוסף" onClick={() => setCurrent(website)} /></Link>
+                    {/* <Link to="/addtimerplus"><input type="submit" id="addTimerPlus" value="הוסף טיימר+" onClick={() => setCurrentTimerPlus(timerPlus)} /></Link> */}
 
+                </form>
+            </div>
+            <div className="websites" id="personal">
+                {websiteList}
+                {timersPlusList}
+            </div>
+        </Fragment>
+    )
     return (
         <div>
-            {isAuthenticated && isVerified ? <h1>שלום {user && user.name}</h1> : null}
-            {loading ? <Loading /> : null}
-
-            { isAuthenticated && isVerified ?
-                <div className="createWeb">
-                    <form onSubmit={onSubmit}>
-                        {/* <input type="text" placeholder="שם" name='name' value={name} onChange={onChange} />
-                        <input type="text" placeholder="דומיין העמוד" name='url' value={url} onChange={onChange} />
-                        <input type="text" placeholder="שם או id של המקטע" name='divId' value={divId} onChange={onChange} /> */}
-                        <p>כאן תוכל להוסיף ולנהל את כל הטיימרים שלך</p>
-                        <Link to="/addwebsite"><input type="submit" value="הוסף" onClick={() => setCurrent(website)} /></Link>
-                    </form>
-                </div>
-                : isAuthenticated ? notVerify  : notLogin
-            }
-            <div className="websites" id="personal">
-                {isAuthenticated ? websiteList : null}
-            </div>
+            {isAuthenticated && isVerified ? verifyAndAuth : (user && !user.isVerified) ? notVerify : isVerified ? verifyAndAuth : notLogin}
         </div >
     )
-
 }
-
 export default Home

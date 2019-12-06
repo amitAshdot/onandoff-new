@@ -12,14 +12,15 @@ import {
     LOGIN_FAIL,
     LOG_OUT,
     CLEAR_ERROR,
-    VERIFY_USER
+    VERIFY_USER,
 } from '../type';
 
 const AuthState = props => {
     const initialState = {
         token: localStorage.getItem('token'),
         isAuthenticated: null,
-        isVerified:null,
+        isVerified: null,
+        userEmail: null,
         user: null,
         loading: true,
         error: null,
@@ -50,6 +51,7 @@ const AuthState = props => {
             },
         }
         formData.email = formData.email.toLowerCase();
+        debugger
         try {
             const res = await axios.post('/api/users', formData, config);
             dispatch({
@@ -87,22 +89,43 @@ const AuthState = props => {
             });
         }
     }
-
     //verify User
     const verify = async user => {
         const config = {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
         }
+        const object = {vkey : user}
+        //  user.isVerified = true
         try {
-            const res = await axios.put(`/api/auth/${user._id}`, user, config);
+            // const res = await axios.put(`/api/users/${user._id}`, user, config);
+            // dispatch({
+            //     type: VERIFY_USER,
+            //     payload: res.data
+            // });
+            debugger
+            console.log(object);
+            // if (user) {
+            //     setAuthToken(user);
+            // }
+            // try {
+            //     const res = await axios.get('/api/auth');
+            //     dispatch({
+            //         type: USER_LOADED,
+            //         payload: res.data
+            //     });
+            // } catch (err) {
+            //     dispatch({ type: AUTH_ERROR });
+            // }     
+            const res = await axios.put(`/api/users`, object , config);
             dispatch({
                 type: VERIFY_USER,
                 payload: res.data
             });
-            loadUser();
+            // loadUser();
         } catch (err) {
+            console.log('authstate');
             console.log(err);
         }
     }
@@ -129,6 +152,7 @@ const AuthState = props => {
                 user: state.user,
                 loading: state.loading,
                 error: state.error,
+                userEmail: state.userEmail,
                 loadUser,
                 register,
                 login,

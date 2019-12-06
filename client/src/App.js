@@ -7,6 +7,7 @@ import Navbar from "./components/layouts/Navbar";
 //Pages components
 import Home from "./components/pages/Home";
 import AddWebsite from "./components/pages/AddWebsite";
+import AddTimerplus from "./components/pages/AddTimerplus";
 import About from "./components/pages/About";
 import Admin from "./components/pages/Admin";
 import Verify from "./components/pages/Verify";
@@ -22,6 +23,8 @@ import PrivateRoutes from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 //context components
 import WebsiteState from './context/website/WebsiteState';
+import TimerplusState from './context/timerPlus/TimerPlusState';
+
 import AuthState from './context/auth/AuthState';
 
 if (localStorage.token) {
@@ -32,29 +35,32 @@ const App = () => {
   return (
     <AuthState>
       <WebsiteState>
-            <Router>
-              <div className="App">
-                <Navbar />
-                {/* {login() ?<SideBar /> : null}   */}
-                <div className="container">
-                  <Switch>
-                    <Route exact path='/' component={Home} />
-                    <Route exact path='/addwebsite' component={AddWebsite} />
-                    <PrivateRoutes exact path='/admin' component={Admin} />
-                    {/* <PrivateRoutes exact path='/' component={Home} /> */}
-                    {/* <PrivateRoutes exact path='/addwebsite' component={AddWebsite} /> */}
-                    {/* <PrivateRoutes exact path='/edit-web' component={EditWeb} /> */}
-                    <Route exact path='/about' component={About} />
-                    <Route exact path='/register' component={Register} />
-                    <Route exact path='/login' component={Login} />
-                    <Route exact path='/login' component={Login} />
-                    <Route exact path='/verify/' component={Verify} />
-                    
-                  </Switch>
+        <TimerplusState>
+          <Router>
+            <div className="App">
+              <Navbar />
+              {/* {login() ?<SideBar /> : null}   */}
+              <div className="container">
+                <Switch>
+                  <Route exact path='/' component={Home} />
+                  <Route exact path='/addwebsite' component={AddWebsite} />
+                  <Route exact path='/addtimerplus' component={AddTimerplus} />
+                  <PrivateRoutes exact path='/admin' component={Admin} />
+                  {/* <PrivateRoutes exact path='/' component={Home} /> */}
+                  {/* <PrivateRoutes exact path='/addwebsite' component={AddWebsite} /> */}
+                  {/* <PrivateRoutes exact path='/edit-web' component={EditWeb} /> */}
+                  <Route exact path='/about' component={About} />
+                  <Route exact path='/register' component={Register} />
+                  <Route exact path='/login' component={Login} />
+                  <Route exact path='/login' component={Login} />
+                  <Route path='/verify' component={Verify} />
 
-                </div>
+                </Switch>
+
               </div>
-            </Router>
+            </div>
+          </Router>
+        </TimerplusState>
       </WebsiteState>
     </AuthState>
   );

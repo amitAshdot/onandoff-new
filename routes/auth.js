@@ -10,13 +10,12 @@ const User = require('../models/User');
 //@route    GET api/auth
 //@desc     Get logged in user
 //@access   Private
-router.get('/',auth, async(req, res) => {
-    try{
+router.get('/', auth, async (req, res) => {
+    try {
         const user = await User.findById(req.user.id).select('-password');
         res.json(user);
-        
     }
-    catch(err){
+    catch (err) {
         console.log(err.message);
         res.status(500).send('Server Error');
     }
@@ -34,7 +33,7 @@ router.post('/', [
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        const { email, password , vkey} = req.body;
+        const { email, password, vkey } = req.body;
 
         try {//find email if good compare with password if good create local token and take id
             let user = await User.findOne({ email });
@@ -65,4 +64,17 @@ router.post('/', [
     });
 
 
+//@route    GET api/auth
+//@desc     Get auth to verify user
+//@access   Private
+router.get('/', auth, async (req, res) => {
+    try {
+        const user = await User.findOne(req.user.vkey).select('-vkey');
+        res.json(user);
+    }
+    catch (err) {
+        console.log(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 module.exports = router;

@@ -1,36 +1,37 @@
 import React, { useState, useContext, useEffect } from 'react';
-import WebsiteContext from '../../context/website/WebsiteContext';
+import TimerPlusContext from '../../context/timerPlus/TimerPlusContext';
 import { Link } from 'react-router-dom';
 import LinkComp from '../layouts/LinkComp';
-const WebsiteForm = () => {
-    const websiteContext = useContext(WebsiteContext);
-    const { addWebsite, updateWebsite, clearCurrent, current, setCurrent } = websiteContext;
+const TimerPlusForm = () => {
+    const timerPlusContext = useContext(TimerPlusContext);
+    const { addTimerPlus, updateTimerPlus, clearCurrentTimerPlus, currentTimerPlus, setCurrentTimerPlus } = timerPlusContext;
 
-    //user effect for edit form , current is the corrent landingPage
+    //user effect for edit form , currentTimerPlus is the corrent landingPage
     useEffect(() => {
-        if (current != null) {
-            setWebsite(current);
+        if (currentTimerPlus != null) {
+            setCurrentTimerPlus(currentTimerPlus);
         }
-        //if current is empty, set the inputs (state) back to default
+        // if currentTimerPlus is empty, set the inputs (state) back to default
         else {
-            setWebsite({
+            setCurrentTimerPlus({
                 timeSchedule: {
                     Sunday: { openHour: '', closeHour: '' },
-                    Monday: { openHour: '', closeHour: '' },
+                    Monday: { openHour: '', closeHour: '', },
                     Tuesday: { openHour: '', closeHour: '' },
                     Wednesday: { openHour: '', closeHour: '' },
                     Thursday: { openHour: '', closeHour: '' },
                     Friday: { openHour: '', closeHour: '' },
                     Saturday: { openHour: '', closeHour: '' }
                 },
+                context: '',
                 name: '',
                 url: '',
                 divId: '',
             })
         }
-    }, [websiteContext, current]);
+    }, [timerPlusContext, currentTimerPlus]);
 
-    const [website, setWebsite] = useState({
+    const [timerPlus, setTimerPlus] = useState({
         timeSchedule: {
             Sunday: { openHour: '', closeHour: '' },
             Monday: { openHour: '', closeHour: '', },
@@ -40,41 +41,45 @@ const WebsiteForm = () => {
             Friday: { openHour: '', closeHour: '' },
             Saturday: { openHour: '', closeHour: '' }
         },
+        context: '',
         name: '',
         url: '',
         divId: '',
     });
 
-    const { timeSchedule, name, url, divId } = website
+    const { timeSchedule, context, name, url, divId } = timerPlus
 
     //change input state
-    const onChange = e => { setWebsite({ ...website, [e.target.name]: e.target.value }); }
+    const onChange = e => { setTimerPlus({ ...timerPlus, [e.target.name]: e.target.value }); }
     const handleChangeOpemHour = (el) => {
         let inputName = el.target.name;
         let inputValue = el.target.value;
-        let statusCopy = Object.assign({}, website);
+        let statusCopy = Object.assign({}, timerPlus);
         statusCopy.timeSchedule[inputName].openHour = inputValue;
-        setWebsite(statusCopy);
+        setTimerPlus(statusCopy);
     }
     const handleChangeCloseHour = (el) => {
         let inputName = el.target.name;
         let inputValue = el.target.value;
-        let statusCopy = Object.assign({}, website);
+        let statusCopy = Object.assign({}, timerPlus);
         statusCopy.timeSchedule[inputName].closeHour = inputValue;
-        setWebsite(statusCopy);
+        setTimerPlus(statusCopy);
     }
-
     const onSubmit = e => {
+        debugger
         e.preventDefault();
-        current._id ? updateWebsite(website) : addWebsite(website);
+        currentTimerPlus._id ? updateTimerPlus(timerPlus) : addTimerPlus(timerPlus);
         // function from websiteContext
-        setCurrent(website);
+        setCurrentTimerPlus(timerPlus);
+
     };
+
 
     return (
         <form onSubmit={onSubmit}>
-            {current._id ? <h2>  ערוך עמוד נחיתה: {name}</h2> : <h2>הוסף עמוד נחיתה</h2>}
+            {currentTimerPlus._id ? <h2>  ערוך עמוד נחיתה: {name}</h2> : <h2>הוסף עמוד נחיתה</h2>}
             <div className="info">
+                <p>עם טיימר+ תוכלו לשנות תוכן, להעלים ובעצם לבצע כל שינוי שתחשקו בקלות וביעילות</p>
                 <input type="text" className="websit-form-input" placeholder="שם" name='name' value={name} onChange={onChange} />
                 <input type="text" className="websit-form-input" placeholder="דומיין העמוד" name='url' value={url} onChange={onChange} />
                 <input type="text" className="websit-form-input" placeholder="שם או id של המקטע" name='divId' value={divId} onChange={onChange} />
@@ -120,19 +125,35 @@ const WebsiteForm = () => {
                     <input type="time" placeholder="Close Hour" name='Saturday' value={timeSchedule.Saturday.closeHour} onChange={handleChangeCloseHour} />
                 </div>
                 <div>
-                    {current._id ? <input type="submit" value="שמור" /> : <input type="submit" value="הוסף" />}
+                    {currentTimerPlus._id ? <input type="submit" value="שמור" /> : <input type="submit" value="הוסף" />}
                 </div>
                 <div>
-                    <Link to="/" onClick={()=>clearCurrent}><button className="add-website-page-btn">חזור</button></Link>
+                    <Link to="/" onClick={() => clearCurrentTimerPlus}><button className="add-website-page-btn">חזור</button></Link>
                 </div>
             </div>
-
-
-
-            {current.name === '' ? null : <LinkComp id={current._id} current={current} />}
-
+            <p>wysiwyg editor</p>
+            
+            <div className="time" id="wysiwyg-editor">
+                <div>
+                    <textarea
+                        id="context"
+                        name="context"
+                        onChange={onChange}
+                        placeholder="כתבו את הקוד כאן "
+                        value={context}
+                        style={{ width: '100%', height: '150px' }}
+                    />
+                </div>
+                <div>
+                    {currentTimerPlus._id ? <input type="submit" value="שמור" /> : <input type="submit" value="הוסף" />}
+                </div>
+                <div>
+                    <Link to="/" onClick={() => clearCurrentTimerPlus}><button className="add-website-page-btn">חזור</button></Link>
+                </div>
+            </div>
+            {currentTimerPlus.name === '' ? null : <LinkComp id={currentTimerPlus._id} current={currentTimerPlus} />}
         </form>
     );
 };
 
-export default WebsiteForm
+export default TimerPlusForm

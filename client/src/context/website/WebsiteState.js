@@ -84,7 +84,6 @@ const WebsiteState = props => {
             console.log( axios.put(`/api/websites/${website._id}`, website , config))
             const res = await axios.put(`/api/websites/${website._id}`, website.isShow='false' , config);
             dispatch({ type: DELETE_WEBSITE, payload: res.data })
-            console.log(res)
         } catch (err) {
             dispatch({
                 type: WEBSITE_ERROR, payload: err
