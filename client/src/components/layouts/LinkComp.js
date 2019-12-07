@@ -4,24 +4,29 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 // import onAndOf from '../action/onAndOff'
 
 const LinkComp = (props) => {
-debugger
-    // const temp = onAndOf.onAndOffFunction(`${props.current.divId} , ${props.current.timeSchedule}}`);
     let parts = window.location.href.split('/');
     let lastSegment = parts.pop() || parts.pop();  // handle potential trailing slash
-    let copyText =''
+    let copyText = ''
     debugger
-    if(lastSegment ==='addtimerplus'){
+    if (lastSegment === 'addtimerplus') {
         let getUrl = window.location.host;
-         copyText = `<script type='text/javascript' src='http://timer.${getUrl}/onandoff.js'> </script>   
+        copyText = `<script type='text/javascript' src='http://timer.${getUrl}/onandoff.js'> </script>   
         <script type='text/javascript'>
-        onAndOffFunction(
+        ${props.function}(
         ${props.current.divId} ,
-        ${props.current.context} 
+        ${props.current.context} ,
+        ${props.current.timeSchedule.Sunday.openHour} ,${props.current.timeSchedule.Sunday.closeHour},
+        ${props.current.timeSchedule.Monday.openHour} ,${props.current.timeSchedule.Monday.closeHour},
+        ${props.current.timeSchedule.Tuesday.openHour} ,${props.current.timeSchedule.Tuesday.closeHour},
+        ${props.current.timeSchedule.Wednesday.openHour} ,${props.current.timeSchedule.Wednesday.closeHour},
+        ${props.current.timeSchedule.Thursday.openHour} ,${props.current.timeSchedule.Thursday.closeHour},
+        ${props.current.timeSchedule.Friday.openHour} ,${props.current.timeSchedule.Friday.closeHour},
+        ${props.current.timeSchedule.Saturday.openHour} ,${props.current.timeSchedule.Saturday.closeHour},
         ) ;</script>`;
     }
-    else if(lastSegment ==='addwebsite'){
+    else if (lastSegment === 'addwebsite') {
         let getUrl = window.location.host;
-         copyText = `<script type='text/javascript' src='http://timer.${getUrl}/onandoff.js'> </script>   
+        copyText = `<script type='text/javascript' src='http://timer.${getUrl}/onandoff.js'> </script>   
         <script type='text/javascript'>
         onAndOffFunction(
         ${props.current.divId} ,
@@ -33,10 +38,9 @@ debugger
         ${props.current.timeSchedule.Friday.openHour} ,${props.current.timeSchedule.Friday.closeHour},
         ${props.current.timeSchedule.Saturday.openHour} ,${props.current.timeSchedule.Saturday.closeHour},
         ) ;</script>`;
-    }else{
+    } else {
 
     }
-
 
     // const myFunction = () => {
     //     var copyText = document.getElementById("myInput");
@@ -52,7 +56,7 @@ debugger
     //     var tooltip = document.getElementById("myTooltip");
     //     tooltip.innerHTML = "Copy to clipboard";
     // }
-    
+
     return (
         <div className="linkToCopy">
             <CopyToClipboard text={copyText} >

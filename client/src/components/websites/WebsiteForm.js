@@ -129,7 +129,7 @@ const WebsiteForm = () => {
 
 
 
-            {current.name === '' ? null : <LinkComp id={current._id} current={current} />}
+            {current.name === '' ? null : <LinkComp id={current._id} current={current} function={'onAndOffFunction'} />}
 
         </form>
     );

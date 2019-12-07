@@ -26,9 +26,9 @@ const TimerPlusSchema = mongoose.Schema({
         type: String,
         default: true
     },
-    context: {
+    wysiwyg: {
         type: String
-    },
+        },
     timeSchedule: {
         Sunday: {
             openHour: { type: String },
@@ -75,4 +75,4 @@ const TimerPlusSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('timerPlusSchema', TimerPlusSchema);
+module.exports = mongoose.model('TimerPlus', TimerPlusSchema);

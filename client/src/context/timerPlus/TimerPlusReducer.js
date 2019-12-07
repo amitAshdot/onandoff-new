@@ -35,7 +35,7 @@ export default (state, action) => {
                 loading: false
             }
         case DELETE_TIMER_PLUS:
-
+            debugger
             return {
                 ...state,
                 timersPlus: state.timersPlus.map(timerPlus => {

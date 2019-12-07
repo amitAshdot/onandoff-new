@@ -91,8 +91,6 @@ router.put('/', auth, async (req, res) => {
     // if (password) userFeilds.password = password;
     if (vkey) userFeilds.vkey = vkey;
     // if (isVerified) userFeilds.isVerified = true;
-    console.log('vkey is: ' + userFeilds.vkey)
-    console.log('vkey is: ' + vkey)
     const filter = { vkey: userFeilds.vkey };
     try {
         // let user = await User.findById(req.params.id);

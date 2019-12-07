@@ -13,7 +13,7 @@ app.use(express.json({extended:false}));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/file', require('./routes/file'));
-app.use('/api/timerPlus', require('./routes/timersplus'));
+app.use('/api/timersplus', require('./routes/timersplus'));
 app.use('/api/websites', require('./routes/websites'));
 
 //Server static assets in production

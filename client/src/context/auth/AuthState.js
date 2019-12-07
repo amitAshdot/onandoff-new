@@ -104,8 +104,6 @@ const AuthState = props => {
             //     type: VERIFY_USER,
             //     payload: res.data
             // });
-            debugger
-            console.log(object);
             // if (user) {
             //     setAuthToken(user);
             // }
@@ -125,7 +123,6 @@ const AuthState = props => {
             });
             // loadUser();
         } catch (err) {
-            console.log('authstate');
             console.log(err);
         }
     }

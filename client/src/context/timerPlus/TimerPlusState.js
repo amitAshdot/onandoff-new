@@ -30,7 +30,7 @@ const TimerPlusState = props => {
 
         } catch (err) {
             dispatch({
-                type: TIMER_PLUS_ERROR, payload: err.response
+                type: TIMER_PLUS_ERROR, payload: err
             })
         }
     }
@@ -49,14 +49,15 @@ const TimerPlusState = props => {
             dispatch({ type: ADD_TIMER_PLUS, payload: res.data });
 
         } catch (err) {
-            console.log(err);
+            console.log("this is the error: "+err);
             dispatch({
                 type: TIMER_PLUS_ERROR, payload: err.response.msg
             })
         }
     }
     //update timersPlus
-    const updateTimersPlus = async timersPlus => {
+    const updateTimerPlus = async timersPlus => {
+        debugger
         const config = {
             headers: {
                 'Content-Type': 'application/json'
@@ -74,7 +75,7 @@ const TimerPlusState = props => {
         }
     }
     //delete timersPlus
-    const deleteTimersPlus = async (timersPlus) => {
+    const deleteTimerPlus = async (timerPlus) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json'
@@ -82,8 +83,8 @@ const TimerPlusState = props => {
         }
         try {  
             // let isShow = 'false'
-            console.log( axios.put(`/api/timersplus/${timersPlus._id}`, timersPlus , config))
-            const res = await axios.put(`/api/timersplus/${timersPlus._id}`, timersPlus.isShow='false' , config);
+            console.log( axios.put(`/api/timersplus/${timerPlus._id}`, timerPlus , config))
+            const res = await axios.put(`/api/timersplus/${timerPlus._id}`, timerPlus.isShow='false' , config);
             dispatch({ type: DELETE_TIMER_PLUS, payload: res.data })
         } catch (err) {
             dispatch({
@@ -92,7 +93,7 @@ const TimerPlusState = props => {
         }
     }
     //clear timersPlus
-    const clearTimersPlus = () => {
+    const clearTimerPlus = () => {
         dispatch({ type: CLEAR_TIMER_PLUS })
     }
     // set  current timersPlus
@@ -111,12 +112,12 @@ const TimerPlusState = props => {
             error: state.error,
             deleteFlag: state.deleteFlag,
             addTimerPlus,
-            deleteTimersPlus,
+            deleteTimerPlus,
             setCurrentTimerPlus,
             clearCurrentTimerPlus,
             getTimersPlus,
-            clearTimersPlus,
-            updateTimersPlus,
+            clearTimerPlus,
+            updateTimerPlus,
         }} >
 
             {props.children}

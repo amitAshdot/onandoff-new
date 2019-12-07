@@ -6,14 +6,10 @@ import WebsiteContext from '../../context/website/WebsiteContext'
 const WebsiteItem = ({ website }) => {
     const websiteContext = useContext(WebsiteContext);
     const { deleteWebsite, setCurrent, clearCurrent } = websiteContext
-    const { name, url,} = website;
+    const { name, url, } = website;
 
     const [deleteFlag, setflag] = useState(false);
 
-    // const onDelete = (website) => {
-    //     setCurrent(website);
-    //     deleteFlag = true
-    // }
     const takeDowm = (website) => {
         deleteWebsite(website, 'false');
         clearCurrent();
@@ -22,7 +18,7 @@ const WebsiteItem = ({ website }) => {
         <Fragment>
             <div className="deleteForm">
                 <p>האם את/ה בטוח?</p>
-                <button className="deletebto" onClick={() => takeDowm(website)}>מחק</button> 
+                <button className="deletebto" onClick={() => takeDowm(website)}>מחק</button>
                 <button className="rejrect" onClick={() => setflag(false)}>בטל</button>
 
             </div>
@@ -37,7 +33,7 @@ const WebsiteItem = ({ website }) => {
             </div>
             <div className="aw-website-btn">
                 <button className="websiteBtn" id="deleteBtn" onClick={() => setflag(true)}>מחק</button>
-                {deleteFlag? showDelte : null}
+                {deleteFlag ? showDelte : null}
             </div>
         </div>
 

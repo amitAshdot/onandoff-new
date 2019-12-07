@@ -9,11 +9,11 @@ const TimerPlusForm = () => {
     //user effect for edit form , currentTimerPlus is the corrent landingPage
     useEffect(() => {
         if (currentTimerPlus != null) {
-            setCurrentTimerPlus(currentTimerPlus);
+            setTimerPlus(currentTimerPlus);
         }
         // if currentTimerPlus is empty, set the inputs (state) back to default
         else {
-            setCurrentTimerPlus({
+            setTimerPlus({
                 timeSchedule: {
                     Sunday: { openHour: '', closeHour: '' },
                     Monday: { openHour: '', closeHour: '', },
@@ -23,7 +23,7 @@ const TimerPlusForm = () => {
                     Friday: { openHour: '', closeHour: '' },
                     Saturday: { openHour: '', closeHour: '' }
                 },
-                context: '',
+                wysiwyg: '',
                 name: '',
                 url: '',
                 divId: '',
@@ -41,13 +41,13 @@ const TimerPlusForm = () => {
             Friday: { openHour: '', closeHour: '' },
             Saturday: { openHour: '', closeHour: '' }
         },
-        context: '',
+        wysiwyg: '',
         name: '',
         url: '',
         divId: '',
     });
 
-    const { timeSchedule, context, name, url, divId } = timerPlus
+    const { timeSchedule, wysiwyg, name, url, divId } = timerPlus
 
     //change input state
     const onChange = e => { setTimerPlus({ ...timerPlus, [e.target.name]: e.target.value }); }
@@ -69,9 +69,8 @@ const TimerPlusForm = () => {
         debugger
         e.preventDefault();
         currentTimerPlus._id ? updateTimerPlus(timerPlus) : addTimerPlus(timerPlus);
-        // function from websiteContext
+        // function from timerPlusContext
         setCurrentTimerPlus(timerPlus);
-
     };
 
 
@@ -83,6 +82,16 @@ const TimerPlusForm = () => {
                 <input type="text" className="websit-form-input" placeholder="שם" name='name' value={name} onChange={onChange} />
                 <input type="text" className="websit-form-input" placeholder="דומיין העמוד" name='url' value={url} onChange={onChange} />
                 <input type="text" className="websit-form-input" placeholder="שם או id של המקטע" name='divId' value={divId} onChange={onChange} />
+            </div>
+            <div className="time" id="wysiwyg-editor">
+                <textarea
+                    id="wysiwyg"
+                    name="wysiwyg"
+                    onChange={onChange}
+                    placeholder="כתבו את הקוד כאן "
+                    value={wysiwyg}
+                    style={{ width: '100%', height: '150px' }}
+                />
             </div>
             <div className="time">
                 <div className="day-lable-d">
@@ -124,6 +133,7 @@ const TimerPlusForm = () => {
                     <input type="time" placeholder="Open Hour" name='Saturday' value={timeSchedule.Saturday.openHour} onChange={handleChangeOpemHour} />
                     <input type="time" placeholder="Close Hour" name='Saturday' value={timeSchedule.Saturday.closeHour} onChange={handleChangeCloseHour} />
                 </div>
+
                 <div>
                     {currentTimerPlus._id ? <input type="submit" value="שמור" /> : <input type="submit" value="הוסף" />}
                 </div>
@@ -132,26 +142,7 @@ const TimerPlusForm = () => {
                 </div>
             </div>
             <p>wysiwyg editor</p>
-            
-            <div className="time" id="wysiwyg-editor">
-                <div>
-                    <textarea
-                        id="context"
-                        name="context"
-                        onChange={onChange}
-                        placeholder="כתבו את הקוד כאן "
-                        value={context}
-                        style={{ width: '100%', height: '150px' }}
-                    />
-                </div>
-                <div>
-                    {currentTimerPlus._id ? <input type="submit" value="שמור" /> : <input type="submit" value="הוסף" />}
-                </div>
-                <div>
-                    <Link to="/" onClick={() => clearCurrentTimerPlus}><button className="add-website-page-btn">חזור</button></Link>
-                </div>
-            </div>
-            {currentTimerPlus.name === '' ? null : <LinkComp id={currentTimerPlus._id} current={currentTimerPlus} />}
+            {currentTimerPlus.name === '' ? null : <LinkComp id={currentTimerPlus._id} current={currentTimerPlus} function={'timerPlus'}/>}
         </form>
     );
 };

@@ -3,17 +3,15 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
-const User = require('../models/User');
-const Timerplus = require('../models/timerPlus');
+const Timerplus = require('../models/TimerPlus');
 
-
-//@route    GET api/timerplus
+//@route    GET api/timersplus
 //@desc     get all timersPlus
 //@access   Private
 router.get('/', auth, async (req, res) => {
     try {
-        const users = await Timerplus.find({ user: req.user.id }).sort({ date: -1 });
-        res.json(users);
+        const timerplus = await Timerplus.find({ user: req.user.id }).sort({ date: -1 });
+        res.json(timerplus);
     }
     catch (err) {
         console.error(err.message);
@@ -41,10 +39,7 @@ router.post('/',
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-debugger
-        const { name, url, divId, date, timeSchedule,isShow } = req.body;
-        console.log(req)
-
+        const { name, url, divId, date, timeSchedule,isShow, wysiwyg} = req.body;
         try {
             const newTimerplus = new Timerplus({
                 name,
@@ -52,11 +47,11 @@ debugger
                 divId,
                 date,
                 timeSchedule,
-                context,
+                wysiwyg,
                 isShow,
                 user: req.user.id
             });
-            const timerplus = await newTimerplus.save();
+            const timerplus = await newTimerplus.save();   
             res.json(newTimerplus);
         }
         catch (err) {
@@ -69,7 +64,7 @@ debugger
 //@desc     Update timerplus
 //@access   Private
 router.put('/:id',auth, async(req, res) => {
-    const { name, url, divId, date, context, isShow } = req.body;
+    const { name, url, divId, date, wysiwyg, isShow } = req.body;
 
     //Build a timerplus object
     const timersPlusFeilds ={}
@@ -77,11 +72,10 @@ router.put('/:id',auth, async(req, res) => {
     if(url) timersPlusFeilds.url = url;
     if(divId) timersPlusFeilds.divId = divId;
     if(date) timersPlusFeilds.date = date;
-    if(context) timersPlusFeilds.context = context;
+    if(wysiwyg) timersPlusFeilds.wysiwyg = wysiwyg;
     if(isShow) timersPlusFeilds.isShow = isShow;
-
     try{
-        let timerplus = await timersPlus.findById(req.params.id);
+        let timerplus = await Timerplus.findById(req.params.id);
         if(!timerplus) return res.status(404).json({msge: 'Timerplus not found'});
         //make sure user own timerplus
         if(timerplus.user.toString() !== req.user.id){
@@ -109,14 +103,14 @@ router.put('/:id',auth, async(req, res) => {
 router.delete('/:id', auth, async(req, res) => {
 
     try{
-        let timerplus = await TimersPlus.findById(req.params.id);
+        let timerplus = await Timerplus.findById(req.params.id);
         if(!timerplus) return res.status(404).json({msge: 'Timerplus not found'});
         //make sure user own timerplus
         if(timerplus.user.toString() !== req.user.id){
             return res.status(401).json({msg: 'Not authorized'});
         }
        
-        await TimersPlus.findByIdAndRemove(req.params.id)
+        await Timerplus.findByIdAndRemove(req.params.id)
 
         res.json({msg:"contact removed"});
 

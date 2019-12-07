@@ -1,22 +1,18 @@
-import React, { Fragment, useContext, useState } from 'react'
+import React, { Fragment, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 // import PropType from 'prop-Type'
-import TimerPlusContext from '../../context/timerPlus/TimerPlusContext'
+import TimerPlusContext from '../../context/timerPlus/TimerPlusContext';
 
 const TimerPlusItem = ({ timerPlus }) => {
     const timerPlusContext = useContext(TimerPlusContext);
-    const { deleteTimerPlusContext, setCurrent, clearCurrent } = timerPlusContext
+    const { deleteTimerPlus, setCurrentTimerPlus, clearTimerPlus } = timerPlusContext
     const { name, url, } = timerPlus;
 
     const [deleteFlag, setflag] = useState(false);
 
-    // const onDelete = (website) => {
-    //     setCurrent(website);
-    //     deleteFlag = true
-    // }
-    const takeDowm = (timerPlusContext) => {
-        deleteTimerPlusContext(timerPlusContext, 'false');
-        clearCurrent();
+    const takeDowm = (timerPlus) => {
+        deleteTimerPlus(timerPlus, 'false');
+        clearTimerPlus();
     }
     const showDelte = (
         <Fragment>
@@ -33,7 +29,7 @@ const TimerPlusItem = ({ timerPlus }) => {
             <div className="aw-website-details">
                 <p><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
                 <p><i className="fa fa-globe" />{url}</p>
-                <Link to='/addtimerplus'> <button className="websiteBtn" id="editBtn" onClick={() => setCurrent(timerPlus)}>  ערוך </button></Link>
+                <Link to='/addtimerplus'> <button className="websiteBtn" id="editBtn" onClick={() => setCurrentTimerPlus(timerPlus)}>ערוך</button></Link>
             </div>
             <div className="aw-website-btn">
                 <button className="websiteBtn" id="deleteBtn" onClick={() => setflag(true)}>מחק</button>

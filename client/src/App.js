@@ -35,7 +35,7 @@ const App = () => {
   return (
     <AuthState>
       <WebsiteState>
-        {/* <TimerplusState> */}
+        <TimerplusState>
           <Router>
             <div className="App">
               <Navbar />
@@ -60,7 +60,7 @@ const App = () => {
               </div>
             </div>
           </Router>
-        {/* </TimerplusState> */}
+        </TimerplusState>
       </WebsiteState>
     </AuthState>
   );
