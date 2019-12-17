@@ -17,8 +17,8 @@ const Home = () => {
     const websiteContext = useContext(WebsiteContext);
     const { websites, getWebsites, setCurrent, clearCurrent, current } = websiteContext;
 
-    const timerPlusContext = useContext(TimerPlusContext);
-    const { timersPlus, getTimersPlus, setCurrentTimerPlus, clearCurrentTimerPlus, currentTimerPlus } = timerPlusContext;
+    // const timerPlusContext = useContext(TimerPlusContext);
+    // const { timersPlus, getTimersPlus, setCurrentTimerPlus, clearCurrentTimerPlus, currentTimerPlus } = timerPlusContext;
   
     //user effect for edit form , current is the corrent landingPage
     useEffect(() => {
@@ -59,21 +59,21 @@ const Home = () => {
         url: '',
         divId: '',
     });
-    const [timerPlus, setTimersPlus] = useState({
-        wysiwyg: '',
-        timeSchedule: {
-            Sunday: { openHour: '', closeHour: '' },
-            Monday: { openHour: '', closeHour: '', },
-            Tuesday: { openHour: '', closeHour: '' },
-            Wednesday: { openHour: '', closeHour: '' },
-            Thursday: { openHour: '', closeHour: '' },
-            Friday: { openHour: '', closeHour: '' },
-            Saturday: { openHour: '', closeHour: '' }
-        },
-        name: '',
-        url: '',
-        divId: '',
-    });
+    // const [timerPlus, setTimersPlus] = useState({
+    //     wysiwyg: '',
+    //     timeSchedule: {
+    //         Sunday: { openHour: '', closeHour: '' },
+    //         Monday: { openHour: '', closeHour: '', },
+    //         Tuesday: { openHour: '', closeHour: '' },
+    //         Wednesday: { openHour: '', closeHour: '' },
+    //         Thursday: { openHour: '', closeHour: '' },
+    //         Friday: { openHour: '', closeHour: '' },
+    //         Saturday: { openHour: '', closeHour: '' }
+    //     },
+    //     name: '',
+    //     url: '',
+    //     divId: '',
+    // });
 
     useEffect(() => {
         authContext.loadUser();
@@ -83,22 +83,22 @@ const Home = () => {
         getWebsites('5dc404342106e5106dcd81e7');
         //eslint-disable-next-line
     }, []);
-    useEffect(() => {
-        getTimersPlus();
-        //eslint-disable-next-line
-    }, []);
+    // useEffect(() => {
+    //     getTimersPlus();
+    //     //eslint-disable-next-line
+    // }, []);
 
     let websiteList = (websites.map(website => {
         if (website.isShow === 'true') return <WebsiteItem key={website._id} website={website} />
         return null;
     })
     );
-    let timersPlusList = (timersPlus.map(timerPlus => {
-        debugger
-        if (timerPlus.isShow === 'true') return <TimerPlusItem key={timerPlus._id} timerPlus={timerPlus} />
-        return null;
-    })
-    );
+    // let timersPlusList = (timersPlus.map(timerPlus => {
+    //     debugger
+    //     if (timerPlus.isShow === 'true') return <TimerPlusItem key={timerPlus._id} timerPlus={timerPlus} />
+    //     return null;
+    // })
+    // );
     
     const onSubmit = e => {
         e.preventDefault();
@@ -139,12 +139,12 @@ const Home = () => {
                 <form onSubmit={onSubmit}>
                     <p>כאן תוכל להוסיף ולנהל את כל הטיימרים שלך</p>
                     <Link to="/addwebsite"><input type="submit" value="הוסף" onClick={() => setCurrent(website)} /></Link>
-                    <Link to="/addtimerplus"><input type="submit" id="addTimerPlus" value="הוסף טיימר+" onClick={() => setCurrentTimerPlus(timerPlus)} /></Link>
+                    {/* <Link to="/addtimerplus"><input type="submit" id="addTimerPlus" value="הוסף טיימר+" onClick={() => setCurrentTimerPlus(timerPlus)} /></Link> */}
                 </form>
             </div>
             <div className="websites" id="personal">
                 {websiteList}
-                {timersPlusList}
+                {/* {timersPlusList} */}
             </div>
         </Fragment>
     )

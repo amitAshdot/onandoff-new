@@ -1,31 +1,28 @@
-import express, { json, static } from 'express';
-import connectDB from './config/db';
-import { resolve } from 'path';
+const express = require('express');
+const connectDB = require('./config/db');
+const path = require('path');
 
 const app = express();
 //Connect Database
 connectDB();
 
 // Init middleware
-app.use(json({extended:false}));
+app.use(express.json({extended:false}));
 
 // Define Routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/file', require('./routes/file'));
-app.use('/api/timersplus', require('./routes/timersplus').default);
-app.use('/api/websites', require('./routes/websites').default);
+// app.use('/api/timersplus', require('./routes/timersplus').default);
+app.use('/api/websites', require('./routes/websites'));
 
 
 //Server static assets in production
 if(process.env.NODE_ENV === 'production'){
     //Set static folder
-    app.use(static('client/build'));
-    app.get('*', (req,res)=>res.sendFile(resolve(__dirname,'client','build','index.html')));
+    app.use(express.static('client/build'));
+    app.get('*', (req,res)=>res.sendFile(path.resolve(__dirname,'client','build','index.html')));
 }
-if (process.env.NODE_ENV !== 'production') {
-    app.use(cors())
- }
 
 const PORT = process.env.PORT || 5000;
 
