@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const auth = require('../middleware/auth');
-const { check, validationResult } = require('express-validator');
+import { Router } from 'express';
+const router = Router();
+import auth from '../middleware/auth';
+import { check, validationResult } from 'express-validator';
 
-const User = require('../models/User');
-const Websites = require('../models/Websites');
+import User from '../models/User';
+import Websites, { find, findById, findByIdAndUpdate, findByIdAndRemove } from '../models/Websites';
 
 
 //@route    GET api/users
@@ -12,7 +12,7 @@ const Websites = require('../models/Websites');
 //@access   Private
 router.get('/', auth, async (req, res) => {
     try {
-        const users = await Websites.find({ user: req.user.id }).sort({ date: -1 });
+        const users = await find({ user: req.user.id }).sort({ date: -1 });
         res.json(users);
     }
     catch (err) {
@@ -78,13 +78,13 @@ router.put('/:id',auth, async(req, res) => {
     if(isShow) websitesFeilds.isShow = isShow;
 
     try{
-        let website = await Websites.findById(req.params.id);
+        let website = await findById(req.params.id);
         if(!website) return res.status(404).json({msge: 'Website not found'});
         //make sure user own website
         if(website.user.toString() !== req.user.id){
             return res.status(401).json({msg: 'Not authorized'});
         }
-        website = await Websites.findByIdAndUpdate(
+        website = await findByIdAndUpdate(
             req.params.id,
             {$set : websitesFeilds},
             {new: true}
@@ -106,14 +106,14 @@ router.put('/:id',auth, async(req, res) => {
 router.delete('/:id', auth, async(req, res) => {
 
     try{
-        let website = await Websites.findById(req.params.id);
+        let website = await findById(req.params.id);
         if(!website) return res.status(404).json({msge: 'Website not found'});
         //make sure user own website
         if(website.user.toString() !== req.user.id){
             return res.status(401).json({msg: 'Not authorized'});
         }
        
-        await Websites.findByIdAndRemove(req.params.id)
+        await findByIdAndRemove(req.params.id)
 
         res.json({msg:"contact removed"});
 
@@ -124,4 +124,4 @@ router.delete('/:id', auth, async(req, res) => {
         res.status(500).send('Server Error');
     }
 });
-module.exports = router;
+export default router;

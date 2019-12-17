@@ -1,17 +1,17 @@
-const express = require('express');
-const router = express.Router();
-const auth = require('../middleware/auth');
-const { check, validationResult } = require('express-validator');
+import { Router } from 'express';
+const router = Router();
+import auth from '../middleware/auth';
+import { check, validationResult } from 'express-validator';
 
-const User = require('../models/User');
-const Timerplus = require('../models/TimerPlus');
+import User from '../models/User';
+import Timerplus, { find, findById, findByIdAndUpdate, findByIdAndRemove } from '../models/TimerPlus';
 
 //@route    GET api/timersplus
 //@desc     get all timersPlus
 //@access   Private
 router.get('/', auth, async (req, res) => {
     try {
-        const timerplus = await Timerplus.find({ user: req.user.id }).sort({ date: -1 });
+        const timerplus = await find({ user: req.user.id }).sort({ date: -1 });
         res.json(timerplus);
     }
     catch (err) {
@@ -76,13 +76,13 @@ router.put('/:id',auth, async(req, res) => {
     if(wysiwyg) timersPlusFeilds.wysiwyg = wysiwyg;
     if(isShow) timersPlusFeilds.isShow = isShow;
     try{
-        let timerplus = await Timerplus.findById(req.params.id);
+        let timerplus = await findById(req.params.id);
         if(!timerplus) return res.status(404).json({msge: 'Timerplus not found'});
         //make sure user own timerplus
         if(timerplus.user.toString() !== req.user.id){
             return res.status(401).json({msg: 'Not authorized'});
         }
-        timerplus = await Timerplus.findByIdAndUpdate(
+        timerplus = await findByIdAndUpdate(
             req.params.id,
             {$set : timersPlusFeilds},
             {new: true}
@@ -104,14 +104,14 @@ router.put('/:id',auth, async(req, res) => {
 router.delete('/:id', auth, async(req, res) => {
 
     try{
-        let timerplus = await Timerplus.findById(req.params.id);
+        let timerplus = await findById(req.params.id);
         if(!timerplus) return res.status(404).json({msge: 'Timerplus not found'});
         //make sure user own timerplus
         if(timerplus.user.toString() !== req.user.id){
             return res.status(401).json({msg: 'Not authorized'});
         }
        
-        await Timerplus.findByIdAndRemove(req.params.id)
+        await findByIdAndRemove(req.params.id)
 
         res.json({msg:"contact removed"});
 
@@ -122,4 +122,4 @@ router.delete('/:id', auth, async(req, res) => {
         res.status(500).send('Server Error');
     }
 });
-module.exports = router;
+export default router;
