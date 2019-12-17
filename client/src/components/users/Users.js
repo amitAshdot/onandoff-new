@@ -7,18 +7,6 @@ import WebsiteContext from '../../context/website/WebsiteContext'
 const Users = () => {
     const userContext = useContext(UserContext);
     const { users } = userContext;
-
-
-
-    // const adminList = (
-    //     users.map(user => <UserItem key={user.key} user={user} />)
-        
-    //     )
-        // const userList = (
-        //     users.map(user => <UserItem key={user.key} user={user} />)
-            // 
-            // )
-
     
     return (
         <Fragment>

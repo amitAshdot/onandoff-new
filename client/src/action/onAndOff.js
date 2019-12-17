@@ -124,7 +124,6 @@ function onAndOff(
     let te = document.getElementById(`${dI}`);
     let cssid;
     typeof (te) == 'undefined' || te == null ? cssid = '.' + te : cssid = '#' + te;
-
     switch (day) {
         case 0:
             if(su.s < t && su.e > t) `${cssid}`.hide() ;
@@ -149,12 +148,60 @@ function onAndOff(
             break;
     }
 }
-// (divId,
-//     SundayOpen, SundayClose,
-//     MondayOpen, MondayClose,
-//     TuesdayOpen, TuesdayClose,
-//     WednesdayOpen, WednesdayClose,
-//     ThursdayOpen, ThursdayClose,
-//     FridayOpen, FridayClose,
-//     SaturdayOpen, SaturdayClose,
-// )
+
+function timerPlus(
+    dI,
+    co,
+    sO, sC,
+    mO, mC,
+    tuO, tuC,
+    wO, wC,
+    tO, tC,
+    fO, fC,
+    stO, stC, b){
+    let d = new Date();
+    let day = d.getDay();
+    let h = d.getHours();
+    let m = d.getMinutes();
+    let s = d.getSeconds();
+    h < 10 ? h = '0' + h + ':' : h = h + ':';
+    m < 10 ? m = '0' + m + ':' : m = m + ':';
+    s < 10 ? s = '0' + s : h = h;
+    let t = h + m + s;
+
+    let su = { s: `${sO}`, e: `${sC}` };
+    let mo = { s: `${mO}`, e: `${mC}` };
+    let tu = { s: `${tuO}`, e: `${tuC}` };
+    let we = { s: `${wO}`, e: `${wC}` };
+    let th = { s: `${tO}`, e: `${tC}` };
+    let fr = { s: `${fO}`, e: `${fC}` };
+    let sa = { s: `${stO}`, e: `${stC}` };
+
+    let te = document.getElementById(`${dI}`);
+    let cssid;
+    typeof (te) == 'undefined' || te == null ? cssid = '.' + te : cssid = '#' + te;
+
+    switch (day) {
+        case 0:
+            if(su.s < t && su.e > t) `${cssid}`.innerHTML = co ;
+            break;
+        case 1:
+            if(mo.s < t && mo.e > t)  `${cssid}`.innerHTML = co ;
+            break;
+        case 2:
+            if(tu.s < t && tu.e > t) `${cssid}`.innerHTML = co ;
+            break;
+        case 3:
+            if(we.s < t && we.e > t)  `${cssid}`.innerHTML = co ;
+            break;
+        case 4:
+            if(th.s < t && th.e > t ) `${cssid}`.innerHTML = co ;
+            break;
+        case 5:
+            if(fr.s < t && fr.e > t ) `${cssid}`.innerHTML = co ;
+            break;
+        case 6:
+            if(sa.s < t && sa.e > t ) `${cssid}`.innerHTML = co ;
+            break;
+    }
+}

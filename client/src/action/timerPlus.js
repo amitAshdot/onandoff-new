@@ -1,100 +1,4 @@
-// import React from 'react'
-
-// const onAndOff = (divId,
-//     SundayOpen, SundayClose,
-//     MondayOpen, MondayClose,
-//     TuesdayOpen, TuesdayClose,
-//     WednesdayOpen, WednesdayClose,
-//     ThursdayOpen, ThursdayClose,
-//     FridayOpen, FridayClose,
-//     SaturdayOpen, SaturdayClose,
-// ) => {
-
-//     const onAndOffFunciton = (divId, timeSchedule) => {
-//         debugger;
-//         var d = new Date();
-//         var day = d.getDay();
-//         var hours = d.getHours();
-//         var mins = d.getMinutes();
-//         var secs = d.getSeconds();
-//         if (hours < 10) { hours = '0' + hours + ':'; } else { hours = hours + ':'; };
-//         if (mins < 10) { mins = '0' + mins + ':'; } else { mins = mins + ':'; };
-//         if (secs < 10) { secs = '0' + secs } else { secs = secs };
-//         var time = hours + mins + secs;
-
-//         var Sunday = { start: `${SundayOpen}`, end: `${SundayClose}` };
-//         var Monday = { start: `${MondayOpen}`, end: `${MondayClose}` };
-//         var Tuesday = { start: `${TuesdayOpen}`, end: `${TuesdayClose}` };
-//         var Wednesday = { start: `${WednesdayOpen}`, end: `${WednesdayClose}` };
-//         var Thursday = { start: `${ThursdayOpen}`, end: `${ThursdayClose}` };
-//         var Friday = { start: `${FridayOpen}`, end: `${FridayClose}` };
-//         var Saturday = { start: `${SaturdayOpen}`, end: `${SaturdayClose}` };
-
-
-//         var testElement = document.getElementById(`${divId}`);
-//         if (typeof (testElement) == 'undefined' || testElement == null) {
-//             var cssid = '.' + testElement;
-//         } else {
-//             var cssid = '#' + testElement;
-//         }
-
-
-//         switch (day) {
-//             case 0:
-//                 if (Sunday.start < time && Sunday.end > time) {
-//                     { `${cssid}`.hide() };
-//                 }
-//                 break;
-//             case 1:
-//                 if (Monday.start < time && Monday.end > time) {
-//                     { `${cssid}`.hide() };
-//                 }
-//                 break;
-//             case 2:
-//                 if (Tuesday.start < time && Tuesday.end > time) {
-//                     { `${cssid}`.hide() };
-//                 }
-//                 break;
-//             case 3:
-//                 if (Wednesday.start < time && Wednesday.end > time) {
-//                     { `${cssid}`.hide() };
-//                 }
-//                 break;
-//             case 4:
-//                 if (Thursday.start < time && Thursday.end > time) {
-//                     { `${cssid}`.hide() };
-//                 }
-//                 break;
-//             case 5:
-//                 if (Friday.start < time && Friday.end > time) {
-//                     { `${cssid}`.hide() };
-//                 }
-//                 break;
-//             case 6:
-//                 if (Saturday.start < time && Saturday.end > time) {
-//                     { `${cssid}`.hide() };
-//                 }
-//         }
-//     }
-
-//     return (
-//         <div>
-//             {onAndOffFunciton(divId,
-//     SundayOpen, SundayClose,
-//     MondayOpen, MondayClose,
-//     TuesdayOpen, TuesdayClose,
-//     WednesdayOpen, WednesdayClose,
-//     ThursdayOpen, ThursdayClose,
-//     FridayOpen, FridayClose,
-//     SaturdayOpen, SaturdayClose,)}
-//         </div>
-//     )
-// }
-
-// export default onAndOff
-
-
-function onAndOff(
+function timerPlus(
     dI,
     co,
     sO, sC,
@@ -103,7 +7,7 @@ function onAndOff(
     wO, wC,
     tO, tC,
     fO, fC,
-    stO, stC, b){
+    stO, stC, b) {
     let d = new Date();
     let day = d.getDay();
     let h = d.getHours();
@@ -128,34 +32,146 @@ function onAndOff(
 
     switch (day) {
         case 0:
-            if(su.s < t && su.e > t) `${cssid}`.innerHTML = co ;
+            if (su.s < t && su.e > t)`${cssid}`.innerHTML = co;
             break;
         case 1:
-            if(mo.s < t && mo.e > t)  `${cssid}`.innerHTML = co ;
+            if (mo.s < t && mo.e > t)`${cssid}`.innerHTML = co;
             break;
         case 2:
-            if(tu.s < t && tu.e > t) `${cssid}`.innerHTML = co ;
+            if (tu.s < t && tu.e > t)`${cssid}`.innerHTML = co;
             break;
         case 3:
-            if(we.s < t && we.e > t)  `${cssid}`.innerHTML = co ;
+            if (we.s < t && we.e > t)`${cssid}`.innerHTML = co;
             break;
         case 4:
-            if(th.s < t && th.e > t ) `${cssid}`.innerHTML = co ;
+            if (th.s < t && th.e > t)`${cssid}`.innerHTML = co;
             break;
         case 5:
-            if(fr.s < t && fr.e > t ) `${cssid}`.innerHTML = co ;
+            if (fr.s < t && fr.e > t)`${cssid}`.innerHTML = co;
             break;
         case 6:
-            if(sa.s < t && sa.e > t ) `${cssid}`.innerHTML = co ;
+            if (sa.s < t && sa.e > t)`${cssid}`.innerHTML = co;
             break;
     }
 }
-// (divId,
-//     SundayOpen, SundayClose,
-//     MondayOpen, MondayClose,
-//     TuesdayOpen, TuesdayClose,
-//     WednesdayOpen, WednesdayClose,
-//     ThursdayOpen, ThursdayClose,
-//     FridayOpen, FridayClose,
-//     SaturdayOpen, SaturdayClose,
-// )
+
+document.addEventListener('DOMContentLoaded', onAndOffFunction(hours, "11:30", "10:00", "09:30", "10:00", "09:30", "18:30", "09:30", "18:30", "09:30", "18:30", "09:30", "13:00", "10:00", "10:00", '10:00') {
+    // your code here
+}, false);
+
+const onAndOffFunciton = (divId,
+    SundayOpen, SundayClose,
+    MondayOpen, MondayClose,
+    TuesdayOpen, TuesdayClose,
+    WednesdayOpen, WednesdayClose,
+    ThursdayOpen, ThursdayClose,
+    FridayOpen, FridayClose,
+    SaturdayOpen, SaturdayClose, ) => {
+    var d = new Date();
+    var day = d.getDay();
+    var hours = d.getHours();
+    var mins = d.getMinutes();
+    var secs = d.getSeconds();
+    if (hours < 10) { hours = '0' + hours + ':'; } else { hours = hours + ':'; };
+    if (mins < 10) { mins = '0' + mins + ':'; } else { mins = mins + ':'; };
+    if (secs < 10) { secs = '0' + secs } else { secs = secs };
+    var time = hours + mins + secs;
+
+    var Sunday = { start: `${SundayOpen}`, end: `${SundayClose}` };
+    var Monday = { start: `${MondayOpen}`, end: `${MondayClose}` };
+    var Tuesday = { start: `${TuesdayOpen}`, end: `${TuesdayClose}` };
+    var Wednesday = { start: `${WednesdayOpen}`, end: `${WednesdayClose}` };
+    var Thursday = { start: `${ThursdayOpen}`, end: `${ThursdayClose}` };
+    var Friday = { start: `${FridayOpen}`, end: `${FridayClose}` };
+    var Saturday = { start: `${SaturdayOpen}`, end: `${SaturdayClose}` };
+
+    var flag = false; //not a class
+    var testElement = document.getElementById(`${divId}`);
+    if (typeof (testElement) == 'undefined' || testElement == null) {
+        testElement = document.getElementsByClassName(`${divId}`);
+        flag = true // a class
+        debugger;
+    } else {
+        var cssid = '#' + divId;
+    }
+
+    switch (day) {
+        case 0:
+            // if class
+            if (Sunday.start < time && Sunday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
+                    }
+                }
+                else cssid.style.display = 'none';
+            }
+            break;
+        case 1:
+            // if class
+            if (Monday.start < time && Monday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
+                    }
+                }
+                else cssid.style.display = 'none';
+            }
+            break;
+        case 2:
+            // if class
+            if (Tuesday.start < time && Tuesday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
+                    }
+                }
+                else cssid.style.display = 'none';
+            }
+            break;
+        case 3:
+            // if class
+            if (Wednesday.start < time && Wednesday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
+                    }
+                }
+                else cssid.style.display = 'none';
+            }
+            break;
+        case 4:
+            // if class
+            if (Thursday.start < time && Thursday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
+                    }
+                }
+                else cssid.style.display = 'none';
+            }
+            break;
+        case 5:
+            // if class
+            if (Friday.start < time && Friday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
+                    }
+                }
+                else cssid.style.display = 'none';
+            }
+            break;
+        case 6:
+            // if class
+            if (Saturday.start < time && Saturday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
+                    }
+                }
+                else cssid.style.display = 'none';
+            }
+            break;
+    }
+}

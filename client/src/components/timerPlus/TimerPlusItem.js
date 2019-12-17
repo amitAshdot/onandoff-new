@@ -27,7 +27,8 @@ const TimerPlusItem = ({ timerPlus }) => {
     return (
         <div className="websiteItem" id="websiteItem">
             <div className="aw-website-details">
-                <p><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
+                <p id="website-info"><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
+                <p id="formType">טיימר+</p>
                 <p><i className="fa fa-globe" />{url}</p>
                 <Link to='/addtimerplus'> <button className="websiteBtn" id="editBtn" onClick={() => setCurrentTimerPlus(timerPlus)}>ערוך</button></Link>
             </div>

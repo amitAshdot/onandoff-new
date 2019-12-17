@@ -15,13 +15,13 @@ const TimerPlusForm = () => {
         else {
             setTimerPlus({
                 timeSchedule: {
-                    Sunday: { openHour: '', closeHour: '' },
-                    Monday: { openHour: '', closeHour: '', },
-                    Tuesday: { openHour: '', closeHour: '' },
-                    Wednesday: { openHour: '', closeHour: '' },
-                    Thursday: { openHour: '', closeHour: '' },
-                    Friday: { openHour: '', closeHour: '' },
-                    Saturday: { openHour: '', closeHour: '' }
+                    Sunday: { openHour: '00:00', closeHour: '00:00' },
+                    Monday: { openHour: '00:00', closeHour: '00:00', },
+                    Tuesday: { openHour: '00:00', closeHour: '00:00' },
+                    Wednesday: { openHour: '00:00', closeHour: '00:00' },
+                    Thursday: { openHour: '00:00', closeHour: '00:00' },
+                    Friday: { openHour: '00:00', closeHour: '00:00' },
+                    Saturday: { openHour: '00:00', closeHour: '00:00' }
                 },
                 wysiwyg: '',
                 name: '',
@@ -29,17 +29,18 @@ const TimerPlusForm = () => {
                 divId: '',
             })
         }
+    //eslint-disable-next-line
     }, [timerPlusContext, currentTimerPlus]);
 
     const [timerPlus, setTimerPlus] = useState({
         timeSchedule: {
-            Sunday: { openHour: '', closeHour: '' },
-            Monday: { openHour: '', closeHour: '', },
-            Tuesday: { openHour: '', closeHour: '' },
-            Wednesday: { openHour: '', closeHour: '' },
-            Thursday: { openHour: '', closeHour: '' },
-            Friday: { openHour: '', closeHour: '' },
-            Saturday: { openHour: '', closeHour: '' }
+            Sunday: { openHour: '00:00', closeHour: '00:00' },
+            Monday: { openHour: '00:00', closeHour: '00:00', },
+            Tuesday: { openHour: '00:00', closeHour: '00:00' },
+            Wednesday: { openHour: '00:00', closeHour: '00:00' },
+            Thursday: { openHour: '00:00', closeHour: '00:00' },
+            Friday: { openHour: '00:00', closeHour: '00:00' },
+            Saturday: { openHour: '00:00', closeHour: '00:00' }
         },
         wysiwyg: '',
         name: '',
@@ -83,6 +84,7 @@ const TimerPlusForm = () => {
                 <input type="text" className="websit-form-input" placeholder="דומיין העמוד" name='url' value={url} onChange={onChange} />
                 <input type="text" className="websit-form-input" placeholder="שם או id של המקטע" name='divId' value={divId} onChange={onChange} />
             </div>
+            <p>wysiwyg editor</p>
             <div className="time" id="wysiwyg-editor">
                 <textarea
                     id="wysiwyg"
@@ -141,7 +143,6 @@ const TimerPlusForm = () => {
                     <Link to="/" onClick={() => clearCurrentTimerPlus}><button className="add-website-page-btn">חזור</button></Link>
                 </div>
             </div>
-            <p>wysiwyg editor</p>
             {currentTimerPlus.name === '' ? null : <LinkComp id={currentTimerPlus._id} current={currentTimerPlus} function={'timerPlus'}/>}
         </form>
     );

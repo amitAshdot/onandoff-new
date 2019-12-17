@@ -57,7 +57,6 @@ const TimerPlusState = props => {
     }
     //update timersPlus
     const updateTimerPlus = async timersPlus => {
-        debugger
         const config = {
             headers: {
                 'Content-Type': 'application/json'

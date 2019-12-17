@@ -97,31 +97,13 @@ const AuthState = props => {
             },
         }
         const object = {vkey : user}
-        //  user.isVerified = true
         try {
-            // const res = await axios.put(`/api/users/${user._id}`, user, config);
-            // dispatch({
-            //     type: VERIFY_USER,
-            //     payload: res.data
-            // });
-            // if (user) {
-            //     setAuthToken(user);
-            // }
-            // try {
-            //     const res = await axios.get('/api/auth');
-            //     dispatch({
-            //         type: USER_LOADED,
-            //         payload: res.data
-            //     });
-            // } catch (err) {
-            //     dispatch({ type: AUTH_ERROR });
-            // }     
+  
             const res = await axios.put(`/api/users`, object , config);
             dispatch({
                 type: VERIFY_USER,
                 payload: res.data
             });
-            // loadUser();
         } catch (err) {
             console.log(err);
         }

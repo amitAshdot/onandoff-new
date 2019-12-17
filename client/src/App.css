@@ -269,8 +269,19 @@ button.rejrect:hover {background-color: #55a6587a;}
 .aw-website-details {
   text-align: right;
   padding: 10px 20px;
+  width: 80%;
 }
 .aw-website-details p {margin: 5px 10px;}
+p#website-info {
+  display: inline-block;
+}
+
+p#formType {
+  display: inline-block;
+  font-size: 15px;
+  color: grey;
+  margin-right: 0;
+}
 /* ------------- Add website page ------------- */
 /* time table */ 
 .time {
@@ -279,7 +290,7 @@ button.rejrect:hover {background-color: #55a6587a;}
   width: 50%;
   min-width: 500px;
   max-width: 900px;
-  padding: 7% 0;
+  padding: 3% 0;
 }
 .day {
   display: table-cell; 
@@ -346,7 +357,9 @@ p.code-info {margin-bottom: 0;}
   padding-top: 2px;
   padding-bottom: 14px;
 }
-
+.codeContainer {
+  border: 1px solid;
+}
   /* ------------- login ------------- */
 .formContainer a:visited {color: #55a658;text-decoration: none;  cursor: pointer;}
 .formContainer a:link { color: #55a658; text-decoration: none;  cursor: pointer;}

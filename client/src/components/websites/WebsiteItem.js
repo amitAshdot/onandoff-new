@@ -27,7 +27,8 @@ const WebsiteItem = ({ website }) => {
     return (
         <div className="websiteItem" id="websiteItem">
             <div className="aw-website-details">
-                <p><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
+                <p id="website-info"><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
+                <p id="formType">הסתרה</p>
                 <p><i className="fa fa-globe" />{url}</p>
                 <Link to='/addwebsite'> <button className="websiteBtn" id="editBtn" onClick={() => setCurrent(website)}>  ערוך </button></Link>
             </div>
@@ -35,6 +36,7 @@ const WebsiteItem = ({ website }) => {
                 <button className="websiteBtn" id="deleteBtn" onClick={() => setflag(true)}>מחק</button>
                 {deleteFlag ? showDelte : null}
             </div>
+
         </div>
 
     )

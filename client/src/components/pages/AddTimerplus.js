@@ -14,6 +14,7 @@ const Timerplus = () => {
     
     useEffect(() => {
         authContext.loadUser();
+    //eslint-disable-next-line
     }, [authContext]);
 
     const notLogin = (

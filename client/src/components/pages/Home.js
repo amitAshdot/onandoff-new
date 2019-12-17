@@ -43,6 +43,7 @@ const Home = () => {
 
             })
         }
+     //eslint-disable-next-line
     }, [websiteContext, current, clearCurrent]);
     const [website, setWebsite] = useState({
         timeSchedule: {
@@ -79,7 +80,7 @@ const Home = () => {
         //eslint-disable-next-line
     }, []);
     useEffect(() => {
-        getWebsites();
+        getWebsites('5dc404342106e5106dcd81e7');
         //eslint-disable-next-line
     }, []);
     useEffect(() => {

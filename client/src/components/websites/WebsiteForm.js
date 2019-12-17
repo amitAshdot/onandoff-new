@@ -15,30 +15,31 @@ const WebsiteForm = () => {
         else {
             setWebsite({
                 timeSchedule: {
-                    Sunday: { openHour: '', closeHour: '' },
-                    Monday: { openHour: '', closeHour: '' },
-                    Tuesday: { openHour: '', closeHour: '' },
-                    Wednesday: { openHour: '', closeHour: '' },
-                    Thursday: { openHour: '', closeHour: '' },
-                    Friday: { openHour: '', closeHour: '' },
-                    Saturday: { openHour: '', closeHour: '' }
+                    Sunday: { openHour: '10:00', closeHour: '00:00' },
+                    Monday: { openHour: '00:00', closeHour: '00:00', },
+                    Tuesday: { openHour: '10:00', closeHour: '00:00' },
+                    Wednesday: { openHour: '10:00', closeHour: '00:00' },
+                    Thursday: { openHour: '10:00', closeHour: '00:00' },
+                    Friday: { openHour: '10:00', closeHour: '00:00' },
+                    Saturday: { openHour: '10:00', closeHour: '00:00' }
                 },
                 name: '',
                 url: '',
                 divId: '',
             })
         }
+        //eslint-disable-next-line
     }, [websiteContext, current]);
 
     const [website, setWebsite] = useState({
         timeSchedule: {
-            Sunday: { openHour: '', closeHour: '' },
-            Monday: { openHour: '', closeHour: '', },
-            Tuesday: { openHour: '', closeHour: '' },
-            Wednesday: { openHour: '', closeHour: '' },
-            Thursday: { openHour: '', closeHour: '' },
-            Friday: { openHour: '', closeHour: '' },
-            Saturday: { openHour: '', closeHour: '' }
+            Sunday: { openHour: '10:00', closeHour: '00:00' },
+            Monday: { openHour: '00:00', closeHour: '00:00', },
+            Tuesday: { openHour: '10:00', closeHour: '00:00' },
+            Wednesday: { openHour: '10:00', closeHour: '00:00' },
+            Thursday: { openHour: '10:00', closeHour: '00:00' },
+            Friday: { openHour: '10:00', closeHour: '00:00' },
+            Saturday: { openHour: '10:00', closeHour: '00:00' }
         },
         name: '',
         url: '',
