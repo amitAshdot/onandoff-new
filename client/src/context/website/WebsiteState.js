@@ -22,7 +22,7 @@ const WebsiteState = props => {
     };
     const [state, dispatch] = useReducer(WebsiteReducer, initialState);
 
-    //Get website
+    //Get websites
     const getWebsites = async () => {
         try {
             const res = await axios.get('/api/websites');

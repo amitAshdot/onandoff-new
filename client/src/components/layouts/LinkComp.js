@@ -39,7 +39,6 @@ const LinkComp = (props) => {
     //     var tooltip = document.getElementById("myTooltip");
     //     tooltip.innerHTML = "Copy to clipboard";
     // }
-    console.log(window.document)
     return (
         <div className="linkToCopy">
             <div className="codeContainer">

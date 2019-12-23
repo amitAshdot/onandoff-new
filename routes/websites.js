@@ -7,10 +7,11 @@ const User = require('../models/User');
 const Websites = require('../models/Websites');
 
 
-//@route    GET api/users
+//@route    GET api/websites
 //@desc     get all user websites
 //@access   Private
-router.get('/', auth, async (req, res) => {
+router.get('/',auth ,async (req, res) => {
+    console.error('this is get all websites');
     try {
         const users = await Websites.find({ user: req.user.id }).sort({ date: -1 });
         res.json(users);
@@ -20,7 +21,6 @@ router.get('/', auth, async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
-
 //@route    Post api/users
 //@desc     add new website
 //@access   Private

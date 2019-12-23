@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 //Layout component
@@ -23,43 +23,55 @@ import PrivateRoutes from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 //context components
 import WebsiteState from './context/website/WebsiteState';
+import SingleWebsiteState from './context/singleWebsite/SingleWebsiteState';
+
 // import TimerplusState from './context/timerPlus/TimerPlusState';
 
 import AuthState from './context/auth/AuthState';
+import Onandoff from './components/pages/Onandoff';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 
+
 const App = () => {
+  const href = window.location.href
+  debugger
+  const isUserWebsite = href.indexOf('?');
+  const websiteid = href.substring(href.indexOf("?") + 1);
+  console.log(isUserWebsite)
   return (
     <AuthState>
       <WebsiteState>
         {/* <TimerplusState> */}
-          <Router>
-            <div className="App">
-              <Navbar />
-              {/* {login() ?<SideBar /> : null}   */}
-              <div className="container">
-                <Switch>
-                  <Route exact path='/' component={Home} />
-                  <Route exact path='/addwebsite' component={AddWebsite} />
-                  {/* <Route exact path='/addtimerplus' component={AddTimerplus} /> */}
-                  <PrivateRoutes exact path='/admin' component={Admin} />
-                  {/* <PrivateRoutes exact path='/' component={Home} /> */}
-                  {/* <PrivateRoutes exact path='/addwebsite' component={AddWebsite} /> */}
-                  {/* <PrivateRoutes exact path='/edit-web' component={EditWeb} /> */}
-                  <Route exact path='/about' component={About} />
-                  <Route exact path='/register' component={Register} />
-                  <Route exact path='/login' component={Login} />
-                  <Route exact path='/login' component={Login} />
-                  <Route path='/verify' component={Verify} />
+        <Router>
+          <div className="App">
+            <SingleWebsiteState>
+              {isUserWebsite == -1 ? <Navbar /> : null}
+              <Route path='/onandoff' ><Onandoff websiteid={websiteid} />  </Route>
+            </SingleWebsiteState>
+            {/* {login() ?<SideBar /> : null}   */}
+            <div className="container">
+              <Switch>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/addwebsite' component={AddWebsite} />
+                {/* <Route exact path='/addtimerplus' component={AddTimerplus} /> */}
+                <PrivateRoutes exact path='/admin' component={Admin} />
+                {/* <PrivateRoutes exact path='/' component={Home} /> */}
+                {/* <PrivateRoutes exact path='/addwebsite' component={AddWebsite} /> */}
+                {/* <PrivateRoutes exact path='/edit-web' component={EditWeb} /> */}
+                <Route exact path='/about' component={About} />
+                <Route exact path='/register' component={Register} />
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/login' component={Login} />
+                <Route path='/verify' component={Verify} />
 
-                </Switch>
+              </Switch>
 
-              </div>
             </div>
-          </Router>
+          </div>
+        </Router>
         {/* </TimerplusState> */}
       </WebsiteState>
     </AuthState>
