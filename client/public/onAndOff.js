@@ -1,49 +1,3 @@
-import React, { Fragment, useState, useContext, useEffect } from 'react'
-import WebsiteContext from '../src/context/singleWebsite/SingleWebsiteContext';
-
-const Onandoff = (props) => {
-
-    const websiteContext = useContext(WebsiteContext);
-    const { websites, getWebsites, getSingleWebsite, setCurrent, clearCurrent, current } = websiteContext;
-
-
-    const [website, setWebsite] = useState({
-        timeSchedule: {
-            Sunday: { openHour: '10:00', closeHour: '00:00' },
-            Monday: { openHour: '00:00', closeHour: '00:00', },
-            Tuesday: { openHour: '10:00', closeHour: '00:00' },
-            Wednesday: { openHour: '10:00', closeHour: '00:00' },
-            Thursday: { openHour: '10:00', closeHour: '00:00' },
-            Friday: { openHour: '10:00', closeHour: '00:00' },
-            Saturday: { openHour: '10:00', closeHour: '00:00' }
-        },
-        name: '',
-        url: '',
-        divId: '',
-    });
-    useEffect(() => {
-        // setCurrent('5de7b21b4407fc0f92fb4264');
-        getSingleWebsite(props.websiteid);
-        setCurrent(websites)
-        // setWebsite(
-        //     {
-        //     timeSchedule: {
-        //         Sunday: { openHour: `${websites[0].timeSchedule.Sunday.openHour}`, closeHour: `${websites[0].timeSchedule.Sunday.closeHour}` },
-        //         Monday: { openHour: `${websites[0].timeSchedule.Monday.openHour}`, closeHour:`${websites[0].timeSchedule.Monday.closeHour}` },
-        //         Tuesday: { openHour: `${websites[0].timeSchedule.Tuesday.openHour}`, closeHour: `${websites[0].timeSchedule.Tuesday.closeHour}` },
-        //         Wednesday: { openHour: `${websites[0].timeSchedule.Wednesday.openHour}`, closeHour: `${websites[0].timeSchedule.Wednesday.closeHour}` },
-        //         Thursday: { openHour: `${websites[0].timeSchedule.Thursday.openHour}`, closeHour: `${websites[0].timeSchedule.Thursday.closeHour}`},
-        //         Friday: { openHour: `${websites[0].timeSchedule.Friday.openHour}`, closeHour: `${websites[0].timeSchedule.Friday.closeHour}` },
-        //         Saturday: { openHour: `${websites[0].timeSchedule.Saturday.openHour}`, closeHour: `${websites[0].timeSchedule.Saturday.closeHour}` }
-        //     },
-        //     name: `${websites[0].name}`,
-        //     url:`${websites[0].url}`,
-        //     divId: `${websites[0].divId}`,
-        // }
-        // )
-        //eslint-disable-next-line
-    }, []);
-
     const onAndOffFunciton = (websites) => {
         debugger
         var d = new Date();
@@ -155,11 +109,3 @@ const Onandoff = (props) => {
                 break;
         }
     }
-    return (
-        <div>
-            {websites == null ? null :JSON.stringify(websites) }
-        </div>
-    )
-}
-
-export default Onandoff
