@@ -12,12 +12,12 @@ const LinkComp = (props) => {
         let getUrl = window.location.host;
         debugger
         copyTextHeader = `<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script type='text/javascript' src='http://timer.${getUrl}/onandoff.js'> </script>` 
+        <script type='text/javascript' src='http://${getUrl}/onAndOff.js'> </script>` 
         copyTextBody = `<script type='text/javascript'>timerPluse("${props.current._id}") ;</script>`;    }
     else if (lastSegment === 'addwebsite') {
         let getUrl = window.location.host;
         copyTextHeader = `<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script type='text/javascript' src='http://timer.${getUrl}/onandoff.js'></script>`
+        <script type='text/javascript' src='http://${getUrl}/onAndOff.js'></script>`
         copyTextBody = `<script type='text/javascript'>onAndOffFunction("${props.current._id}") ;</script>`;
     } else {
         copyTextHeader = `(function onAndOffFunciton(id) {
