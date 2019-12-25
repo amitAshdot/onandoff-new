@@ -156,7 +156,7 @@ const Onandoff = (props) => {
         }
     }
     return (
-        <div>
+        <div className="json">
             {websites == null ? null :JSON.stringify(websites) }
         </div>
     )

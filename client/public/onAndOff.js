@@ -1,15 +1,39 @@
-    const onAndOffFunciton = (websites) => {
-        debugger
-        var d = new Date();
-        var day = d.getDay();
-        var hours = d.getHours();
-        var mins = d.getMinutes();
-        var secs = d.getSeconds();
-        if (hours < 10) { hours = '0' + hours + ':' } else { hours = hours + ':' }
-        if (mins < 10) { mins = '0' + mins + ':'} else { mins = mins + ':'}
-        if (secs < 10) { secs = '0' + secs } else { secs = secs }
-        var time = hours + mins + secs;
-    
+// included in another header the import statement will not work in the browser nevironment
+// you should either use a bundler for this to work, or leave the HTML as is so axios will be always present
+// import axios from 'axios';
+
+// const onAndOffFunciton = (divId,
+//     SundayOpen, SundayClose,
+//     MondayOpen, MondayClose,
+//     TuesdayOpen, TuesdayClose,
+//     WednesdayOpen, WednesdayClose,
+//     ThursdayOpen, ThursdayClose,
+//     FridayOpen, FridayClose,
+//     SaturdayOpen, SaturdayClose, ) => {
+// }
+
+// async await is syntactic sugar for Promise, what is a must for using axios since it is asyncronous code
+const  onAndOffFunction = async (websiteId) => {
+    let websites = null
+    console.log(websiteId);
+ console.log(websiteId)
+        try {
+            const res = await axios.get(`http://onandoff.co.il/api/website?_id=${websiteId}`);
+            websites = res.data;
+        } catch (err) {
+            console.log('error: '+ err);
+        }
+    debugger
+    var d = new Date();
+    var day = d.getDay();
+    var hours = d.getHours();
+    var mins = d.getMinutes();
+    var secs = d.getSeconds();
+    if (hours < 10) { hours = '0' + hours + ':' } else { hours = hours + ':' }
+    if (mins < 10) { mins = '0' + mins + ':'} else { mins = mins + ':'}
+    if (secs < 10) { secs = '0' + secs } else { secs = secs }
+    var time = hours + mins + secs;
+
         var Sunday = { start: `${websites[0].timeSchedule.Sunday.openHour}`, end: `${websites[0].timeSchedule.Sunday.closeHour}` };
         var Monday = { start: `${websites[0].timeSchedule.Monday.openHour}`, end: `${websites[0].timeSchedule.Monday.closeHour}` };
         var Tuesday = { start: `${websites[0].timeSchedule.Tuesday.openHour}`, end: `${websites[0].timeSchedule.Tuesday.closeHour}` };
@@ -18,94 +42,96 @@
         var Friday = { start: `${websites[0].timeSchedule.Friday.openHour}`, end: `${websites[0].timeSchedule.Friday.closeHour}` };
         var Saturday = { start: `${websites[0].timeSchedule.Saturday.openHour}`, end: `${websites[0].timeSchedule.Saturday.closeHour}` };
     
-        var flag = false; //not a class
-        var testElement = document.getElementById(`${websites[0].divId}`);
-        if (typeof (testElement) === 'undefined' || testElement === null) {
-            testElement = document.getElementsByClassName(`${websites[0].divId}`);
-            flag = true // a class
-            debugger;
-        } else {
-            var testElement = '#' + testElement;
-        }
-    
-        switch (day) {
-            case 0:
-                // if class
-                if (Sunday.start < time && Sunday.end > time) {
-                    if (flag) {
-                        for (var i = 0, len = testElement.length; i < len; i++) {
-                            testElement[i].style.display = 'none';
-                        }
+    var flag = false; //not a class
+    var testElement = document.getElementById(`${websites[0].divId}`);
+    if (typeof (testElement) === 'undefined' || testElement === null) {
+        testElement = document.getElementsByClassName(`${websites[0].divId}`);
+        flag = true // a class
+        debugger;
+    } 
+    // else {
+    //     var testElement = '#' + testElement;
+    // }
+        debugger;
+
+    switch (day) {
+        case 0:
+            // if class
+            if (Sunday.start < time && Sunday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
                     }
-                    else testElement.style.display = 'none';
                 }
-                break;
-            case 1:
-                // if class
-                if (Monday.start < time && Monday.end > time) {
-                    if (flag) {
-                        for (var i = 0, len = testElement.length; i < len; i++) {
-                            testElement[i].style.display = 'none';
-                        }
+                else testElement.style.display = 'none';
+            }
+            break;
+        case 1:
+            // if class
+            if (Monday.start < time && Monday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
                     }
-                    else testElement.style.display = 'none';
                 }
-                break;
-            case 2:
-                // if class
-                if (Tuesday.start < time && Tuesday.end > time) {
-                    if (flag) {
-                        for (var i = 0, len = testElement.length; i < len; i++) {
-                            testElement[i].style.display = 'none';
-                        }
+                else testElement.style.display = 'none';
+            }
+            break;
+        case 2:
+            // if class
+            if (Tuesday.start < time && Tuesday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
                     }
-                    else testElement.style.display = 'none';
                 }
-                break;
-            case 3:
-                // if class
-                if (Wednesday.start < time && Wednesday.end > time) {
-                    if (flag) {
-                        for (var i = 0, len = testElement.length; i < len; i++) {
-                            testElement[i].style.display = 'none';
-                        }
+                else testElement.style.display = 'none';
+            }
+            break;
+        case 3:
+            // if class
+            if (Wednesday.start < time && Wednesday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
                     }
-                    else testElement.style.display = 'none';
                 }
-                break;
-            case 4:
-                // if class
-                if (Thursday.start < time && Thursday.end > time) {
-                    if (flag) {
-                        for (var i = 0, len = testElement.length; i < len; i++) {
-                            testElement[i].style.display = 'none';
-                        }
+                else testElement.style.display = 'none';
+            }
+            break;
+        case 4:
+            // if class
+            if (Thursday.start < time && Thursday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
                     }
-                    else testElement.style.display = 'none';
                 }
-    
-                break;
-            case 5:
-                // if class
-                if (Friday.start < time && Friday.end > time) {
-                    if (flag) {
-                        for (var i = 0, len = testElement.length; i < len; i++) {
-                            testElement[i].style.display = 'none';
-                        }
+                else testElement.style.display = 'none';
+            }
+
+            break;
+        case 5:
+            // if class
+            if (Friday.start < time && Friday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
                     }
-                    else testElement.style.display = 'none';
                 }
-                break;
-            case 6:
-                // if class
-                if (Saturday.start < time && Saturday.end > time) {
-                    if (flag) {
-                        for (var i = 0, len = testElement.length; i < len; i++) {
-                            testElement[i].style.display = 'none';
-                        }
+                else testElement.style.display = 'none';
+            }
+            break;
+        case 6:
+            // if class
+            if (Saturday.start < time && Saturday.end > time) {
+                if (flag) {
+                    for (var i = 0, len = testElement.length; i < len; i++) {
+                        testElement[i].style.display = 'none';
                     }
-                    else testElement.style.display = 'none';
                 }
-                break;
-        }
+                else testElement.style.display = 'none';
+            }
+            break;
     }
+}
