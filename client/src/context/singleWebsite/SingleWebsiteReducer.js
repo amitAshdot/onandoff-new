@@ -28,8 +28,6 @@ export default (state, action) => {
             }
 
         case SET_CURRENT:
-            debugger;
-            console.log(action.payload)
             return {
                 ...state,
                 current: action.payload,

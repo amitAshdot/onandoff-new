@@ -11,7 +11,6 @@ const Websites = require('../models/Websites');
 //@desc     get all user websites
 //@access   Private
 router.get('/',auth ,async (req, res) => {
-    console.error('this is get all websites');
     try {
         const users = await Websites.find({ user: req.user.id }).sort({ date: -1 });
         res.json(users);

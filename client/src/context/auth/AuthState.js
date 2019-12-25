@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useCallback } from 'react';
 import AuthContext from './AuthContext';
 import AuthReducer from './AuthReducer';
 import axios from 'axios';
@@ -51,7 +51,6 @@ const AuthState = props => {
             },
         }
         formData.email = formData.email.toLowerCase();
-        debugger
         try {
             const res = await axios.post('/api/users', formData, config);
             dispatch({
@@ -96,10 +95,10 @@ const AuthState = props => {
                 'Content-Type': 'application/json',
             },
         }
-        const object = {vkey : user}
+        const object = { vkey: user }
         try {
-  
-            const res = await axios.put(`/api/users`, object , config);
+
+            const res = await axios.put(`/api/users`, object, config);
             dispatch({
                 type: VERIFY_USER,
                 payload: res.data
@@ -114,13 +113,8 @@ const AuthState = props => {
         dispatch({ type: LOG_OUT })
     }
     //Clear errors
-    const clearErr = () => dispatch({ type: CLEAR_ERROR });
-
-    //Get all Users
-    const getUsers = async () => {
-    }
-
-
+    const clearErr = useCallback(() => dispatch({ type: CLEAR_ERROR }), []);
+    
     return (
         <AuthContext.Provider
             value={{
@@ -137,7 +131,6 @@ const AuthState = props => {
                 login,
                 logout,
                 clearErr,
-                getUsers,
                 verify,
             }} >
 

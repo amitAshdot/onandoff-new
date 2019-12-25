@@ -21,7 +21,6 @@ const SingleWebsiteState = props => {
 
     //Get website
     const getSingleWebsite = async (id) => {
-        console.log(id)
         try {
             const res = await axios.get(`/api/website?${id}`);
             dispatch({ type: GET_WEBSITE, payload: res.data });

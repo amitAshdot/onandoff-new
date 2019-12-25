@@ -23,12 +23,9 @@ import PrivateRoutes from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 //context components
 import WebsiteState from './context/website/WebsiteState';
-import SingleWebsiteState from './context/singleWebsite/SingleWebsiteState';
 
 // import TimerplusState from './context/timerPlus/TimerPlusState';
-
 import AuthState from './context/auth/AuthState';
-import Onandoff from './components/pages/Onandoff';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -37,21 +34,16 @@ if (localStorage.token) {
 
 const App = () => {
   const href = window.location.href
-  debugger
   const isUserWebsite = href.indexOf('?');
   const websiteid = href.substring(href.indexOf("?") + 1);
-  console.log(isUserWebsite)
   return (
     <AuthState>
       <WebsiteState>
         {/* <TimerplusState> */}
         <Router>
           <div className="App">
-            <SingleWebsiteState>
-              {isUserWebsite == -1 ? <Navbar /> : null}
-              <Route path='/onandoff' ><Onandoff websiteid={websiteid} />  </Route>
-            </SingleWebsiteState>
             {/* {login() ?<SideBar /> : null}   */}
+            <Navbar />
             <div className="container">
               <Switch>
                 <Route exact path='/' component={Home} />
@@ -66,9 +58,7 @@ const App = () => {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/login' component={Login} />
                 <Route path='/verify' component={Verify} />
-
               </Switch>
-
             </div>
           </div>
         </Router>

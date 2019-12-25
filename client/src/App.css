@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
 /* ------------------------desktopfirst ------------------------ */
+.test-mailing{
+  display: none;
+}
 /* -------------Layout------------ */
 .App {
   text-align: center;

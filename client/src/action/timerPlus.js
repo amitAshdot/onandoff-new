@@ -90,7 +90,6 @@ const onAndOffFunciton = (divId,
     if (typeof (testElement) == 'undefined' || testElement == null) {
         testElement = document.getElementsByClassName(`${divId}`);
         flag = true // a class
-        debugger;
     } else {
         var cssid = '#' + divId;
     }

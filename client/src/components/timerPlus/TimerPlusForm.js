@@ -67,7 +67,6 @@ const TimerPlusForm = () => {
         setTimerPlus(statusCopy);
     }
     const onSubmit = e => {
-        debugger
         e.preventDefault();
         currentTimerPlus._id ? updateTimerPlus(timerPlus) : addTimerPlus(timerPlus);
         // function from timerPlusContext

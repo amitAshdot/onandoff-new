@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Login = (props) => {
     const authContext = useContext(AuthContext);
 
-    const { login, error, clearErr, isAuthenticated } = authContext;
+    const { login, error,setError, isAuthenticated } = authContext;
 
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const Login = (props) => {
 
         }
         //eslint-disable-next-line
-    }, [error, isAuthenticated, props.history, clearErr])
+    }, [error, isAuthenticated, props.history, setError])
 
 
     const [user, setUser] = useState({
@@ -32,7 +32,6 @@ const Login = (props) => {
         document.getElementById("email").style.borderColor = "#55a658";
         document.getElementById("password").style.borderColor = "#55a658";
     }
-    
 
     const onSubmit = e => {
         e.preventDefault();
@@ -53,6 +52,7 @@ const Login = (props) => {
             })
         }
     };
+
 
     const echeck = (str) => {
         let at = "@"

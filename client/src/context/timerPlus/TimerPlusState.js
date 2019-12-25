@@ -37,7 +37,6 @@ const TimerPlusState = props => {
 
     //Add timersPlus
     const addTimerPlus  = async (timersPlus) => {
-        debugger
         const config = {
             headers: {
                 'Content-Type': 'application/json'
@@ -49,7 +48,6 @@ const TimerPlusState = props => {
             dispatch({ type: ADD_TIMER_PLUS, payload: res.data });
 
         } catch (err) {
-            console.log("this is the error: "+err);
             dispatch({
                 type: TIMER_PLUS_ERROR, payload: err.response.msg
             })

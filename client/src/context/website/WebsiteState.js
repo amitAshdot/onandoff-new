@@ -47,7 +47,6 @@ const WebsiteState = props => {
             dispatch({ type: ADD_WEBSITE, payload: res.data });
 
         } catch (err) {
-            console.log(err);
             dispatch({
                 type: WEBSITE_ERROR, payload: err.response.msg
             })
@@ -65,7 +64,6 @@ const WebsiteState = props => {
             dispatch({ type: UPDATE_WEBSITE, payload: res.data })
 
         } catch (err) {
-            console.log(err);
             dispatch({
                 type: WEBSITE_ERROR, payload: err.response.msg
             })

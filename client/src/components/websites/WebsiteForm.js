@@ -67,9 +67,16 @@ const WebsiteForm = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        current._id ? updateWebsite(website) : addWebsite(website);
-        // function from websiteContext
-        setCurrent(website);
+        if (!divId === '') {
+            current._id ? updateWebsite(website) : addWebsite(website);
+            // function from websiteContext
+            setCurrent(website);
+        }
+        else {
+            document.getElementById("error").innerHTML = "אנא הכנס שם של אלמנט תקין";
+            document.getElementById("divID").style.borderColor = "red";
+        }
+
     };
 
     return (
@@ -78,7 +85,7 @@ const WebsiteForm = () => {
             <div className="info">
                 <input type="text" className="websit-form-input" placeholder="שם" name='name' value={name} onChange={onChange} />
                 <input type="text" className="websit-form-input" placeholder="דומיין העמוד" name='url' value={url} onChange={onChange} />
-                <input type="text" className="websit-form-input" placeholder="שם או id של המקטע" name='divId' value={divId} onChange={onChange} />
+                <input type="text" className="websit-form-input" placeholder="שם או id של המקטע" name='divId' value={divId} onChange={onChange} id="divID" />
             </div>
             <div className="time">
                 <div className="day-lable-d">
@@ -124,14 +131,16 @@ const WebsiteForm = () => {
                     {current._id ? <input type="submit" value="שמור" /> : <input type="submit" value="הוסף" />}
                 </div>
                 <div>
-                    <Link to="/" onClick={()=>clearCurrent}><button className="add-website-page-btn">חזור</button></Link>
+                    <Link to="/" onClick={() => clearCurrent}><button className="add-website-page-btn">חזור</button></Link>
                 </div>
             </div>
 
 
 
             {current.name === '' ? null : <LinkComp id={current._id} current={current} function={'onAndOffFunction'} />}
+            <span id="error">
 
+            </span>
         </form>
     );
 };

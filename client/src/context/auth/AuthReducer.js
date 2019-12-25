@@ -25,7 +25,6 @@ export default (state, action) => {
                 user: action.payload
             }
         case VERIFY_USER:
-            debugger
             return {
                 ...state,
                 ...action.payload,

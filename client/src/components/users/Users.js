@@ -10,8 +10,6 @@ const Users = () => {
     
     return (
         <Fragment>
-
-
                 {users.map(user => <UserItem key={user.key} user={user} />)}
         </Fragment>
     )

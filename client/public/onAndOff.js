@@ -1,29 +1,11 @@
-// included in another header the import statement will not work in the browser nevironment
-// you should either use a bundler for this to work, or leave the HTML as is so axios will be always present
-// import axios from 'axios';
-
-// const onAndOffFunciton = (divId,
-//     SundayOpen, SundayClose,
-//     MondayOpen, MondayClose,
-//     TuesdayOpen, TuesdayClose,
-//     WednesdayOpen, WednesdayClose,
-//     ThursdayOpen, ThursdayClose,
-//     FridayOpen, FridayClose,
-//     SaturdayOpen, SaturdayClose, ) => {
-// }
-
-// async await is syntactic sugar for Promise, what is a must for using axios since it is asyncronous code
 const  onAndOffFunction = async (websiteId) => {
     let websites = null
-    console.log(websiteId);
- console.log(websiteId)
         try {
             const res = await axios.get(`http://onandoff.co.il/api/website?_id=${websiteId}`);
             websites = res.data;
         } catch (err) {
             console.log('error: '+ err);
         }
-    debugger
     var d = new Date();
     var day = d.getDay();
     var hours = d.getHours();
@@ -47,12 +29,10 @@ const  onAndOffFunction = async (websiteId) => {
     if (typeof (testElement) === 'undefined' || testElement === null) {
         testElement = document.getElementsByClassName(`${websites[0].divId}`);
         flag = true // a class
-        debugger;
     } 
     // else {
     //     var testElement = '#' + testElement;
     // }
-        debugger;
 
     switch (day) {
         case 0:

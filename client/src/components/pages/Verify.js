@@ -20,8 +20,6 @@ const Verify = () => {
     let lastSegment = parts.pop() || parts.pop();  // handle potential trailing slash
 
     const onSubmit = () => {
-        debugger
-        // if (user.vkey === lastSegment) {
             verify(lastSegment);
             let statusCopy = Object.assign({}, pressed);
             statusCopy.pressed = true;
@@ -29,18 +27,10 @@ const Verify = () => {
         // }
     };
     useEffect(() => {
-        debugger
         if(!isVerified)
             onSubmit();
          //eslint-disable-next-line
       }, [])
-    
-    // const beforePress = (
-    //     <div>
-    //         <p>  תודה שהצטרפת אלינו.</p>
-    //         לא תוכל להשתמש בטיימרים שלנו לפני שתאשר את המייל
-    //     </div>
-    // )
     const afterPress = (
         <div>
             <p>תודה, אפשר לעבור לדף הראשי</p>
@@ -56,7 +46,6 @@ const Verify = () => {
     return (
         <div>
             {isVerified ? afterPress : notlogin}
-            {/* {afterPress} */}
         </div >
     )
 
