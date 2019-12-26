@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const TimerPlus = require('../models/TimerPlus');
+const TimerPlus = require('../models/timerPlus');
 
 //@route    GET api/website
 //@desc     get specific website
