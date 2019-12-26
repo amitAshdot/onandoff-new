@@ -144,7 +144,7 @@ const timerPlus = async (websiteId) => {
     var Thursday = { start: `${websites[0].timeSchedule.Thursday.openHour}`, end: `${websites[0].timeSchedule.Thursday.closeHour}` };
     var Friday = { start: `${websites[0].timeSchedule.Friday.openHour}`, end: `${websites[0].timeSchedule.Friday.closeHour}` };
     var Saturday = { start: `${websites[0].timeSchedule.Saturday.openHour}`, end: `${websites[0].timeSchedule.Saturday.closeHour}` };
-
+    debugger
     var flag = false; //not a class
     var testElement = document.getElementById(`${websites[0].divId}`);
     if (typeof (testElement) === 'undefined' || testElement === null) {
@@ -154,7 +154,7 @@ const timerPlus = async (websiteId) => {
     // else {
     //     var testElement = '#' + testElement;
     // }
-    debugger
+    
     console.log( websites[0].wysiwyg)
     switch (day) {
         case 0:
