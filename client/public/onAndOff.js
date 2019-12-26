@@ -154,6 +154,7 @@ const timerPlus = async (websiteId) => {
     // else {
     //     var testElement = '#' + testElement;
     // }
+    debugger
     console.log( websites[0].wysiwyg)
     switch (day) {
         case 0:
