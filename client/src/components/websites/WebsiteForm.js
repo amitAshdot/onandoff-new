@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import WebsiteContext from '../../context/website/WebsiteContext';
 import { Link } from 'react-router-dom';
 import LinkComp from '../layouts/LinkComp';
+import SavedAlert from '../layouts/SavedAlert';
+
 const WebsiteForm = () => {
     const websiteContext = useContext(WebsiteContext);
     const { addWebsite, updateWebsite, clearCurrent, current, setCurrent } = websiteContext;
@@ -67,18 +69,28 @@ const WebsiteForm = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        if (!divId === '') {
+        debugger
+        if (!(website.divId === '')) {
             current._id ? updateWebsite(website) : addWebsite(website);
             // function from websiteContext
             setCurrent(website);
+            saved();
+            console.log(current.divId)
+
         }
         else {
-            document.getElementById("error").innerHTML = "אנא הכנס שם של אלמנט תקין";
-            document.getElementById("divID").style.borderColor = "red";
+            saved();
         }
 
     };
+    const [save, setSave] = useState(false);
 
+    const saved = () => {
+        setSave(true)
+        setTimeout(() => {
+            setSave(false)
+        }, 2000)
+    }
     return (
         <form onSubmit={onSubmit}>
             {current._id ? <h2>  ערוך עמוד נחיתה: {name}</h2> : <h2>הוסף עמוד נחיתה</h2>}
@@ -138,9 +150,8 @@ const WebsiteForm = () => {
 
 
             {current.name === '' ? null : <LinkComp id={current._id} current={current} function={'onAndOffFunction'} />}
-            <span id="error">
 
-            </span>
+            {save && website.divId ? <SavedAlert text="ההגדרות נשמרו" /> : save && !website.divId ? <SavedAlert text="אנא אכנס שם של אלמנט" /> : null}
         </form>
     );
 };

@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import TimerPlusContext from '../../context/timerPlus/TimerPlusContext';
 import { Link } from 'react-router-dom';
 import LinkComp from '../layouts/LinkComp';
+import SavedAlert from '../layouts/SavedAlert';
+
 const TimerPlusForm = () => {
     const timerPlusContext = useContext(TimerPlusContext);
     const { addTimerPlus, updateTimerPlus, clearCurrentTimerPlus, currentTimerPlus, setCurrentTimerPlus } = timerPlusContext;
@@ -29,7 +31,7 @@ const TimerPlusForm = () => {
                 divId: '',
             })
         }
-    //eslint-disable-next-line
+        //eslint-disable-next-line
     }, [timerPlusContext, currentTimerPlus]);
 
     const [timerPlus, setTimerPlus] = useState({
@@ -68,12 +70,23 @@ const TimerPlusForm = () => {
     }
     const onSubmit = e => {
         e.preventDefault();
-        currentTimerPlus._id ? updateTimerPlus(timerPlus) : addTimerPlus(timerPlus);
-        // function from timerPlusContext
-        setCurrentTimerPlus(timerPlus);
+
+        if (!(timerPlus.divId === '')) {
+            currentTimerPlus._id ? updateTimerPlus(timerPlus) : addTimerPlus(timerPlus);// function from timerPlusContext
+            setCurrentTimerPlus(timerPlus);
+            saved();
+        }
+        else {
+            saved();
+        }
     };
-
-
+    const [save, setSave] = useState(false);
+    const saved = () => {
+        setSave(true)
+        setTimeout(() => {
+            setSave(false)
+        }, 2000)
+    }
     return (
         <form onSubmit={onSubmit}>
             {currentTimerPlus._id ? <h2>  ערוך עמוד נחיתה: {name}</h2> : <h2>הוסף עמוד נחיתה</h2>}
@@ -94,6 +107,8 @@ const TimerPlusForm = () => {
                     style={{ width: '100%', height: '150px' }}
                 />
             </div>
+            {save && timerPlus.divId ? <SavedAlert text="ההגדרות נשמרו" /> : save && !timerPlus.divId ? <SavedAlert text="אנא אכנס שם של אלמנט" /> : null}
+
             <div className="time">
                 <div className="day-lable-d">
                     <p>פתיחה</p>
@@ -142,7 +157,8 @@ const TimerPlusForm = () => {
                     <Link to="/" onClick={() => clearCurrentTimerPlus}><button className="add-website-page-btn">חזור</button></Link>
                 </div>
             </div>
-            {currentTimerPlus.name === '' ? null : <LinkComp id={currentTimerPlus._id} current={currentTimerPlus} function={'timerPlus'}/>}
+            {currentTimerPlus.name === '' ? null : <LinkComp id={currentTimerPlus._id} current={currentTimerPlus} function={'timerPlus'} />}
+
         </form>
     );
 };
