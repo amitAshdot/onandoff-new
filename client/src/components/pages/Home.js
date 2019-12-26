@@ -18,13 +18,11 @@ const Home = () => {
     const { websites, getWebsites, setCurrent, clearCurrent, current } = websiteContext;
 
     const timerPlusContext = useContext(TimerPlusContext);
-    const { timersPlus, getTimersPlus, setCurrentTimerPlus} = timerPlusContext;
+    const { timersPlus, getTimersPlus, setCurrentTimerPlus, currentTimerPlus, clearCurrentTimerPlus} = timerPlusContext;
   
     //user effect for edit form , current is the corrent landingPage
     useEffect(() => {
-        if (current != null) {
-            clearCurrent();
-        }
+        if (current != null) clearCurrent(); 
         //if current is empty, set the inputs (state) back to default
         else {
             setWebsite({
@@ -40,7 +38,24 @@ const Home = () => {
                 name: '',
                 url: '',
                 divId: '',
-
+            })
+        }
+        if(currentTimerPlus != null) clearCurrentTimerPlus(); 
+        else{
+            setCurrentTimerPlus({
+                wysiwyg: '',
+                timeSchedule: {
+                    Sunday: { openHour: '', closeHour: '' },
+                    Monday: { openHour: '', closeHour: '', },
+                    Tuesday: { openHour: '', closeHour: '' },
+                    Wednesday: { openHour: '', closeHour: '' },
+                    Thursday: { openHour: '', closeHour: '' },
+                    Friday: { openHour: '', closeHour: '' },
+                    Saturday: { openHour: '', closeHour: '' }
+                },
+                name: '',
+                url: '',
+                divId: '',
             })
         }
      //eslint-disable-next-line

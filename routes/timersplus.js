@@ -65,7 +65,7 @@ router.post('/',
 //@desc     Update timerplus
 //@access   Private
 router.put('/:id',auth, async(req, res) => {
-    const { name, url, divId, date, wysiwyg, isShow } = req.body;
+    const { name, url, divId, date, wysiwyg, isShow, timeSchedule} = req.body;
 
     //Build a timerplus object
     const timersPlusFeilds ={}
@@ -75,6 +75,8 @@ router.put('/:id',auth, async(req, res) => {
     if(date) timersPlusFeilds.date = date;
     if(wysiwyg) timersPlusFeilds.wysiwyg = wysiwyg;
     if(isShow) timersPlusFeilds.isShow = isShow;
+    if(timeSchedule) timersPlusFeilds.timeSchedule = timeSchedule;
+
     try{
         let timerplus = await Timerplus.findById(req.params.id);
         if(!timerplus) return res.status(404).json({msge: 'Timerplus not found'});

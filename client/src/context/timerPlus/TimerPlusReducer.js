@@ -27,6 +27,7 @@ export default (state, action) => {
 
             };
         case UPDATE_TIMER_PLUS:
+            debugger
             return {
                 ...state,
                 timersPlus: state.timersPlus.map(timerPlus =>
