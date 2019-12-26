@@ -1,0 +1,43 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "Hide your element by time.",
+    "main": "server.js",
+    "scripts": {
+        "start": "node app.js",
+
+        "server": "nodemon server.js",
+        "client": "npm start --prefix client",
+        "clientinstall": "npm install --prefix client",
+        "dev": "concurrently \"npm run server \" \"npm run client\" ",
+        "build": "npm run build --prefix client",
+        "heroku-postbuid": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm build --prefix client"
+    },
+    "homepage": "/",
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "bower": "^1.8.8",
+        "client": "file:client",
+        "config": "^3.2.4",
+        "cors": "^2.8.5",
+        "create-file": "^1.0.1",
+        "express": "^4.17.1",
+        "express-validator": "^6.2.0",
+        "file-saver": "^2.0.2",
+        "file-system": "^2.2.2",
+        "gulp-cli": "^2.2.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.7.11",
+        "nodemailer": "^6.3.1",
+        "react": "^16.12.0",
+        "react-copy-to-clipboard": "^5.0.2"
+    },
+    "devDependencies": {
+        "concurrently": "^5.0.0",
+        "nodemon": "^1.19.4",
+        "react-scripts": "^3.2.0"
+    }
+}

@@ -1,0 +1,502 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
+/* ------------------------desktopfirst ------------------------ */
+.test-mailing{
+  display: none;
+}
+/* -------------Layout------------ */
+.App {
+  text-align: center;
+  direction: rtl;
+  font-family: 'Heebo', sans-serif;
+}
+/* set body */
+body {margin: 0}
+.container {width: 80vw;margin: auto;}
+/* --- navbar --- */
+::-webkit-scrollbar {width: 5px;}
+::-webkit-scrollbar-thumb {   
+ border-radius: 10px;
+ background: -webkit-gradient(linear,left top,left bottom,from(#55a658),to(#55a65854));
+ box-shadow: inset 2px 2px 2px rgba(255,255,255,.25), inset -2px -2px 2px rgba(0,0,0,.25);}
+::-webkit-scrollbar-track {     
+ background-color: #fff;
+ background: linear-gradient(to bottom,#55a658,#55a658 1px,#55a658 1px,#ffffff);
+}
+/* --- loading image --- */
+.loading img {
+  width: 10vh;
+}
+/* --- li --- */
+li {
+  list-style: none;
+  display: inline-flex;
+  margin: 0 1vw;
+}
+/* --- buttons --- */
+button {
+  background-color: #55a658;
+  color: #ffff;
+  width: 10vw;
+  min-width: 100px;
+  max-width: 200px;
+  font-size: 2ex;
+  cursor: pointer;
+  outline: none;
+}
+/* input - submit */
+input[type="submit"] {
+  background-color: #55a658;
+  color: #ffff;
+  width: 10vw;
+  min-width: 100px;
+  max-width: 200px;
+  font-size: 2ex;
+  border-radius: 5px;
+  margin: 5px 10px;
+  padding: 5px;
+  cursor: pointer;
+  outline: none;
+}
+input[type="submit"]:hover {
+  background-color: #55a658c9;  outline: none;
+}
+/* inputs */
+input[type="text"] {
+    max-width: 250px;
+    min-width: 100px;
+    width: 100%;
+    font-size: 16px;
+    padding: 5px 3px;
+    margin-bottom: 10px;
+    text-align: right;
+    border: 1px solid #55a658;
+    cursor: pointer;
+    outline: none;
+}
+input[type="password"] {
+  max-width: 250px;
+  min-width: 100px;
+  width: 100%;
+  font-size: 16px;
+  padding: 5px 3px;
+  margin-bottom: 10px;
+  text-align: right;
+  border: 1px solid #55a658;
+  cursor: pointer;
+  outline: none;
+
+}
+/* ---navbar - header--- */
+.navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid black;
+  width: 96vw;
+  padding: 0 2vw;
+  background-color: #55a658;
+}
+/* logo text */
+h1.logotxt { 
+  color: white;
+  display: inline-block;
+  float: right;
+  width: 20vw;
+  padding: 0;
+  margin: 2vh 0;
+  font-size: 3ex;
+}
+/* navbar ul */
+.navbar ul {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 80vw;
+  padding: 0;
+  margin: 2vh 0;
+  align-items: center;
+}
+.navbar li {
+  max-width: 120px;
+  min-width: 70px;
+  margin: 0 1vw;
+  justify-content: center;
+
+}
+/* navbar links */
+a:link { color: #ffff; text-decoration: none;cursor: pointer;}
+a:visited { color: #ffff; text-decoration: none;  cursor: pointer;}
+a:hover { color: #ffff; text-decoration: none;border-bottom: 1px solid white;  cursor: pointer;}
+a:active { color: #ffff; text-decoration: none;  cursor: pointer;}
+a#logo:hover {border: none;}
+/* --- sidebar --- */
+li.sideBarItem {
+  display: block;
+  text-align: right;
+}
+
+/* --- table --- */
+table {border: 1px solid black;}
+tr {border: 1px solid black;}
+td {border: 1px solid;}
+
+
+/* tolltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+/* copy button */
+i.fa.fa-copy {
+  font-size: 18px;
+  padding: 5px;
+  border: 1px solid;
+  cursor: pointer;
+  float: left;
+  cursor: pointer;
+}
+/* ---sidebar --- *
+.sideBar {
+  grid-area: sidebar;
+  background-color: #719e40a3;
+  color: white;
+}
+.navbar {grid: header;grid-area: header;background-color: #719e40;color: white;}
+.container {
+  grid-area: main;
+}
+.sidebar ul {padding-inline-start: 0px !important;} */
+
+
+/* ------------- home page ------------- */
+/* main image */
+.hp-main {
+  background-image: url("http://timer.onandoff.co.il/hp-main-img.jpeg");
+  height: 91vh;
+  width: 100vw;
+  object-fit: fill;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.hp-info {
+  width: 30vw;
+  padding-top: 10%;
+  vertical-align: middle;
+}
+.full-width {margin-bottom: -10px;}
+i.fa.fa-globe {margin-left: 4px;}
+i.fa.fa-angle-left {
+  margin-left: 4px;
+  width: 11px;
+}
+/* buttons */
+button.hp-button {border-radius:5px;margin:10px;padding: 10px;}
+button.hp-button:hover {
+  background-color: white;
+  border-color: #55a658;
+  color: #55a658;
+}
+span.command {display: block;}
+.register {
+  background-color: white;
+  border-color: #55a658;
+  color: #55a658;
+  cursor: pointer;
+}
+button.hp-button.register:hover {
+  background-color: #55a658;
+  color: #ffff;
+}
+.websiteItem:hover {
+  background-color: #00000040;
+  color: white;
+}
+/* button.websiteBtn:hover{
+  color: white !important;
+  border-bottom: none;
+  cursor: pointer;
+} */
+.aw-website-details a:hover {border-bottom: none;}
+button#deleteBtn:hover {color: #F44336;border-bottom: none;  cursor: pointer;  outline: none;}
+button#deleteBtn {color: red;  cursor: pointer;  outline: none;text-align: center;}
+.websiteItem:hover .websiteBtn{color:#55a658;  outline: none;}
+
+/* --- delete form---  */
+.deleteForm {
+  color: white;
+  background-color: #4f4f4f;
+  padding: 10px;
+  outline: none;
+}
+button.deletebto {background-color: red;margin: 10px;    border-radius: 5px;}
+button.deletebto:hover {background-color: #ff000099;}
+button.rejrect {margin: 10px;    border-radius: 5px;}
+button.rejrect:hover {background-color: #55a6587a;}
+/* --- login ui---  */
+.websiteItem { 
+  background-color: transparent;
+  width: 60%;
+  margin: 5px auto;
+  display: flex;
+  border: 1px solid #00000030;
+  justify-content: space-between;
+}
+.aw-website-details {
+  text-align: right;
+  padding: 10px 20px;
+  width: 80%;
+}
+.aw-website-details p {margin: 5px 10px;}
+p#website-info {
+  display: inline-block;
+}
+
+p#formType {
+  display: inline-block;
+  font-size: 15px;
+  color: grey;
+  margin-right: 0;
+}
+/* ------------- Add website page ------------- */
+/* time table */ 
+.time {
+  display: table;
+  margin: auto;
+  width: 50%;
+  min-width: 500px;
+  max-width: 900px;
+  padding: 3% 0;
+}
+.day {
+  display: table-cell; 
+  text-align: right;
+}
+button.websiteBtn{
+  border-radius: 5px;
+  margin: 5px 10px;
+  background: transparent;
+  color: #55a658;
+  border: none;
+  text-align: right;
+  padding: 0;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer;
+}
+button.add-website-page-btn {
+  color: #ffff;
+  background-color: #55a658;
+  width: 10vw;
+  min-width: 100px;
+  max-width: 200px;
+  font-size: 2ex;
+  border-radius: 5px;
+  margin: 5px 10px;
+  padding: 5px;
+  cursor: pointer;
+  margin-top: 40px;
+}
+input.websit-form-input {
+  max-width: 250px;
+  min-width: 100px;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  padding: 5px 3px;
+  margin-bottom: 10px;
+  border: 0px solid #55a658;
+  cursor: pointer !important;
+}
+input[type="time"] {
+  font-size: 13px;
+  padding: 5px 2px;
+  font-family: 'Heebo', sans-serif;
+  margin: 5px 0px;
+  border: none;
+  cursor: pointer;
+}
+.day-lable-d {
+  position: relative;
+  top: 33px;
+  font-size: 14px;
+  font-size: 14px;
+}
+.day-lable-d p {margin-top: 19px;}
+/* code text */
+.linkToCopy {background-color: #92929278;border: 1px solid;}
+p.code-info {margin-bottom: 0;}
+.code {
+  width: 60%;
+  font-size: 12px;
+  text-align: left;
+  margin: auto;
+  padding-top: 2px;
+  padding-bottom: 14px;
+}
+.codeContainer {
+  border: 1px solid;
+}
+  /* ------------- login ------------- */
+.formContainer a:visited {color: #55a658;text-decoration: none;  cursor: pointer;}
+.formContainer a:link { color: #55a658; text-decoration: none;  cursor: pointer;}
+.formContainer a:hover { color: #55a658; text-decoration: none;border-bottom: 1px solid white;  cursor: pointer;}
+.formContainera:active { color: #55a658; text-decoration: none;  cursor: pointer;}
+
+.formContainer label {
+  display: block;
+  text-align: right;
+}
+.forminput {
+  width: 20%;
+  margin: auto;
+  cursor: pointer;
+}
+.formContainer a {
+  margin-right: 5px;
+}
+/* ------------- register ------------- */
+
+p#passwordErr {
+  position: relative;
+  font-size: 14px;
+  text-align: right;
+  color:red;
+}
+p#emailErr {
+  position: relative;
+  font-size: 14px;
+  text-align: right;
+  color:red;
+
+}
+/* ------------- about ------------- */
+/* ------------- how does it works ------------- */
+
+/* ------------------------ Mobile ------------------------ */
+@media (max-width: 600px) {
+/* ------------- layout ------------- */
+.container {width: 100vw;}
+/* ----- navbar ----- */
+  h1.logotxt {
+    color: white;
+    display: inline-block;
+    float: right;
+    width: 20vw;
+    padding: 0;
+    margin: 2vh 0;
+    font-size: 2ex;
+}
+.right {
+  max-width: 130px;
+  overflow-x: auto;
+  display: flex;
+  align-items: center;
+}
+/* buttons */
+input[type="submit"] {
+  background-color: #55a658;
+  color: #ffff;
+  width: 10vw;
+  min-width: 100px;
+  max-width: 200px;
+  font-size: 2ex;
+  border-radius: 5px;
+  margin: 5px 10px;
+  padding: 5px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+/* ------------- home ------------- */
+  .hp-info {
+    width: 100vw;
+    padding-top: 70%;
+    vertical-align: middle;
+}
+  /* ------------- homepage ------------- */
+  .websiteItem {width: 100%;}
+.deleteForm {
+  color: white;
+  background-color: #4f4f4f;
+  padding: 10px;
+  outline: none;
+  width: 90vw;
+  padding-top: 50px;
+  position: absolute;
+  height: 20vh;
+  right: 2.5%;
+}
+/* ------------- login ------------- */
+.forminput {
+  width: 20%;
+  margin: auto;
+  min-width: 200px;
+  cursor: pointer;
+}
+/* ------------- addwebsie ------------- */
+.time {
+  display: table;
+  min-width: 350px;
+  max-width: 900px;
+  padding: 7% 0;
+  margin: auto;
+}
+.day {
+  display: table-row;
+  text-align: right;
+}
+.day p {
+  display: inline-block;
+  width: 31%;
+}
+.day-lable-d {
+  display: flex;
+  top: 33px;
+  font-size: 14px;
+  width: fit-content;
+}
+.day-lable-d p {
+  margin-top: 19px;
+  margin: 19px 50px;
+}
+input[type="time"] {
+  font-size: 13px;
+  padding: 5px 0px;
+  font-family: 'Heebo', sans-serif;
+  margin: 5px 0px;
+  border: none;
+  cursor: pointer;
+  width: 31%;
+}
+.linkToCopy {width: 100vw;}
+.code {width: 90vw;margin: auto;}
+}
+
+
