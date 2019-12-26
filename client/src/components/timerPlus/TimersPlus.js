@@ -8,7 +8,7 @@ const TimersPlus = (props) => {
     const { timersPlus, getTimerPlus, loading } = timerPlusContext;
 
     useEffect(() => {
-        getWebsites();
+        getTimerPlus();
         //eslint-disable-next-line
     }, []);
     // let userWebs = websites.filter(website =>{return website.user.$oid === props.user._id.$oid})

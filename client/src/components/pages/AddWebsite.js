@@ -1,4 +1,4 @@
-import React, { Fragment,useContext, useEffect } from 'react'
+import React, { Fragment,useContext } from 'react'
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/AuthContext'
 import WebsiteContext from '../../context/website/WebsiteContext'
@@ -11,10 +11,10 @@ const AddWebsite = () => {
 
     const websiteContext = useContext(WebsiteContext);
     const { current } = websiteContext;
-    useEffect(() => {
-        authContext.loadUser();
-    //eslint-disable-next-line
-    }, [authContext]);
+    // useEffect(() => {
+    //     authContext.loadUser();
+    // //eslint-disable-next-line
+    // }, [authContext]);
 
     const notLogin = (
         <Fragment>

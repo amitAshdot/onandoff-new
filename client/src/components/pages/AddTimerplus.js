@@ -12,10 +12,10 @@ const Timerplus = () => {
     const timerPlusContext = useContext(TimerPlusContext);
     const { currentTimerPlus } = timerPlusContext;
     
-    useEffect(() => {
-        authContext.loadUser();
-    //eslint-disable-next-line
-    }, [authContext]);
+    // useEffect(() => {
+    //     authContext.loadUser();
+    // //eslint-disable-next-line
+    // }, []);
 
     const notLogin = (
         <Fragment>

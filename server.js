@@ -15,9 +15,10 @@ app.use(cors());
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/file', require('./routes/file'));
-// app.use('/api/timersplus', require('./routes/timersplus').default);
+app.use('/api/timersplus', require('./routes/timersplus'));
 app.use('/api/websites', require('./routes/websites'));
 app.use('/api/website', require('./routes/singleWebsite'));
+app.use('/api/timerplus', require('./routes/singleTimerPlus'));
 
 
 //Server static assets in production
