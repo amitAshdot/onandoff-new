@@ -4,8 +4,12 @@
     "description": "Hide your element by time.",
     "main": "server.js",
     "scripts": {
+<<<<<<< HEAD
         "start": "node app.js",
 
+=======
+        "start": "node server.js",
+>>>>>>> 66bb2f627c21a4afaacb86b8ed6f85b211eace23
         "server": "nodemon server.js",
         "client": "npm start --prefix client",
         "clientinstall": "npm install --prefix client",
