@@ -162,10 +162,10 @@ const timerPlus = async (websiteId) => {
             if (Sunday.start < time && Sunday.end > time) {
                 if (flag) {
                     for (var i = 0, len = testElement.length; i < len; i++) {
-                        testElement[i].style.display = websites[0].wysiwyg;
+                        testElement[i].websites[0].wysiwyg;
                     }
                 }
-                else testElement.style.display = websites[0].wysiwyg;
+                else testElementwebsites[0].wysiwyg;
             }
             break;
         case 1:
@@ -173,10 +173,10 @@ const timerPlus = async (websiteId) => {
             if (Monday.start < time && Monday.end > time) {
                 if (flag) {
                     for (var i = 0, len = testElement.length; i < len; i++) {
-                        testElement[i].style.display = websites[0].wysiwyg;
+                        testElement[i].websites[0].wysiwyg;
                     }
                 }
-                else testElement.style.display = websites[0].wysiwyg;
+                else testElementwebsites[0].wysiwyg;
             }
             break;
         case 2:
@@ -184,10 +184,10 @@ const timerPlus = async (websiteId) => {
             if (Tuesday.start < time && Tuesday.end > time) {
                 if (flag) {
                     for (var i = 0, len = testElement.length; i < len; i++) {
-                        testElement[i].style.display = websites[0].wysiwyg;
+                        testElement[i].websites[0].wysiwyg;
                     }
                 }
-                else testElement.style.display = websites[0].wysiwyg;
+                else testElementwebsites[0].wysiwyg;
             }
             break;
         case 3:
@@ -195,10 +195,10 @@ const timerPlus = async (websiteId) => {
             if (Wednesday.start < time && Wednesday.end > time) {
                 if (flag) {
                     for (var i = 0, len = testElement.length; i < len; i++) {
-                        testElement[i].style.display = websites[0].wysiwyg;
+                        testElement[i].websites[0].wysiwyg;
                     }
                 }
-                else testElement.style.display = websites[0].wysiwyg;
+                else testElementwebsites[0].wysiwyg;
             }
             break;
         case 4:
@@ -206,10 +206,10 @@ const timerPlus = async (websiteId) => {
             if (Thursday.start < time && Thursday.end > time) {
                 if (flag) {
                     for (var i = 0, len = testElement.length; i < len; i++) {
-                        testElement[i].style.display = websites[0].wysiwyg;
+                        testElement[i].websites[0].wysiwyg;
                     }
                 }
-                else testElement.style.display = websites[0].wysiwyg;
+                else testElementwebsites[0].wysiwyg;
             }
 
             break;
@@ -218,10 +218,10 @@ const timerPlus = async (websiteId) => {
             if (Friday.start < time && Friday.end > time) {
                 if (flag) {
                     for (var i = 0, len = testElement.length; i < len; i++) {
-                        testElement[i].style.display = websites[0].wysiwyg;
+                        testElement[i].websites[0].wysiwyg;
                     }
                 }
-                else testElement.style.display = websites[0].wysiwyg;
+                else testElementwebsites[0].wysiwyg;
             }
             break;
         case 6:
@@ -229,10 +229,10 @@ const timerPlus = async (websiteId) => {
             if (Saturday.start < time && Saturday.end > time) {
                 if (flag) {
                     for (var i = 0, len = testElement.length; i < len; i++) {
-                        testElement[i].style.display = websites[0].wysiwyg;
+                        testElement[i].websites[0].wysiwyg;
                     }
                 }
-                else testElement.style.display = websites[0].wysiwyg;
+                else testElementwebsites[0].wysiwyg;
             }
             break;
     }
