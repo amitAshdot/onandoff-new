@@ -122,8 +122,6 @@ const timerPlus = async (websiteId) => {
     try {
         const res = await axios.get(`http://onandoff.co.il/api/timerplus?_id=${websiteId}`);
         websites = res.data;
-        console.log(websites);
-
     } catch (err) {
         console.log('error: ' + err);
     }
@@ -144,7 +142,6 @@ const timerPlus = async (websiteId) => {
     var Thursday = { start: `${websites[0].timeSchedule.Thursday.openHour}`, end: `${websites[0].timeSchedule.Thursday.closeHour}` };
     var Friday = { start: `${websites[0].timeSchedule.Friday.openHour}`, end: `${websites[0].timeSchedule.Friday.closeHour}` };
     var Saturday = { start: `${websites[0].timeSchedule.Saturday.openHour}`, end: `${websites[0].timeSchedule.Saturday.closeHour}` };
-    debugger
     var flag = false; //not a class
     var testElement = document.getElementById(`${websites[0].divId}`);
     if (typeof (testElement) === 'undefined' || testElement === null) {
@@ -155,7 +152,6 @@ const timerPlus = async (websiteId) => {
     //     var testElement = '#' + testElement;
     // }
     
-    console.log( websites[0].wysiwyg)
     switch (day) {
         case 0:
             // if class
