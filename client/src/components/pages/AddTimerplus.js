@@ -12,11 +12,6 @@ const Timerplus = () => {
     const timerPlusContext = useContext(TimerPlusContext);
     const { currentTimerPlus } = timerPlusContext;
     
-    // useEffect(() => {
-    //     authContext.loadUser();
-    // //eslint-disable-next-line
-    // }, []);
-
     const notLogin = (
         <Fragment>
             <div className="hp-main">

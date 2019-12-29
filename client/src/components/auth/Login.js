@@ -6,24 +6,17 @@ import { Link } from 'react-router-dom';
 const Login = (props) => {
     const authContext = useContext(AuthContext);
 
-    const { login, error,setError, isAuthenticated } = authContext;
-
-
+    const { login, isAuthenticated } = authContext;
     useEffect(() => {
         if (isAuthenticated)//check authContext
             props.history.push('/');
-        if (error === 'wrong username or password') {
-
-        }
         //eslint-disable-next-line
-    }, [error, isAuthenticated, setError])
-
+    }, [isAuthenticated])
 
     const [user, setUser] = useState({
         email: '',
         password: '',
     });
-
     const { email, password } = user;
 
     //change input state
@@ -52,7 +45,6 @@ const Login = (props) => {
             })
         }
     };
-
 
     const echeck = (str) => {
         let at = "@"

@@ -10,29 +10,10 @@ const TimerPlusForm = () => {
 
     //user effect for edit form , currentTimerPlus is the corrent landingPage
     useEffect(() => {
-        if (currentTimerPlus != null) {
+        if (currentTimerPlus != null) 
             setTimerPlus(currentTimerPlus);
-        }
-        // if currentTimerPlus is empty, set the inputs (state) back to default
-        else {
-            setTimerPlus({
-                timeSchedule: {
-                    Sunday: { openHour: '00:00', closeHour: '00:00' },
-                    Monday: { openHour: '00:00', closeHour: '00:00', },
-                    Tuesday: { openHour: '00:00', closeHour: '00:00' },
-                    Wednesday: { openHour: '00:00', closeHour: '00:00' },
-                    Thursday: { openHour: '00:00', closeHour: '00:00' },
-                    Friday: { openHour: '00:00', closeHour: '00:00' },
-                    Saturday: { openHour: '00:00', closeHour: '00:00' }
-                },
-                wysiwyg: '',
-                name: '',
-                url: '',
-                divId: '',
-            })
-        }
         //eslint-disable-next-line
-    }, [timerPlusContext, currentTimerPlus]);
+    }, []);
 
     const [timerPlus, setTimerPlus] = useState({
         timeSchedule: {
@@ -48,9 +29,10 @@ const TimerPlusForm = () => {
         name: '',
         url: '',
         divId: '',
+        saveAlert:false //for UI notification alert
     });
 
-    const { timeSchedule, wysiwyg, name, url, divId } = timerPlus
+    const { timeSchedule, wysiwyg, name, url, divId , saveAlert} = timerPlus
 
     //change input state
     const onChange = e => { setTimerPlus({ ...timerPlus, [e.target.name]: e.target.value }); }
@@ -71,20 +53,19 @@ const TimerPlusForm = () => {
     const onSubmit = e => {
         e.preventDefault();
 
-        if (!(timerPlus.divId === '')) {
+        if (!(timerPlus.divId === '')) {// check if DIVID is defined
             currentTimerPlus._id ? updateTimerPlus(timerPlus) : addTimerPlus(timerPlus);// function from timerPlusContext
             setCurrentTimerPlus(timerPlus);
-            saved();
+            saved();//UI notificiation function
         }
-        else {
+        else {//else alert and dont save to DB
             saved();
         }
     };
-    const [save, setSave] = useState(false);
-    const saved = () => {
-        setSave(true)
+    const saved = () => {//UI notificiation function
+        setTimerPlus({...timerPlus , saveAlert : true})
         setTimeout(() => {
-            setSave(false)
+            setTimerPlus({...timerPlus , saveAlert : false})
         }, 2000)
     }
     return (
@@ -107,7 +88,7 @@ const TimerPlusForm = () => {
                     style={{ width: '100%', height: '150px' }}
                 />
             </div>
-            {save && timerPlus.divId ? <SavedAlert text="ההגדרות נשמרו" /> : save && !timerPlus.divId ? <SavedAlert text="אנא אכנס שם של אלמנט" /> : null}
+            {saveAlert && timerPlus.divId ? <SavedAlert text="ההגדרות נשמרו" /> : saveAlert && !timerPlus.divId ? <SavedAlert text="אנא אכנס שם של אלמנט" /> : null}
 
             <div className="time">
                 <div className="day-lable-d">

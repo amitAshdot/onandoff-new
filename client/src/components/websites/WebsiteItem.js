@@ -20,7 +20,6 @@ const WebsiteItem = ({ website }) => {
                 <p>האם את/ה בטוח?</p>
                 <button className="deletebto" onClick={() => takeDowm(website)}>מחק</button>
                 <button className="rejrect" onClick={() => setflag(false)}>בטל</button>
-
             </div>
         </Fragment>
     )

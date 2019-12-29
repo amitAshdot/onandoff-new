@@ -11,10 +11,6 @@ const AddWebsite = () => {
 
     const websiteContext = useContext(WebsiteContext);
     const { current } = websiteContext;
-    // useEffect(() => {
-    //     authContext.loadUser();
-    // //eslint-disable-next-line
-    // }, [authContext]);
 
     const notLogin = (
         <Fragment>

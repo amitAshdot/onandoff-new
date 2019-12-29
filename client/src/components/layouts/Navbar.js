@@ -42,7 +42,7 @@ const Navbar = (props) => {
                     <li>
                         <Link to='/' >הטיימרים שלי</Link>
                     </li>
-                    {user.isAdmin ? <li><Link to='/admin' >עמוד אדמין</Link></li> : null}
+                    {/* {user.isAdmin ? <li><Link to='/admin' >עמוד אדמין</Link></li> : null} */}
                     <li>
                         <Link to='/about' >אודות</Link>
                     </li>

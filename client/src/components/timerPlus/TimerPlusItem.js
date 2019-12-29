@@ -20,7 +20,6 @@ const TimerPlusItem = ({ timerPlus }) => {
                 <p>האם את/ה בטוח?</p>
                 <button className="deletebto" onClick={() => takeDowm(timerPlus)}>מחק</button>
                 <button className="rejrect" onClick={() => setflag(false)}>בטל</button>
-
             </div>
         </Fragment>
     )

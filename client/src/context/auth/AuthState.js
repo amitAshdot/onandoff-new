@@ -120,7 +120,7 @@ const AuthState = props => {
             value={{
                 token: state.token,
                 isAuthenticated: state.isAuthenticated,
-                isAdmin: state.isAdmin,
+                // isAdmin: state.isAdmin,
                 isVerified: state.isVerified,
                 user: state.user,
                 loading: state.loading,

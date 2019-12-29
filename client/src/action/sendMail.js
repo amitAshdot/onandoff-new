@@ -27,8 +27,7 @@ export default class extends React.Component {
 
     render() {
         return (
-            <form className="test-mailing">
-                <h1>Let's see if it works</h1>
+            <form className="test-mailing" style={{display : 'none'}}>
                 <div>
                     <textarea
                         id="test-mailing"
@@ -62,6 +61,6 @@ export default class extends React.Component {
             console.log('Email successfully sent!')
         })
             // Handle errors here however you like, or use a React error boundary
-            .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
+            .catch(err => console.error('Oh no, Here some thoughts on the error:', err))
     }
 }

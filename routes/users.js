@@ -59,26 +59,6 @@ router.post('/', [
     }
 });
 
-//@route    get api/users/
-//@desc     Get user by token
-//@access   Private
-// router.get('/', auth, async (req, res) => {
-//     const { name, email, password, vkey, isVerified } = req.body;
-//     const userFeilds = {}
-//     // if (name) userFeilds.name = name;
-//     // if (email) userFeilds.email = email;
-//     // if (password) userFeilds.password = password;
-//     if (vkey) userFeilds.vkey = vkey;
-
-//     const users = await User.findOne({ vkey: userFeilds.vkey }, function (err, obj) { console.log(obj); });
-//     console.log(users)
-//     if (err) {
-//         res.send('something went wrong')
-//     };
-//     res.json(users);
-// })
-
-
 //@route    PUT api/users/:id
 //@desc     Update user
 //@access   Public
@@ -86,33 +66,16 @@ router.put('/', auth, async (req, res) => {
     const { name, email, password, vkey, isVerified } = req.body;
     //Build a user object
     const userFeilds = {}
-    // if (name) userFeilds.name = name;
-    // if (email) userFeilds.email = email;
-    // if (password) userFeilds.password = password;
+
     if (vkey) userFeilds.vkey = vkey;
-    // if (isVerified) userFeilds.isVerified = true;
     const filter = { vkey: userFeilds.vkey };
     try {
-        // let user = await User.findById(req.params.id);
-        // if (!user) return res.status(404).json({ msge: 'User not found' });
-        // //make sure user own website
-        // if (user.id !== req.params.id) {
-        //     console.log(user.vkey)
-        //     console.log(req.params.id)
-        //     return res.status(401).json({ msg: 'Not authorized' });
-        // }
             user = await User.findOneAndUpdate(
             filter,
             { $set: { isVerified: true } },
             { new: false }
         );
         res.json(userFeilds);
-        // user = await User.findByIdAndUpdate(
-        //     req.params.id,
-        //     { $set: userFeilds },
-        //     { new: false }
-        // );
-        // res.json(userFeilds);
     }
     catch (err) {
         console.error(err);
@@ -120,23 +83,5 @@ router.put('/', auth, async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
-//@route    GET api/users/getAllUsers
-//@desc     Get list of all users
-//@access   Private
-// router.get('/userlist', auth,  async (req, res) => {
 
-//     if(req.user.isAdmin === true){
-//         usersList = {};
-//         const users = await User.find({}, (err, users) => {
-//             if (err) {
-//                 res.send('something went wrong')
-//             };
-
-//             res.json(users);
-
-//         })
-
-
-//     }
-// })
 module.exports = router;

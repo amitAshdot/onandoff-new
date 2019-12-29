@@ -9,7 +9,6 @@ import Home from "./components/pages/Home";
 import AddWebsite from "./components/pages/AddWebsite";
 import AddTimerplus from "./components/pages/AddTimerplus";
 import About from "./components/pages/About";
-import Admin from "./components/pages/Admin";
 import Verify from "./components/pages/Verify";
 
 // import EditWeb from "./components/pages/EditWeb";
@@ -49,7 +48,6 @@ const App = () => {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/addwebsite' component={AddWebsite} />
                 <Route exact path='/addtimerplus' component={AddTimerplus} />
-                <PrivateRoutes exact path='/admin' component={Admin} />
                 {/* <PrivateRoutes exact path='/' component={Home} /> */}
                 {/* <PrivateRoutes exact path='/addwebsite' component={AddWebsite} /> */}
                 {/* <PrivateRoutes exact path='/edit-web' component={EditWeb} /> */}

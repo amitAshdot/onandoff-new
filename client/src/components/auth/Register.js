@@ -3,6 +3,7 @@ import AuthContext from '../../context/auth/AuthContext';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+//TODO : make this component more react oriented
 const Register = (props) => {
     const authContext = useContext(AuthContext);
     const { register, error, isAuthenticated } = authContext;

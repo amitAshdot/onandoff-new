@@ -7,7 +7,7 @@ import {
     LOGIN_FAIL,
     LOG_OUT,
     CLEAR_ERROR,
-    IS_ADMIN,
+    // IS_ADMIN,
     GET_USERS,
     VERIFY_USER,
 } from '../type';
@@ -30,11 +30,11 @@ export default (state, action) => {
                 ...action.payload,
                 isVerified:true
             }
-        case IS_ADMIN:
-            return {
-                ...state,
-                isAdmin: true
-            }
+        // case IS_ADMIN:
+        //     return {
+        //         ...state,
+        //         isAdmin: true
+        //     }
         case REGISTER_SUCCESS:
         case LOGIN_SUCCESS:
             localStorage.setItem('token', action.payload.token)

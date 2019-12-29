@@ -23,52 +23,21 @@ const Home = () => {
     //user effect for edit form , current is the corrent landingPage
     useEffect(() => {
         if (current != null) clearCurrent(); 
-        //if current is empty, set the inputs (state) back to default
-        else {
-            setWebsite({
-                timeSchedule: {
-                    Sunday: { openHour: '', closeHour: '' },
-                    Monday: { openHour: '', closeHour: '' },
-                    Tuesday: { openHour: '', closeHour: '' },
-                    Wednesday: { openHour: '', closeHour: '' },
-                    Thursday: { openHour: '', closeHour: '' },
-                    Friday: { openHour: '', closeHour: '' },
-                    Saturday: { openHour: '', closeHour: '' }
-                },
-                name: '',
-                url: '',
-                divId: '',
-            })
-        }
         if(currentTimerPlus != null) clearCurrentTimerPlus(); 
-        else{
-            setCurrentTimerPlus({
-                wysiwyg: '',
-                timeSchedule: {
-                    Sunday: { openHour: '', closeHour: '' },
-                    Monday: { openHour: '', closeHour: '', },
-                    Tuesday: { openHour: '', closeHour: '' },
-                    Wednesday: { openHour: '', closeHour: '' },
-                    Thursday: { openHour: '', closeHour: '' },
-                    Friday: { openHour: '', closeHour: '' },
-                    Saturday: { openHour: '', closeHour: '' }
-                },
-                name: '',
-                url: '',
-                divId: '',
-            })
-        }
+        authContext.loadUser();
+        getWebsites();
+        getTimersPlus();
      //eslint-disable-next-line
-    }, [websiteContext, current, clearCurrent]);
+    }, []);
     const [website, setWebsite] = useState({
         timeSchedule: {
-            Sunday: { openHour: '', closeHour: '' },
-            Monday: { openHour: '', closeHour: '', },
-            Tuesday: { openHour: '', closeHour: '' },
-            Wednesday: { openHour: '', closeHour: '' },
-            Thursday: { openHour: '', closeHour: '' },
-            Friday: { openHour: '', closeHour: '' },
-            Saturday: { openHour: '', closeHour: '' }
+            Sunday: { openHour: '00:00', closeHour: '00:00' },
+            Monday: { openHour: '00:00', closeHour: '00:00', },
+            Tuesday: { openHour: '00:00', closeHour: '00:00' },
+            Wednesday: { openHour: '00:00', closeHour: '00:00' },
+            Thursday: { openHour: '00:00', closeHour: '00:00' },
+            Friday: { openHour: '00:00', closeHour: '00:00' },
+            Saturday: { openHour: '00:00', closeHour: '00:00' }
         },
         name: '',
         url: '',
@@ -77,39 +46,24 @@ const Home = () => {
     const [timerPlus, setTimersPlus] = useState({
         wysiwyg: '',
         timeSchedule: {
-            Sunday: { openHour: '', closeHour: '' },
-            Monday: { openHour: '', closeHour: '', },
-            Tuesday: { openHour: '', closeHour: '' },
-            Wednesday: { openHour: '', closeHour: '' },
-            Thursday: { openHour: '', closeHour: '' },
-            Friday: { openHour: '', closeHour: '' },
-            Saturday: { openHour: '', closeHour: '' }
+            Sunday: { openHour: '00:00', closeHour: '00:00' },
+            Monday: { openHour: '00:00', closeHour: '00:00', },
+            Tuesday: { openHour: '00:00', closeHour: '00:00' },
+            Wednesday: { openHour: '00:00', closeHour: '00:00' },
+            Thursday: { openHour: '00:00', closeHour: '00:00' },
+            Friday: { openHour: '00:00', closeHour: '00:00' },
+            Saturday: { openHour: '00:00', closeHour: '00:00' }
         },
         name: '',
         url: '',
         divId: '',
     });
-
-    useEffect(() => {
-        authContext.loadUser();
-        //eslint-disable-next-line
-    }, []);
-    useEffect(() => {
-        getWebsites();
-        //eslint-disable-next-line
-    }, []);
-    useEffect(() => {
-        getTimersPlus();
-        //eslint-disable-next-line
-    }, []);
-
     let websiteList = (websites.map(website => {
         if (website.isShow === 'true') return <WebsiteItem key={website._id} website={website} />
         return null;
     })
     );
     let timersPlusList = (timersPlus.map(timerPlus => {
-        debugger
         if (timerPlus.isShow === 'true') return <TimerPlusItem key={timerPlus._id} timerPlus={timerPlus} />
         return null;
     })
@@ -124,7 +78,6 @@ const Home = () => {
             <div className="hp-main">
                 <div className="hp-info">
                     <h2>מציגים למשתמש רק את מה שרלוונטי!</h2>
-
                     <p> 
                         עם on and off תוכלו לנהל בפשטות ובקלות את השעות שבהם מוצגים כפתורים, מספרי טלפון וכל רכיב אחר שתבחרו
                     </p>
@@ -146,7 +99,6 @@ const Home = () => {
             <SendEmail user={user} />
         </Fragment>
     )
-    debugger
     const verifyAndAuth = (
         <Fragment>
             <h1>שלום {user && user.name}</h1>

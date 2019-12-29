@@ -10,28 +10,10 @@ const WebsiteForm = () => {
 
     //user effect for edit form , current is the corrent landingPage
     useEffect(() => {
-        if (current != null) {
+        if (current != null) 
             setWebsite(current);
-        }
-        //if current is empty, set the inputs (state) back to default
-        else {
-            setWebsite({
-                timeSchedule: {
-                    Sunday: { openHour: '00:00', closeHour: '00:00' },
-                    Monday: { openHour: '00:00', closeHour: '00:00', },
-                    Tuesday: { openHour: '00:00', closeHour: '00:00' },
-                    Wednesday: { openHour: '00:00', closeHour: '00:00' },
-                    Thursday: { openHour: '00:00', closeHour: '00:00' },
-                    Friday: { openHour: '00:00', closeHour: '00:00' },
-                    Saturday: { openHour: '00:00', closeHour: '00:00' }
-                },
-                name: '',
-                url: '',
-                divId: '',
-            })
-        }
         //eslint-disable-next-line
-    }, [websiteContext, current]);
+    }, []);
 
     const [website, setWebsite] = useState({
         timeSchedule: {
@@ -46,9 +28,10 @@ const WebsiteForm = () => {
         name: '',
         url: '',
         divId: '',
+        saveAlert:false
     });
 
-    const { timeSchedule, name, url, divId } = website
+    const { timeSchedule, name, url, divId,saveAlert } = website
 
     //change input state
     const onChange = e => { setWebsite({ ...website, [e.target.name]: e.target.value }); }
@@ -69,26 +52,19 @@ const WebsiteForm = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        debugger
         if (!(website.divId === '')) {
             current._id ? updateWebsite(website) : addWebsite(website);
             // function from websiteContext
             setCurrent(website);
             saved();
-            console.log(current.divId)
-
         }
-        else {
+        else 
             saved();
-        }
-
     };
-    const [save, setSave] = useState(false);
-
-    const saved = () => {
-        setSave(true)
+    const saved = () => {//UI notificiation function
+        setWebsite({...website , saveAlert : true})
         setTimeout(() => {
-            setSave(false)
+            setWebsite({...website , saveAlert : false})
         }, 2000)
     }
     return (
@@ -151,7 +127,7 @@ const WebsiteForm = () => {
 
             {current.name === '' ? null : <LinkComp id={current._id} current={current} function={'onAndOffFunction'} />}
 
-            {save && website.divId ? <SavedAlert text="ההגדרות נשמרו" /> : save && !website.divId ? <SavedAlert text="אנא אכנס שם של אלמנט" /> : null}
+            {saveAlert && website.divId ? <SavedAlert text="ההגדרות נשמרו" /> : saveAlert && !website.divId ? <SavedAlert text="אנא אכנס שם של אלמנט" /> : null}
         </form>
     );
 };
