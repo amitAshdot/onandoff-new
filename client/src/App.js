@@ -15,9 +15,10 @@ import Verify from "./components/pages/Verify";
 //auth components
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+
 //Redirect components
-import PrivateRoutes from './components/routing/PrivateRoute';
-// import Current from './components/routing/Current';
+// import PrivateRoutes from './components/routing/PrivateRoute';
+
 //Auth token
 import setAuthToken from './utils/setAuthToken';
 //context components
@@ -32,9 +33,6 @@ if (localStorage.token) {
 
 
 const App = () => {
-  // const href = window.location.href
-  // const isUserWebsite = href.indexOf('?');
-  // const websiteid = href.substring(href.indexOf("?") + 1);
   return (
     <AuthState>
       <WebsiteState>
@@ -48,9 +46,6 @@ const App = () => {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/addwebsite' component={AddWebsite} />
                 <Route exact path='/addtimerplus' component={AddTimerplus} />
-                {/* <PrivateRoutes exact path='/' component={Home} /> */}
-                {/* <PrivateRoutes exact path='/addwebsite' component={AddWebsite} /> */}
-                {/* <PrivateRoutes exact path='/edit-web' component={EditWeb} /> */}
                 <Route exact path='/about' component={About} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
