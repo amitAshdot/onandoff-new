@@ -123,10 +123,10 @@ h1.logotxt {
 
 }
 /* navbar links */
-a:link { color: #ffff; text-decoration: none;cursor: pointer;}
-a:visited { color: #ffff; text-decoration: none;  cursor: pointer;}
+a:link { color: #ffff; text-decoration: none;cursor: pointer;display: inline-block;}
+a:visited { color: #ffff; text-decoration: none;  cursor: pointer;display: inline-block;}
 /* a:hover { color: #ffff; text-decoration: none;border-bottom: 1px solid white;  cursor: pointer;} */
-a:active { color: #ffff; text-decoration: none;  cursor: pointer;}
+a:active { color: #ffff; text-decoration: none;  cursor: pointer;    display: inline-block;}
 a#logo:hover {border: none;}
 a:link::after {
   display: block;
