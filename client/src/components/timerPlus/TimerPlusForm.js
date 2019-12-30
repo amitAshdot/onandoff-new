@@ -57,7 +57,6 @@ const TimerPlusForm = () => {
     const handleEditorChange = (content) => {
         setTimerPlus({ ...timerPlus, wysiwyg: content });
     }
-
     const onSubmit = e => {
         e.preventDefault();
 
@@ -123,6 +122,7 @@ const TimerPlusForm = () => {
                     onEditorChange={handleEditorChange}
                 />
             </div>
+
             {saveAlert && timerPlus.divId ? <SavedAlert text="ההגדרות נשמרו" /> : saveAlert && !timerPlus.divId ? <SavedAlert text="אנא אכנס שם של אלמנט" /> : null}
 
             <div className="time">
