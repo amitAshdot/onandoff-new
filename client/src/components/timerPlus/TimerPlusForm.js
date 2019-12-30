@@ -3,8 +3,6 @@ import TimerPlusContext from '../../context/timerPlus/TimerPlusContext';
 // import { Link } from 'react-router-dom';
 import LinkComp from '../layouts/LinkComp';
 import SavedAlert from '../layouts/SavedAlert';
-import SunEditor from 'suneditor-react';
-import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
 
 import { Editor } from '@tinymce/tinymce-react';
 
