@@ -257,7 +257,7 @@ button.hp-button.register:hover {
 button#deleteBtn:hover {color: #F44336;border-bottom: none;  cursor: pointer;  outline: none;}
 button#deleteBtn {color: red;  cursor: pointer;  outline: none;text-align: center;}
 .websiteItem:hover .websiteBtn{color:#55a658;  outline: none;}
-
+.websiteBtn::after{display: none}
 /* --- delete form---  */
 .deleteForm {
   color: white;
@@ -269,6 +269,11 @@ button.deletebto {background-color: red;margin: 10px;    border-radius: 5px;}
 button.deletebto:hover {background-color: #ff000099;}
 button.rejrect {margin: 10px;    border-radius: 5px;}
 button.rejrect:hover {background-color: #55a6587a;}
+
+/* --- edit form Item --- */
+a.editItem::after {
+  display: none;
+}
 /* --- login ui---  */
 .websiteItem { 
   background-color: transparent;
@@ -278,6 +283,7 @@ button.rejrect:hover {background-color: #55a6587a;}
   border: 1px solid #00000030;
   justify-content: space-between;
 }
+
 .aw-website-details {
   text-align: right;
   padding: 10px 20px;
@@ -421,11 +427,11 @@ p.code-info {margin-bottom: 0;}
   cursor: pointer !important;
 }
   /* ------------- login ------------- */
-.formContainer a:visited {color: #55a658;text-decoration: none;  cursor: pointer;}
-.formContainer a:link { color: #55a658; text-decoration: none;  cursor: pointer;}
-.formContainer a:hover { color: #55a658; text-decoration: none;border-bottom: 1px solid white;  cursor: pointer;}
-.formContainera:active { color: #55a658; text-decoration: none;  cursor: pointer;}
-
+.formContainer a:visited {color: #55a658;text-decoration: none; cursor: pointer;}
+.formContainer a:link { color: #55a658; text-decoration: none; cursor: pointer;}
+.formContainer a:hover { color: #55a658; text-decoration: none; border-bottom: 1px solid white;  cursor: pointer;}
+.formContainera:active { color: #55a658; text-decoration: none; cursor: pointer;}
+.formContainer a::after{display: none}
 .formContainer label {
   display: block;
   text-align: right;

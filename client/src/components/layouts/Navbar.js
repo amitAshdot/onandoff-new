@@ -14,21 +14,21 @@ const Navbar = (props) => {
         <Fragment>
             <div className="right">
                 <li >
-                    <Link to='/' >עמוד הבית</Link>
+                    <Link to='/' className="headerLink">עמוד הבית</Link>
                 </li>
                 <li >
-                    <Link to='/about' >אודות</Link>
+                    <Link to='/about' className="headerLink">אודות</Link>
                 </li>
                 <li >
-                    <Link to='/how-it-works' >איך זה עובד</Link>
+                    <Link to='/how-it-works' className="headerLink">איך זה עובד</Link>
                 </li>
             </div>
             <div className="left">
                 <li >
-                    <Link to='/login' >התחבר</Link>
+                    <Link to='/login' className="headerLink">התחבר</Link>
                 </li>
                 <li >
-                    <Link to='/register' >הירשם</Link>
+                    <Link to='/register' className="headerLink">הירשם</Link>
                 </li>
             </div>
 
@@ -40,14 +40,14 @@ const Navbar = (props) => {
             <Fragment>
                 <div className="right">
                     <li>
-                        <Link to='/' >הטיימרים שלי</Link>
+                        <Link to='/' className="headerLink">הטיימרים שלי</Link>
                     </li>
                     {/* {user.isAdmin ? <li><Link to='/admin' >עמוד אדמין</Link></li> : null} */}
                     <li>
-                        <Link to='/about' >אודות</Link>
+                        <Link to='/about' className="headerLink">אודות</Link>
                     </li>
                     <li >
-                        <Link to='/how-it-works' >איך זה עובד</Link>
+                        <Link to='/how-it-works' className="headerLink">איך זה עובד</Link>
                     </li>
                 </div>
                 <div className="left">

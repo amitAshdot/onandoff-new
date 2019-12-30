@@ -29,7 +29,7 @@ const TimerPlusItem = ({ timerPlus }) => {
                 <p id="website-info"><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
                 <p id="formType">טיימר+</p>
                 <p><i className="fa fa-globe" />{url}</p>
-                <Link to='/addtimerplus'> <button className="websiteBtn" id="editBtn" onClick={() => setCurrentTimerPlus(timerPlus)}>ערוך</button></Link>
+                <Link to='/addtimerplus' className="editItem"> <button className="websiteBtn" id="editBtn" onClick={() => setCurrentTimerPlus(timerPlus)}>ערוך</button></Link>
             </div>
             <div className="aw-website-btn">
                 <button className="websiteBtn" id="deleteBtn" onClick={() => setflag(true)}>מחק</button>

@@ -29,7 +29,7 @@ const WebsiteItem = ({ website }) => {
                 <p id="website-info"><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
                 <p id="formType">הסתרה</p>
                 <p><i className="fa fa-globe" />{url}</p>
-                <Link to='/addwebsite'> <button className="websiteBtn" id="editBtn" onClick={() => setCurrent(website)}>  ערוך </button></Link>
+                <Link to='/addwebsite' className="editItem"> <button className="websiteBtn" id="editBtn" onClick={() => setCurrent(website)}>  ערוך </button></Link>
             </div>
             <div className="aw-website-btn">
                 <button className="websiteBtn" id="deleteBtn" onClick={() => setflag(true)}>מחק</button>
