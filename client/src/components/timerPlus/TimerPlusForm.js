@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import TimerPlusContext from '../../context/timerPlus/TimerPlusContext';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import LinkComp from '../layouts/LinkComp';
 import SavedAlert from '../layouts/SavedAlert';
 
 const TimerPlusForm = () => {
     const timerPlusContext = useContext(TimerPlusContext);
-    const { addTimerPlus, updateTimerPlus, clearCurrentTimerPlus, currentTimerPlus, setCurrentTimerPlus } = timerPlusContext;
+    const { addTimerPlus, updateTimerPlus, currentTimerPlus, setCurrentTimerPlus } = timerPlusContext;
 
     //user effect for edit form , currentTimerPlus is the corrent landingPage
     useEffect(() => {

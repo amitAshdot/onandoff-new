@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import WebsiteContext from '../../context/website/WebsiteContext';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import LinkComp from '../layouts/LinkComp';
 import SavedAlert from '../layouts/SavedAlert';
 
 const WebsiteForm = () => {
     const websiteContext = useContext(WebsiteContext);
-    const { addWebsite, updateWebsite, clearCurrent, current, setCurrent } = websiteContext;
+    const { addWebsite, updateWebsite, current, setCurrent } = websiteContext;
 
     //user effect for edit form , current is the corrent landingPage
     useEffect(() => {

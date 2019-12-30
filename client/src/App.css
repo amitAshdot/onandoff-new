@@ -100,9 +100,10 @@ h1.logotxt {
   color: white;
   display: inline-block;
   float: right;
-  width: 20vw;
+  width: auto;
+  min-width: 150px;
   padding: 0;
-  margin: 2vh 0;
+  margin: 2vh 0 2vh 7vw;
   font-size: 3ex;
 }
 /* navbar ul */
@@ -124,9 +125,17 @@ h1.logotxt {
 /* navbar links */
 a:link { color: #ffff; text-decoration: none;cursor: pointer;}
 a:visited { color: #ffff; text-decoration: none;  cursor: pointer;}
-a:hover { color: #ffff; text-decoration: none;border-bottom: 1px solid white;  cursor: pointer;}
+/* a:hover { color: #ffff; text-decoration: none;border-bottom: 1px solid white;  cursor: pointer;} */
 a:active { color: #ffff; text-decoration: none;  cursor: pointer;}
 a#logo:hover {border: none;}
+a:link::after {
+  display: block;
+  content: '';
+  border-bottom: solid 1px white;
+  transform: scaleX(0);
+  transition: transform 150ms ease-in-out;
+}
+a:link:hover::after { transform: scaleX(1); }
 /* --- sidebar --- */
 li.sideBarItem {
   display: block;
@@ -454,12 +463,14 @@ p#emailErr {
 /* ----- navbar ----- */
   h1.logotxt {
     color: white;
-    display: inline-block;
+    display: block;
     float: right;
-    width: 20vw;
+    width: 10vw;
     padding: 0;
-    margin: 2vh 0;
+    margin: 4vh 0;
     font-size: 2ex;
+    min-width: 90px;
+    max-width: 100px;
 }
 .right {
   max-width: 130px;
