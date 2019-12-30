@@ -42,7 +42,7 @@ export default (state, action) => {
                 ...state,
                 ...action.payload,
                 isAuthenticated: true,
-                loading: false
+                loading: true
             }
 
         case REGISTER_FAIL:

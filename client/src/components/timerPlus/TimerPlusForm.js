@@ -10,7 +10,7 @@ const TimerPlusForm = () => {
 
     //user effect for edit form , currentTimerPlus is the corrent landingPage
     useEffect(() => {
-        if (currentTimerPlus != null) 
+        if (currentTimerPlus != null)
             setTimerPlus(currentTimerPlus);
         //eslint-disable-next-line
     }, []);
@@ -29,10 +29,10 @@ const TimerPlusForm = () => {
         name: '',
         url: '',
         divId: '',
-        saveAlert:false //for UI notification alert
+        saveAlert: false //for UI notification alert
     });
 
-    const { timeSchedule, wysiwyg, name, url, divId , saveAlert} = timerPlus
+    const { timeSchedule, wysiwyg, name, url, divId, saveAlert } = timerPlus
 
     //change input state
     const onChange = e => { setTimerPlus({ ...timerPlus, [e.target.name]: e.target.value }); }
@@ -63,21 +63,38 @@ const TimerPlusForm = () => {
         }
     };
     const saved = () => {//UI notificiation function
-        setTimerPlus({...timerPlus , saveAlert : true})
+        setTimerPlus({ ...timerPlus, saveAlert: true })
         setTimeout(() => {
-            setTimerPlus({...timerPlus , saveAlert : false})
+            setTimerPlus({ ...timerPlus, saveAlert: false })
         }, 2000)
     }
     return (
         <form onSubmit={onSubmit}>
             {currentTimerPlus._id ? <h2>  ערוך עמוד נחיתה: {name}</h2> : <h2>הוסף עמוד נחיתה</h2>}
-            <div className="info">
-                <p>עם טיימר+ תוכלו לשנות תוכן, להעלים ובעצם לבצע כל שינוי שתחשקו בקלות וביעילות</p>
-                <input type="text" className="websit-form-input" placeholder="שם" name='name' value={name} onChange={onChange} />
-                <input type="text" className="websit-form-input" placeholder="דומיין העמוד" name='url' value={url} onChange={onChange} />
-                <input type="text" className="websit-form-input" placeholder="שם או id של המקטע" name='divId' value={divId} onChange={onChange} />
+            <div className="text-on-page">
+                <p>עם טיימר+ תוכלו לעדכן,לשנות ולהסתיר תוכן בקלות וביעילות ללא ידע בקוד. בחרו ועצבו את הטקסט שתרצו שיופיע במקום הרכיב המוסתר ולאחר מכן בחרו את השעות בו תרצו להסתיר את הרכיב והופה – אתם באוויר! (לא לשכוח לשמור)
+</p>
             </div>
-            <p>wysiwyg editor</p>
+            <div className="info">
+                <div className="info-block">
+                    <p className="info-input">שם</p>
+                    <input type="text" className="websit-form-input" name='name' value={name} onChange={onChange} />
+                    <div className="input-border"></div>
+                </div>
+                <div className="info-block">
+                    <p className="info-input">כתובת URL</p>
+                    <input type="text" className="websit-form-input"  name='url' value={url} onChange={onChange} />
+                    <div className="input-border"></div>
+                </div>
+
+                <div className="info-block">
+                    <p className="info-input">מזהה ID או Class של הרכיב המוסתר</p>
+                    <input type="text" className="websit-form-input" name='divId' value={divId} onChange={onChange} id="divID" />
+                    <div className="input-border"></div>
+
+                </div>
+            </div>
+            <p>עורך תוכן מתקדם</p>
             <div className="time" id="wysiwyg-editor">
                 <textarea
                     id="wysiwyg"
@@ -131,12 +148,12 @@ const TimerPlusForm = () => {
                     <input type="time" placeholder="Close Hour" name='Saturday' value={timeSchedule.Saturday.closeHour} onChange={handleChangeCloseHour} />
                 </div>
 
-                <div>
+                <div className="day" id="day-button">
                     {currentTimerPlus._id ? <input type="submit" value="שמור" /> : <input type="submit" value="הוסף" />}
                 </div>
-                <div>
+                {/* <div>
                     <Link to="/" onClick={() => clearCurrentTimerPlus}><button className="add-website-page-btn">חזור</button></Link>
-                </div>
+                </div> */}
             </div>
             {currentTimerPlus.name === '' ? null : <LinkComp id={currentTimerPlus._id} current={currentTimerPlus} function={'timerPlus'} />}
 

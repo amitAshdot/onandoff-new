@@ -22,7 +22,7 @@ const AuthState = props => {
         isVerified: null,
         userEmail: null,
         user: null,
-        loading: true,
+        loading: false,
         error: null,
         users: []
     };
@@ -57,7 +57,9 @@ const AuthState = props => {
                 type: REGISTER_SUCCESS,
                 payload: res.data
             });
-            loadUser();
+            setTimeout(() => {
+                loadUser();
+            }, 1000)
         } catch (err) {
             dispatch({
                 type: REGISTER_FAIL,
@@ -67,7 +69,6 @@ const AuthState = props => {
     }
     //Login User
     const login = async (formData) => {
-
         const config = {
             headers: {
                 'Content-Type': 'application/json'
@@ -79,8 +80,10 @@ const AuthState = props => {
             dispatch({
                 type: LOGIN_SUCCESS,
                 payload: res.data
-            });
-            loadUser();
+            }); //loading = true
+            setTimeout(() => {
+                loadUser();// loading = false
+            }, 2000)
         } catch (err) {
             dispatch({
                 type: LOGIN_FAIL,
@@ -114,7 +117,7 @@ const AuthState = props => {
     }
     //Clear errors
     const clearErr = useCallback(() => dispatch({ type: CLEAR_ERROR }), []);
-    
+
     return (
         <AuthContext.Provider
             value={{

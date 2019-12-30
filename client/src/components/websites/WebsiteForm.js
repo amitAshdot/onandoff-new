@@ -10,7 +10,7 @@ const WebsiteForm = () => {
 
     //user effect for edit form , current is the corrent landingPage
     useEffect(() => {
-        if (current != null) 
+        if (current != null)
             setWebsite(current);
         //eslint-disable-next-line
     }, []);
@@ -28,10 +28,10 @@ const WebsiteForm = () => {
         name: '',
         url: '',
         divId: '',
-        saveAlert:false
+        saveAlert: false
     });
 
-    const { timeSchedule, name, url, divId,saveAlert } = website
+    const { timeSchedule, name, url, divId, saveAlert } = website
 
     //change input state
     const onChange = e => { setWebsite({ ...website, [e.target.name]: e.target.value }); }
@@ -58,22 +58,35 @@ const WebsiteForm = () => {
             setCurrent(website);
             saved();
         }
-        else 
+        else
             saved();
     };
     const saved = () => {//UI notificiation function
-        setWebsite({...website , saveAlert : true})
+        setWebsite({ ...website, saveAlert: true })
         setTimeout(() => {
-            setWebsite({...website , saveAlert : false})
+            setWebsite({ ...website, saveAlert: false })
         }, 2000)
     }
     return (
         <form onSubmit={onSubmit}>
             {current._id ? <h2>  ערוך עמוד נחיתה: {name}</h2> : <h2>הוסף עמוד נחיתה</h2>}
             <div className="info">
-                <input type="text" className="websit-form-input" placeholder="שם" name='name' value={name} onChange={onChange} />
-                <input type="text" className="websit-form-input" placeholder="דומיין העמוד" name='url' value={url} onChange={onChange} />
-                <input type="text" className="websit-form-input" placeholder="שם או id של המקטע" name='divId' value={divId} onChange={onChange} id="divID" />
+                <div className="info-block">
+                    <p className="info-input">שם</p>
+                    <input type="text" className="websit-form-input" name='name' value={name} onChange={onChange} />
+                    <div className="input-border"></div>
+                </div>
+                <div className="info-block">
+                    <p className="info-input">url</p>
+                    <input type="text" className="websit-form-input"  name='url' value={url} onChange={onChange} />
+                    <div className="input-border"></div>
+                </div>
+
+                <div className="info-block">
+                    <p className="info-input">שם של המקטה (id/class)</p>
+                    <input type="text" className="websit-form-input"  name='divId' value={divId} onChange={onChange} id="divID" />
+                    <div className="input-border"></div>
+                </div>
             </div>
             <div className="time">
                 <div className="day-lable-d">
@@ -115,12 +128,12 @@ const WebsiteForm = () => {
                     <input type="time" placeholder="Open Hour" name='Saturday' value={timeSchedule.Saturday.openHour} onChange={handleChangeOpemHour} />
                     <input type="time" placeholder="Close Hour" name='Saturday' value={timeSchedule.Saturday.closeHour} onChange={handleChangeCloseHour} />
                 </div>
-                <div>
+                <div className="day" id="day-button">
                     {current._id ? <input type="submit" value="שמור" /> : <input type="submit" value="הוסף" />}
                 </div>
-                <div>
+                {/* <div>
                     <Link to="/" onClick={() => clearCurrent}><button className="add-website-page-btn">חזור</button></Link>
-                </div>
+                </div> */}
             </div>
 
 

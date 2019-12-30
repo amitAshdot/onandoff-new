@@ -12,22 +12,23 @@ import SendEmail from '../../action/sendMail'
 
 const Home = () => {
     const authContext = useContext(AuthContext);
-    const { isAuthenticated, user, isVerified } = authContext;
+    const { isAuthenticated, user, isVerified, loading } = authContext;
 
     const websiteContext = useContext(WebsiteContext);
     const { websites, getWebsites, setCurrent, clearCurrent, current } = websiteContext;
 
     const timerPlusContext = useContext(TimerPlusContext);
-    const { timersPlus, getTimersPlus, setCurrentTimerPlus, currentTimerPlus, clearCurrentTimerPlus} = timerPlusContext;
-  
+    const { timersPlus, getTimersPlus, setCurrentTimerPlus, currentTimerPlus, clearCurrentTimerPlus } = timerPlusContext;
+
     //user effect for edit form , current is the corrent landingPage
     useEffect(() => {
-        if (current != null) clearCurrent(); 
-        if(currentTimerPlus != null) clearCurrentTimerPlus(); 
+
+        if (current != null) clearCurrent();
+        if (currentTimerPlus != null) clearCurrentTimerPlus();
         authContext.loadUser();
         getWebsites();
         getTimersPlus();
-     //eslint-disable-next-line
+        //eslint-disable-next-line
     }, []);
     const [website, setWebsite] = useState({
         timeSchedule: {
@@ -68,7 +69,7 @@ const Home = () => {
         return null;
     })
     );
-    
+
     const onSubmit = e => {
         e.preventDefault();
         setCurrent();
@@ -78,11 +79,11 @@ const Home = () => {
             <div className="hp-main">
                 <div className="hp-info">
                     <h2>מציגים למשתמש רק את מה שרלוונטי!</h2>
-                    <p> 
-                        עם on and off תוכלו לנהל בפשטות ובקלות את השעות שבהם מוצגים כפתורים, מספרי טלפון וכל רכיב אחר שתבחרו
+                    <p>
+                        עם on and off תוכלו לנהל בפשטות ובקלות את השעות בהם מוצגים כפתורים, מספרי טלפון וכל רכיב אחר שתבחרו
                     </p>
                     <Link to='/login'><button className="hp-button">התחבר</button></Link>
-                    <p className="full-width">עוד אין לך חדשבון?!</p>
+                    <p className="full-width">עוד אין לך חשבון?!</p>
                     <Link to='/register'><button className="hp-button register" >הירשם</button></Link>
                 </div>
             </div>
@@ -117,7 +118,11 @@ const Home = () => {
     )
     return (
         <div>
-            {isAuthenticated && isVerified ? verifyAndAuth : (user && !user.isVerified) ? notVerify : isVerified ? verifyAndAuth : notLogin}
+            {!loading ?
+                 isAuthenticated && isVerified ? verifyAndAuth : (user && !user.isVerified) ? notVerify : isVerified ? verifyAndAuth : notLogin
+            :
+            'loading...'
+                    }
         </div >
     )
 }

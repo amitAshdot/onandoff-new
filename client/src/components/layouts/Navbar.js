@@ -52,7 +52,7 @@ const Navbar = (props) => {
                 </div>
                 <div className="left">
                     <li>
-                        <a onClick={onLogout} href="/">
+                        <a onClick={() => onLogout()} href="/">
                             <i ></i><span className='hide-sm'>התנתק</span>
                         </a>
                     </li>

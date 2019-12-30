@@ -18,10 +18,10 @@ const AddWebsite = () => {
                 <div className="hp-info">
                     <h2>מציגים למשתמש רק את מה שרלוונטי!</h2>
                     <p>
-                        עם on and off תוכלו לנהל בפשטות ובקלות את השעות שבהם מוצגים כפתורים, מספרי טלפון וכל רכיב אחר שתבחרו
+                        עם on and off תוכלו לנהל בפשטות ובקלות את השעות בהם מוצגים כפתורים, מספרי טלפון וכל רכיב אחר שתבחרו
                     </p>
                     <Link to='/login'><button className="hp-button">התחבר</button></Link>
-                    <p className="full-width">עוד אין לך חדשבון?!</p>
+                    <p className="full-width">עוד אין לך חשבון?!</p>
                     <Link to='/register'><button className="hp-button register" >הירשם</button></Link> 
                 </div>
             </div>
