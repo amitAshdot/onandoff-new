@@ -3,6 +3,10 @@ import TimerPlusContext from '../../context/timerPlus/TimerPlusContext';
 // import { Link } from 'react-router-dom';
 import LinkComp from '../layouts/LinkComp';
 import SavedAlert from '../layouts/SavedAlert';
+import SunEditor from 'suneditor-react';
+import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
+
+import { Editor } from '@tinymce/tinymce-react';
 
 const TimerPlusForm = () => {
     const timerPlusContext = useContext(TimerPlusContext);
@@ -29,7 +33,8 @@ const TimerPlusForm = () => {
         name: '',
         url: '',
         divId: '',
-        saveAlert: false //for UI notification alert
+        saveAlert: false, //for UI notification alertת
+        loading: true
     });
 
     const { timeSchedule, wysiwyg, name, url, divId, saveAlert } = timerPlus
@@ -50,6 +55,11 @@ const TimerPlusForm = () => {
         statusCopy.timeSchedule[inputName].closeHour = inputValue;
         setTimerPlus(statusCopy);
     }
+    const handleWYSIWYG = (content) => { setTimerPlus({ ...timerPlus, wysiwyg: content }); }
+    const handleEditorChange = (content) => {
+        setTimerPlus({ ...timerPlus, wysiwyg: content });
+    }
+
     const onSubmit = e => {
         e.preventDefault();
 
@@ -68,6 +78,7 @@ const TimerPlusForm = () => {
             setTimerPlus({ ...timerPlus, saveAlert: false })
         }, 2000)
     }
+
     return (
         <form onSubmit={onSubmit}>
             {currentTimerPlus._id ? <h2>  ערוך עמוד נחיתה: {name}</h2> : <h2>הוסף עמוד נחיתה</h2>}
@@ -83,7 +94,7 @@ const TimerPlusForm = () => {
                 </div>
                 <div className="info-block">
                     <p className="info-input">כתובת URL</p>
-                    <input type="text" className="websit-form-input"  name='url' value={url} onChange={onChange} />
+                    <input type="text" className="websit-form-input" name='url' value={url} onChange={onChange} />
                     <div className="input-border"></div>
                 </div>
 
@@ -96,13 +107,22 @@ const TimerPlusForm = () => {
             </div>
             <p>עורך תוכן מתקדם</p>
             <div className="time" id="wysiwyg-editor">
-                <textarea
-                    id="wysiwyg"
-                    name="wysiwyg"
-                    onChange={onChange}
-                    placeholder="כתבו את הקוד כאן "
-                    value={wysiwyg}
-                    style={{ width: '100%', height: '150px' }}
+                <Editor apiKey='rr54zoicxkt3ah4i2h3xynyo16biuentcxqycps7ep8l9b0f'
+                    initialValue={wysiwyg}
+                    init={{
+                        height: 500,
+                        menubar: true,
+                        plugins: [
+                            'advlist autolink lists link image charmap print preview anchor',
+                            'searchreplace visualblocks code fullscreen',
+                            'insertdatetime media table paste code help wordcount'
+                        ],
+                        toolbar:
+                            'undo redo | formatselect | bold italic backcolor | \
+             alignleft aligncenter alignright alignjustify | \
+             bullist numlist outdent indent | removeformat | help'
+                    }}
+                    onEditorChange={handleEditorChange}
                 />
             </div>
             {saveAlert && timerPlus.divId ? <SavedAlert text="ההגדרות נשמרו" /> : saveAlert && !timerPlus.divId ? <SavedAlert text="אנא אכנס שם של אלמנט" /> : null}

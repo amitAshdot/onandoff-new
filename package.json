@@ -17,6 +17,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@tinymce/tinymce-react": "^3.3.2",
         "bcryptjs": "^2.4.3",
         "bower": "^1.8.8",
         "client": "file:client",
@@ -32,7 +33,8 @@
         "mongoose": "^5.7.11",
         "nodemailer": "^6.3.1",
         "react": "^16.12.0",
-        "react-copy-to-clipboard": "^5.0.2"
+        "react-copy-to-clipboard": "^5.0.2",
+        "suneditor-react": "^2.4.0"
     },
     "devDependencies": {
         "concurrently": "^5.0.0",
