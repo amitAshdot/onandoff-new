@@ -259,10 +259,15 @@ button#deleteBtn {color: red;  cursor: pointer;  outline: none;text-align: cente
 .websiteBtn::after{display: none}
 /* --- delete form---  */
 .deleteForm {
+  width: 30vw;
   color: white;
-  background-color: #4f4f4f;
+  background-color: #4f4f4fe3;
   padding: 10px;
-  outline: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 button.deletebto {background-color: red;margin: 10px;    border-radius: 5px;}
 button.deletebto:hover {background-color: #ff000099;}
@@ -524,15 +529,15 @@ input[type="submit"] {
   /* ------------- homepage ------------- */
   .websiteItem {width: 100%;}
 .deleteForm {
-  color: white;
-  background-color: #4f4f4f;
-  padding: 10px;
-  outline: none;
-  width: 90vw;
-  padding-top: 50px;
-  position: absolute;
-  height: 20vh;
-  right: 2.5%;
+width: 30vw;
+    color: white;
+    background-color: #4f4f4fe3;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 /* ------------- login ------------- */
 .forminput {

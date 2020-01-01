@@ -1,30 +1,21 @@
-import React, { Fragment, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 // import PropType from 'prop-Type'
 import WebsiteContext from '../../context/website/WebsiteContext'
+import {useSpring, animated} from 'react-spring'
+import DeleteAlert from '../layouts/DeleteAlert'
 
 const WebsiteItem = ({ website }) => {
     const websiteContext = useContext(WebsiteContext);
-    const { deleteWebsite, setCurrent, clearCurrent } = websiteContext
-    const { name, url, } = website;
+    const { setCurrent } = websiteContext
+    const { name, url} = website;
 
     const [deleteFlag, setflag] = useState(false);
 
-    const takeDowm = (website) => {
-        deleteWebsite(website);
-        clearCurrent();
-    }
-    const showDelte = (
-        <Fragment>
-            <div className="deleteForm">
-                <p>האם את/ה בטוח?</p>
-                <button className="deletebto" onClick={() => takeDowm(website)}>מחק</button>
-                <button className="rejrect" onClick={() => setflag(false)}>בטל</button>
-            </div>
-        </Fragment>
-    )
+    const fadeIn =useSpring({from:{opacity:0},to:{opacity:1}})
+    // const fadeOut =useSpring({from:{opacity:1},to:{opacity:0}})
     return (
-        <div className="websiteItem" id="websiteItem">
+        <animated.div className="websiteItem" id="websiteItem" style={fadeIn}>
             <div className="aw-website-details">
                 <p id="website-info"><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
                 <p id="formType">הסתרה</p>
@@ -33,10 +24,10 @@ const WebsiteItem = ({ website }) => {
             </div>
             <div className="aw-website-btn">
                 <button className="websiteBtn" id="deleteBtn" onClick={() => setflag(true)}>מחק</button>
-                {deleteFlag ? showDelte : null}
+                <DeleteAlert item={website} setflag={setflag} deleteFlag={deleteFlag}/> 
             </div>
 
-        </div>
+        </animated.div>
 
     )
 }

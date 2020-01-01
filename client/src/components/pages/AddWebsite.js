@@ -1,9 +1,10 @@
-import React, { Fragment,useContext } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react'
 import AuthContext from '../../context/auth/AuthContext'
 import WebsiteContext from '../../context/website/WebsiteContext'
 import WebsiteForm from '../websites/WebsiteForm'
 import Home from "./Home"
+import {useSpring, animated} from 'react-spring'
+import NotLogin from '../layouts/homePage/NotLogin'
 
 const AddWebsite = () => {
     const authContext = useContext(AuthContext);
@@ -12,25 +13,12 @@ const AddWebsite = () => {
     const websiteContext = useContext(WebsiteContext);
     const { current } = websiteContext;
 
-    const notLogin = (
-        <Fragment>
-            <div className="hp-main">
-                <div className="hp-info">
-                    <h2>מציגים למשתמש רק את מה שרלוונטי!</h2>
-                    <p>
-                        עם on and off תוכלו לנהל בפשטות ובקלות את השעות בהם מוצגים כפתורים, מספרי טלפון וכל רכיב אחר שתבחרו
-                    </p>
-                    <Link to='/login'><button className="hp-button">התחבר</button></Link>
-                    <p className="full-width">עוד אין לך חשבון?!</p>
-                    <Link to='/register'><button className="hp-button register" >הירשם</button></Link> 
-                </div>
-            </div>
-        </Fragment>
-    )
+    const fadeIn =useSpring({from:{opacity:0},to:{opacity:1}})
+
     return (
-        <div>
-            {isAuthenticated && current ? <WebsiteForm /> : isAuthenticated && !current? <Home/> :  notLogin}
-        </div>
+        <animated.div style={fadeIn}>
+            {isAuthenticated && current ? <WebsiteForm /> : isAuthenticated && !current? <Home/> :  <NotLogin/>}
+        </animated.div>
     )
 }
 export default AddWebsite
