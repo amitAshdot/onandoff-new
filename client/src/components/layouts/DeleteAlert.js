@@ -11,10 +11,9 @@ import TimerPlusContext from '../../context/timerPlus/TimerPlusContext';
     const { deleteTimerPlus, setCurrentTimerPlus, clearTimerPlus } = timerPlusContext
 
     const takeDowm = (website) => {
-        debugger
         props.item.wysiwyg===undefined?
-        deleteWebsite(website):
-        deleteTimerPlus(website);
+            deleteWebsite(website)
+                :deleteTimerPlus(website);
 
         clearCurrent();
     }
