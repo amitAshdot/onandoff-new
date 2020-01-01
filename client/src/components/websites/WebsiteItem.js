@@ -11,7 +11,7 @@ const WebsiteItem = ({ website }) => {
     const [deleteFlag, setflag] = useState(false);
 
     const takeDowm = (website) => {
-        deleteWebsite(website, 'false');
+        deleteWebsite(website);
         clearCurrent();
     }
     const showDelte = (

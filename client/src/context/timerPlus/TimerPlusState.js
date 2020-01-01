@@ -73,15 +73,15 @@ const TimerPlusState = props => {
     }
     //delete timersPlus
     const deleteTimerPlus = async (timerPlus) => {
+        timerPlus.isShow = false
+
         const config = {
             headers: {
                 'Content-Type': 'application/json'
             }
         }
         try {  
-            // let isShow = 'false'
-            console.log( axios.put(`/api/timersplus/${timerPlus._id}`, timerPlus , config))
-            const res = await axios.put(`/api/timersplus/${timerPlus._id}`, timerPlus.isShow='false' , config);
+            const res = await axios.put(`/api/timersplus/${timerPlus._id}`,timerPlus , config);
             dispatch({ type: DELETE_TIMER_PLUS, payload: res.data })
         } catch (err) {
             dispatch({

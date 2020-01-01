@@ -25,7 +25,8 @@ router.get('/',auth ,async (req, res) => {
 //@access   Private
 router.post('/',
     [auth,
-        [check('name', 'name is required')
+        [
+            check('name', 'name is required')
             .not()
             .isEmpty(),
         check('url', 'url is required')
@@ -74,8 +75,7 @@ router.put('/:id',auth, async(req, res) => {
     if(divId) websitesFeilds.divId = divId;
     if(date) websitesFeilds.date = date;
     if(timeSchedule) websitesFeilds.timeSchedule = timeSchedule;
-    if(isShow) websitesFeilds.isShow = isShow;
-
+    if(isShow!== null) websitesFeilds.isShow = isShow;
     try{
         let website = await Websites.findById(req.params.id);
         if(!website) return res.status(404).json({msge: 'Website not found'});
@@ -103,7 +103,7 @@ router.put('/:id',auth, async(req, res) => {
 //@desc     Delete website
 //@access   Private
 router.delete('/:id', auth, async(req, res) => {
-
+console.log("the req is: " ,req)
     try{
         let website = await Websites.findById(req.params.id);
         if(!website) return res.status(404).json({msge: 'Website not found'});
@@ -111,15 +111,11 @@ router.delete('/:id', auth, async(req, res) => {
         if(website.user.toString() !== req.user.id){
             return res.status(401).json({msg: 'Not authorized'});
         }
-       
         await Websites.findByIdAndRemove(req.params.id)
 
         res.json({msg:"contact removed"});
-
     }
     catch(err){
-        console.error(err);
-
         res.status(500).send('Server Error');
     }
 });

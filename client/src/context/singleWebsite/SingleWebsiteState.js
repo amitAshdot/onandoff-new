@@ -30,6 +30,7 @@ const SingleWebsiteState = props => {
             })
         }
     }
+
     //clear websites
     const clearWebsites = () => {
         dispatch({ type: CLEAR_WEBSITES })

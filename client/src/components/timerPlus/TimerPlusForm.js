@@ -53,14 +53,14 @@ const TimerPlusForm = () => {
         statusCopy.timeSchedule[inputName].closeHour = inputValue;
         setTimerPlus(statusCopy);
     }
-    const handleWYSIWYG = (content) => { setTimerPlus({ ...timerPlus, wysiwyg: content }); }
+    // const handleWYSIWYG = (content) => { setTimerPlus({ ...timerPlus, wysiwyg: content }); }
     const handleEditorChange = (content) => {
         setTimerPlus({ ...timerPlus, wysiwyg: content });
     }
     const onSubmit = e => {
         e.preventDefault();
-
-        if (!(timerPlus.divId === '')) {// check if DIVID is defined
+debugger
+        if (timerPlus.divId !== '' && timerPlus.url !== '' && timerPlus.name !== '') {// check if DIVID is defined
             currentTimerPlus._id ? updateTimerPlus(timerPlus) : addTimerPlus(timerPlus);// function from timerPlusContext
             setCurrentTimerPlus(timerPlus);
             saved();//UI notificiation function
@@ -123,7 +123,7 @@ const TimerPlusForm = () => {
                 />
             </div>
 
-            {saveAlert && timerPlus.divId ? <SavedAlert text="ההגדרות נשמרו" /> : saveAlert && !timerPlus.divId ? <SavedAlert text="אנא אכנס שם של אלמנט" /> : null}
+            {saveAlert && (timerPlus.divId !== "" && timerPlus.url !== "" && timerPlus.name !== "") ? <SavedAlert text="ההגדרות נשמרו" /> : saveAlert && (!(timerPlus.divId !== "" && timerPlus.url !== "" && timerPlus.name !== "")) ? <SavedAlert text="אנא מלא את השדות" /> : null}
 
             <div className="time">
                 <div className="day-lable-d">

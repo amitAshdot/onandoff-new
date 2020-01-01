@@ -11,7 +11,7 @@ const TimerPlusItem = ({ timerPlus }) => {
     const [deleteFlag, setflag] = useState(false);
 
     const takeDowm = (timerPlus) => {
-        deleteTimerPlus(timerPlus, 'false');
+        deleteTimerPlus(timerPlus);
         clearTimerPlus();
     }
     const showDelte = (

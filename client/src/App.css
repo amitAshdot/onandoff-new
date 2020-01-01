@@ -99,7 +99,6 @@ input[type="password"] {
 h1.logotxt { 
   color: white;
   display: inline-block;
-  float: right;
   width: auto;
   min-width: 150px;
   padding: 0;
@@ -282,6 +281,18 @@ a.editItem::after {
   display: flex;
   border: 1px solid #00000030;
   justify-content: space-between;
+
+  /* display: inline-flex;
+  background-color: transparent;
+  width: 40%;
+  margin: 5px 5px;
+  border: 1px solid rgba(0,0,0,.19);
+  justify-content: space-between;
+  min-width: 47%;
+  max-width: 47%;
+  min-height: 20vh;
+  max-height: 20vh;
+  border-radius: 5px; */
 }
 
 .aw-website-details {
@@ -382,6 +393,11 @@ input.websit-form-input:hover + .input-border::before  {
   transform: scaleX(1);
 }
 
+p.copyAlert-text {
+  border-bottom: 1px solid red;
+  width: fit-content;
+  margin: auto;
+}
 input[type="time"] {
   font-size: 13px;
   padding: 5px 2px;
@@ -573,5 +589,3 @@ input[type="time"] {
 .linkToCopy {width: 100vw;}
 .code {width: 90vw;margin: auto;}
 }
-
-

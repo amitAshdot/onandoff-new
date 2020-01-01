@@ -52,7 +52,7 @@ const WebsiteForm = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        if (!(website.divId === '')) {
+        if (website.divId !== "" && website.url !== "" && website.name!== "" ) {// check if DIVID is defined
             current._id ? updateWebsite(website) : addWebsite(website);
             // function from websiteContext
             setCurrent(website);
@@ -78,13 +78,13 @@ const WebsiteForm = () => {
                 </div>
                 <div className="info-block">
                     <p className="info-input">url</p>
-                    <input type="text" className="websit-form-input"  name='url' value={url} onChange={onChange} />
+                    <input type="text" className="websit-form-input" name='url' value={url} onChange={onChange} />
                     <div className="input-border"></div>
                 </div>
 
                 <div className="info-block">
                     <p className="info-input">שם של המקטה (id/class)</p>
-                    <input type="text" className="websit-form-input"  name='divId' value={divId} onChange={onChange} id="divID" />
+                    <input type="text" className="websit-form-input" name='divId' value={divId} onChange={onChange} id="divID" />
                     <div className="input-border"></div>
                 </div>
             </div>
@@ -136,11 +136,9 @@ const WebsiteForm = () => {
                 </div> */}
             </div>
 
-
-
             {current.name === '' ? null : <LinkComp id={current._id} current={current} function={'onAndOffFunction'} />}
 
-            {saveAlert && website.divId ? <SavedAlert text="ההגדרות נשמרו" /> : saveAlert && !website.divId ? <SavedAlert text="אנא אכנס שם של אלמנט" /> : null}
+            {saveAlert && (website.divId !== "" && website.url !== "" && website.name!== "" ) ? <SavedAlert text="ההגדרות נשמרו" /> : saveAlert && (!(website.divId !== "" && website.url !== "" && website.name!== "" )) ? <SavedAlert text="אנא מלא את שם מזהה הרכיב" /> : null}
         </form>
     );
 };

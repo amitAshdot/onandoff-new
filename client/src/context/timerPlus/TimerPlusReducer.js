@@ -37,20 +37,15 @@ export default (state, action) => {
         case DELETE_TIMER_PLUS:
             return {
                 ...state,
-                timersPlus: state.timersPlus.map(timerPlus => {
-                    if (timerPlus._id === action.payload._id)
-                    timerPlus.isShow = 'false'
-                    return timerPlus
-                }),
+                timersPlus: state.timersPlus.map(timerPlus => 
+                    timerPlus._id === action.payload._id ? action.payload : timerPlus
+                ),
                 loading: false
             }
         case CLEAR_TIMER_PLUS:
             return {
                 ...state,
-                timersPlus: [],
-                filter: null,
-                error: null,
-                current: null
+                current: null,
             }
 
         case SET_CURRENT:

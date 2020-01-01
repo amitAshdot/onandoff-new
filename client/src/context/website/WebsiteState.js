@@ -71,13 +71,14 @@ const WebsiteState = props => {
     }
     //delete website
     const deleteWebsite = async (website) => {
+        website.isShow = false
         const config = {
             headers: {
                 'Content-Type': 'application/json'
             }
         }
         try {  
-            const res = await axios.put(`/api/websites/${website._id}`, website.isShow='false' , config);
+            const res = await axios.put(`/api/websites/${website._id}`,website , config);
             dispatch({ type: DELETE_WEBSITE, payload: res.data })
         } catch (err) {
             dispatch({

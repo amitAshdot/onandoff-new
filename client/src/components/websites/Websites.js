@@ -5,19 +5,18 @@ import WebsiteContext from '../../context/website/WebsiteContext'
 
 const Websites = () => {
     const websiteContext = useContext(WebsiteContext);
-    const { websites , getWebsites, loading} = websiteContext;
+    const { websites, getWebsites, loading } = websiteContext;
 
-    useEffect(()=>{
+    useEffect(() => {
         getWebsites();
         //eslint-disable-next-line
     }, []);
 
     return (
         <Fragment>
-            {websites != null && !loading ? (
-                websites.map(website => <WebsiteItem key={website._id} website={website} />) 
-                )
-                : 'loading...'}               
+            {websites != null && !loading ?
+                (websites.map(website => <WebsiteItem key={website._id} website={website} />))
+                : 'loading...'}
         </Fragment>
     )
 }

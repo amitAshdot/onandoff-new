@@ -35,14 +35,11 @@ export default (state, action) => {
                 loading: false
             }
         case DELETE_WEBSITE:
-
             return {
                 ...state,
-                websites: state.websites.map(website => {
-                    if (website._id === action.payload._id)
-                        website.isShow = 'false'
-                    return website
-                }),
+                websites: state.websites.map(website => 
+                    website._id === action.payload._id ? action.payload : website
+                    ),
                 loading: false
             }
         case CLEAR_WEBSITES:

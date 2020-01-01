@@ -25,7 +25,8 @@ router.get('/', auth, async (req, res) => {
 //@access   Private
 router.post('/',
     [auth,
-        [check('name', 'name is required')
+        [
+            check('name', 'name is required')
             .not()
             .isEmpty(),
         check('url', 'url is required')
@@ -74,7 +75,7 @@ router.put('/:id',auth, async(req, res) => {
     if(divId) timersPlusFeilds.divId = divId;
     if(date) timersPlusFeilds.date = date;
     if(wysiwyg) timersPlusFeilds.wysiwyg = wysiwyg;
-    if(isShow) timersPlusFeilds.isShow = isShow;
+    if(isShow !== null) timersPlusFeilds.isShow = isShow;
     if(timeSchedule) timersPlusFeilds.timeSchedule = timeSchedule;
 
     try{
