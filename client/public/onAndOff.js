@@ -4,7 +4,7 @@
 const onAndOffFunction = async e => {
     let n = null;
     try {
-        n = (await axios.get(`http://onandoff.co.il/api/website?_id=${e}`)).data
+        n = (await axios.get(`https://onandoff.co.il/api/website?_id=${e}`)).data
         console.log("this is onandoff result: " + n)
 
     } catch (e) {
@@ -80,7 +80,7 @@ const onAndOffFunction = async e => {
 timerPlus = async e => {
     let n = null;
     try {
-        n = (await axios.get(`http://onandoff.co.il/api/timerplus?_id=${e}`)).data;
+        n = (await axios.get(`https://onandoff.co.il/api/timerplus?_id=${e}`)).data;
         console.log("this is result: " + n)
 
     } catch (e) {
