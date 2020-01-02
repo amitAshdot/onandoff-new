@@ -33,6 +33,8 @@ const onAndOffFunction = async e => {
         p = `${n[0].timeSchedule.Saturday.closeHour}`,
         T = !1,
         M = document.getElementById(`${n[0].divId}`);
+        console.log("M: " + M)
+
     switch (null == M && (M = document.getElementsByClassName(`${n[0].divId}`), T = !0), l) {
         case 0:
             if (r < a && d > a)
