@@ -34,7 +34,7 @@ const onAndOffFunction = async e => {
         T = !1,
         M = document.getElementById(`${n[0].divId}`);
         console.log("M: " + M)
-
+        debugger
     switch (null == M && (M = document.getElementsByClassName(`${n[0].divId}`), T = !0), l) {
         case 0:
             if (r < a && d > a)
@@ -112,7 +112,7 @@ timerPlus = async e => {
         T = !1,
         M = document.getElementById(`${n[0].divId}`);
         console.log("M: " + M)
-
+debugger
     switch (null == M && (M = document.getElementsByClassName(`${n[0].divId}`), T = !0), l) {
         case 0:
             if (r < a && d > a)
