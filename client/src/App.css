@@ -264,11 +264,12 @@ button#deleteBtn {color: red;  cursor: pointer;  outline: none;text-align: cente
   background-color: #4f4f4fe3;
   padding: 10px;
   position: absolute;
-  left: 0;
+  left: -999px;
   right: 0;
   margin-left: auto;
   margin-right: auto;
   margin-top: -3vh;
+  opacity: 0
 }
 button.deletebto {background-color: red;margin: 10px;    border-radius: 5px;}
 button.deletebto:hover {background-color: #ff000099;}

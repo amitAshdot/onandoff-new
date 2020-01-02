@@ -24,7 +24,7 @@ const WebsiteItem = ({ website }) => {
             </div>
             <div className="aw-website-btn">
                 <button className="websiteBtn" id="deleteBtn" onClick={() => setflag(true)}>מחק</button>
-                <DeleteAlert item={website} setflag={setflag} deleteFlag={deleteFlag}/> 
+                {deleteFlag?<DeleteAlert item={website} setflag={setflag} deleteFlag={deleteFlag} /> : null}
             </div>
 
         </animated.div>
