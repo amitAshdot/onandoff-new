@@ -9,6 +9,8 @@ import VerifyAndAuth from '../layouts/homePage/VerifyAndAuth'
 import NotVerify from '../layouts/homePage/NotVerify'
 import NotLogin from '../layouts/homePage/NotLogin'
 
+import { useSpring, animated} from 'react-spring'
+
 const Home = () => {
     const authContext = useContext(AuthContext);
     const { isAuthenticated, user, isVerified, loading } = authContext;
@@ -29,15 +31,19 @@ const Home = () => {
         //eslint-disable-next-line
     }, []);
 
+    const fadeIn = useSpring({
+        from:{ opacity: 0 } ,
+        to:{ opacity: 1 }
+    })
     return (
-        <div>
+        <animated.div style={fadeIn} >
             {
                 !loading ?
                     isAuthenticated && isVerified ? <VerifyAndAuth />
                         : (user && !user.isVerified) ? <NotVerify /> : <NotLogin />
                     : 'loading...'
             }
-        </div >
+        </animated.div >
     )
 }
 export default Home

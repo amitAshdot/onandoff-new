@@ -2,7 +2,7 @@ import React, { Fragment, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 // import PropType from 'prop-Type'
 import TimerPlusContext from '../../context/timerPlus/TimerPlusContext';
-import { useSpring, animated, config , animated as a} from 'react-spring'
+import { useSpring,  animated } from 'react-spring'
 
 import DeleteAlert from '../layouts/DeleteAlert'
 
@@ -12,15 +12,15 @@ const TimerPlusItem = ({ timerPlus }) => {
     const { name, url, } = timerPlus;
 
     const [deleteFlag, setflag] = useState(false);
-    const fadeIn = useSpring({ from: { opacity: 0 }, to: { opacity: 1 }, config: config.stiff, })
+    const fadeIn = useSpring({ from: { opacity: 0 }, to: { opacity: 1 }})
 
 
-    const [flipped, set] = useState(false)
-    const { transform, opacity } = useSpring({
-      opacity: flipped ? 1 : 0,
-      transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
-      config: { mass: 5, tension: 500, friction: 80 }
-    })
+    // const [flipped, set] = useState(false)
+    // const { transform, opacity } = useSpring({
+    //   opacity: flipped ? 1 : 0,
+    //   transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
+    //   config: { mass: 5, tension: 500, friction: 80 }
+    // })
     return (
         <animated.div className="websiteItem" id="websiteItem" style={fadeIn} config={{ delay: 10000 }}>
             <div className="aw-website-details">
