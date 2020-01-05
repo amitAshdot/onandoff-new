@@ -9,7 +9,7 @@ import VerifyAndAuth from '../layouts/homePage/VerifyAndAuth'
 import NotVerify from '../layouts/homePage/NotVerify'
 import NotLogin from '../layouts/homePage/NotLogin'
 
-import PageWraper from '../wrapers/PageWraper'
+// import PageWraper from '../wrapers/PageWraper'
 
 const Home = () => {
     const authContext = useContext(AuthContext);

@@ -4,7 +4,7 @@ import WebsiteContext from '../../context/website/WebsiteContext'
 import WebsiteForm from '../websites/WebsiteForm'
 import Home from "./Home"
 import NotLogin from '../layouts/homePage/NotLogin'
-import PageWraper from '../wrapers/PageWraper'
+// import PageWraper from '../wrapers/PageWraper'
 
 const AddWebsite = () => {
     const authContext = useContext(AuthContext);
@@ -15,11 +15,11 @@ const AddWebsite = () => {
 
 
     return (
-        <PageWraper>
+        // <PageWraper>
             <div >
                 {isAuthenticated && current ? <WebsiteForm /> : isAuthenticated && !current ? <Home /> : <NotLogin />}
             </div>
-        </PageWraper>
+        // </PageWraper>
     )
 }
 export default AddWebsite

@@ -4,7 +4,7 @@ import TimerPlusContext from '../../context/timerPlus/TimerPlusContext'
 import TimerPlusForm from '../timerPlus/TimerPlusForm'
 import Home from "./Home"
 import NotLogin from '../layouts/homePage/NotLogin'
-import PageWraper from '../wrapers/PageWraper'
+// import PageWraper from '../wrapers/PageWraper'
 
 const Timerplus = () => {
     const authContext = useContext(AuthContext);
@@ -16,11 +16,11 @@ const Timerplus = () => {
 
 
     return (
-        <PageWraper>
+        // <PageWraper>
             <div>
                 {isAuthenticated && currentTimerPlus ? <TimerPlusForm /> : isAuthenticated && !currentTimerPlus ? <Home /> : <NotLogin />}
             </div>
-        </PageWraper>
+        // </PageWraper>
     )
 }
 export default Timerplus
