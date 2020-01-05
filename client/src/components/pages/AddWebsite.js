@@ -3,8 +3,8 @@ import AuthContext from '../../context/auth/AuthContext'
 import WebsiteContext from '../../context/website/WebsiteContext'
 import WebsiteForm from '../websites/WebsiteForm'
 import Home from "./Home"
-import {useSpring, animated} from 'react-spring'
 import NotLogin from '../layouts/homePage/NotLogin'
+import PageWraper from '../wrapers/PageWraper'
 
 const AddWebsite = () => {
     const authContext = useContext(AuthContext);
@@ -13,12 +13,13 @@ const AddWebsite = () => {
     const websiteContext = useContext(WebsiteContext);
     const { current } = websiteContext;
 
-    const fadeIn =useSpring({from:{opacity:0},to:{opacity:1}})
 
     return (
-        <animated.div style={fadeIn}>
-            {isAuthenticated && current ? <WebsiteForm /> : isAuthenticated && !current? <Home/> :  <NotLogin/>}
-        </animated.div>
+        <PageWraper>
+            <div >
+                {isAuthenticated && current ? <WebsiteForm /> : isAuthenticated && !current ? <Home /> : <NotLogin />}
+            </div>
+        </PageWraper>
     )
 }
 export default AddWebsite

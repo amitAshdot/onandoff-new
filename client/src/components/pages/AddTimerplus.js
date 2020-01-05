@@ -3,8 +3,8 @@ import AuthContext from '../../context/auth/AuthContext'
 import TimerPlusContext from '../../context/timerPlus/TimerPlusContext'
 import TimerPlusForm from '../timerPlus/TimerPlusForm'
 import Home from "./Home"
-import {useSpring, animated} from 'react-spring'
 import NotLogin from '../layouts/homePage/NotLogin'
+import PageWraper from '../wrapers/PageWraper'
 
 const Timerplus = () => {
     const authContext = useContext(AuthContext);
@@ -12,14 +12,15 @@ const Timerplus = () => {
 
     const timerPlusContext = useContext(TimerPlusContext);
     const { currentTimerPlus } = timerPlusContext;
-    
-    const fadeIn =useSpring({from:{opacity:0},to:{opacity:1}})
+
 
 
     return (
-        <animated.div style={fadeIn}>
-            {isAuthenticated && currentTimerPlus ? <TimerPlusForm /> : isAuthenticated && !currentTimerPlus? <Home/> :  <NotLogin/>}
-        </animated.div>
+        <PageWraper>
+            <div>
+                {isAuthenticated && currentTimerPlus ? <TimerPlusForm /> : isAuthenticated && !currentTimerPlus ? <Home /> : <NotLogin />}
+            </div>
+        </PageWraper>
     )
 }
 export default Timerplus

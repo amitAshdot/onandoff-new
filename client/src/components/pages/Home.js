@@ -9,7 +9,7 @@ import VerifyAndAuth from '../layouts/homePage/VerifyAndAuth'
 import NotVerify from '../layouts/homePage/NotVerify'
 import NotLogin from '../layouts/homePage/NotLogin'
 
-import { useSpring, animated} from 'react-spring'
+import PageWraper from '../wrapers/PageWraper'
 
 const Home = () => {
     const authContext = useContext(AuthContext);
@@ -31,19 +31,18 @@ const Home = () => {
         //eslint-disable-next-line
     }, []);
 
-    const fadeIn = useSpring({
-        from:{ opacity: 0 } ,
-        to:{ opacity: 1 }
-    })
     return (
-        <animated.div style={fadeIn} >
-            {
-                !loading ?
-                    isAuthenticated && isVerified ? <VerifyAndAuth />
-                        : (user && !user.isVerified) ? <NotVerify /> : <NotLogin />
-                    : 'loading...'
-            }
-        </animated.div >
+        // <PageWraper>
+            <div >
+                {
+                    !loading ?
+                        isAuthenticated && isVerified ? <VerifyAndAuth />
+                            : (user && !user.isVerified) ? <NotVerify /> : <NotLogin />
+                        : 'loading...'
+                }
+            </div >
+        // </PageWraper>
+
     )
 }
 export default Home

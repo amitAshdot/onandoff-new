@@ -8,7 +8,7 @@ const DeleteAlert = (props) => {
     const { deleteWebsite, clearCurrent } = websiteContext
 
     const timerPlusContext = useContext(TimerPlusContext);
-    const { deleteTimerPlus, setCurrentTimerPlus, clearTimerPlus } = timerPlusContext
+    const { deleteTimerPlus } = timerPlusContext
 
     const takeDowm = (website) => {
         props.item.wysiwyg === undefined ?
@@ -17,11 +17,11 @@ const DeleteAlert = (props) => {
 
         clearCurrent();
     }
+    const name = props.item.name
     const fadeIn = useSpring({ opacity: props.deleteFlag ? 1 : 0, left:props.deleteFlag? 0:-9999 })
-    // const fadeOut =useSpring({from:{opacity:0},to:{opacity:1}})
     return (
         <animated.div className="deleteForm" style={fadeIn}>
-            <p>האם את/ה בטוח?</p>
+            <p>האם את/ה בטוח שהינך רוצה למחוק את {name}?</p>
             <button className="deletebto" onClick={() => takeDowm(props.item)}>מחק</button>
             <button className="rejrect" onClick={() => props.setflag(false)}>בטל</button>
         </animated.div>

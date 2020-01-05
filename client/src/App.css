@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Heebo&display=swap'); */
 /* ------------------------desktopfirst ------------------------ */
-.test-mailing{
-  display: none;
-}
+.test-mailing{display: none;}
 /* -------------Layout------------ */
 .App {
   text-align: center;
@@ -12,6 +10,8 @@
 /* set body */
 body {margin: 0}
 .container {width: 80vw;margin: auto;}
+.pageWraper{position: absolute;}
+
 /* --- navbar --- */
 ::-webkit-scrollbar {width: 5px;}
 ::-webkit-scrollbar-thumb {   
@@ -23,9 +23,7 @@ body {margin: 0}
  background: linear-gradient(to bottom,#55a658,#55a658 1px,#55a658 1px,#ffffff);
 }
 /* --- loading image --- */
-.loading img {
-  width: 10vh;
-}
+.loading img {width: 10vh;}
 /* --- li --- */
 li {
   list-style: none;
@@ -191,19 +189,6 @@ i.fa.fa-copy {
   float: left;
   cursor: pointer;
 }
-/* ---sidebar --- *
-.sideBar {
-  grid-area: sidebar;
-  background-color: #719e40a3;
-  color: white;
-}
-.navbar {grid: header;grid-area: header;background-color: #719e40;color: white;}
-.container {
-  grid-area: main;
-}
-.sidebar ul {padding-inline-start: 0px !important;} */
-
-
 /* ------------- home page ------------- */
 /* main image */
 .hp-main {
@@ -247,14 +232,9 @@ button.hp-button.register:hover {
   background-color: #00000040;
   color: white;
 }
-/* button.websiteBtn:hover{
-  color: white !important;
-  border-bottom: none;
-  cursor: pointer;
-} */
 .aw-website-details a:hover {border-bottom: none;}
 button#deleteBtn:hover {color: #F44336;border-bottom: none;  cursor: pointer;  outline: none;}
-button#deleteBtn {color: red;  cursor: pointer;  outline: none;text-align: center;}
+button#deleteBtn {color: red;  cursor: pointer;  outline: none;text-align: center;width:10%;}
 .websiteItem:hover .websiteBtn{color:#55a658;  outline: none;}
 .websiteBtn::after{display: none}
 /* --- delete form---  */
@@ -268,7 +248,7 @@ button#deleteBtn {color: red;  cursor: pointer;  outline: none;text-align: cente
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: -3vh;
+  margin-top: -20vh;
   opacity: 0
 }
 button.deletebto {background-color: red;margin: 10px;    border-radius: 5px;}
@@ -277,40 +257,36 @@ button.rejrect {margin: 10px;    border-radius: 5px;}
 button.rejrect:hover {background-color: #55a6587a;}
 
 /* --- edit form Item --- */
-a.editItem::after {
-  display: none;
-}
+a.editItem::after {display: none;}
 /* --- login ui---  */
 .websiteItem { 
   background-color: transparent;
+  border-radius: 5px;
   width: 60%;
   margin: 5px auto;
   display: flex;
   border: 1px solid #00000030;
   justify-content: space-between;
-
-  /* display: inline-flex;
-  background-color: transparent;
-  width: 40%;
-  margin: 5px 5px;
-  border: 1px solid rgba(0,0,0,.19);
-  justify-content: space-between;
-  min-width: 47%;
-  max-width: 47%;
-  min-height: 20vh;
-  max-height: 20vh;
-  border-radius: 5px; */
 }
-
 .aw-website-details {
   text-align: right;
   padding: 10px 20px;
   width: 80%;
 }
-.aw-website-details p {margin: 5px 10px;}
-p#website-info {
-  display: inline-block;
+.todaySchedule {
+  font-size: 0.90em;
+  width: 100%;
+  color: grey;
+  display: inline-flex;
+  text-align: center;
 }
+
+.aw-website-btn {
+  width: 20%;
+  text-align: center;
+}
+.aw-website-details p {margin: 5px 10px;}
+p#website-info {display: inline-block;}
 
 p#formType {
   display: inline-block;
@@ -385,9 +361,7 @@ input.websit-form-input {
   border: transparent;
 }
 input.websit-form-input:hover {cursor: pointer;}
-.input-border{
-  margin: auto;
-}
+.input-border{margin: auto;}
 .input-border::before {
   display: block;
   content: '';
@@ -436,9 +410,7 @@ p.code-info {margin-bottom: 0;}
   padding-top: 2px;
   padding-bottom: 14px;
 }
-.codeContainer {
-  border: 1px solid;
-}
+.codeContainer {border: 1px solid;}
 
 /* info-block */
 .info-block {
@@ -446,8 +418,10 @@ p.code-info {margin-bottom: 0;}
     display: inline-block;
 }
 /* wysiwyg editor */
-.time #wysiwyg:hover{
-  cursor: pointer !important;
+.time #wysiwyg:hover{cursor: pointer !important;}
+.tox {
+  width: 100% !important;
+  /* height: 350px !important; */
 }
   /* ------------- login ------------- */
 .formContainer a:visited {color: #55a658;text-decoration: none; cursor: pointer;}
@@ -455,20 +429,10 @@ p.code-info {margin-bottom: 0;}
 .formContainer a:hover { color: #55a658; text-decoration: none; border-bottom: 1px solid white;  cursor: pointer;}
 .formContainera:active { color: #55a658; text-decoration: none; cursor: pointer;}
 .formContainer a::after{display: none}
-.formContainer label {
-  display: block;
-  text-align: right;
-}
-.forminput {
-  width: 20%;
-  margin: auto;
-  cursor: pointer;
-}
-.formContainer a {
-  margin-right: 5px;
-}
+.formContainer label {display: block;text-align: right;}
+.forminput {width: 20%;margin: auto;cursor: pointer;}
+.formContainer a {margin-right: 5px;}
 /* ------------- register ------------- */
-
 p#passwordErr {
   position: relative;
   font-size: 14px;
@@ -480,7 +444,6 @@ p#emailErr {
   font-size: 14px;
   text-align: right;
   color:red;
-
 }
 /* ------------- about ------------- */
 /* ------------- how does it works ------------- */
@@ -488,10 +451,10 @@ p#emailErr {
 /* ------------------------ Mobile ------------------------ */
 @media (max-width: 600px) {
 /* ------------- layout ------------- */
-.container {width: 100vw;}
+.container {width: 100vw;display: flex;}
+.pageWraper{display: flex;}
 /* ----- navbar ----- */
   h1.logotxt {
-    color: white;
     display: block;
     float: right;
     width: 10vw;
@@ -509,53 +472,36 @@ p#emailErr {
 }
 /* buttons */
 input[type="submit"] {
-  background-color: #55a658;
-  color: #ffff;
   width: 10vw;
   min-width: 100px;
   max-width: 200px;
   font-size: 2ex;
-  border-radius: 5px;
-  margin: 5px 10px;
-  padding: 5px;
-  cursor: pointer;
-  outline: none;
-  border: none;
 }
 /* ------------- home ------------- */
   .hp-info {
     width: 100vw;
     padding-top: 70%;
-    vertical-align: middle;
 }
   /* ------------- homepage ------------- */
-  .websiteItem {width: 100%;}
-.deleteForm {
-    width: 80vw;
-    margin-top: -3vh;
-
+.websiteItem {width: 100%;}
+.deleteForm {width: 80vw;}
+.aw-website-details {padding: 10px 20px 10px 0px;}
+button#deleteBtn {
+  margin: 5px 0;
+  display: inline-flex;
+  width: 10%;
 }
 /* ------------- login ------------- */
-.forminput {
-  width: 20%;
-  margin: auto;
-  min-width: 200px;
-  cursor: pointer;
-}
+.forminput {min-width: 200px;}
 /* ------------- addwebsie ------------- */
 .time {
   display: table;
   min-width: 350px;
   max-width: 900px;
   width: 90%;
-  /* padding: 7% 5%; */
-  margin: auto;
   text-align-last: center;
 }
-.info-block {
-  width: 100%;
-  /* display: inline-block; */
-}
+.info-block {width: 100%;}
 .day {
   display: table-row;
   text-align: right;

@@ -63,9 +63,10 @@ const Navbar = (props) => {
 
     return (
         <div className="navbar">
-                <h1 className="logotxt" id="logo"><Link to="/" >
+            <h1 className="logotxt" id="logo">
+                <Link to="/" >
                     <i className={props.icon} /> {props.title}
-                    </Link></h1>
+                </Link></h1>
             <ul>
                 {navLinks}
             </ul>

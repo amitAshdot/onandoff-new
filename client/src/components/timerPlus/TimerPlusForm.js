@@ -34,7 +34,6 @@ const TimerPlusForm = () => {
         saveAlert: false, //for UI notification alertת
         loading: true
     });
-
     const { timeSchedule, wysiwyg, name, url, divId, saveAlert } = timerPlus
 
     //change input state
@@ -59,7 +58,6 @@ const TimerPlusForm = () => {
     }
     const onSubmit = e => {
         e.preventDefault();
-debugger
         if (timerPlus.divId !== '' && timerPlus.url !== '' && timerPlus.name !== '') {// check if DIVID is defined
             currentTimerPlus._id ? updateTimerPlus(timerPlus) : addTimerPlus(timerPlus);// function from timerPlusContext
             setCurrentTimerPlus(timerPlus);

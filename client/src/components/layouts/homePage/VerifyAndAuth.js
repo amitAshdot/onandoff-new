@@ -2,10 +2,9 @@ import React, { Fragment, useState, useContext } from 'react'
 // import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import WebsiteContext from '../../../context/website/WebsiteContext'
-import WebsiteItem from '../../websites/WebsiteItem'
-
+import Websites from '../../websites/Websites'
 import TimerPlusContext from '../../../context/timerPlus/TimerPlusContext'
-import TimerPlusItem from '../../timerPlus/TimerPlusItem'
+import TimerPlus from '../../timerPlus/TimersPlus'
 // import Loading from '../layouts/Loading'
 
 export const VerifyAndAuth = () => {
@@ -46,16 +45,6 @@ export const VerifyAndAuth = () => {
         url: '',
         divId: '',
     });
-    let websiteList = (websites.map(website => {
-        if (website.isShow === 'true') return <WebsiteItem key={website._id} website={website} />
-        return null;
-    })
-    );
-    let timersPlusList = (timersPlus.map(timerPlus => {
-        if (timerPlus.isShow === 'true') return <TimerPlusItem key={timerPlus._id} timerPlus={timerPlus} />
-        return null;
-    })
-    );
     const onSubmit = e => {
         e.preventDefault();
         setCurrent();
@@ -70,8 +59,8 @@ export const VerifyAndAuth = () => {
             </form>
         </div>
         <div className="websites" id="personal">
-            {websiteList}
-            {timersPlusList}
+            <Websites/>
+            <TimerPlus/>
         </div>
         </Fragment>
     )

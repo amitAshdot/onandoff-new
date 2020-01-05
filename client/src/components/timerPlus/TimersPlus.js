@@ -1,24 +1,20 @@
 import React, { Fragment, useContext, useEffect } from 'react'
 import TimerPlusItem from './TimerPlusItem'
-import TimerPlusContext from '../../context/timerPlus/timerPlusContext'
+import TimerPlusContext from '../../context/timerPlus/TimerPlusContext'
 //import UserContext from '../../context/user/UserContext';
 
 const TimersPlus = () => {
     const timerPlusContext = useContext(TimerPlusContext);
-    const { timersPlus, getTimerPlus, loading } = timerPlusContext;
-
-    useEffect(() => {
-        getTimerPlus();
-        //eslint-disable-next-line
-    }, []);
+    const { timersPlus, loading } = timerPlusContext;
 
     return (
         <Fragment>
             {timersPlus != null && !loading ?
-                (timersPlus.map(timersPlus => <TimerPlusItem key={timersPlus._id} timersPlus={timersPlus} />))
+                (timersPlus.map((timerPlus, index) => timerPlus.isShow === "true"
+                    ? <TimerPlusItem key={timerPlus._id} timerPlus={timerPlus} index={index} /> : null))
                 : 'loading...'}
         </Fragment>
-        
+
     )
 }
 
