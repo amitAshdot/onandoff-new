@@ -10,8 +10,9 @@ const TimersPlus = () => {
     return (
         <Fragment>
             {timersPlus != null && !loading ?
-                (timersPlus.map((timerPlus, index) => timerPlus.isShow === "true"
-                    ? <TimerPlusItem key={timerPlus._id} timerPlus={timerPlus} index={index} /> : null))
+                (timersPlus.map((timerPlus, index) => timerPlus.isShow === "true" ?
+                    <TimerPlusItem key={timerPlus._id} timerPlus={timerPlus} index={index} />
+                    : null))
                 : 'loading...'}
         </Fragment>
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import WebsiteContext from '../../context/website/WebsiteContext'
 import DeleteAlert from '../layouts/DeleteAlert'
 import { useSpring, animated } from 'react-spring'
-import { animated as a } from 'react-spring'
+import DelayWraper from '../wrapers/DelayWraper'
 
 const WebsiteItem = (props) => {
     const websiteContext = useContext(WebsiteContext);
@@ -14,8 +14,6 @@ const WebsiteItem = (props) => {
     const [deleteFlag, setflag] = useState(false);
     const delayTime = props.index * 100 + 100;
     const fade = useSpring({
-        // from:{opacity: 0 ,transform: 'translate(-50%,0,0)' },
-        // to: { opacity:  1 , transform: 'translate(0%,0,0)' ,backgroundColor: deleteFlag? "red" : "white" , color: deleteFlag? "white" : "black"},
         to: { opacity: 1, backgroundColor: deleteFlag ? "rgb(157, 9, 9)" : "white", color: deleteFlag ? "white" : "black" },
         config: { tension: 180, friction: 14 },
         delay: !deleteFlag ? `${delayTime}` : 0
@@ -34,7 +32,7 @@ const WebsiteItem = (props) => {
         config: { mass: 5, tension: 500, friction: 80 }
     })
     return (
-        <>
+        <DelayWraper index={props.index}>
             <animated.div className="websiteItem" id="websiteItem" style={fade}>
                 <div className="aw-website-details">
                     <p id="website-info"><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
@@ -72,7 +70,7 @@ const WebsiteItem = (props) => {
                     <DeleteAlert item={props.website} setflag={setflag} deleteFlag={deleteFlag} />
                 </a.div>
             </div> */}
-        </>
+        </DelayWraper>
     )
 }
 

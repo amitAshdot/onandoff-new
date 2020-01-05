@@ -5,6 +5,7 @@ import TimerPlusContext from '../../context/timerPlus/TimerPlusContext';
 import { useSpring, animated } from 'react-spring'
 
 import DeleteAlert from '../layouts/DeleteAlert'
+import DelayWraper from '../wrapers/DelayWraper'
 
 const TimerPlusItem = (props) => {
     const timerPlusContext = useContext(TimerPlusContext);
@@ -27,7 +28,7 @@ const TimerPlusItem = (props) => {
     const todaySchedule = timeSchedule[dayName]
 
     return (
-        <>
+        <DelayWraper index={props.index}>
             <animated.div className="websiteItem" id="websiteItem" style={fade}>
                 <div className="aw-website-details">
                     <p id="website-info"><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
@@ -46,7 +47,7 @@ const TimerPlusItem = (props) => {
                 </div>
             </animated.div >
             {deleteFlag ? <DeleteAlert item={props.timerPlus} setflag={setflag} deleteFlag={deleteFlag} /> : null}
-        </>
+        </DelayWraper>
     )
 }
 
