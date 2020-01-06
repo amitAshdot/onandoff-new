@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import CopiedAlert from './CopiedAlert';
 const LinkComp = (props) => {
     let parts = window.location.href.split('/');
     let lastSegment = parts.pop() || parts.pop();  // handle potential trailing slash
@@ -22,39 +21,29 @@ const LinkComp = (props) => {
             return id;
           })('${props.current._id}');`
     }
-
-    const [copy, setCopy] = useState(false);
-
-    const copied = () => {
-        setCopy(true)
-        setTimeout(() => {
-            setCopy(false)
-        }, 2000)
-    }
+    const copied = props.copied
 
     return (
-
         <div className="linkToCopy">
-            {copy ? <CopiedAlert /> : null}
-
-            <div className="codeContainer">
-                <CopyToClipboard text={copyTextHeader} >
-                    <span className="tooltiptext" id="myTooltip" onClick={() => copied()}><i className="fa fa-copy" /></span>
-                </CopyToClipboard>
+            {/* {copy ? <CopiedAlert /> : null} */}
+            <CopyToClipboard text={copyTextHeader} >
+            <div className="codeContainer" onClick={copied}>
+                    {/* <span className="tooltiptext" id="myTooltip" ><i className="fa fa-copy" /></span> */}
                 <p className="code-info">הוסף את קטעי הקוד הבאים בתוך ה-header</p>
                 <div className="code" >
                     <code>{copyTextHeader}</code>
                 </div>
             </div>
-            <div className="codeContainer">
-                <p className="code-info">הוסף את קטעי הקוד הבאים בסוף ה-body</p>
-                <CopyToClipboard text={copyTextBody}  >
-                    <span className="tooltiptext" id="myTooltip" onClick={() => copied()}><i className="fa fa-copy" /></span>
-                </CopyToClipboard>
+            </CopyToClipboard>
+            <CopyToClipboard text={copyTextBody}  >
+            <div className="codeContainer" onClick={copied}>
+                <p className="code-info">הוסף את קטעי הקוד הבאים בסוף ה-body</p> 
                 <div className="code" >
                     <code>{copyTextBody}</code>
+                    {/* <span className="tooltiptext" id="myTooltip" onClick={() => copied()}><i className="fa fa-copy" /></span> */}
                 </div>
             </div>
+            </CopyToClipboard>
         </div>
     )
 }

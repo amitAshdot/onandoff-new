@@ -3,9 +3,9 @@ import { Transition, animated } from 'react-spring/renderprops'
 
 const CopiedAlert = () => {
     const [state, setstate] = useState(true);
-    setTimeout(() => {
-        setstate(false)
-    }, 1500)
+    // setTimeout(() => {
+    //     setstate(false)
+    // }, 1500)
     return (
         <Transition
             items={state}

@@ -229,8 +229,8 @@ button.hp-button.register:hover {
   color: #ffff;
 }
 .websiteItem:hover {
-  background-color: #00000040;
-  color: white;
+  background-color: #00000040 !important;
+  color: white!important;
 }
 .aw-website-details a:hover {border-bottom: none;}
 button#deleteBtn:hover {color: #F44336;border-bottom: none;  cursor: pointer;  outline: none;}
@@ -373,7 +373,6 @@ input.websit-form-input:hover {cursor: pointer;}
 input.websit-form-input:hover + .input-border::before  {
   transform: scaleX(1);
 }
-
 p.copyAlert-text {
   border-bottom: 1px solid red;
   width: fit-content;
@@ -400,7 +399,7 @@ input[type="time"] {
 }
 .day-lable-d p {margin-top: 3px;}
 /* code text */
-.linkToCopy {background-color: #92929278;border: 1px solid;}
+.linkToCopy {background-color: #92929278;border: 1px solid;margin: 0px 0px 50px;}
 p.code-info {margin-bottom: 0;}
 .code {
   width: 60%;
@@ -410,7 +409,7 @@ p.code-info {margin-bottom: 0;}
   padding-top: 2px;
   padding-bottom: 14px;
 }
-.codeContainer {border: 1px solid;}
+.codeContainer {border: 1px solid;cursor: pointer;}
 
 /* info-block */
 .info-block {

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext , useState } from 'react'
 import AuthContext from '../../context/auth/AuthContext'
 import TimerPlusContext from '../../context/timerPlus/TimerPlusContext'
 import TimerPlusForm from '../timerPlus/TimerPlusForm'
@@ -13,13 +13,13 @@ const Timerplus = () => {
     const timerPlusContext = useContext(TimerPlusContext);
     const { currentTimerPlus } = timerPlusContext;
 
-
-
     return (
         // <PageWraper>
-            <div>
-                {isAuthenticated && currentTimerPlus ? <TimerPlusForm /> : isAuthenticated && !currentTimerPlus ? <Home /> : <NotLogin />}
-            </div>
+        <div>
+            {isAuthenticated && currentTimerPlus ?
+                <TimerPlusForm  /> :
+                    <Home /> }
+        </div>
         // </PageWraper>
     )
 }

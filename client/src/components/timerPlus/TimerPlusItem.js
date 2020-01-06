@@ -46,7 +46,7 @@ const TimerPlusItem = (props) => {
                     <button className="websiteBtn" id="deleteBtn" onClick={() => setflag(true)}>מחק</button>
                 </div>
             </animated.div >
-            {deleteFlag ? <DeleteAlert item={props.timerPlus} setflag={setflag} deleteFlag={deleteFlag} /> : null}
+            {deleteFlag ? <DeleteAlert item={props.timerPlus} setflag={setflag} deleteFlag={deleteFlag}/> : null}
         </DelayWraper>
     )
 }

@@ -4,6 +4,10 @@ import WebsiteContext from '../../context/website/WebsiteContext';
 import LinkComp from '../layouts/LinkComp';
 import SavedAlert from '../layouts/SavedAlert';
 
+// -- Layout --
+import TimeTable from '../layouts/timerPlus/TimeTable'
+import Info from '../layouts/timerPlus/Info';
+import CopiedAlert from '../layouts/CopiedAlert';
 const WebsiteForm = () => {
     const websiteContext = useContext(WebsiteContext);
     const { addWebsite, updateWebsite, current, setCurrent } = websiteContext;
@@ -49,17 +53,15 @@ const WebsiteForm = () => {
         statusCopy.timeSchedule[inputName].closeHour = inputValue;
         setWebsite(statusCopy);
     }
-
     const onSubmit = e => {
         e.preventDefault();
-        if (website.divId !== "" && website.url !== "" && website.name!== "" ) {// check if DIVID is defined
+        if (website.divId !== "" && website.url !== "" && website.name !== "") {// check if DIVID is defined
             current._id ? updateWebsite(website) : addWebsite(website);
             // function from websiteContext
             setCurrent(website);
             saved();
         }
-        else
-            saved();
+        else saved();
     };
     const saved = () => {//UI notificiation function
         setWebsite({ ...website, saveAlert: true })
@@ -67,79 +69,33 @@ const WebsiteForm = () => {
             setWebsite({ ...website, saveAlert: false })
         }, 2000)
     }
+    const [copy, setCopy] = useState(false);
+    const copied = () => {
+        setCopy(true)
+        setTimeout(() => {
+            setCopy(false)
+        }, 2000)
+    }
     return (
         <form onSubmit={onSubmit}>
             {current._id ? <h2>  ערוך עמוד נחיתה: {name}</h2> : <h2>הוסף עמוד נחיתה</h2>}
-            <div className="info">
-                <div className="info-block">
-                    <p className="info-input">שם</p>
-                    <input type="text" className="websit-form-input" name='name' value={name} onChange={onChange} />
-                    <div className="input-border"></div>
-                </div>
-                <div className="info-block">
-                    <p className="info-input">url</p>
-                    <input type="text" className="websit-form-input" name='url' value={url} onChange={onChange} />
-                    <div className="input-border"></div>
-                </div>
+            <Info onChange={onChange} name={name} url={url} divId={divId} />
+            <TimeTable
+                handleChangeCloseHour={handleChangeCloseHour}
+                handleChangeOpemHour={handleChangeOpemHour}
+                timerPlus={website}
+                currentTimerPlus={current} />
 
-                <div className="info-block">
-                    <p className="info-input">שם של המקטה (id/class)</p>
-                    <input type="text" className="websit-form-input" name='divId' value={divId} onChange={onChange} id="divID" />
-                    <div className="input-border"></div>
-                </div>
-            </div>
-            <div className="time">
-                <div className="day-lable-d">
-                    <p>פתיחה</p>
-                    <p>סגירה</p>
-                </div>
-                <div className="day">
-                    <p>ראשון</p>
-                    <input type="time" placeholder="Open Hour" name='Sunday' value={timeSchedule.Sunday.openHour} onChange={handleChangeOpemHour} />
-                    <input type="time" placeholder="Close Hour" name='Sunday' value={timeSchedule.Sunday.closeHour} onChange={handleChangeCloseHour} />
-                </div>
-                <div className="day">
-                    <p>שני</p>
-                    <input type="time" placeholder="Open Hour" name='Monday' value={timeSchedule.Monday.openHour} onChange={handleChangeOpemHour} />
-                    <input type="time" placeholder="Close Hour" name='Monday' value={timeSchedule.Monday.closeHour} onChange={handleChangeCloseHour} />
-                </div>
-                <div className="day">
-                    <p>שלישי</p>
-                    <input type="time" placeholder="Open Hour" name='Tuesday' value={timeSchedule.Tuesday.openHour} onChange={handleChangeOpemHour} />
-                    <input type="time" placeholder="Close Hour" name='Tuesday' value={timeSchedule.Tuesday.closeHour} onChange={handleChangeCloseHour} />
-                </div>
-                <div className="day">
-                    <p>רביעי</p>
-                    <input type="time" placeholder="Open Hour" name='Wednesday' value={timeSchedule.Wednesday.openHour} onChange={handleChangeOpemHour} />
-                    <input type="time" placeholder="Close Hour" name='Wednesday' value={timeSchedule.Wednesday.closeHour} onChange={handleChangeCloseHour} />
-                </div>
-                <div className="day">
-                    <p>חמישי</p>
-                    <input type="time" placeholder="Open Hour" name='Thursday' value={timeSchedule.Thursday.openHour} onChange={handleChangeOpemHour} />
-                    <input type="time" placeholder="Close Hour" name='Thursday' value={timeSchedule.Thursday.closeHour} onChange={handleChangeCloseHour} />
-                </div>
-                <div className="day">
-                    <p>שישי</p>
-                    <input type="time" placeholder="Open Hour" name='Friday' value={timeSchedule.Friday.openHour} onChange={handleChangeOpemHour} />
-                    <input type="time" placeholder="Close Hour" name='Friday' value={timeSchedule.Friday.closeHour} onChange={handleChangeCloseHour} />
-                </div>
-                <div className="day">
-                    <p>שבת</p>
-                    <input type="time" placeholder="Open Hour" name='Saturday' value={timeSchedule.Saturday.openHour} onChange={handleChangeOpemHour} />
-                    <input type="time" placeholder="Close Hour" name='Saturday' value={timeSchedule.Saturday.closeHour} onChange={handleChangeCloseHour} />
-                </div>
-                <div className="day" id="day-button">
-                    {current._id ? <input type="submit" value="שמור" /> : <input type="submit" value="הוסף" />}
-                </div>
-                {/* <div>
-                    <Link to="/" onClick={() => clearCurrent}><button className="add-website-page-btn">חזור</button></Link>
-                </div> */}
-            </div>
+            {copy ? <CopiedAlert /> : null}
+            {current.name === '' ? null : <LinkComp id={current._id} current={current} function={'onAndOffFunction'} copied={copied} />}
 
-            {current.name === '' ? null : <LinkComp id={current._id} current={current} function={'onAndOffFunction'} />}
-
-            {saveAlert && (website.divId !== "" && website.url !== "" && website.name!== "" ) ? <SavedAlert text="ההגדרות נשמרו" /> : saveAlert && (!(website.divId !== "" && website.url !== "" && website.name!== "" )) ? <SavedAlert text="אנא מלא את שם מזהה הרכיב" /> : null}
-        </form>
+            {saveAlert && (website.divId !== "" && website.url !== "" && website.name !== "") ?
+                <SavedAlert text="ההגדרות נשמרו" /> :
+                saveAlert && (!(website.divId !== "" && website.url !== "" && website.name !== "")) ?
+                    <SavedAlert text="אנא מלא את שם מזהה הרכיב" /> :
+                    null
+            }
+        </form >
     );
 };
 
