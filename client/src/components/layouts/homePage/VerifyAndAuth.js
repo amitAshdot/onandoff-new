@@ -11,10 +11,10 @@ export const VerifyAndAuth = () => {
 
 
     const websiteContext = useContext(WebsiteContext);
-    const { websites,  setCurrent } = websiteContext;
+    const {   setCurrent } = websiteContext;
 
     const timerPlusContext = useContext(TimerPlusContext);
-    const { timersPlus,  setCurrentTimerPlus} = timerPlusContext;
+    const {   setCurrentTimerPlus} = timerPlusContext;
 
     const [website, setWebsite] = useState({
         timeSchedule: {

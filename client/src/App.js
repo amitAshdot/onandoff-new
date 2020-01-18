@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { __RouterContext, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 //Layout component
 import Navbar from "./components/layouts/Navbar";
@@ -33,7 +33,7 @@ if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 const App = () => {
-  const { location } = useContext(__RouterContext);
+  // const { location } = useContext(__RouterContext);
   // const transitions = useTransition(location, location => location.pathname, {
   //   from: { opacity: 0 },
   //   enter: { opacity: 1 },

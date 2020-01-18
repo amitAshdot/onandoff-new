@@ -3,9 +3,9 @@ import { Transition, animated } from 'react-spring/renderprops'
 
 const CopiedAlert = () => {
     const [state, setstate] = useState(true);
-    // setTimeout(() => {
-    //     setstate(false)
-    // }, 1500)
+    setTimeout(() => {
+        setstate(false)
+    }, 1500)
     return (
         <Transition
             items={state}
@@ -15,7 +15,7 @@ const CopiedAlert = () => {
         >
             {show =>
                 show && (props =>
-                     <animated.div style={props} className="copyAlert">✌️הועתק</animated.div>)
+                     <animated.div style={props} className="copyAlert"><span>✌️</span>הועתק</animated.div>)
             }
         </Transition>
     )

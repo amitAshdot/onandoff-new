@@ -30,8 +30,7 @@ const Home = () => {
         getTimersPlus();
         //eslint-disable-next-line
     }, []);
-
-    return (
+return (
         // <PageWraper>
             <div >
                 {

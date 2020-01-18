@@ -4,7 +4,7 @@ import WebsiteContext from '../../context/website/WebsiteContext'
 //import UserContext from '../../context/user/UserContext';
 const Websites = () => {
     const websiteContext = useContext(WebsiteContext);
-    const { websites, getWebsites, loading } = websiteContext;
+    const { websites, loading } = websiteContext;
 
     return (
         <Fragment>

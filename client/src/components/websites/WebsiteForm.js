@@ -35,7 +35,7 @@ const WebsiteForm = () => {
         saveAlert: false
     });
 
-    const { timeSchedule, name, url, divId, saveAlert } = website
+    const {name, url, divId, saveAlert } = website
 
     //change input state
     const onChange = e => { setWebsite({ ...website, [e.target.name]: e.target.value }); }

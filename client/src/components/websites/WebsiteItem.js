@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 // import PropType from 'prop-Type'
 import WebsiteContext from '../../context/website/WebsiteContext'
@@ -25,12 +25,12 @@ const WebsiteItem = (props) => {
     const todaySchedule = timeSchedule[dayName]
 
 
-    const [flipped, set] = useState(false)
-    const { transform, opacity } = useSpring({
-        opacity: flipped ? 1 : 0,
-        transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
-        config: { mass: 5, tension: 500, friction: 80 }
-    })
+    // const [flipped, set] = useState(false)
+    // const { transform, opacity } = useSpring({
+    //     opacity: flipped ? 1 : 0,
+    //     transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
+    //     config: { mass: 5, tension: 500, friction: 80 }
+    // })
     return (
         <DelayWraper index={props.index}>
             <animated.div className="websiteItem" id="websiteItem" style={fade}>

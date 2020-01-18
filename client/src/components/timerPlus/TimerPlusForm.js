@@ -38,7 +38,7 @@ const TimerPlusForm = (props) => {
         saveAlert: false, //for UI notification alertת
         loading: true
     });
-    const { timeSchedule, wysiwyg, name, url, divId, saveAlert } = timerPlus
+    const { wysiwyg, name, url, divId, saveAlert } = timerPlus
 
     //change input state
     const onChange = e => { setTimerPlus({ ...timerPlus, [e.target.name]: e.target.value }); }
