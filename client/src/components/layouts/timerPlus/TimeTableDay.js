@@ -4,20 +4,21 @@ const TimeTableDay = (props) => {
 
     const { timeSchedule, handleChangeOpemHour, handleChangeCloseHour, name, i } = props
     const colorStyle = i % 2 === 0 ? { backgroundColor: "white" } : { backgroundColor: "white" }
+    const day = Object.keys(timeSchedule)[i];
     return (
         <div className="day" style={colorStyle}>
             <p>{name}</p>
             <input type="time"
                 placeholder="Open Hour"
-                name='Sunday'
-                value={timeSchedule.Sunday.openHour}
+                name={day}
+                value={timeSchedule[day].openHour}
                 onChange={handleChangeOpemHour}
                 style={colorStyle}
             />
             <input type="time"
                 placeholder="Close Hour"
-                name='Sunday'
-                value={timeSchedule.Sunday.closeHour}
+                name={day}
+                value={timeSchedule[day].closeHour}
                 onChange={handleChangeCloseHour}
                 style={colorStyle}
             />

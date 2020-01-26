@@ -6,6 +6,8 @@ const TimeTable = (props) => {
     const handleChangeOpemHour = props.handleChangeOpemHour;
     const { timeSchedule } = props.timerPlus;
     const days = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת']
+    const daysEng = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
     return (
         <div className="time">
             <div className="day-lable-d">
@@ -17,6 +19,7 @@ const TimeTable = (props) => {
                     handleChangeCloseHour={handleChangeCloseHour}
                     handleChangeOpemHour={handleChangeOpemHour}
                     timeSchedule={timeSchedule}
+                    daysEng={daysEng}
                     name={day}
                     key={i}
                     i={i}
