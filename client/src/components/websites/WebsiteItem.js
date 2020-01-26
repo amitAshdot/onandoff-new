@@ -49,8 +49,8 @@ const WebsiteItem = (props) => {
                 <div className="aw-website-btn">
                     <button className="websiteBtn" id="deleteBtn" onClick={() => setflag(true)}>מחק</button>
                 </div>
+                {deleteFlag ? <DeleteAlert item={props.website} setflag={setflag} deleteFlag={deleteFlag} /> : null}
             </animated.div >
-            {deleteFlag ? <DeleteAlert item={props.website} setflag={setflag} deleteFlag={deleteFlag} /> : null}
 
             {/* <div onClick={() => set(state => !state)}>
                 <div class="c" >

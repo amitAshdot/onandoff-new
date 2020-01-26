@@ -248,7 +248,7 @@ button#deleteBtn {color: red;  cursor: pointer;  outline: none;text-align: cente
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: -20vh;
+  margin-top: calc(1% + 1px);
   opacity: 0
 }
 button.deletebto {background-color: red;margin: 10px;    border-radius: 5px;}
@@ -483,7 +483,7 @@ input[type="submit"] {
 }
   /* ------------- homepage ------------- */
 .websiteItem {width: 100%;}
-.deleteForm {width: 80vw;}
+.deleteForm {width: 80vw;margin-top: calc(10% + 1px);}
 .aw-website-details {padding: 10px 20px 10px 0px;}
 button#deleteBtn {
   margin: 5px 0;
