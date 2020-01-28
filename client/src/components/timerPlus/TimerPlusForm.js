@@ -2,13 +2,13 @@ import React, { useState, useContext, useEffect } from 'react';
 import TimerPlusContext from '../../context/timerPlus/TimerPlusContext';
 // import { Link } from 'react-router-dom';
 import LinkComp from '../layouts/LinkComp';
-import SavedAlert from '../layouts/SavedAlert';
+import SavedAlert from '../layouts/alerts/SavedAlert';
 
 // -- Layout --
-import TimeTable from '../layouts/timerPlus/TimeTable'
-import Wysiwyg from '../layouts/timerPlus/Wysiwyg'
-import CopiedAlert from '../layouts/CopiedAlert';
-import Info from '../layouts/timerPlus/Info';
+import TimeTable from '../layouts/timerPlusAndWeb/TimeTable'
+import Wysiwyg from '../layouts/timerPlusAndWeb/Wysiwyg'
+import CopiedAlert from '../layouts/alerts/CopiedAlert';
+import Info from '../layouts/timerPlusAndWeb/Info';
 
 const TimerPlusForm = (props) => {
     const timerPlusContext = useContext(TimerPlusContext);

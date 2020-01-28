@@ -2,12 +2,12 @@ import React, { useState, useContext, useEffect } from 'react';
 import WebsiteContext from '../../context/website/WebsiteContext';
 // import { Link } from 'react-router-dom';
 import LinkComp from '../layouts/LinkComp';
-import SavedAlert from '../layouts/SavedAlert';
+import SavedAlert from '../layouts/alerts/SavedAlert';
 
 // -- Layout --
-import TimeTable from '../layouts/timerPlus/TimeTable'
-import Info from '../layouts/timerPlus/Info';
-import CopiedAlert from '../layouts/CopiedAlert';
+import TimeTable from '../layouts/timerPlusAndWeb/TimeTable'
+import Info from '../layouts/timerPlusAndWeb/Info';
+import CopiedAlert from '../layouts/alerts/CopiedAlert';
 const WebsiteForm = () => {
     const websiteContext = useContext(WebsiteContext);
     const { addWebsite, updateWebsite, current, setCurrent } = websiteContext;

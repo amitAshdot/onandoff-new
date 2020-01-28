@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import TimerPlusContext from '../../context/timerPlus/TimerPlusContext';
 import { useSpring, animated } from 'react-spring'
 
-import DeleteAlert from '../layouts/DeleteAlert'
+import DeleteAlert from '../layouts/alerts/DeleteAlert'
 import DelayWraper from '../wrapers/DelayWraper'
 
 const TimerPlusItem = (props) => {

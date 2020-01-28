@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 // import PropType from 'prop-Type'
 import WebsiteContext from '../../context/website/WebsiteContext'
-import DeleteAlert from '../layouts/DeleteAlert'
+import DeleteAlert from '../layouts/alerts/DeleteAlert'
 import { useSpring, animated } from 'react-spring'
 import DelayWraper from '../wrapers/DelayWraper'
 

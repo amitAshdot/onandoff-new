@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useSpring, animated } from 'react-spring'
-import WebsiteContext from '../../context/website/WebsiteContext'
-import TimerPlusContext from '../../context/timerPlus/TimerPlusContext';
+import WebsiteContext from '../../../context/website/WebsiteContext'
+import TimerPlusContext from '../../../context/timerPlus/TimerPlusContext';
 
 const DeleteAlert = (props) => {
     const websiteContext = useContext(WebsiteContext);
