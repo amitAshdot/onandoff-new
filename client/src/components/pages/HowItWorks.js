@@ -2,7 +2,7 @@ import React from 'react'
 import Clock from '../layouts/clock/Clock'
  const HowItWorks = () => {
     return (
-        <div style={{textAlign:"right"}}>
+        <div style={{textAlign:"right" , width : "95vw" , margin : "auto"}}>
             <h3>איך זה עובד?</h3>
            <p> אנחנו בonandoff
                 מאמינים ששינוי דברים קטנים באתר לא צריך להיות סיפור שגוזל זמן והרבה כסף,
