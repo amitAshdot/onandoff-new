@@ -1,4 +1,87 @@
 /* @import url('https://fonts.googleapis.com/css?family=Heebo&display=swap'); */
+
+:root{
+  --main-color : #55a658;
+  --main-color-hover : #55a658c9;
+  --deleteColor : #F44336;
+  --deleteColor-hover : #ff000099;
+  --delete-rejrect-hover : #55a6587a;
+  --containerWidth : 90vw;
+
+  --header-height:4vh;
+}
+
+/* ------------------------ clock animation ------------------------  */
+.clock {
+  border-radius: 50%;
+  background: #fff url(/static/media/ios_clock.baeb5980.svg) no-repeat center;
+  background-size: 88%;
+  height: 10em;
+  padding-bottom: 0%;
+  position: relative;
+  width: 10em;
+}
+.clock.simple:after {
+  background: #000;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 5%;
+  height: 5%;
+  z-index: 10;
+}
+.minutes-container, .hours-container, .seconds-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.hours {
+  background: #000;
+  height: 20%;
+  left: 48.75%;
+  position: absolute;
+  top: 32%;
+  transform-origin: 50% 100%;
+  width: 2.5%;
+}
+.minutes {
+  background: #000;
+  height: 40%;
+  left: 49%;
+  position: absolute;
+  top: 13%;
+  transform-origin: 50% 100%;
+  width: 2%;
+}
+.seconds {
+  background: #000;
+  height: 45%;
+  left: 49.5%;
+  position: absolute;
+  top: 14%;
+  transform-origin: 50% 80%;
+  width: 1%;
+  z-index: 8;
+}
+@keyframes rotate {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+.hours-container {
+  animation: rotate 6s infinite linear;
+}
+.minutes-container {
+  animation: rotate 0.5s infinite linear;
+}
+/* .seconds-container {
+  animation: rotate 60s infinite linear;
+} */
 /* ------------------------desktopfirst ------------------------ */
 .test-mailing{display: none;}
 /* -------------Layout------------ */
@@ -16,11 +99,11 @@ body {margin: 0}
 ::-webkit-scrollbar {width: 5px;}
 ::-webkit-scrollbar-thumb {   
  border-radius: 10px;
- background: -webkit-gradient(linear,left top,left bottom,from(#55a658),to(#55a65854));
+ background: -webkit-gradient(linear,left top,left bottom,from(var(--main-color)),to(#55a65854));
  box-shadow: inset 2px 2px 2px rgba(255,255,255,.25), inset -2px -2px 2px rgba(0,0,0,.25);}
 ::-webkit-scrollbar-track {     
  background-color: #fff;
- background: linear-gradient(to bottom,#55a658,#55a658 1px,#55a658 1px,#ffffff);
+ background: linear-gradient(to bottom,var(--main-color),var(--main-color) 1px,var(--main-color) 1px,#ffffff);
 }
 /* --- loading image --- */
 .loading img {width: 10vh;}
@@ -32,7 +115,7 @@ li {
 }
 /* --- buttons --- */
 button {
-  background-color: #55a658;
+  background-color: var(--main-color);
   color: #ffff;
   width: 10vw;
   min-width: 100px;
@@ -43,7 +126,7 @@ button {
 }
 /* input - submit */
 input[type="submit"] {
-  background-color: #55a658;
+  background-color: var(--main-color);
   color: #ffff;
   width: 10vw;
   min-width: 100px;
@@ -67,7 +150,7 @@ input[type="text"] {
     padding: 5px 3px;
     margin-bottom: 10px;
     text-align: right;
-    border: 1px solid #55a658;
+    border: 1px solid var(--main-color);
     cursor: pointer;
     outline: none;
 }
@@ -79,7 +162,7 @@ input[type="password"] {
   padding: 5px 3px;
   margin-bottom: 10px;
   text-align: right;
-  border: 1px solid #55a658;
+  border: 1px solid var(--main-color);
   cursor: pointer;
   outline: none;
 
@@ -91,7 +174,7 @@ input[type="password"] {
   border-bottom: 1px solid black;
   width: 96vw;
   padding: 0 2vw;
-  background-color: #55a658;
+  background-color: var(--main-color);
 }
 /* logo text */
 h1.logotxt { 
@@ -214,18 +297,18 @@ i.fa.fa-angle-left {
 button.hp-button {border-radius:5px;margin:10px;padding: 10px;}
 button.hp-button:hover {
   background-color: white;
-  border-color: #55a658;
-  color: #55a658;
+  border-color: var(--main-color);
+  color: var(--main-color);
 }
 span.command {display: block;}
 .register {
   background-color: white;
-  border-color: #55a658;
-  color: #55a658;
+  border-color: var(--main-color);
+  color: var(--main-color);
   cursor: pointer;
 }
 button.hp-button.register:hover {
-  background-color: #55a658;
+  background-color: var(--main-color);
   color: #ffff;
 }
 .websiteItem:hover {
@@ -233,9 +316,9 @@ button.hp-button.register:hover {
   color: white!important;
 }
 .aw-website-details a:hover {border-bottom: none;}
-button#deleteBtn:hover {color: #F44336;border-bottom: none;  cursor: pointer;  outline: none;}
-button#deleteBtn {color: red;  cursor: pointer;  outline: none;text-align: center;width:10%;}
-.websiteItem:hover .websiteBtn{color:#55a658;  outline: none;}
+button#deleteBtn:hover {color: var(--deleteColor-hover);border-bottom: none;  cursor: pointer;  outline: none;}
+button#deleteBtn {color: var(--deleteColor);  cursor: pointer;  outline: none;text-align: center;width:10%;}
+.websiteItem:hover .websiteBtn{color:var(--main-color);  outline: none;}
 .websiteBtn::after{display: none}
 /* --- delete form---  */
 .deleteForm {
@@ -251,10 +334,10 @@ button#deleteBtn {color: red;  cursor: pointer;  outline: none;text-align: cente
   margin-top: calc(1% + 1px);
   opacity: 0
 }
-button.deletebto {background-color: red;margin: 10px;    border-radius: 5px;}
-button.deletebto:hover {background-color: #ff000099;}
+button.deletebto {background-color: var(--deleteColor);margin: 10px;    border-radius: 5px;}
+button.deletebto:hover {background-color: var(--deleteColor-hover);}
 button.rejrect {margin: 10px;    border-radius: 5px;}
-button.rejrect:hover {background-color: #55a6587a;}
+button.rejrect:hover {background-color: var(--delete-rejrect-hover);}
 
 /* --- edit form Item --- */
 a.editItem::after {display: none;}
@@ -317,7 +400,7 @@ div#day-button {
   display: contents;
 }
 div#day-button input {
-  background-color: #55a658;
+  background-color: var(--main-color);
   color: #ffff;
   width: 11%;
   font-size: 2ex;
@@ -329,7 +412,7 @@ button.websiteBtn{
   border-radius: 5px;
   margin: 5px 10px;
   background: transparent;
-  color: #55a658;
+  color: var(--main-color);
   border: none;
   text-align: right;
   padding: 0;
@@ -338,7 +421,7 @@ button.websiteBtn{
 }
 button.add-website-page-btn {
   color: #ffff;
-  background-color: #55a658;
+  background-color: var(--main-color);
   width: 10vw;
   min-width: 100px;
   max-width: 200px;
@@ -365,7 +448,7 @@ input.websit-form-input:hover {cursor: pointer;}
 .input-border::before {
   display: block;
   content: '';
-  border-bottom: solid 2px #55a658;
+  border-bottom: solid 2px var(--main-color);
   transform: scaleX(0.4);
   transition: transform 250ms ease-in-out;
 }
@@ -423,10 +506,10 @@ p.code-info {margin-bottom: 0;}
   /* height: 350px !important; */
 }
   /* ------------- login ------------- */
-.formContainer a:visited {color: #55a658;text-decoration: none; cursor: pointer;}
-.formContainer a:link { color: #55a658; text-decoration: none; cursor: pointer;}
-.formContainer a:hover { color: #55a658; text-decoration: none; border-bottom: 1px solid white;  cursor: pointer;}
-.formContainera:active { color: #55a658; text-decoration: none; cursor: pointer;}
+.formContainer a:visited {color: var(--main-color);text-decoration: none; cursor: pointer;}
+.formContainer a:link { color: var(--main-color); text-decoration: none; cursor: pointer;}
+.formContainer a:hover { color: var(--main-color); text-decoration: none; border-bottom: 1px solid white;  cursor: pointer;}
+.formContainera:active { color: var(--main-color); text-decoration: none; cursor: pointer;}
 .formContainer a::after{display: none}
 .formContainer label {display: block;text-align: right;}
 .forminput {width: 20%;margin: auto;cursor: pointer;}

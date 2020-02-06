@@ -16,8 +16,8 @@ const Timerplus = () => {
         // <PageWraper>
         <div>
             {isAuthenticated && currentTimerPlus ?
-                <TimerPlusForm  /> :
-                    <Home /> }
+                <TimerPlusForm  /> 
+                    : <Home /> }
         </div>
         // </PageWraper>
     )

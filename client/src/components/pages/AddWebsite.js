@@ -17,7 +17,8 @@ const AddWebsite = () => {
     return (
         // <PageWraper>
             <div >
-                {isAuthenticated && current ? <WebsiteForm /> : isAuthenticated && !current ? <Home /> : <NotLogin />}
+                {isAuthenticated && current ? <WebsiteForm /> 
+                    : <Home /> }
             </div>
         // </PageWraper>
     )

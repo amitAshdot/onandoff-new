@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Clock from '../layouts/clock/Clock'
  const HowItWorks = () => {
     return (
         <div style={{textAlign:"right"}}>
@@ -15,7 +15,7 @@ import React from 'react'
                 אפשר לנהל אצלנו מספר אתרים במקביל - לכן אם יש חג/מבצע/שעות פעילות
                 אצלנו תוכלו בפשטות לשנות בכל האתרים בזמן קצר ביותר ולחסוך המון זמן וכסף
            </p>
-
+            <Clock/>
         </div>
     )
 }

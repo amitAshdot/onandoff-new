@@ -5,7 +5,6 @@ import WebsiteContext from '../../../context/website/WebsiteContext';
 import Websites from '../../websites/Websites';
 import TimerPlusContext from '../../../context/timerPlus/TimerPlusContext';
 import TimerPlus from '../../timerPlus/TimersPlus';
-import Search from '../../layouts/Search';
 
 // import Loading from '../layouts/Loading'
 
