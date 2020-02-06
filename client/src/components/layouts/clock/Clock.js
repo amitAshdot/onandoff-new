@@ -6,16 +6,11 @@ function Clock() {
     const [state, setState] = useState({ count: 1 });
     const { count } = state;
     let flag = useInterval(() => {
-        if (count === 12) {
-            console.log(count)
-
+        if (count === 12)
             setState({ count: 1 });
-        }
-        else{
-            console.log(count)
+
+        else
             setState({ count: count + 1 });
-        }
-        
     }, 500);
 
     return (
