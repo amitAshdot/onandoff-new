@@ -14,7 +14,7 @@
 /* ------------------------ clock animation ------------------------  */
 .clock {
   border-radius: 50%;
-  background: #fff url(/static/media/ios_clock.baeb5980.svg) no-repeat center;
+  background: #fff url(./images/ios_clock.svg) no-repeat center;
   background-size: 88%;
   height: 10em;
   padding-bottom: 0%;

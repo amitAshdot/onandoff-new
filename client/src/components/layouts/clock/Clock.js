@@ -17,6 +17,7 @@ function Clock() {
     return (
         <div>
             <h1>לדוגמא:</h1>
+            <h3>הכפתור יופיע בין השעות 1-8 </h3>
             <article className="clock">
                 <div className="hours-container">
                     <div className="hours"></div>
