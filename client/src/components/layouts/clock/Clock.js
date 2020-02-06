@@ -30,7 +30,7 @@ function Clock() {
                 <div>
                     {(count > 1 && count <= 8) ?
                         <button>
-                            cdscds
+                            לשיחה חייגו <br/> 012-3456789
                     </button>
                         : "המוקד סגור כעת"}
                 </div>
