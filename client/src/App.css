@@ -20,6 +20,7 @@
   padding-bottom: 0%;
   position: relative;
   width: 10em;
+  margin: auto;
 }
 .clock.simple:after {
   background: #000;
@@ -67,6 +68,11 @@
   transform-origin: 50% 80%;
   width: 1%;
   z-index: 8;
+}
+.exampleClock {
+  margin: auto;
+  text-align: center;
+  width: 100%;
 }
 @keyframes rotate {
   100% {

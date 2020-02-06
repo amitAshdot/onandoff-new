@@ -14,7 +14,7 @@ function Clock() {
     }, 500);
 
     return (
-        <div>
+        <div className="exampleClock">
             <h1>לדוגמא:</h1>
             <h3>הכפתור יופיע בין השעות 1-8 </h3>
             <article className="clock">
@@ -29,7 +29,7 @@ function Clock() {
             <section>
                 <div>
                     {(count > 1 && count <= 8) ?
-                        <button>
+                        <button style={{width : "100%"}}>
                             לשיחה חייגו <br/> 012-3456789
                     </button>
                         : "המוקד סגור כעת"}
