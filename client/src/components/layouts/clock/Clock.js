@@ -3,15 +3,19 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 
 function Clock() {
-    const [state, setState] = useState({ count: 0 });
+    const [state, setState] = useState({ count: 1 });
     const { count } = state;
     let flag = useInterval(() => {
         if (count === 12) {
-            console.log('enter')
-            setState({ count: 0 });
+            console.log(count)
+
+            setState({ count: 1 });
         }
-        else
+        else{
+            console.log(count)
             setState({ count: count + 1 });
+        }
+        
     }, 500);
 
     return (
@@ -29,7 +33,7 @@ function Clock() {
             </article>
             <section>
                 <div>
-                    {(count > 0 && count < 8) ?
+                    {(count > 1 && count <= 8) ?
                         <button>
                             cdscds
                     </button>
