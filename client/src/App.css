@@ -12,6 +12,13 @@
 }
 
 /* ------------------------ clock animation ------------------------  */
+.clockWrapper {
+  background-color: #55a6587d;
+  width: 20%;
+  margin: auto auto 1vw;
+  padding: 0.5vw 0.5vw;
+  border-radius: 10px;
+}
 .clock {
   border-radius: 50%;
   background: #fff url(./images/ios_clock.svg) no-repeat center;
@@ -539,11 +546,18 @@ p#emailErr {
 /* ------------------------ Mobile ------------------------ */
 @media (max-width: 600px) {
   /* ------------------------ clock animation ------------------------  */
+  .clockWrapper {
+    background-color: #55a6587d;
+    width: 60%;
+    margin: auto auto 5vw;
+    padding: 0.5vw 0.5vw;
+    border-radius: 10px;
+}
 .clock {
   border-radius: 50%;
   background: #fff url(./images/ios_clock.svg) no-repeat center;
   background-size: 50vw 50vw;
-  padding-bottom: 0%;
+  padding-bottom: 0;
   position: relative;
   width: 51vw;
   height: 52vw;
@@ -553,7 +567,7 @@ p#emailErr {
   margin: auto;
   text-align: center;
   width: 100%;
-  height: 62vh;
+  height: 70vh;
 }
 /* ------------- layout ------------- */
 .container {width: 95vw;margin: auto;}

@@ -17,20 +17,22 @@ function Clock() {
         <div className="exampleClock">
             <h1>לדוגמא:</h1>
             <h3>הכפתור יופיע בין השעות 1-8 </h3>
-            <article className="clock">
-                <div className="hours-container">
-                    <div className="hours"></div>
-                </div>
-                <div className="minutes-container">
-                    <div className="minutes"></div>
-                </div>
-                <br />
-            </article>
+            <div className="clockWrapper">
+                <article className="clock">
+                    <div className="hours-container">
+                        <div className="hours"></div>
+                    </div>
+                    <div className="minutes-container">
+                        <div className="minutes"></div>
+                    </div>
+                    <br />
+                </article>
+            </div>
             <section>
                 <div className="clockTimerClass">
                     {(count > 1 && count <= 8) ?
-                        <button style={{width : "100%"}}>
-                            לשיחה חייגו <br/> 012-3456789
+                        <button style={{ width: "100%" }}>
+                            לשיחה חייגו <br /> 012-3456789
                     </button>
                         : "המוקד סגור כעת"}
                 </div>
