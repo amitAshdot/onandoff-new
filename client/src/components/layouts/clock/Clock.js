@@ -27,7 +27,7 @@ function Clock() {
                 <br />
             </article>
             <section>
-                <div>
+                <div className="clockTimerClass">
                     {(count > 1 && count <= 8) ?
                         <button style={{width : "100%"}}>
                             לשיחה חייגו <br/> 012-3456789

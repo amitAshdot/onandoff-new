@@ -14,13 +14,13 @@
 /* ------------------------ clock animation ------------------------  */
 .clock {
   border-radius: 50%;
-  background: #fff url(./images/ios_clock.svg) no-repeat center;
-  background-size: 88%;
-  height: 10em;
+  background: #fff url(/static/media/ios_clock.baeb5980.svg) no-repeat center;
+  background-size: 8vw 8vw;
   padding-bottom: 0%;
   position: relative;
-  width: 10em;
-  margin: auto;
+  width: 8vw;
+  height: 8vw;
+  margin: 1vw auto;
 }
 .clock.simple:after {
   background: #000;
@@ -538,8 +538,25 @@ p#emailErr {
 
 /* ------------------------ Mobile ------------------------ */
 @media (max-width: 600px) {
+  /* ------------------------ clock animation ------------------------  */
+.clock {
+  border-radius: 50%;
+  background: #fff url(/static/media/ios_clock.baeb5980.svg) no-repeat center;
+  background-size: 50vw 50vw;
+  padding-bottom: 0%;
+  position: relative;
+  width: 51vw;
+  height: 52vw;
+  margin: 3vh auto;
+}
+.exampleClock {
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  height: 62vh;
+}
 /* ------------- layout ------------- */
-.container {width: 100vw;}
+.container {width: 95vw;margin: auto;}
 /* .pageWraper{display: flex;} */
 /* ----- navbar ----- */
   h1.logotxt {
