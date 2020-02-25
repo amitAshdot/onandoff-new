@@ -25,8 +25,8 @@
   background-size: 8vw 8vw;
   padding-bottom: 0%;
   position: relative;
-  width: 8vw;
-  height: 8vw;
+  width: 9vw;
+  height: 9vw;
   margin: 1vw auto;
 }
 .clock.simple:after {
@@ -559,8 +559,8 @@ p#emailErr {
   background-size: 50vw 50vw;
   padding-bottom: 0;
   position: relative;
-  width: 51vw;
-  height: 52vw;
+  width: 54vw;
+  height: 54vw;
   margin: 3vh auto;
 }
 .exampleClock {

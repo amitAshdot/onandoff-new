@@ -26,51 +26,52 @@ const TimerPlusSchema = mongoose.Schema({
         type: String,
         default: true
     },
+    backgroundColor: {
+        type: String,
+    },
+    textColor: {
+        type: String,
+    },
+    eventInput: {
+        type: String,
+    },
+    evenCategoryInput: {
+        type: String,
+    },
+    eventLabelInput: {
+        type: String,
+    },
     wysiwyg: {
         type: String
         },
     timeSchedule: {
         Sunday: {
             openHour: { type: String },
-            // openMin: { type: String },
             closeHour: { type: String },
-            // closeMin: { type: String },
         },
         Monday: {
             openHour: { type: String },
-            // openMin: { type: String },
             closeHour: { type: String },
-            // closeMin: { type: String },
         },
         Tuesday: {
             openHour: { type: String },
-            // openMin: { type: String },
             closeHour: { type: String },
-            // closeMin: { type: String },
         },
         Wednesday	: {
             openHour: { type: String },
-            // openMin: { type: String },
             closeHour: { type: String },
-            // closeMin: { type: String },
         },
         Thursday: {
             openHour: { type: String },
-            // openMin: { type: String },
             closeHour: { type: String },
-            // closeMin: { type: String },
         },
         Friday: {
             openHour: { type: String },
-            // openMin: { type: String },
             closeHour: { type: String },
-            // closeMin: { type: String },
         },
         Saturday: {
             openHour: { type: String },
-            // openMin: { type: String },
             closeHour: { type: String },
-            // closeMin: { type: String },
         },
     }
 });

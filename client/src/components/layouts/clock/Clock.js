@@ -8,11 +8,9 @@ function Clock() {
     let flag = useInterval(() => {
         if (count === 12)
             setState({ count: 1 });
-
         else
             setState({ count: count + 1 });
-    }, 500);
-
+    }, 500);    
     return (
         <div className="exampleClock">
             <h1>לדוגמא:</h1>
@@ -46,12 +44,10 @@ export default Clock;
 
 const useInterval = (callback, delay) => {
     const savedCallback = useRef();
-
     // Remember the latest function.
     useEffect(() => {
         savedCallback.current = callback;
     }, [callback]);
-
     // Set up the interval.
     useEffect(() => {
         function tick() {

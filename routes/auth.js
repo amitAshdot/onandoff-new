@@ -32,7 +32,6 @@ router.post('/', [
             return res.status(400).json({ errors: errors.array() });
         }
         const { email, password, vkey } = req.body;
-
         try {//find email if good compare with password if good create local token and take id
             let user = await User.findOne({ email });
             if (!user) {
@@ -42,13 +41,11 @@ router.post('/', [
             if (!isMatch) {
                 return res.status(400).json({ msg: 'wrong username or password' })
             }
-
             const payload = {
                 user: {
                     id: user.id
                 }
             }
-
             jwt.sign(payload, config.get('jwtSecret'), {
                 expiresIn: 3600000
             }, (err, token) => {
@@ -84,13 +81,11 @@ router.get('/', [
             if (!isMatch) {
                 return res.status(400).json({ msg: 'wrong username or password' })
             }
-
             const payload = {
                 user: {
                     id: user.id
                 }
             }
-
             jwt.sign(payload, config.get('jwtSecret'), {
                 expiresIn: 3600000
             }, (err, token) => {

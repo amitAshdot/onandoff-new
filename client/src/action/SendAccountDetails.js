@@ -23,11 +23,9 @@ export default class extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
     componentDidMount() {
         this.handleSubmit();
     }
-
     render() {
         return (
             <form className="test-mailing" style={{ display: 'none' }}>
@@ -48,14 +46,11 @@ export default class extends React.Component {
 
 
     handleSubmit(event) {
-
         const templateId = 'template_il2lEXZL';
         const service_id = "default_service";
         window.emailjs.send(service_id, templateId, this.state.template_params);
-
         // this.sendFeedback(templateId, { message_html: this.state.feedback, from_name: this.state.name, reply_to: this.state.email }, template_params)
     }
-
     sendFeedback(templateId, variables, template_params) {
         window.emailjs.send(
             'gmail', templateId,
