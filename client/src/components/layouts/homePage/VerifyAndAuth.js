@@ -29,6 +29,7 @@ export const VerifyAndAuth = () => {
     });
     const [timerPlus, setTimersPlus] = useState({
         wysiwyg: '',
+        wysiwygEditor: '',
         backgroundColor: '#ffff',
         textColor: '#000000',
         eventInput: '',
@@ -46,6 +47,7 @@ export const VerifyAndAuth = () => {
         name: '',
         url: '',
         divId: '',
+        withGoogleAnalytics : false,
     });
     const onSubmit = e => {
         e.preventDefault();

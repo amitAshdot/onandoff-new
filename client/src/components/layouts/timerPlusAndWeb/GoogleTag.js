@@ -1,26 +1,18 @@
 import React from 'react';
 
 const GoogleTag = (props) => {
-    const handleChange = e =>{
-        props.withGoogleAnalytics ? 
-        props.setTimerPlus({ 
-            ...props.timerPlus, 
-            wysiwyg:`<a href="#" onclick="gtag('event', ${props.timerPlus.eventInput}, {'event_category' : ${props.timerPlus.evenCategoryInput},'event_label' : ${props.timerPlus.eventLabelInput} });"> ${props.timerPlus.wysiwyg} </a>`,
-            withGoogleAnalytics: !props.withGoogleAnalytics,
-        })
-        :
-        props.setTimerPlus({ ...props.timerPlus,  withGoogleAnalytics: !props.withGoogleAnalytics, wysiwyg:`${props.timerPlus.wysiwyg}`});
-    }
+    
     return (
         <div >
             <label>
                 <input
                     type="checkbox"
-                    name="isFriendly"
+                    name="withGoogleAnalytics"
                     checked={props.withGoogleAnalytics}
-                    onChange={handleChange}
+                    onChange={props.onChange}
                 /> להוסיף גוגל אנאליטיקס
              </label>
+             
             <p>כאן תוכלו לממש גוגל אנאליטיקס</p>
             <p>התבנית הינה כזאת:</p>
             <p>{`<a href="#" onclick="gtag('event', 'event_name', {   'event_category' : 'even_category_name',   'event_label' : 'event_label_name' });`}</p>

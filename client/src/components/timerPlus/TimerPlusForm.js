@@ -34,6 +34,7 @@ const TimerPlusForm = (props) => {
             Saturday: { openHour: '00:00', closeHour: '00:00' }
         },
         wysiwyg: '',
+        wysiwygEditor: '',
         name: '',
         url: '',
         divId: '',
@@ -44,12 +45,32 @@ const TimerPlusForm = (props) => {
         eventLabelInput: '',
         saveAlert: false, //for UI notification alert
         loading: true,
-        withGoogleAnalytics : false,
+        withGoogleAnalytics: false,
     });
-    const { wysiwyg, name, url, divId, saveAlert, backgroundColor, textColor, eventInput, evenCategoryInput, eventLabelInput, withGoogleAnalytics} = timerPlus
+    const { wysiwyg, name, url, divId, saveAlert, backgroundColor, textColor, eventInput, evenCategoryInput, eventLabelInput, withGoogleAnalytics, wysiwygEditor } = timerPlus
 
     //change input state
-    const onChange = e => { setTimerPlus({ ...timerPlus, [e.target.name]: e.target.value }); }
+    // const onChange = e => { setTimerPlus({ ...timerPlus, [e.target.name]: e.target.value }); }
+    const onChange = (event) => {
+        const { name, value, type, checked } = event.target
+        type === "checkbox" ?
+            !withGoogleAnalytics ?
+                setTimerPlus({
+                    ...timerPlus,
+                    wysiwyg: `<a href="#" onclick="gtag('event', ${eventInput}, {'event_category' : ${evenCategoryInput},'event_label' : ${eventLabelInput} });"> ${wysiwygEditor} </a>`,
+                    [name]: checked
+                }) :
+                setTimerPlus({
+                    ...timerPlus,
+                    wysiwyg: wysiwygEditor,
+                    [name]: checked
+                })
+            :
+            setTimerPlus({
+                ...timerPlus,
+                [name]: value
+            })
+    }
     const handleChangeOpemHour = (el) => {
         let inputName = el.target.name;
         let inputValue = el.target.value;
@@ -65,7 +86,13 @@ const TimerPlusForm = (props) => {
         setTimerPlus(statusCopy);
     }
     const handleEditorChange = (content) => {
-        setTimerPlus({ ...timerPlus, wysiwyg: withGoogleAnalytics?`<a href="#" onclick="gtag('event', ${eventInput}, {   'event_category' : ${evenCategoryInput},   'event_label' : ${eventLabelInput} });"> ${content} </a>`:`${content}`});
+        withGoogleAnalytics ?
+            setTimerPlus({
+                ...timerPlus, wysiwyg: `<a href="#" onclick="gtag('event', ${eventInput}, {   'event_category' : ${evenCategoryInput},   'event_label' : ${eventLabelInput} });"> ${content} </a>`,
+                wysiwygEditor: content
+            })
+            :
+            setTimerPlus({ ...timerPlus, wysiwyg: content, wysiwygEditor: content })
     }
     const onSubmit = e => {
         e.preventDefault();
@@ -108,7 +135,7 @@ const TimerPlusForm = (props) => {
     //             return <Wysiwyg handleEditorChange={handleEditorChange} wysiwyg={wysiwyg} />
     //     }
     // }
-    
+
     return (
         <form onSubmit={onSubmit}>
             {currentTimerPlus._id ? <h2>  ערוך טיימר+: {name}</h2> : <h2>הוסף טיימר+</h2>}
@@ -127,7 +154,7 @@ const TimerPlusForm = (props) => {
             {section === 0 ? <Wysiwyg handleEditorChange={handleEditorChange} wysiwyg={wysiwyg} /> : null}
             {section === 1 ? <TimeTable handleChangeCloseHour={handleChangeCloseHour} handleChangeOpemHour={handleChangeOpemHour} timerPlus={timerPlus} currentTimerPlus={currentTimerPlus} /> : null}
             {section === 2 ? <ColorSelect backgroundColor={backgroundColor} textColor={textColor} onChange={onChange} /> : null}
-            {section === 3 ? <GoogleTag evenCategoryInput={evenCategoryInput} eventInput={eventInput} eventLabelInput={eventLabelInput} onChange={onChange} setTimerPlus={setTimerPlus} timerPlus={timerPlus} withGoogleAnalytics={withGoogleAnalytics}/> : null}
+            {section === 3 ? <GoogleTag evenCategoryInput={evenCategoryInput} eventInput={eventInput} eventLabelInput={eventLabelInput} onChange={onChange} setTimerPlus={setTimerPlus} timerPlus={timerPlus} withGoogleAnalytics={withGoogleAnalytics} /> : null}
 
             <div className="day" id="day-button">
                 <input type="submit" value={currentTimerPlus._id ? "שמור" : "הוסף"} />
