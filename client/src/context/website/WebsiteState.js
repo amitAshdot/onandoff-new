@@ -53,14 +53,15 @@ const WebsiteState = props => {
         }
     }
     //update website
-    const updateWebsite = async website => {
+    const updateWebsite = async (website,current) => {
+        debugger
         const config = {
             headers: {
                 'Content-Type': 'application/json'
             }
         }
         try {
-            const res = await axios.put(`/api/websites/${website._id}`, website, config);
+            const res = await axios.put(`/api/websites/${current._id}`, website, config);
             dispatch({ type: UPDATE_WEBSITE, payload: res.data })
 
         } catch (err) {

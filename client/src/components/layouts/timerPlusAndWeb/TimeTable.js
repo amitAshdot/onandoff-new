@@ -1,13 +1,11 @@
 import React from 'react'
 import TimeTableDay from './TimeTableDay'
 const TimeTable = (props) => {
-
     const handleChangeCloseHour = props.handleChangeCloseHour;
     const handleChangeOpemHour = props.handleChangeOpemHour;
     const { timeSchedule } = props.timerPlus;
     const days = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת']
     const daysEng = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-
     return (
         <div className="time">
             <div className="day-lable-d">
@@ -25,9 +23,7 @@ const TimeTable = (props) => {
                     i={i}
                 />
             )}
-            <div className="day" id="day-button">
-                {props.currentTimerPlus._id ? <input type="submit" value="שמור" /> : <input type="submit" value="הוסף" />}
-            </div> 
+
         </div>
     )
 }

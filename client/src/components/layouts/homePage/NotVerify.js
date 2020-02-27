@@ -4,11 +4,9 @@ import AuthContext from '../../../context/auth/AuthContext'
 
 // import Loading from '../layouts/Loading'
 import SendEmail from '../../../action/sendMail'
-
  const NotVerify = () => {
     const authContext = useContext(AuthContext);
     const { user} = authContext;
-
     return (
         <Fragment>
             <div className="hp-main">

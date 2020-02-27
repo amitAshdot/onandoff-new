@@ -29,8 +29,9 @@
         "nodemailer": "^6.3.1",
         "react": "^16.12.0",
         "react-copy-to-clipboard": "^5.0.2",
-        "react-spring": "^8.0.27"  
-      },
+        "react-input-color": "^2.0.28",
+        "react-spring": "^8.0.27"
+    },
     "devDependencies": {
         "concurrently": "^5.0.0",
         "nodemon": "^1.19.4",

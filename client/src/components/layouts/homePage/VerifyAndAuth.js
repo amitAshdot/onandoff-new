@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from 'react'
+import React, { Fragment, useState, useContext, useEffect } from 'react'
 // import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import WebsiteContext from '../../../context/website/WebsiteContext';
@@ -9,50 +9,53 @@ import TimerPlus from '../../timerPlus/TimersPlus';
 // import Loading from '../layouts/Loading'
 
 export const VerifyAndAuth = () => {
-
-
     const websiteContext = useContext(WebsiteContext);
     const { setCurrent } = websiteContext;
-
     const timerPlusContext = useContext(TimerPlusContext);
     const { setCurrentTimerPlus } = timerPlusContext;
-
     const [website, setWebsite] = useState({
         timeSchedule: {
-            Sunday: { openHour: '00:00', closeHour: '00:00' },
-            Monday: { openHour: '00:00', closeHour: '00:00', },
-            Tuesday: { openHour: '00:00', closeHour: '00:00' },
-            Wednesday: { openHour: '00:00', closeHour: '00:00' },
-            Thursday: { openHour: '00:00', closeHour: '00:00' },
-            Friday: { openHour: '00:00', closeHour: '00:00' },
-            Saturday: { openHour: '00:00', closeHour: '00:00' }
+            Sunday: { openHour: '00:00', closeHour: '23:00' },
+            Monday: { openHour: '00:00', closeHour: '23:00', },
+            Tuesday: { openHour: '00:00', closeHour: '23:00' },
+            Wednesday: { openHour: '00:00', closeHour: '23:00' },
+            Thursday: { openHour: '00:00', closeHour: '23:00' },
+            Friday: { openHour: '00:00', closeHour: '23:00' },
+            Saturday: { openHour: '00:00', closeHour: '23:00' }
         },
+        isShow: true,
         name: '',
         url: '',
         divId: '',
     });
     const [timerPlus, setTimersPlus] = useState({
+        isShow: true,
         wysiwyg: '',
+        wysiwygEditor: '',
+        eventInput: '',
+        evenCategoryInput : '',
+        eventLabelInput: '',
         timeSchedule: {
-            Sunday: { openHour: '00:00', closeHour: '00:00' },
-            Monday: { openHour: '00:00', closeHour: '00:00', },
-            Tuesday: { openHour: '00:00', closeHour: '00:00' },
-            Wednesday: { openHour: '00:00', closeHour: '00:00' },
-            Thursday: { openHour: '00:00', closeHour: '00:00' },
-            Friday: { openHour: '00:00', closeHour: '00:00' },
-            Saturday: { openHour: '00:00', closeHour: '00:00' }
+            Sunday: { openHour: '00:00', closeHour: '23:00' },
+            Monday: { openHour: '00:00', closeHour: '23:00', },
+            Tuesday: { openHour: '00:00', closeHour: '23:00' },
+            Wednesday: { openHour: '00:00', closeHour: '23:00' },
+            Thursday: { openHour: '00:00', closeHour: '23:00' },
+            Friday: { openHour: '00:00', closeHour: '23:00' },
+            Saturday: { openHour: '00:00', closeHour: '23:00' }
         },
         name: '',
         url: '',
         divId: '',
+        withGoogleAnalytics : false,
     });
     const onSubmit = e => {
         e.preventDefault();
         setCurrent();
     }
-
     const [search, setsearch] = useState({searchInput : ''});
     const onChange = e => { setsearch({ ...search, [e.target.name]: e.target.value }); }
+    
     return (
         <Fragment>
             <div className="createWeb">

@@ -25,8 +25,8 @@
   background-size: 8vw 8vw;
   padding-bottom: 0%;
   position: relative;
-  width: 8vw;
-  height: 8vw;
+  width: 9vw;
+  height: 9vw;
   margin: 1vw auto;
 }
 .clock.simple:after {
@@ -400,12 +400,27 @@ p#formType {
   max-width: 1240px;
   padding: 3% 0;
 }
+.sectionChose {
+  margin-top: 1.5em;
+}
+
+.sectionChose button {
+  width: 35%;
+  cursor: pointer;
+}
+
+.sectionChose button:hover {
+  background-color: var(--main-color) !important;
+}
+.gtInputArea {
+  margin-bottom: 2em;
+}
 .day {
   display: table-cell;
   text-align: center;
   place-self: flex-end;
   align-self: flex-end;
-  width: 11%;
+  width: 50%;
   justify-self: flex-end;
 }
 div#day-button {
@@ -465,9 +480,9 @@ input.websit-form-input:hover {cursor: pointer;}
   transform: scaleX(0.4);
   transition: transform 250ms ease-in-out;
 }
-.input-border:hover::before { transform: scaleX(1); }
+.input-border:hover::before { transform: scaleX(0.6); }
 input.websit-form-input:hover + .input-border::before  {
-  transform: scaleX(1);
+  transform: scaleX(0.6);
 }
 p.copyAlert-text {
   border-bottom: 1px solid red;
@@ -481,6 +496,8 @@ input[type="time"] {
   margin: 5px 0px;
   border: none;
   cursor: pointer;
+  width: 100%;
+  text-align: center;
 }
 .day-lable-d {
   flex-direction: column;
@@ -559,8 +576,8 @@ p#emailErr {
   background-size: 50vw 50vw;
   padding-bottom: 0;
   position: relative;
-  width: 51vw;
-  height: 52vw;
+  width: 54vw;
+  height: 54vw;
   margin: 3vh auto;
 }
 .exampleClock {

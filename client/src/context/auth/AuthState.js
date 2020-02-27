@@ -27,7 +27,6 @@ const AuthState = props => {
         users: []
     };
     const [state, dispatch] = useReducer(AuthReducer, initialState);
-
     //Load User
     const loadUser = async () => {
         if (localStorage.token) {
@@ -110,14 +109,12 @@ const AuthState = props => {
             console.log(err);
         }
     }
-
     //LogOut
     const logout = () => {
         dispatch({ type: LOG_OUT })
     }
     //Clear errors
     const clearErr = useCallback(() => dispatch({ type: CLEAR_ERROR }), []);
-
     return (
         <AuthContext.Provider
             value={{
@@ -136,7 +133,6 @@ const AuthState = props => {
                 clearErr,
                 verify,
             }} >
-
             {props.children}
         </AuthContext.Provider>
     )

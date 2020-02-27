@@ -18,7 +18,7 @@ const TimerPlusState = props => {
         timersPlus: [],
         currentTimerPlus: null,
         error: null,
-        deleteFlag:false
+        deleteFlag: false
     };
     const [state, dispatch] = useReducer(TimerPlusReducer, initialState);
 
@@ -36,7 +36,7 @@ const TimerPlusState = props => {
     }
 
     //Add timersPlus
-    const addTimerPlus  = async (timersPlus) => {
+    const addTimerPlus = async (timersPlus) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ const TimerPlusState = props => {
         }
         try {
             const res = await axios.post('/api/timersplus', timersPlus, config);
-            
+
             dispatch({ type: ADD_TIMER_PLUS, payload: res.data });
 
         } catch (err) {
@@ -54,14 +54,14 @@ const TimerPlusState = props => {
         }
     }
     //update timersPlus
-    const updateTimerPlus = async timersPlus => {
+    const updateTimerPlus = async (timersPlus, current) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json'
             }
         }
         try {
-            const res = await axios.put(`/api/timersplus/${timersPlus._id}`, timersPlus, config);
+            const res = await axios.put(`/api/timersplus/${current._id}`, timersPlus, config);
             dispatch({ type: UPDATE_TIMER_PLUS, payload: res.data })
 
         } catch (err) {
@@ -80,8 +80,8 @@ const TimerPlusState = props => {
                 'Content-Type': 'application/json'
             }
         }
-        try {  
-            const res = await axios.put(`/api/timersplus/${timerPlus._id}`,timerPlus , config);
+        try {
+            const res = await axios.put(`/api/timersplus/${timerPlus._id}`, timerPlus, config);
             dispatch({ type: DELETE_TIMER_PLUS, payload: res.data })
         } catch (err) {
             dispatch({
