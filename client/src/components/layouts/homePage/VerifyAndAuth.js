@@ -23,15 +23,15 @@ export const VerifyAndAuth = () => {
             Friday: { openHour: '00:00', closeHour: '23:00' },
             Saturday: { openHour: '00:00', closeHour: '23:00' }
         },
+        isShow: true,
         name: '',
         url: '',
         divId: '',
     });
     const [timerPlus, setTimersPlus] = useState({
+        isShow: true,
         wysiwyg: '',
         wysiwygEditor: '',
-        backgroundColor: '#ffff',
-        textColor: '#000000',
         eventInput: '',
         evenCategoryInput : '',
         eventLabelInput: '',

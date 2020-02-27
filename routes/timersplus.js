@@ -41,20 +41,19 @@ router.post('/',
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        const { name, url, divId, date, timeSchedule, isShow, wysiwyg, backgroundColor, textColor, eventInput, evenCategoryInput, eventLabelInput } = req.body;
+        const { name, url, divId, date, timeSchedule, isShow, wysiwyg, wysiwygEditor, eventInput, evenCategoryInput, eventLabelInput } = req.body;
         try {
             const newTimerplus = new Timerplus({
                 name,
                 url,
                 divId,
                 date,
-                backgroundColor,
-                textColor,
                 eventInput,
                 evenCategoryInput,
                 eventLabelInput,
                 timeSchedule,
                 wysiwyg,
+                wysiwygEditor,
                 isShow,
                 user: req.user.id
             });
@@ -71,7 +70,7 @@ router.post('/',
 //@desc     Update timerplus
 //@access   Private
 router.put('/:id', auth, async (req, res) => {
-    const { name, url, divId, date, wysiwyg, isShow, timeSchedule, backgroundColor, textColor, eventInput, evenCategoryInput, eventLabelInput } = req.body;
+    const { name, url, divId, date, wysiwyg, wysiwygEditor, isShow, timeSchedule, eventInput, evenCategoryInput, eventLabelInput } = req.body;
 
     //Build a timerplus object
     const timersPlusFeilds = {}
@@ -79,13 +78,12 @@ router.put('/:id', auth, async (req, res) => {
     if (url) timersPlusFeilds.url = url;
     if (divId) timersPlusFeilds.divId = divId;
     if (date) timersPlusFeilds.date = date;
-    if (backgroundColor) timersPlusFeilds.backgroundColor = backgroundColor;
-    if (textColor) timersPlusFeilds.textColor = textColor;
     if (eventInput) timersPlusFeilds.eventInput = eventInput;
     if (evenCategoryInput) timersPlusFeilds.evenCategoryInput = evenCategoryInput;
     if (eventLabelInput) timersPlusFeilds.eventLabelInput = eventLabelInput;
     if (wysiwyg) timersPlusFeilds.wysiwyg = wysiwyg;
-    if (isShow !== null) timersPlusFeilds.isShow = isShow;
+    if (wysiwygEditor) timersPlusFeilds.wysiwygEditor = wysiwygEditor;
+    isShow !== null ? timersPlusFeilds.isShow = isShow : timersPlusFeilds.isShow = true;
     if (timeSchedule) timersPlusFeilds.timeSchedule = timeSchedule;
     try {
         let timerplus = await Timerplus.findById(req.params.id);

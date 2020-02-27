@@ -29,13 +29,14 @@ const WebsiteForm = () => {
             Friday: { openHour: '00:00', closeHour: '00:00' },
             Saturday: { openHour: '00:00', closeHour: '00:00' }
         },
+        isShow: true,
         name: '',
         url: '',
         divId: '',
         saveAlert: false
     });
 
-    const {name, url, divId, saveAlert } = website
+    const { name, url, divId, saveAlert } = website
 
     //change input state
     const onChange = e => { setWebsite({ ...website, [e.target.name]: e.target.value }); }
@@ -56,9 +57,9 @@ const WebsiteForm = () => {
     const onSubmit = e => {
         e.preventDefault();
         if (website.divId !== "" && website.url !== "" && website.name !== "") {// check if DIVID is defined
-            current._id ? updateWebsite(website) : addWebsite(website);
+            current._id ? updateWebsite(website,current) : addWebsite(website);
             // function from websiteContext
-            setCurrent(website);
+            setCurrent(current);
             saved();
         }
         else saved();
@@ -95,6 +96,9 @@ const WebsiteForm = () => {
                     <SavedAlert text="אנא מלא את שם מזהה הרכיב" /> :
                     null
             }
+            <div className="day" id="day-button">
+                <input type="submit" value={current._id ? "שמור" : "הוסף"} />
+            </div>
         </form >
     );
 };

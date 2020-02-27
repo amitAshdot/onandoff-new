@@ -26,12 +26,6 @@ const TimerPlusSchema = mongoose.Schema({
         type: String,
         default: true
     },
-    backgroundColor: {
-        type: String,
-    },
-    textColor: {
-        type: String,
-    },
     eventInput: {
         type: String,
     },
@@ -43,7 +37,10 @@ const TimerPlusSchema = mongoose.Schema({
     },
     wysiwyg: {
         type: String
-        },
+    },
+    wysiwygEditor: {
+        type: String
+    },
     timeSchedule: {
         Sunday: {
             openHour: { type: String },
@@ -57,7 +54,7 @@ const TimerPlusSchema = mongoose.Schema({
             openHour: { type: String },
             closeHour: { type: String },
         },
-        Wednesday	: {
+        Wednesday: {
             openHour: { type: String },
             closeHour: { type: String },
         },
