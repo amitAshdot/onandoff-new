@@ -288,7 +288,7 @@ i.fa.fa-copy {
 /* ------------- home page ------------- */
 /* main image */
 .hp-main {
-  background-image: url("http://timer.onandoff.co.il/hp-main-img.jpeg");
+  background-image: url("https://timer.onandoff.co.il/hp-main-img.jpeg");
   height: 91vh;
   width: 100vw;
   object-fit: fill;
