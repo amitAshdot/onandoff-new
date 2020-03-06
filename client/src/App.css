@@ -48,7 +48,7 @@
   bottom: 0;
   left: 0;
 }
-.hours {
+.hoursChose {
   background: #000;
   height: 20%;
   left: 48.75%;
@@ -185,28 +185,35 @@ input[type="password"] {
   display: flex;
   flex-wrap: nowrap;
   border-bottom: 1px solid black;
-  width: 96vw;
-  padding: 0 2vw;
+  width: 98vw;
+  padding: 0 0vw 0 2vw;
   background-color: var(--main-color);
 }
 /* logo text */
 h1.logotxt { 
-  color: white;
   display: inline-block;
-  width: auto;
+  /* background-color: white; */
   min-width: 150px;
+  max-width: 400px;
+  width: 33vw;
   padding: 0;
-  margin: 2vh 0 2vh 7vw;
+  margin: 0vh 0 0vh 7vw;
   font-size: 3ex;
+}
+.logotxt img {
+  height: 10vh;
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+  vertical-align: middle;
 }
 /* navbar ul */
 .navbar ul {
   display: inline-flex;
   justify-content: space-between;
-  width: 80vw;
+  width: 70vw;
   padding: 0;
-  margin: 2vh 0;
   align-items: center;
+  margin-right: auto;
 }
 .navbar li {
   max-width: 120px;
@@ -286,15 +293,7 @@ i.fa.fa-copy {
   cursor: pointer;
 }
 /* ------------- home page ------------- */
-/* main image */
-.hp-main {
-  background-image: url("https://timer.onandoff.co.il/hp-main-img.jpeg");
-  height: 91vh;
-  width: 100vw;
-  object-fit: fill;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
+
 .hp-info {
   width: 30vw;
   padding-top: 10%;
@@ -414,6 +413,7 @@ p#formType {
 }
 .gtInputArea {
   margin-bottom: 2em;
+  direction: ltr;
 }
 .day {
   display: table-cell;
@@ -486,8 +486,22 @@ input.websit-form-input:hover + .input-border::before  {
 }
 p.copyAlert-text {
   border-bottom: 1px solid red;
-  width: fit-content;
+  /* padding: 48vh 0; */
+  position: fixed;
+  top: 45vh;
+  right: 35vw;
+  width: 30vw;
   margin: auto;
+  /* height: 100vh !important; */
+  z-index: 999;
+  transition: height 2s;
+}
+.saveAlertText{
+  width: fit-content;
+  padding: 2em;
+  color: white;
+  margin: auto;
+  align-content: center;
 }
 input[type="time"] {
   font-size: 13px;
@@ -595,7 +609,7 @@ p#emailErr {
     float: right;
     width: 10vw;
     padding: 0;
-    margin: 4vh 0;
+    /* margin: 4vh 0; */
     font-size: 2ex;
     min-width: 90px;
     max-width: 100px;

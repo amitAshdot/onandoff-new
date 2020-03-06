@@ -27,8 +27,6 @@ import WebsiteState from './context/website/WebsiteState';
 import TimerplusState from './context/timerPlus/TimerPlusState';
 import AuthState from './context/auth/AuthState';
 // import { useTransition,  animated } from 'react-spring'
-
-
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }

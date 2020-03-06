@@ -9,7 +9,7 @@ const Wysiwyg = (props) => {
                 <Editor apiKey='rr54zoicxkt3ah4i2h3xynyo16biuentcxqycps7ep8l9b0f'
                     initialValue={props.wysiwyg}
                     init={{
-                        height: 500,
+                        height: 300,
                         menubar: true,
                         plugins: [
                             'advlist autolink lists link image charmap print preview anchor',

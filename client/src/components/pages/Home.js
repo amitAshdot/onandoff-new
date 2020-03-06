@@ -23,6 +23,7 @@ const Home = () => {
 
     //user effect for edit form , current is the corrent landingPage
     useEffect(() => {
+
         if (current != null) clearCurrent();
         if (currentTimerPlus != null) clearCurrentTimerPlus();
         authContext.loadUser();

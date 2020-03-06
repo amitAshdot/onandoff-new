@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect, useRef } from "react";
-import ReactDOM from "react-dom";
 
 function Clock() {
     const [state, setState] = useState({ count: 1 });
@@ -18,7 +17,7 @@ function Clock() {
             <div className="clockWrapper">
                 <article className="clock">
                     <div className="hours-container">
-                        <div className="hours"></div>
+                        <div className="hoursChose"></div>
                     </div>
                     <div className="minutes-container">
                         <div className="minutes"></div>
