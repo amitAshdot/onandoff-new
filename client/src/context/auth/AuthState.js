@@ -80,9 +80,9 @@ const AuthState = props => {
                 type: LOGIN_SUCCESS,
                 payload: res.data
             }); //loading = true
-            setTimeout(() => {
-                loadUser();// loading = false
-            }, 2000)
+            // setTimeout(() => {
+            //     loadUser();// loading = false
+            // }, 2000)
         } catch (err) {
             dispatch({
                 type: LOGIN_FAIL,

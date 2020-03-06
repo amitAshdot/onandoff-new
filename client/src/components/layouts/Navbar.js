@@ -1,5 +1,6 @@
 import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import  logoBar  from '../../images/logoBar.png';
 
 import AuthContext from '../../context/auth/AuthContext'
 const Navbar = (props) => {
@@ -65,16 +66,18 @@ const Navbar = (props) => {
         <div className="navbar">
             <h1 className="logotxt" id="logo">
                 <Link to="/" >
-                    <i className={props.icon} /> {props.title}
-                </Link></h1>
+                    <img  src={logoBar} alt="fireSpot"/>
+                </Link>
+            </h1>
             <ul>
                 {navLinks}
             </ul>
         </div>
     )
 }
-Navbar.defaultProps = {
-    title: 'OnAndOff',
-    icon: 'fa fa-calendar'
-}
+// Navbar.defaultProps = {
+//     title: 'OnAaaaandOff',
+//     icon: 'fa fa-calendar',
+//     logoBar
+// }
 export default Navbar

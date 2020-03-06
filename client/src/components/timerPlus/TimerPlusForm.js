@@ -18,9 +18,9 @@ const TimerPlusForm = (props) => {
     const timerPlusContext = useContext(TimerPlusContext);
     const { addTimerPlus, updateTimerPlus, currentTimerPlus, setCurrentTimerPlus } = timerPlusContext;
 
-    const authContext = useContext(AuthContext);
-    const { isAuthenticated, user, isVerified, loading } = authContext;
-    const history = useHistory();
+    // const authContext = useContext(AuthContext);
+    // const { isAuthenticated, user, isVerified, loading } = authContext;
+    // const history = useHistory();
 
     //user effect for edit form , currentTimerPlus is the corrent landingPage
     useEffect(() => {
@@ -130,12 +130,11 @@ const TimerPlusForm = (props) => {
         return { __html: `${wysiwyg}` };
     }
     const simulator = () => {
-        return <div dangerouslySetInnerHTML={createMarkup()} />;
+        return <div className="exampleOfDiv" dangerouslySetInnerHTML={createMarkup()} />;
     }
 
     return (
         <div>
-            {/* <form onSubmit={onSubmit}> */}
             {currentTimerPlus._id ? <h2>  ערוך טיימר+: {name}</h2> : <h2>הוסף טיימר+</h2>}
             <div className="text-on-page">
                 <p>עם טיימר+ תוכלו לעדכן,לשנות ולהסתיר תוכן בקלות וביעילות ללא ידע בקוד. בחרו ועצבו את הטקסט שתרצו שיופיע במקום הרכיב המוסתר ולאחר מכן בחרו את השעות בו תרצו להסתיר את הרכיב והופה – אתם באוויר! (לא לשכוח לשמור)
@@ -168,9 +167,9 @@ const TimerPlusForm = (props) => {
             </div>
 
             {saveAlert && (timerPlus.divId !== "" && timerPlus.url !== "" && timerPlus.name !== "") ?
-                <SavedAlert text="ההגדרות נשמרו" /> :
+                <SavedAlert text="ההגדרות נשמרו" type={'sec'}/> :
                 saveAlert && (!(timerPlus.divId !== "" && timerPlus.url !== "" && timerPlus.name !== "")) ?
-                    <SavedAlert text="אנא מלא את השדות" /> :
+                    <SavedAlert text="אנא מלא את השדות" type={'fail'}/> :
                     null}
 
             {copy ? <CopiedAlert /> : null}
@@ -184,7 +183,6 @@ const TimerPlusForm = (props) => {
                     <LinkComp id={currentTimerPlus._id} current={currentTimerPlus} function={'timerPlus'} copied={copied} />
                 </div>
             }
-            {/* </form> */}
         </div>
 
     );

@@ -15,7 +15,7 @@ const CopiedAlert = () => {
         >
             {show =>
                 show && (props =>
-                     <animated.div style={props} className="copyAlert"><span>✌️</span>הועתק</animated.div>)
+                     <animated.div style={props} className="copyAlert"><span >✌️</span>הועתק</animated.div>)
             }
         </Transition>
     )
