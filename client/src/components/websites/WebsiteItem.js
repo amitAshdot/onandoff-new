@@ -12,9 +12,9 @@ const WebsiteItem = (props) => {
     const { name, url, timeSchedule } = props.website;
 
     const [deleteFlag, setflag] = useState(false);
-    const delayTime = props.index * 100 + 100;
+    const delayTime = props.index * 200;
     const fade = useSpring({
-        to: { opacity: 1, backgroundColor: deleteFlag ? "rgb(157, 9, 9)" : "white", color: deleteFlag ? "white" : "black" },
+        to: { opacity: 1, backgroundColor: deleteFlag ? "rgb(157, 9, 9)" : "white", color: deleteFlag ? "white" : "black" , boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)'    },
         config: { tension: 180, friction: 14 },
         delay: !deleteFlag ? `${delayTime}` : 0
     })

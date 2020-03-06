@@ -326,6 +326,8 @@ button.hp-button.register:hover {
 .websiteItem:hover {
   background-color: #00000040 !important;
   color: white!important;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) !important;
+
 }
 .aw-website-details a:hover {border-bottom: none;}
 button#deleteBtn:hover {color: var(--deleteColor-hover);border-bottom: none;  cursor: pointer;  outline: none;}
@@ -362,6 +364,7 @@ a.editItem::after {display: none;}
   display: flex;
   border: 1px solid #00000030;
   justify-content: space-between;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .aw-website-details {
   text-align: right;

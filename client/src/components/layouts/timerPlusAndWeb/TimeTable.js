@@ -6,7 +6,7 @@ const TimeTable = (props) => {
     const { timeSchedule } = props.timerPlus;
     const days = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת']
     const daysEng = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    return (
+    return (<card>
         <div className="time">
             <div className="day-lable-d">
                 <p>פתיחה</p>
@@ -25,6 +25,7 @@ const TimeTable = (props) => {
             )}
 
         </div>
+        </card>
     )
 }
 export default TimeTable

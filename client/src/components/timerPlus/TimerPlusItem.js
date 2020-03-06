@@ -17,7 +17,7 @@ const TimerPlusItem = (props) => {
     const fade = useSpring({
         // from:{opacity: 0 ,transform: 'translate(-50%,0,0)' },
         // to: { opacity:  1 , transform: 'translate(0%,0,0)' ,backgroundColor: deleteFlag? "red" : "white" , color: deleteFlag? "white" : "black"},
-        to: { opacity: 1, backgroundColor: deleteFlag ? "rgb(157, 9, 9)" : "white", color: deleteFlag ? "white" : "black" },
+        to: { opacity: 1, backgroundColor: deleteFlag ? "rgb(157, 9, 9)" : "white", color: deleteFlag ? "white" : "black"},
         config: { tension: 180, friction: 14 },
         delay: !deleteFlag ? `${delayTime}` : 0
     })
