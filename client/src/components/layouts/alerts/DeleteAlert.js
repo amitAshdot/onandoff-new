@@ -18,7 +18,7 @@ const DeleteAlert = (props) => {
         clearCurrent();
     }
     const name = props.item.name
-    const fadeIn = useSpring({ opacity: props.deleteFlag ? 1 : 0, left:props.deleteFlag? 0:-9999 })
+    const fadeIn = useSpring({ opacity: props.deleteFlag ? 1 : 0, left:props.deleteFlag? 0:-9999,boxShadow: 'rgba(0, 0, 0, 0.6) 0px 10px 20px 0px' })
     return (
         <animated.div className="deleteForm" style={fadeIn}>
             <p>האם את/ה בטוח שהינך רוצה למחוק את {name}?</p>
