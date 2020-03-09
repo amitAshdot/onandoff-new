@@ -35,12 +35,12 @@ const TimerPlusItem = (props) => {
                         <p id="website-info"><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
                         <p id="formType">טיימר+</p>
                         <p><i className="fa fa-globe" />{url}</p>
-                         <button className="websiteBtn" id="editBtn" onClick={() => setCurrentTimerPlus(props.timerPlus)}>ערוך</button>
                         <div className="todaySchedule">
-                            <p id="todaySchedule-title">שעות ההחלפה של היום</p>
-                            <p>שעת הפעלה: {todaySchedule['openHour']}</p>
+                            <p id="todaySchedule-title"></p>
+                            <p>שעת הפעלה: {todaySchedule['openHour']} |</p>
                             <p>שעת הפסקה: {todaySchedule['closeHour']}</p>
                         </div>
+                        <button className="websiteBtn" id="editBtn" onClick={() => setCurrentTimerPlus(props.timerPlus)}>ערוך</button>
                     </div>
                 </Link>
 

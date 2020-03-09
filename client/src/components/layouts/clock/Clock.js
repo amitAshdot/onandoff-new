@@ -12,7 +12,7 @@ function Clock() {
     }, 500);    
     return (
         <div className="exampleClock">
-            <h1>לדוגמא:</h1>
+            <h1>ככה זה עובד:</h1>
             <h3>הכפתור יופיע בין השעות 1-8 </h3>
             <div className="clockWrapper">
                 <article className="clock">

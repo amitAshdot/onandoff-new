@@ -150,9 +150,11 @@ input[type="submit"] {
   padding: 5px;
   cursor: pointer;
   outline: none;
+  font-family: 'Heebo', sans-serif;
 }
 input[type="submit"]:hover {
   background-color: #55a658c9;  outline: none;
+  font-family: 'Heebo', sans-serif;
 }
 /* inputs */
 input[type="text"] {
@@ -166,6 +168,7 @@ input[type="text"] {
     border: 1px solid var(--main-color);
     cursor: pointer;
     outline: none;
+    font-family: 'Heebo', sans-serif;
 }
 input[type="password"] {
   max-width: 250px;
@@ -178,7 +181,6 @@ input[type="password"] {
   border: 1px solid var(--main-color);
   cursor: pointer;
   outline: none;
-
 }
 /* ---navbar - header--- */
 .navbar {
@@ -300,10 +302,11 @@ i.fa.fa-copy {
   vertical-align: middle;
 }
 .full-width {margin-bottom: -10px;}
-i.fa.fa-globe {margin-left: 4px;}
+i.fa.fa-globe {margin-left: 10px;}
 i.fa.fa-angle-left {
-  margin-left: 4px;
-  width: 11px;
+  margin-left: 5px;
+  width: 15px;
+  text-align: center;
 }
 /* buttons */
 button.hp-button {border-radius:5px;margin:10px;padding: 10px;}
@@ -395,7 +398,7 @@ a.editItem::after {display: none;}
   width: 20%;
   text-align: center;
 }
-.aw-website-details p {margin: 5px 0px;}
+.aw-website-details p {margin: 5px 2px;}
 p#website-info {display: inline-block;}
 
 p#formType {
@@ -641,6 +644,7 @@ input[type="submit"] {
   min-width: 100px;
   max-width: 200px;
   font-size: 2ex;
+  font-family: 'Heebo', sans-serif;
 }
 /* ------------- home ------------- */
   .hp-info {
