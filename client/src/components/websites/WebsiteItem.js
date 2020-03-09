@@ -14,7 +14,7 @@ const WebsiteItem = (props) => {
     const [deleteFlag, setflag] = useState(false);
     const delayTime = props.index * 200;
     const fade = useSpring({
-        to: { opacity: 1, backgroundColor: deleteFlag ? "rgb(157, 9, 9)" : "white", color: deleteFlag ? "white" : "black" , boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)'    },
+        to: { opacity: 1, backgroundColor: deleteFlag ? "rgb(157, 9, 9)" : "white", color: deleteFlag ? "white" : "black", boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)' },
         config: { tension: 180, friction: 14 },
         delay: !deleteFlag ? `${delayTime}` : 0
     })
@@ -33,22 +33,22 @@ const WebsiteItem = (props) => {
     // })
     return (
         <DelayWraper index={props.index}>
-            <animated.div className="websiteItem" id="websiteItem" style={fade}>
-                <div className="aw-website-details">
-                    <p id="website-info"><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
-                    <p id="formType">הסתרה</p>
-                    <p><i className="fa fa-globe" />{url}</p>
-                    <Link to='/addwebsite' className="editItem"> <button className="websiteBtn" id="editBtn" onClick={() => setCurrent(props.website)}>  ערוך </button></Link>
-                    <div className="todaySchedule">
-                        <p id="todaySchedule-title">שעות ההסתרה של היום</p>
-                        <p>שעת הפעלה: {todaySchedule['openHour']}</p>
-                        <p>שעת הפסקה: {todaySchedule['closeHour']}</p>
-                    </div>
-                </div>
+            <animated.div className="websiteItem" id="websiteItem" style={{backgroundColor: deleteFlag? "rgb(157, 9, 9)" : "white"}}>
+                <Link to='/addwebsite' style={{backgroundColor: 'transparent'}} onClick={() => setCurrent(props.website)}>
 
-                <div className="aw-website-btn">
-                    <button className="websiteBtn" id="deleteBtn" onClick={() => setflag(true)}>מחק</button>
-                </div>
+                    <div className="aw-website-details">
+                        <p id="website-info"><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
+                        <p id="formType">הסתרה</p>
+                        <p><i className="fa fa-globe" />{url}</p>
+                        <Link to='/addwebsite' className="editItem"> <button className="websiteBtn" id="editBtn" onClick={() => setCurrent(props.website)}>  ערוך </button></Link>
+                        <div className="todaySchedule">
+                            <p id="todaySchedule-title">שעות ההסתרה של היום</p>
+                            <p>שעת הפעלה: {todaySchedule['openHour']}</p>
+                            <p>שעת הפסקה: {todaySchedule['closeHour']}</p>
+                        </div>
+                    </div>
+                </Link>
+                <button className="websiteBtn" id="deleteBtn" onClick={() => setflag(true)}>מחק</button>
                 {deleteFlag ? <DeleteAlert item={props.website} setflag={setflag} deleteFlag={deleteFlag} /> : null}
             </animated.div >
 

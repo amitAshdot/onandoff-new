@@ -324,14 +324,14 @@ button.hp-button.register:hover {
   color: #ffff;
 }
 .websiteItem:hover {
-  background-color: #00000040 !important;
-  color: white!important;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) !important;
-
+  /* background-color: #00000040 !important; */
+  color: #555!important;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4) !important;
+  transform: scale(1.05);
 }
 .aw-website-details a:hover {border-bottom: none;}
 button#deleteBtn:hover {color: var(--deleteColor-hover);border-bottom: none;  cursor: pointer;  outline: none;}
-button#deleteBtn {color: var(--deleteColor);  cursor: pointer;  outline: none;text-align: center;width:10%;}
+button#deleteBtn {color: var(--deleteColor);  cursor: pointer;  outline: none;text-align: center;align-self: end;left: 0;margin: 12px 0px;width: 0px;}
 .websiteItem:hover .websiteBtn{color:var(--main-color);  outline: none;}
 .websiteBtn::after{display: none}
 /* --- delete form---  */
@@ -356,20 +356,32 @@ button.rejrect:hover {background-color: var(--delete-rejrect-hover);}
 /* --- edit form Item --- */
 a.editItem::after {display: none;}
 /* --- login ui---  */
-.websiteItem { 
+.websiteItem {
   background-color: transparent;
   border-radius: 5px;
-  width: 60%;
+  width: 98%;
   margin: 5px auto;
   display: flex;
-  border: 1px solid #00000030;
   justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border: 1px solid #00000030;
+  border-radius: 5px;
+  -webkit-transition: all .15s ease-in-out;
+  -moz-transition: all .15s ease-in-out;
+   -ms-transition: all .15s ease-in-out;
+       transition: all .15s ease-in-out;
+}
+.websiteItem>a {
+  color: #555;
+  background-color: #fff;
+  display: inline-flex;
+  border-radius: 5px;
+  width: 88%;
 }
 .aw-website-details {
   text-align: right;
-  padding: 10px 20px;
-  width: 80%;
+  padding:10px 20px 10px 0;
+  width: 90%;
 }
 .todaySchedule {
   font-size: 0.90em;
@@ -383,7 +395,7 @@ a.editItem::after {display: none;}
   width: 20%;
   text-align: center;
 }
-.aw-website-details p {margin: 5px 10px;}
+.aw-website-details p {margin: 5px 0px;}
 p#website-info {display: inline-block;}
 
 p#formType {
@@ -643,6 +655,8 @@ button#deleteBtn {
   margin: 5px 0;
   display: inline-flex;
   width: 10%;
+  z-index: 10;
+  
 }
 /* ------------- login ------------- */
 .forminput {min-width: 200px;}
