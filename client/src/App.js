@@ -11,6 +11,7 @@ import AddTimerplus from "./components/pages/AddTimerplus";
 import About from "./components/pages/About";
 import HowItWorks from "./components/pages/HowItWorks";
 import Verify from "./components/pages/Verify";
+import Contact from "./components/pages/Contact";
 
 //auth components
 import Register from "./components/auth/Register";
@@ -54,6 +55,7 @@ const App = () => {
                       <Route exact path='/addtimerplus' component={AddTimerplus} />
                       <Route exact path='/about' component={About} />
                       <Route exact path='/how-it-works' component={HowItWorks} />
+                      <Route exact path='/contact' component={Contact} />
                       <Route exact path='/register' component={Register} />
                       <Route exact path='/login' component={Login} />
                       <Route path='/verify' component={Verify} />

@@ -1,8 +1,12 @@
 import React from 'react'
+import reqImage from'../../../images/req.png';
+
 
  const Info = (props) => {
 
     const {onChange , name, url , divId} = props;
+
+    const line = {    bordeBottom: 'solid 2px var(--main-color)'    }
     return (
         <div className="info">
                 <div className="info-block">
@@ -19,7 +23,7 @@ import React from 'react'
                 <div className="info-block">
                     <p className="info-input">מזהה ID או Class של הרכיב המוסתר</p>
                     <input type="text" className="websit-form-input" name='divId' value={divId} onChange={onChange} id="divID" />
-                    <div className="input-border"></div>
+                    <div className="input-border" ></div>
 
                 </div>
             </div>

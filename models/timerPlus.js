@@ -17,7 +17,15 @@ const TimerPlusSchema = mongoose.Schema({
         type: String,
         required: true
     },
-
+    color: {
+        type: String,
+    },
+    selected: {
+        type: Number,
+    },
+    swatches: {
+        type: [String],
+    },
     date: {
         type: Date,
         default: Date.now

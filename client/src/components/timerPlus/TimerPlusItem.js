@@ -6,11 +6,12 @@ import { useSpring, animated } from 'react-spring'
 
 import DeleteAlert from '../layouts/alerts/DeleteAlert'
 import DelayWraper from '../wrapers/DelayWraper'
+import ColorPick from '../layouts/timerPlusAndWeb/ColorPick';
 
 const TimerPlusItem = (props) => {
     const timerPlusContext = useContext(TimerPlusContext);
     const { setCurrentTimerPlus } = timerPlusContext
-    const { name, url, timeSchedule } = props.timerPlus;
+    const { name, url, timeSchedule , color } = props.timerPlus;
 
     const [deleteFlag, setflag] = useState(false);
     // const delayTime = props.index * 200;
@@ -30,17 +31,17 @@ const TimerPlusItem = (props) => {
     return (
         <DelayWraper index={props.index} style={{ display: 'inline' }}>
             <animated.div className="websiteItem" id="websiteItem" style={{backgroundColor: deleteFlag? "rgb(157, 9, 9)" : "white"}}>
+                <ColorPick color={color} />
                 <Link to='/addtimerplus' style={{backgroundColor: 'transparent'}} onClick={() => setCurrentTimerPlus(props.timerPlus)} >
                     <div className="aw-website-details">
                         <p id="website-info"><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
                         <p id="formType">טיימר+</p>
-                        <p><i className="fa fa-globe" />{url}</p>
+                        <p className="itemUrl" id="todaySchedule-title"><i className="fa fa-globe" />{url}</p>
                         <div className="todaySchedule">
-                            <p id="todaySchedule-title"></p>
-                            <p>שעת הפעלה: {todaySchedule['openHour']} |</p>
-                            <p>שעת הפסקה: {todaySchedule['closeHour']}</p>
+                            <p id="todaySchedule-title">שעת הפעלה: {todaySchedule['openHour']} | שעת הפסקה: {todaySchedule['closeHour']}</p>
                         </div>
                         <button className="websiteBtn" id="editBtn" onClick={() => setCurrentTimerPlus(props.timerPlus)}>ערוך</button>
+                        
                     </div>
                 </Link>
 
@@ -49,6 +50,7 @@ const TimerPlusItem = (props) => {
                 {/* </div> */}
                 {deleteFlag ? <DeleteAlert item={props.timerPlus} setflag={setflag} deleteFlag={deleteFlag} /> : null}
             </animated.div >
+
         </DelayWraper>
     )
 }

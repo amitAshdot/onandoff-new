@@ -5,11 +5,11 @@ import WebsiteContext from '../../context/website/WebsiteContext'
 import DeleteAlert from '../layouts/alerts/DeleteAlert'
 import { useSpring, animated } from 'react-spring'
 import DelayWraper from '../wrapers/DelayWraper'
-
+import ColorPick from '../layouts/timerPlusAndWeb/ColorPick'
 const WebsiteItem = (props) => {
     const websiteContext = useContext(WebsiteContext);
     const { setCurrent } = websiteContext
-    const { name, url, timeSchedule } = props.website;
+    const { name, url, timeSchedule, color } = props.website;
 
     const [deleteFlag, setflag] = useState(false);
     const delayTime = props.index * 200;
@@ -33,17 +33,17 @@ const WebsiteItem = (props) => {
     // })
     return (
         <DelayWraper index={props.index}>
-            <animated.div className="websiteItem" id="websiteItem" style={{backgroundColor: deleteFlag? "rgb(157, 9, 9)" : "white"}}>
-                <Link to='/addwebsite' style={{backgroundColor: 'transparent'}} onClick={() => setCurrent(props.website)}>
+            <animated.div className="websiteItem" id="websiteItem" style={{ backgroundColor: deleteFlag ? "rgb(157, 9, 9)" : "white" }}>
+                <ColorPick color={color} />
+
+                <Link to='/addwebsite' style={{ backgroundColor: 'transparent' }} onClick={() => setCurrent(props.website)}>
 
                     <div className="aw-website-details">
                         <p id="website-info"><i className="fa fa-angle-left" /> {name.charAt(0).toUpperCase() + name.slice(1)}</p>
                         <p id="formType">הסתרה</p>
                         <p><i className="fa fa-globe" />{url}</p>
                         <div className="todaySchedule">
-                            <p id="todaySchedule-title"></p>
-                            <p>שעת הפעלה: {todaySchedule['openHour']} |</p>
-                            <p>שעת הפסקה: {todaySchedule['closeHour']}</p>
+                            <p id="todaySchedule-title">שעת הפעלה: {todaySchedule['openHour']} | שעת הפסקה: {todaySchedule['closeHour']}</p>
                         </div>
                         <button className="websiteBtn" id="editBtn" onClick={() => setCurrent(props.website)}>  ערוך </button>
                     </div>

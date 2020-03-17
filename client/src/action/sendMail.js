@@ -8,14 +8,14 @@ export default class extends React.Component {
                 "send_to": props.user.email,
                 "reply_to": "no_reply@onandoff.co.il",
                 "to_name": props.user.name,
-                "message_html": `שלום ${props.user.name},
-                אנו שמחים שבחרת להצטף אלינו
-                    אנא לחץ על הכפתור על מנת להשלים תהליך ההרשמה:            
+                "message_html": `          
                   <div width="100%" cellspacing="0" cellpadding="0">
                   <a  class=”link” href="${window.location.href}verify?${props.user.vkey}" target="_blank">
                       לחץ כאן             
                   </a>
-                   </div>`, name: 'onAndOff', email: 'verify@onandoff.com'
+                   </div>`,
+                name: 'onAndOff',
+                email: 'verify@onandoff.com'
             }
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,7 +27,7 @@ export default class extends React.Component {
 
     render() {
         return (
-            <form className="test-mailing" style={{display : 'none'}}>
+            <form className="test-mailing" style={{ display: 'none' }}>
                 <div>
                     <textarea
                         id="test-mailing"

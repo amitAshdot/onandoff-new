@@ -41,13 +41,16 @@ router.post('/',
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        const { name, url, divId, date, timeSchedule, isShow, wysiwyg, wysiwygEditor, eventInput, evenCategoryInput, eventLabelInput } = req.body;
+        const { name, url, divId, date, timeSchedule, isShow, wysiwyg, wysiwygEditor, eventInput, evenCategoryInput, eventLabelInput, color ,selected, swatches} = req.body;
         try {
             const newTimerplus = new Timerplus({
                 name,
                 url,
                 divId,
                 date,
+                color,
+                selected,
+                swatches,
                 eventInput,
                 evenCategoryInput,
                 eventLabelInput,
@@ -70,7 +73,7 @@ router.post('/',
 //@desc     Update timerplus
 //@access   Private
 router.put('/:id', auth, async (req, res) => {
-    const { name, url, divId, date, wysiwyg, wysiwygEditor, isShow, timeSchedule, eventInput, evenCategoryInput, eventLabelInput } = req.body;
+    const { name, url, divId, date, wysiwyg, wysiwygEditor, isShow, timeSchedule, eventInput, evenCategoryInput, eventLabelInput, color, selected, swatches } = req.body;
 
     //Build a timerplus object
     const timersPlusFeilds = {}
@@ -85,6 +88,11 @@ router.put('/:id', auth, async (req, res) => {
     if (wysiwygEditor) timersPlusFeilds.wysiwygEditor = wysiwygEditor;
     isShow !== null ? timersPlusFeilds.isShow = isShow : timersPlusFeilds.isShow = true;
     if (timeSchedule) timersPlusFeilds.timeSchedule = timeSchedule;
+    if (timeSchedule) timersPlusFeilds.timeSchedule = timeSchedule;
+    if (color) timersPlusFeilds.color = color;
+    if (selected) timersPlusFeilds.selected = selected;
+    if (swatches) timersPlusFeilds.swatches = swatches;
+
     try {
         let timerplus = await Timerplus.findById(req.params.id);
         if (!timerplus) return res.status(404).json({ msge: 'Timerplus not found' });
