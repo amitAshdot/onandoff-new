@@ -382,6 +382,7 @@ a.editItem::after {display: none;}
 .websiteItem {
   background-color: transparent;
   border-radius: 5px;
+  min-height: 109px;
   width: 100%;
   margin: 5px auto;
   display: flex;
