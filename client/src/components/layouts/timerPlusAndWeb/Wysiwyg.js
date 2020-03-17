@@ -1,15 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Editor } from '@tinymce/tinymce-react';
 
 const Wysiwyg = (props) => {
+
     return (
         <>
-            <p>עורך תוכן מתקדם</p>
             <div className="time" id="wysiwyg-editor">
                 <Editor apiKey='rr54zoicxkt3ah4i2h3xynyo16biuentcxqycps7ep8l9b0f'
                     initialValue={props.wysiwyg}
                     init={{
-                        height: 300,
+                        height: 294,
                         menubar: true,
                         plugins: [
                             'advlist autolink lists link image charmap print preview anchor',

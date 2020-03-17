@@ -26,6 +26,15 @@ const WebsitesSchema = mongoose.Schema({
         type: String,
         default: true
     },
+    color: {
+        type: String,
+    },
+    selected: {
+        type: Number,
+    },
+    swatches: {
+        type: [String],
+    },
     timeSchedule: {
         Sunday: {
             openHour: { type: String },

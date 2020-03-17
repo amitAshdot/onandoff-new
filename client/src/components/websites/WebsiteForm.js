@@ -8,6 +8,7 @@ import SavedAlert from '../layouts/alerts/SavedAlert';
 import TimeTable from '../layouts/timerPlusAndWeb/TimeTable'
 import Info from '../layouts/timerPlusAndWeb/Info';
 import CopiedAlert from '../layouts/alerts/CopiedAlert';
+import Subject from '../layouts/timerPlusAndWeb/Subject'
 const WebsiteForm = () => {
     const websiteContext = useContext(WebsiteContext);
     const { addWebsite, updateWebsite, current, setCurrent } = websiteContext;
@@ -29,6 +30,18 @@ const WebsiteForm = () => {
             Friday: { openHour: '00:00', closeHour: '00:00' },
             Saturday: { openHour: '00:00', closeHour: '00:00' }
         },
+        color: '#55a658',
+        swatches: [
+            "rgb(157, 41, 177)",
+            "#673AB7",
+            "rgba(182, 73, 98, 1)",
+            "#00BCD4",
+            "LightSeaGreen",
+            "rgb(76, 175, 80)",
+            "rgba(8, 136, 124, .7)",
+            "#CDDC39"
+        ],
+        selected: 5,
         isShow: true,
         name: '',
         url: '',
@@ -36,7 +49,7 @@ const WebsiteForm = () => {
         saveAlert: false
     });
 
-    const { name, url, divId, saveAlert } = website
+    const { name, url, divId, saveAlert , color , swatches ,selected } = website
 
     //change input state
     const onChange = e => { setWebsite({ ...website, [e.target.name]: e.target.value }); }
@@ -81,11 +94,14 @@ const WebsiteForm = () => {
         <form onSubmit={onSubmit}>
             {current._id ? <h2>  ערוך עמוד נחיתה: {name}</h2> : <h2>הוסף עמוד נחיתה</h2>}
             <Info onChange={onChange} name={name} url={url} divId={divId} />
+            <Subject onChange={onChange} color={color} swatches={swatches} selected={selected} website={website} setWebsite={setWebsite} id={'websiteColor'}/>
             <TimeTable
                 handleChangeCloseHour={handleChangeCloseHour}
                 handleChangeOpemHour={handleChangeOpemHour}
                 timerPlus={website}
-                currentTimerPlus={current} />
+                currentTimerPlus={current} 
+                id={'websiteColor'} 
+                type={'website'}/>
 
             {copy ? <CopiedAlert /> : null}
             {current.name === '' ? null : <LinkComp id={current._id} current={current} function={'onAndOffFunction'} copied={copied} />}

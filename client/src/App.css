@@ -332,24 +332,44 @@ button.hp-button.register:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4) !important;
   transform: scale(1.05);
 }
+
+.swatches li {
+  width: 30px;
+  height: 30px;
+  margin: 1px;
+}
+.swatches li.selected {
+  transform: scale(1.1);
+}
+.itemColor {
+  width: 10px;
+  height: 100%;
+  top: 3%;
+  right: 0;
+  min-width: 10px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
 .aw-website-details a:hover {border-bottom: none;}
 button#deleteBtn:hover {color: var(--deleteColor-hover);border-bottom: none;  cursor: pointer;  outline: none;}
-button#deleteBtn {color: var(--deleteColor);  cursor: pointer;  outline: none;text-align: center;align-self: end;left: 0;margin: 12px 0px;width: 0px;}
+button#deleteBtn {color: var(--deleteColor);  cursor: pointer;  outline: none;text-align: center;align-self: end;left: 0;margin:0px;width: 0px;position: absolute;z-index: 5;top: 60%;}
 .websiteItem:hover .websiteBtn{color:var(--main-color);  outline: none;}
 .websiteBtn::after{display: none}
 /* --- delete form---  */
 .deleteForm {
-  width: 30vw;
+  width: 90%;
   color: white;
   background-color: #4f4f4fe3;
   padding: 10px;
   position: absolute;
-  left: -999px;
   right: 0;
   margin-left: auto;
   margin-right: auto;
   margin-top: calc(1% + 1px);
-  opacity: 0
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  margin: auto;
 }
 button.deletebto {background-color: var(--deleteColor);margin: 10px;    border-radius: 5px;}
 button.deletebto:hover {background-color: var(--deleteColor-hover);}
@@ -362,13 +382,14 @@ a.editItem::after {display: none;}
 .websiteItem {
   background-color: transparent;
   border-radius: 5px;
-  width: 98%;
+  width: 100%;
   margin: 5px auto;
   display: flex;
   justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   border: 1px solid #00000030;
   border-radius: 5px;
+  align-items: center;
   -webkit-transition: all .15s ease-in-out;
   -moz-transition: all .15s ease-in-out;
    -ms-transition: all .15s ease-in-out;
@@ -376,71 +397,144 @@ a.editItem::after {display: none;}
 }
 .websiteItem>a {
   color: #555;
-  background-color: #fff;
   display: inline-flex;
   border-radius: 5px;
-  width: 88%;
+  width: 100%;
+  z-index: 1;
 }
 .aw-website-details {
   text-align: right;
-  padding:10px 20px 10px 0;
-  width: 90%;
+  padding:10px 10px 10px 0;
+  width: 100%;
 }
 .todaySchedule {
   font-size: 0.90em;
-  width: 100%;
+  width: 78%;
+  margin: 0;
   color: grey;
   display: inline-flex;
-  text-align: center;
 }
-
+p#todaySchedule-title {
+  overflow: hidden;
+  margin: 0 0%;
+  display: inline-block;
+  white-space: nowrap;
+  width: 60%;
+  font-size: 0.85em;
+}
 .aw-website-btn {
   width: 20%;
   text-align: center;
 }
 .aw-website-details p {margin: 5px 2px;}
-p#website-info {display: inline-block;}
+p#website-info {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 60%;
+  margin: 0;
+}
 
 p#formType {
-  display: inline-block;
+  display: inline-flex;
   font-size: 15px;
   color: grey;
-  margin-right: 0;
+  margin: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  float: left;
+  margin: 0px 0px 0 28px;
+  font-size: 0.85em;
 }
 /* ------------- Add website page ------------- */
 /* time table */ 
 .time {
-  display: flex;
+  display: inline-flex;
   margin: auto;
-  width: 100%;
+  width: 80%;
   min-width: 500px;
   max-width: 1240px;
-  padding: 3% 0;
+  padding: 28px 0;
+}
+.timeTable {
+  display: flex;
+  height: 350px;
+  text-align-last: left;
+}
+.timeTable.website {
+  display: block;
+}
+/* ----layout ---- */
+.editArea {
+  min-height: 350px;
+  background-color: #55a6581f;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  width: 100%;
+}
+.editArea card {
+  width: 100%;
 }
 .sectionChose {
-  margin-top: 1.5em;
+  display: inline-grid;
+  float: right;
+  /* width: 10vw; */
+  height: 350px;
+  top: 30%;
+  right: 0;
+  bottom: 0;
+  
 }
-
 .sectionChose button {
-  width: 35%;
   cursor: pointer;
 }
-
+.colorForm {
+  width: 87.5%;
+  min-height: 350px;
+  float: left;
+  background-color: #55a6581f;
+}
+div#websiteColor {
+  width: 100%;
+  background-color: white;
+  height: auto;
+  min-height: 30px;
+}
+.time#websiteColor {
+  background-color: white;
+  display: flex;
+  width: 100%;
+}
+#websiteColor .day {background-color: white !important;    text-align-last: center;}
+#websiteColor input[type="time"] {background-color: white !important;}
+.editArea p {
+  display: block;
+  height: fit-content;
+  margin: 10px auto;
+  width: 100%;
+  text-align-last: center;
+}
+.googleTagSection {
+  width: 100%;
+  display: block;
+  /* float: left; */
+  background-color: #ebf4eb;
+}
+ul.swatches {
+  margin: 0;
+  padding: 0;
+}
 .sectionChose button:hover {
   background-color: var(--main-color) !important;
 }
 .gtInputArea {
-  margin-bottom: 2em;
-  direction: ltr;
+    margin-bottom: 2em;
+    direction: ltr;
+    display: block;
+    width: 82.5%;
+    float: left;
 }
-.day {
-  display: table-cell;
-  text-align: center;
-  place-self: flex-end;
-  align-self: flex-end;
-  width: 50%;
-  justify-self: flex-end;
-}
+.day {width: 50%;}
 div#day-button {
   vertical-align: bottom;
   display: contents;
@@ -454,6 +548,9 @@ div#day-button input {
   cursor: pointer;
   outline: none;
 }
+div#day-button input:hover{background-color: var(--main-color-hover);}
+.day button {border-radius: 5px;}
+.day button:hover {background-color: var(--main-color-hover);}
 button.websiteBtn{
   border-radius: 5px;
   margin: 5px 10px;
@@ -464,6 +561,14 @@ button.websiteBtn{
   padding: 0;
   font-family: 'Heebo', sans-serif;
   cursor: pointer;
+}
+button#editBtn {
+  position: absolute;
+  top: 35%;
+  left: 0;
+  text-align: center;
+  width: fit-content;
+  margin: 0;
 }
 button.add-website-page-btn {
   color: #ffff;
@@ -525,11 +630,14 @@ input[type="time"] {
   font-size: 13px;
   padding: 5px 2px;
   font-family: 'Heebo', sans-serif;
-  margin: 5px 0px;
-  border: none;
+  margin: 5px auto;
+  border: inset;
+  border-color: var(--main-color);
+  border-radius: 5px;
   cursor: pointer;
-  width: 100%;
-  text-align: center;
+  display: flex;
+  width: 70%;
+  text-align-last: end;
 }
 .day-lable-d {
   flex-direction: column;
@@ -540,9 +648,15 @@ input[type="time"] {
   display: flex;
   width: 11%;
   max-width: 200px;
-  padding-top: 62px;
+  padding-top: 40px;
 }
-.day-lable-d p {margin-top: 3px;}
+.day-lable-d p {margin-top: 11px;}
+.exampleOfDiv {
+  width: fit-content;
+  background-color: rgba(0,0,0,.15);
+  padding: 1%;
+  margin: auto;
+}
 /* code text */
 .linkToCopy {background-color: #92929278;border: 1px solid;margin: 0px 0px 50px;}
 p.code-info {margin-bottom: 0;}
@@ -591,7 +705,75 @@ p#emailErr {
 }
 /* ------------- about ------------- */
 /* ------------- how does it works ------------- */
+/* ------------- contact us ------------- */
+.contactUs {
+  display: flex;
+  width: 60%;
+  margin: 50px auto;
+  padding: 80px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border: 1px solid #00000030;
+  border-radius: 5px;
+  -webkit-transition: all .15s ease-in-out;
+  -moz-transition: all .15s ease-in-out;
+   -ms-transition: all .15s ease-in-out;
+       transition: all .15s ease-in-out;
+}
+.rightSide {
+  float: right;
+  width: 40%;
+}
+.leftSide {
+  float: right;
+  width: 69%;
+  margin-right: 5%;
 
+}
+.contactUs-input {
+  display: flex;
+  font-family: 'Heebo', sans-serif;
+  padding: 0;
+  padding:16px;
+  margin: 5px 0;
+  border-radius: 8px;
+  border: 2px solid var(--main-color);
+}
+.contactUs textarea.websit-form-input {
+  border-width: 2px;
+  border-radius: 8px;
+  font-size: 1em;
+  width: 80%;
+  height: 200px;
+
+  outline: none !important;
+  border-color: var(--main-color);
+  font-family: 'Heebo', sans-serif;
+  padding: 10px 15px;
+}
+p.info-input {
+  font-family: 'Heebo', sans-serif;
+  margin: 5px;
+  /* width: 30%; */
+}
+textarea#test-mailing {
+  display: none;
+}
+input.btn.btn--submit {
+  width: 10vw;
+  color: #ffff;
+  background-color: var(--main-color);
+  width: 10vw;
+  min-width: 100px;
+  max-width: 200px;
+  font-size: 2ex;
+  border-radius: 5px;
+  margin: 5px 10px;
+  padding: 5px;
+  cursor: pointer;
+  margin-top: 40px;
+  font-family: 'Heebo', sans-serif;
+}
+input.btn.btn--submit:hover {background-color: var(--main-color-hover);}
 /* ------------------------ Mobile ------------------------ */
 @media (max-width: 600px) {
   /* ------------------------ clock animation ------------------------  */
@@ -651,16 +833,24 @@ input[type="submit"] {
     width: 100vw;
     padding-top: 70%;
 }
+.homepageWraper {
+  width: 100% !important;
+}
+.websiteItem>a {
+  color: #555;
+  background-color: #fff;
+  display: inline-flex;
+  border-radius: 5px;
+  width: 70%;
+}
   /* ------------- homepage ------------- */
 .websiteItem {width: 100%;}
-.deleteForm {width: 80vw;margin-top: calc(10% + 1px);}
+.deleteForm {width: 80vw;margin-top: calc(-1% + 1px);}
 .aw-website-details {padding: 10px 20px 10px 0px;}
 button#deleteBtn {
   margin: 5px 0;
-  display: inline-flex;
-  width: 10%;
   z-index: 10;
-  
+  width: fit-content;
 }
 /* ------------- login ------------- */
 .forminput {min-width: 200px;}

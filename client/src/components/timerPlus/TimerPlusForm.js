@@ -13,7 +13,7 @@ import Wysiwyg from '../layouts/timerPlusAndWeb/Wysiwyg'
 import CopiedAlert from '../layouts/alerts/CopiedAlert';
 import Info from '../layouts/timerPlusAndWeb/Info';
 import GoogleTag from '../layouts/timerPlusAndWeb/GoogleTag';
-
+import Subject from '../layouts/timerPlusAndWeb/Subject';
 const TimerPlusForm = (props) => {
     const timerPlusContext = useContext(TimerPlusContext);
     const { addTimerPlus, updateTimerPlus, currentTimerPlus, setCurrentTimerPlus } = timerPlusContext;
@@ -45,6 +45,18 @@ const TimerPlusForm = (props) => {
         name: '',
         url: '',
         divId: '',
+        color: '#55a658',
+        swatches: [
+            "rgb(157, 41, 177)",
+            "#673AB7",
+            "rgba(182, 73, 98, 1)",
+            "#00BCD4",
+            "LightSeaGreen",
+            "rgb(76, 175, 80)",
+            "rgba(8, 136, 124, .7)",
+            "#CDDC39"
+        ],
+        selected: 5,
         eventInput: '',
         evenCategoryInput: '',
         eventLabelInput: '',
@@ -52,7 +64,7 @@ const TimerPlusForm = (props) => {
         loading: true,
         withGoogleAnalytics: false,
     });
-    const { wysiwyg, name, url, divId, saveAlert, eventInput, evenCategoryInput, eventLabelInput, withGoogleAnalytics, wysiwygEditor } = timerPlus
+    const { wysiwyg, name, url, divId, swatches, color, selected, saveAlert, eventInput, evenCategoryInput, eventLabelInput, withGoogleAnalytics, wysiwygEditor } = timerPlus
 
     //change input state
     // const onChange = e => { setTimerPlus({ ...timerPlus, [e.target.name]: e.target.value }); }
@@ -141,35 +153,40 @@ const TimerPlusForm = (props) => {
                 </p>
             </div>
             <Info onChange={onChange} name={name} url={url} divId={divId} />
-            <div className="sectionChose">
-                <button onClick={() => sectionSelection(0)} style={{ backgroundColor: section === 0 ? '#55a658' : '#4d744f' }}>wysiwyg editor</button>
-                <button onClick={() => sectionSelection(1)} style={{ backgroundColor: section === 1 ? '#55a658' : '#4d744f' }}>טבלת שעות </button>
-                <button onClick={() => sectionSelection(3)} style={{ backgroundColor: section === 3 ? '#55a658' : '#4d744f' }}>google analytics</button>
+            <div className="editArea">
+                <div className="sectionChose">
+                    <button onClick={() => sectionSelection(0)} style={{ backgroundColor: section === 0 ? 'var(--main-color)' : '#4d744f' }}>wysiwyg editor</button>
+                    <button onClick={() => sectionSelection(1)} style={{ backgroundColor: section === 1 ? 'var(--main-color)' : '#4d744f' }}>טבלת שעות </button>
+                    <button onClick={() => sectionSelection(2)} style={{ backgroundColor: section === 2 ? 'var(--main-color)' : '#4d744f' }}>מתקדם </button>
+                    <button onClick={() => sectionSelection(3)} style={{ backgroundColor: section === 3 ? 'var(--main-color)' : '#4d744f' }}>google analytics</button>
+                </div>
+                {section === 0 && <Wysiwyg handleEditorChange={handleEditorChange} wysiwyg={wysiwyg} />}
+                {section === 1 && <TimeTable handleChangeCloseHour={handleChangeCloseHour} handleChangeOpemHour={handleChangeOpemHour} timerPlus={timerPlus} currentTimerPlus={currentTimerPlus} type={'timer'} />}
+                {section === 2 && <Subject onChange={onChange} color={color} swatches={swatches} selected={selected} timerPlus={timerPlus} setTimerPlus={setTimerPlus} />}
+                {section === 3 &&
+                    (<>
+                        <p id="gtCheckbox">
+                            <input
+                                type="checkbox"
+                                name="withGoogleAnalytics"
+                                checked={!!withGoogleAnalytics}
+                                onChange={onChange}
+                            /> להוסיף גוגל אנאליטיקס
+                        </p>
+                        <GoogleTag evenCategoryInput={evenCategoryInput} eventInput={eventInput} eventLabelInput={eventLabelInput} onChange={onChange} setTimerPlus={setTimerPlus} timerPlus={timerPlus} withGoogleAnalytics={withGoogleAnalytics} />
+                    </>
+                    )}
             </div>
-            {section === 0 ? <Wysiwyg handleEditorChange={handleEditorChange} wysiwyg={wysiwyg} /> : null}
-            {section === 1 ? <TimeTable handleChangeCloseHour={handleChangeCloseHour} handleChangeOpemHour={handleChangeOpemHour} timerPlus={timerPlus} currentTimerPlus={currentTimerPlus} /> : null}
-            {section === 3 ?
-                (<>
-                    <p>
-                        <input
-                            type="checkbox"
-                            name="withGoogleAnalytics"
-                            checked={!!withGoogleAnalytics}
-                            onChange={onChange}
-                        /> להוסיף גוגל אנאליטיקס
-                </p>
-                    <GoogleTag evenCategoryInput={evenCategoryInput} eventInput={eventInput} eventLabelInput={eventLabelInput} onChange={onChange} setTimerPlus={setTimerPlus} timerPlus={timerPlus} withGoogleAnalytics={withGoogleAnalytics} />
-                </>
-                ) : null}
+
 
             <div className="day" id="day-button">
                 <button onClick={() => onSubmit()} >{currentTimerPlus._id ? "שמור" : "הוסף"}</button>
             </div>
 
             {saveAlert && (timerPlus.divId !== "" && timerPlus.url !== "" && timerPlus.name !== "") ?
-                <SavedAlert text="ההגדרות נשמרו" type={'sec'}/> :
+                <SavedAlert text="ההגדרות נשמרו" type={'sec'} /> :
                 saveAlert && (!(timerPlus.divId !== "" && timerPlus.url !== "" && timerPlus.name !== "")) ?
-                    <SavedAlert text="אנא מלא את השדות" type={'fail'}/> :
+                    <SavedAlert text="אנא מלא את השדות" type={'fail'} /> :
                     null}
 
             {copy ? <CopiedAlert /> : null}
@@ -184,8 +201,6 @@ const TimerPlusForm = (props) => {
                 </div>
             }
         </div>
-
     );
 };
-
 export default TimerPlusForm

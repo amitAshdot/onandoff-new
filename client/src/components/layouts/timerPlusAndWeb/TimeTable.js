@@ -6,26 +6,27 @@ const TimeTable = (props) => {
     const { timeSchedule } = props.timerPlus;
     const days = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת']
     const daysEng = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    return (<card>
-        <div className="time">
-            <div className="day-lable-d">
-                <p>פתיחה</p>
-                <p>סגירה</p>
-            </div>
-            {days.map((day, i) =>
-                <TimeTableDay
-                    handleChangeCloseHour={handleChangeCloseHour}
-                    handleChangeOpemHour={handleChangeOpemHour}
-                    timeSchedule={timeSchedule}
-                    daysEng={daysEng}
-                    name={day}
-                    key={i}
-                    i={i}
-                />
-            )}
+    return (
+        <div className={`timeTable ${props.type}`} >
+            <div className="time" id={props.id || ''}>
+                <div className="day-lable-d">
+                    <p>פתיחה</p>
+                    <p>סגירה</p>
+                </div>
+                {days.map((day, i) =>
+                    <TimeTableDay
+                        handleChangeCloseHour={handleChangeCloseHour}
+                        handleChangeOpemHour={handleChangeOpemHour}
+                        timeSchedule={timeSchedule}
+                        daysEng={daysEng}
+                        name={day}
+                        key={i}
+                        i={i}
+                    />
+                )}
 
+            </div>
         </div>
-        </card>
     )
 }
 export default TimeTable

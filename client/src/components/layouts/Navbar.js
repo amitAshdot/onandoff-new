@@ -23,6 +23,9 @@ const Navbar = (props) => {
                 <li >
                     <Link to='/how-it-works' className="headerLink">איך זה עובד</Link>
                 </li>
+                <li >
+                        <Link to='/contact' className="headerLink">צור קשר</Link>
+                    </li>
             </div>
             <div className="left">
                 <li >
@@ -49,6 +52,9 @@ const Navbar = (props) => {
                     </li>
                     <li >
                         <Link to='/how-it-works' className="headerLink">איך זה עובד</Link>
+                    </li>
+                    <li >
+                        <Link to='/contact' className="headerLink">צור קשר</Link>
                     </li>
                 </div>
                 <div className="left">
