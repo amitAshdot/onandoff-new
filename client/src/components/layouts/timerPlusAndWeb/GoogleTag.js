@@ -1,6 +1,9 @@
 import React from 'react';
+// -- functions --
+import { onChange } from '../../../action/TimerWebFunctions'
 
 const GoogleTag = (props) => {
+    const {timerPlus , setTimerPlus} = props;
     if (typeof props.withGoogleAnalytics === 'undefined' || !props.withGoogleAnalytics) {
         return null
     }
@@ -12,17 +15,18 @@ const GoogleTag = (props) => {
             <div className="gtInputArea">
                 <div className="info-block">
                     <p >event_name</p>
-                    <input type="text" className="websit-form-input" name='eventInput' value={props.eventInput} onChange={props.onChange} placeholder="Ex. click" />
-                    <div className="input-border"></div>
+                    <input type="text" className="websit-form-input" name='eventInput' value={timerPlus.eventInput} onChange={(e) => onChange(e, setTimerPlus, timerPlus)} placeholder="Ex. click" />
+                    <div className="input-border"></div>                      
+
                 </div>
                 <div className="info-block">
                     <p>event_category_name</p>
-                    <input type="text" className="websit-form-input" name='evenCategoryInput' value={props.evenCategoryInput} onChange={props.onChange} placeholder="Ex. clicks on phone" />
+                    <input type="text" className="websit-form-input" name='evenCategoryInput' value={timerPlus.evenCategoryInput} onChange={(e) => onChange(e, setTimerPlus, timerPlus)} placeholder="Ex. clicks on phone" />
                     <div className="input-border"></div>
                 </div>
                 <div className="info-block">
                     <p>event_label_name </p>
-                    <input type="text" className="websit-form-input" name='eventLabelInput' value={props.eventLabelInput} onChange={props.onChange} placeholder="Ex. mobile phone" />
+                    <input type="text" className="websit-form-input" name='eventLabelInput' value={timerPlus.eventLabelInput} onChange={(e) => onChange(e, setTimerPlus, timerPlus)} placeholder="Ex. mobile phone" />
                     <div className="input-border"></div>
                 </div>
             </div>

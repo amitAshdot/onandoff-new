@@ -1,7 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import TimerPlusContext from '../../context/timerPlus/TimerPlusContext';
-import AuthContext from '../../context/auth/AuthContext'
-import { useHistory } from "react-router-dom";
 
 // import { Link } from 'react-router-dom';
 import LinkComp from '../layouts/LinkComp';
@@ -14,14 +12,13 @@ import CopiedAlert from '../layouts/alerts/CopiedAlert';
 import Info from '../layouts/timerPlusAndWeb/Info';
 import GoogleTag from '../layouts/timerPlusAndWeb/GoogleTag';
 import Subject from '../layouts/timerPlusAndWeb/Subject';
+
+// -- functions --
+import { onSubmit , onChange } from '../../action/TimerWebFunctions';
+
 const TimerPlusForm = (props) => {
     const timerPlusContext = useContext(TimerPlusContext);
     const { addTimerPlus, updateTimerPlus, currentTimerPlus, setCurrentTimerPlus } = timerPlusContext;
-
-    // const authContext = useContext(AuthContext);
-    // const { isAuthenticated, user, isVerified, loading } = authContext;
-    // const history = useHistory();
-
     //user effect for edit form , currentTimerPlus is the corrent landingPage
     useEffect(() => {
         if (currentTimerPlus != null)
@@ -46,16 +43,7 @@ const TimerPlusForm = (props) => {
         url: '',
         divId: '',
         color: '#55a658',
-        swatches: [
-            "rgb(157, 41, 177)",
-            "#673AB7",
-            "rgba(182, 73, 98, 1)",
-            "#00BCD4",
-            "LightSeaGreen",
-            "rgb(76, 175, 80)",
-            "rgba(8, 136, 124, .7)",
-            "#CDDC39"
-        ],
+        swatches: ["rgb(157, 41, 177)", "#673AB7", "rgba(182, 73, 98, 1)", "#00BCD4", "LightSeaGreen", "rgb(76, 175, 80)", "rgba(8, 136, 124, .7)", "#CDDC39"],
         selected: 5,
         eventInput: '',
         evenCategoryInput: '',
@@ -65,45 +53,8 @@ const TimerPlusForm = (props) => {
         withGoogleAnalytics: false,
     });
     const { wysiwyg, name, url, divId, swatches, color, selected, saveAlert, eventInput, evenCategoryInput, eventLabelInput, withGoogleAnalytics, wysiwygEditor } = timerPlus
-
-    //change input state
-    // const onChange = e => { setTimerPlus({ ...timerPlus, [e.target.name]: e.target.value }); }
-    const onChange = (event) => {
-        const { name, value, type, checked } = event.target
-        type === "checkbox" ?
-            !withGoogleAnalytics ?
-                setTimerPlus({
-                    ...timerPlus,
-                    wysiwyg: `<a onclick="gtag('event', ${eventInput}, {'event_category' : ${evenCategoryInput},'event_label' : ${eventLabelInput} });"> ${typeof timerPlus.wysiwygEditor === 'undefined' ? wysiwyg : wysiwygEditor} </a>`,
-                    wysiwygEditor: wysiwyg,
-                    [name]: checked
-                }) :
-                setTimerPlus({
-                    ...timerPlus,
-                    wysiwyg: `${typeof timerPlus.wysiwygEditor === 'undefined' ? wysiwyg : wysiwygEditor}`,
-                    [name]: checked
-                })
-            :
-            setTimerPlus({
-                ...timerPlus,
-                [name]: value
-            })
-    }
-    const handleChangeOpemHour = (el) => {
-        let inputName = el.target.name;
-        let inputValue = el.target.value;
-        let statusCopy = Object.assign({}, timerPlus);
-        statusCopy.timeSchedule[inputName].openHour = inputValue;
-        setTimerPlus(statusCopy);
-    }
-    const handleChangeCloseHour = (el) => {
-        let inputName = el.target.name;
-        let inputValue = el.target.value;
-        let statusCopy = Object.assign({}, timerPlus);
-        statusCopy.timeSchedule[inputName].closeHour = inputValue;
-        setTimerPlus(statusCopy);
-    }
     const handleEditorChange = (content) => {
+        debugger
         withGoogleAnalytics ?
             setTimerPlus({
                 ...timerPlus, wysiwyg: `<a onclick="gtag('event', ${eventInput}, {   'event_category' : ${evenCategoryInput},   'event_label' : ${eventLabelInput} });"> ${content} </a>`,
@@ -111,23 +62,6 @@ const TimerPlusForm = (props) => {
             })
             :
             setTimerPlus({ ...timerPlus, wysiwyg: content, wysiwygEditor: content })
-    }
-    const onSubmit = e => {
-        // e.preventDefault();
-        if (timerPlus.divId !== '' && timerPlus.url !== '' && timerPlus.name !== '') {// check if DIVID is defined
-            currentTimerPlus._id ? updateTimerPlus(timerPlus, currentTimerPlus) : addTimerPlus(timerPlus);// function from timerPlusContext
-            setCurrentTimerPlus(currentTimerPlus);
-            saved();//UI notificiation function
-        }
-        else {//else alert and dont save to DB
-            saved();
-        }
-    };
-    const saved = () => {//UI notificiation function
-        setTimerPlus({ ...timerPlus, saveAlert: true })
-        setTimeout(() => {
-            setTimerPlus({ ...timerPlus, saveAlert: false })
-        }, 2000)
     }
     const [copy, setCopy] = useState(false);
     const copied = () => {
@@ -152,7 +86,7 @@ const TimerPlusForm = (props) => {
                 <p>עם טיימר+ תוכלו לעדכן,לשנות ולהסתיר תוכן בקלות וביעילות ללא ידע בקוד. בחרו ועצבו את הטקסט שתרצו שיופיע במקום הרכיב המוסתר ולאחר מכן בחרו את השעות בו תרצו להסתיר את הרכיב והופה – אתם באוויר! (לא לשכוח לשמור)
                 </p>
             </div>
-            <Info onChange={onChange} name={name} url={url} divId={divId} />
+            <Info timerPlus={timerPlus} setTimerPlus={setTimerPlus} name={name} url={url} divId={divId} />
             <div className="editArea">
                 <div className="sectionChose">
                     <button onClick={() => sectionSelection(0)} style={{ backgroundColor: section === 0 ? 'var(--main-color)' : '#4d744f' }}>wysiwyg editor</button>
@@ -161,8 +95,8 @@ const TimerPlusForm = (props) => {
                     <button onClick={() => sectionSelection(3)} style={{ backgroundColor: section === 3 ? 'var(--main-color)' : '#4d744f' }}>google analytics</button>
                 </div>
                 {section === 0 && <Wysiwyg handleEditorChange={handleEditorChange} wysiwyg={wysiwyg} />}
-                {section === 1 && <TimeTable handleChangeCloseHour={handleChangeCloseHour} handleChangeOpemHour={handleChangeOpemHour} timerPlus={timerPlus} currentTimerPlus={currentTimerPlus} type={'timer'} />}
-                {section === 2 && <Subject onChange={onChange} color={color} swatches={swatches} selected={selected} timerPlus={timerPlus} setTimerPlus={setTimerPlus} />}
+                {section === 1 && <TimeTable setWebsite={setTimerPlus} timerPlus={timerPlus} currentTimerPlus={currentTimerPlus} type={'timer'} id={'timerplusColor'} />}
+                {section === 2 && <Subject color={color} swatches={swatches} selected={selected} timerPlus={timerPlus} setTimerPlus={setTimerPlus} id={'timerplusColor'} />}
                 {section === 3 &&
                     (<>
                         <p id="gtCheckbox">
@@ -170,17 +104,16 @@ const TimerPlusForm = (props) => {
                                 type="checkbox"
                                 name="withGoogleAnalytics"
                                 checked={!!withGoogleAnalytics}
-                                onChange={onChange}
+                                onChange={(e) => onChange(e, setTimerPlus, timerPlus )}
                             /> להוסיף גוגל אנאליטיקס
                         </p>
-                        <GoogleTag evenCategoryInput={evenCategoryInput} eventInput={eventInput} eventLabelInput={eventLabelInput} onChange={onChange} setTimerPlus={setTimerPlus} timerPlus={timerPlus} withGoogleAnalytics={withGoogleAnalytics} />
+                        <GoogleTag  onChange={onChange} setTimerPlus={setTimerPlus} timerPlus={timerPlus} withGoogleAnalytics={withGoogleAnalytics} />
                     </>
                     )}
             </div>
 
-
             <div className="day" id="day-button">
-                <button onClick={() => onSubmit()} >{currentTimerPlus._id ? "שמור" : "הוסף"}</button>
+                <button onClick={(e) => onSubmit(e, timerPlus, currentTimerPlus, addTimerPlus, updateTimerPlus, setCurrentTimerPlus, setTimerPlus)} >{currentTimerPlus._id ? "שמור" : "הוסף"}</button>
             </div>
 
             {saveAlert && (timerPlus.divId !== "" && timerPlus.url !== "" && timerPlus.name !== "") ?

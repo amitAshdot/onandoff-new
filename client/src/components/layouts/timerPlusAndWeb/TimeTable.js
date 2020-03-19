@@ -1,9 +1,9 @@
-import React from 'react'
-import TimeTableDay from './TimeTableDay'
+import React from 'react';
+import TimeTableDay from './TimeTableDay';
+
 const TimeTable = (props) => {
-    const handleChangeCloseHour = props.handleChangeCloseHour;
-    const handleChangeOpemHour = props.handleChangeOpemHour;
     const { timeSchedule } = props.timerPlus;
+    const { timerPlus, setWebsite } = props;
     const days = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת']
     const daysEng = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     return (
@@ -15,8 +15,8 @@ const TimeTable = (props) => {
                 </div>
                 {days.map((day, i) =>
                     <TimeTableDay
-                        handleChangeCloseHour={handleChangeCloseHour}
-                        handleChangeOpemHour={handleChangeOpemHour}
+                        item={timerPlus}
+                        setItem={setWebsite}
                         timeSchedule={timeSchedule}
                         daysEng={daysEng}
                         name={day}
