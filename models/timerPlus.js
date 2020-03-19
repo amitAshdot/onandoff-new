@@ -34,6 +34,9 @@ const TimerPlusSchema = mongoose.Schema({
         type: String,
         default: true
     },
+    withGoogleAnalytics:{
+        type: Boolean
+    },
     eventInput: {
         type: String,
     },

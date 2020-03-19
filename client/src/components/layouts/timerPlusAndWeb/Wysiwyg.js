@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { Editor } from '@tinymce/tinymce-react';
 
 const Wysiwyg = (props) => {

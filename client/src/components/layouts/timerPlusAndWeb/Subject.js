@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import ColorPicker from 'coloreact';
 
+// -- functions --
+import { onChange, onSubmit, handleChangeCloseHour, handleChangeOpemHour } from '../../../action/TimerWebFunctions'
+
 const Subject = (props) => {
     const { color, swatches, selected, setTimerPlus, timerPlus , id , setWebsite, website} = props;
 
@@ -30,7 +33,6 @@ const Subject = (props) => {
                 ))}
             </ul>
             <code className="swatch-value" style={{ color: actualColor }}>
-
                 {actualColor}
             </code>
             {/* <ColorPicker

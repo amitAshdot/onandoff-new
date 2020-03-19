@@ -11,7 +11,7 @@ const SavedAlert = (props) => {
         
     })
     const styleMain = props.type ==='sec' ? '#55a658': '#F44336';
-    return <animated.p className="copyAlert-text" style={style}><div className="saveAlertText" style={{styleMain}}>{props.text}</div></animated.p>
+    return <animated.div className="copyAlert-text" style={style}><div className="saveAlertText" style={{styleMain}}>{props.text}</div></animated.div>
 }
 export default SavedAlert
 

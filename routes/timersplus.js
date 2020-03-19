@@ -41,7 +41,7 @@ router.post('/',
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        const { name, url, divId, date, timeSchedule, isShow, wysiwyg, wysiwygEditor, eventInput, evenCategoryInput, eventLabelInput, color ,selected, swatches} = req.body;
+        const { name, url, divId, date, timeSchedule, isShow, wysiwyg, wysiwygEditor, withGoogleAnalytics, eventInput, evenCategoryInput, eventLabelInput, color, selected, swatches } = req.body;
         try {
             const newTimerplus = new Timerplus({
                 name,
@@ -51,6 +51,7 @@ router.post('/',
                 color,
                 selected,
                 swatches,
+                withGoogleAnalytics,
                 eventInput,
                 evenCategoryInput,
                 eventLabelInput,
@@ -73,7 +74,7 @@ router.post('/',
 //@desc     Update timerplus
 //@access   Private
 router.put('/:id', auth, async (req, res) => {
-    const { name, url, divId, date, wysiwyg, wysiwygEditor, isShow, timeSchedule, eventInput, evenCategoryInput, eventLabelInput, color, selected, swatches } = req.body;
+    const { name, url, divId, date, wysiwyg, wysiwygEditor, isShow, timeSchedule, withGoogleAnalytics, eventInput, evenCategoryInput, eventLabelInput, color, selected, swatches } = req.body;
 
     //Build a timerplus object
     const timersPlusFeilds = {}
@@ -81,6 +82,9 @@ router.put('/:id', auth, async (req, res) => {
     if (url) timersPlusFeilds.url = url;
     if (divId) timersPlusFeilds.divId = divId;
     if (date) timersPlusFeilds.date = date;
+    if (withGoogleAnalytics)
+        timersPlusFeilds.withGoogleAnalytics = true;
+    else timersPlusFeilds.withGoogleAnalytics = false;
     if (eventInput) timersPlusFeilds.eventInput = eventInput;
     if (evenCategoryInput) timersPlusFeilds.evenCategoryInput = evenCategoryInput;
     if (eventLabelInput) timersPlusFeilds.eventLabelInput = eventLabelInput;

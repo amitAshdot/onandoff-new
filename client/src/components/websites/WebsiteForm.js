@@ -8,7 +8,11 @@ import SavedAlert from '../layouts/alerts/SavedAlert';
 import TimeTable from '../layouts/timerPlusAndWeb/TimeTable'
 import Info from '../layouts/timerPlusAndWeb/Info';
 import CopiedAlert from '../layouts/alerts/CopiedAlert';
-import Subject from '../layouts/timerPlusAndWeb/Subject'
+import Subject from '../layouts/timerPlusAndWeb/Subject';
+
+// -- functions --
+import { onSubmit } from '../../action/TimerWebFunctions';
+
 const WebsiteForm = () => {
     const websiteContext = useContext(WebsiteContext);
     const { addWebsite, updateWebsite, current, setCurrent } = websiteContext;
@@ -20,6 +24,13 @@ const WebsiteForm = () => {
         //eslint-disable-next-line
     }, []);
 
+    const [copy, setCopy] = useState(false);
+    const copied = () => {
+        setCopy(true)
+        setTimeout(() => {
+            setCopy(false)
+        }, 2000)
+    }
     const [website, setWebsite] = useState({
         timeSchedule: {
             Sunday: { openHour: '00:00', closeHour: '00:00' },
@@ -48,60 +59,20 @@ const WebsiteForm = () => {
         divId: '',
         saveAlert: false
     });
-
-    const { name, url, divId, saveAlert , color , swatches ,selected } = website
-
-    //change input state
-    const onChange = e => { setWebsite({ ...website, [e.target.name]: e.target.value }); }
-    const handleChangeOpemHour = (el) => {
-        let inputName = el.target.name;
-        let inputValue = el.target.value;
-        let statusCopy = Object.assign({}, website);
-        statusCopy.timeSchedule[inputName].openHour = inputValue;
-        setWebsite(statusCopy);
-    }
-    const handleChangeCloseHour = (el) => {
-        let inputName = el.target.name;
-        let inputValue = el.target.value;
-        let statusCopy = Object.assign({}, website);
-        statusCopy.timeSchedule[inputName].closeHour = inputValue;
-        setWebsite(statusCopy);
-    }
-    const onSubmit = e => {
-        e.preventDefault();
-        if (website.divId !== "" && website.url !== "" && website.name !== "") {// check if DIVID is defined
-            current._id ? updateWebsite(website,current) : addWebsite(website);
-            // function from websiteContext
-            setCurrent(current);
-            saved();
-        }
-        else saved();
-    };
-    const saved = () => {//UI notificiation function
-        setWebsite({ ...website, saveAlert: true })
-        setTimeout(() => {
-            setWebsite({ ...website, saveAlert: false })
-        }, 2000)
-    }
-    const [copy, setCopy] = useState(false);
-    const copied = () => {
-        setCopy(true)
-        setTimeout(() => {
-            setCopy(false)
-        }, 2000)
-    }
+    const { name, url, divId, saveAlert, color, swatches, selected } = website
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={(e) => onSubmit(e, website, current, addWebsite, updateWebsite, setCurrent, setWebsite)}>
             {current._id ? <h2>  ערוך עמוד נחיתה: {name}</h2> : <h2>הוסף עמוד נחיתה</h2>}
-            <Info onChange={onChange} name={name} url={url} divId={divId} />
-            <Subject onChange={onChange} color={color} swatches={swatches} selected={selected} website={website} setWebsite={setWebsite} id={'websiteColor'}/>
+            <Info website={website} setWebsite={setWebsite} name={name} url={url} divId={divId} />
+
+            <Subject color={color} swatches={swatches} selected={selected} website={website} setWebsite={setWebsite} id={'websiteColor'} />
+
             <TimeTable
-                handleChangeCloseHour={handleChangeCloseHour}
-                handleChangeOpemHour={handleChangeOpemHour}
+                setWebsite={setWebsite}
                 timerPlus={website}
-                currentTimerPlus={current} 
-                id={'websiteColor'} 
-                type={'website'}/>
+                currentTimerPlus={current}
+                id={'websiteColor'}
+                type={'website'} />
 
             {copy ? <CopiedAlert /> : null}
             {current.name === '' ? null : <LinkComp id={current._id} current={current} function={'onAndOffFunction'} copied={copied} />}
